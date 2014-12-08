@@ -184,3 +184,11 @@ https://github.com/g0v/goban
 ## Improve project
 
 If you'd like to contribute to Goban, please contact with: bestian@gmail.com
+
+
+# CC0 1.0 Universal
+To the extent possible under law, Bestian Tang has waived all copyright and related or neighboring rights to hackfoldr.
+
+This work is published from Taiwan.
+
+[http://creativecommons.org/publicdomain/zero/1.0]
