@@ -187,7 +187,7 @@ If you'd like to contribute to Goban, please contact with: bestian@gmail.com
 
 
 # CC0 1.0 Universal
-To the extent possible under law, Bestian Tang has waived all copyright and related or neighboring rights to hackfoldr.
+To the extent possible under law, Bestian Tang has waived all copyright and related or neighboring rights to goban.
 
 This work is published from Taiwan.
 
