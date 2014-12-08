@@ -51,20 +51,16 @@
       setI: function(n){
         if (this.myI !== n) {
           this.loadPage();
-          $timeout(function(){
-            goban.myI = n;
-            goban.updateHash();
-            goban.load(goban.myI);
-          }, 1000);
+          this.myI = n;
+          this.updateHash();
+          this.load(this.myI);
         }
       },
       setJ: function(n){
         if (this.myJ !== n) {
           this.loadPage();
-          $timeout(function(){
-            goban.myJ = n;
-            goban.updateHash();
-          }, 1000);
+          this.myJ = n;
+          this.updateHash();
         }
       },
       updateHash: function(){
