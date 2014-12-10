@@ -1,6 +1,12 @@
 var pth = location.pathname.split('/');
 var userPath = pth[pth.length-1].replace('.html',''); 
 
+var defaultPath = 'goban_intro';
+
+if (userPath == '404') {
+  userPath = defaultPath;
+}
+
 console.log(userPath);
 
 
@@ -10,7 +16,7 @@ angular.module("automap",["goban"])
   function autoCtrl($scope, $window, $goban){
     $scope.goban = $goban.$default({
       path : 'https://ethercalc.org/',
-      title : userPath || 'g0ban_intro',
+      title : userPath || defaultPath,
       webConfig: true,
       colMax : 3
     });
