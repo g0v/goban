@@ -10,7 +10,7 @@ angular.module("automap",["goban"])
   function autoCtrl($scope, $window, $goban){
     $scope.goban = $goban.$default({
       path : 'https://ethercalc.org/',
-      title : userPath || 'autolearn_main',
+      title : userPath || 'g0ban_intro',
       webConfig: true,
       colMax : 3
     });
