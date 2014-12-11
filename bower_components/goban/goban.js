@@ -4,6 +4,9 @@
   toIndex = function(){
     return function(list){
       var i$, to$, results$ = [];
+      if (!list) {
+        list = [];
+      }
       for (i$ = 0, to$ = list.length - 1; i$ <= to$; ++i$) {
         results$.push(i$);
       }
@@ -29,7 +32,7 @@
     });
     return GobanAnimate;
   };
-  myGoban = function($http, $sce, $hash, $GobanAnimate, $timeout, $window){
+  myGoban = function($rootScope, $http, $sce, $hash, $GobanAnimate, $timeout, $window){
     var goban;
     goban = new Object;
     angular.extend(goban, {
@@ -50,7 +53,7 @@
     angular.extend(goban, {
       setI: function(n){
         if (this.myI !== n) {
-          this.loadPage();
+          this.maybeDelay();
           this.myI = n;
           this.updateHash();
           this.load(this.myI);
@@ -58,7 +61,7 @@
       },
       setJ: function(n){
         if (this.myJ !== n) {
-          this.loadPage();
+          this.maybeDelay();
           this.myJ = n;
           this.updateHash();
         }
@@ -66,7 +69,12 @@
       updateHash: function(){
         $hash.upDateFromArray([this.title, this.myI, this.myJ]);
       },
-      loadPage: function(){
+      cast: function(eventName, arg){
+        var broadcastName;
+        broadcastName = 'goban.' + eventName;
+        $rootScope.$broadcast(broadcastName, arg);
+      },
+      maybeDelay: function(){
         this.pageLoading = true;
         if (goban.animate.delay) {
           $timeout(function(){
@@ -96,9 +104,15 @@
         }).success(function(data){
           goban.data = goban.parseFromCSV(data);
           goban.updateHash();
+          goban.cast('loaded', {
+            p: 'data'
+          });
         }).error(function(){
           goban.sectionTitle = null;
           goban.data = [];
+          goban.cast('error', {
+            p: 'data'
+          });
         });
       },
       loadConfig: function(){
@@ -139,9 +153,15 @@
               return t.index;
             })[0];
           }
+          goban.cast('loaded', {
+            p: 'config'
+          });
         }).error(function(){
           goban.sectionTitle = null;
           goban.data = [];
+          goban.cast('error', {
+            p: 'config'
+          });
           console.log('error:connot load webConfig');
         });
       },
@@ -182,13 +202,25 @@
           dataType: "text"
         }).success(function(data){
           goban.data = goban.parseFromCSV(data);
+          goban.cast('loaded', {
+            p: 'data',
+            isRedirected: true
+          });
         }).error(function(){
           goban.sectionTitle = null;
           goban.data = [];
+          goban.cast('error', {
+            p: 'data',
+            isRedirected: true,
+            isBroken: true
+          });
         });
       },
       init: function(){
         this.load(this.myI);
+        goban.cast('initialized', {
+          i: this.myI
+        });
       },
       parseFromCSV: function(csv){
         var allTextLines, maybeRedirect, bodyLines, goodList, lastFolderIndex, bestList;
@@ -289,7 +321,7 @@
           }
           goban.updateHash();
         };
-        this.loadPage();
+        this.maybeDelay();
         this.load(parseInt(this.myI) + n);
         if (this.animate.delay) {
           $timeout(goX(n), this.animate.delay);
@@ -310,7 +342,7 @@
           }
           goban.updateHash();
         };
-        this.loadPage();
+        this.maybeDelay();
         if (this.animate.delay) {
           $timeout(goY(n), this.animate.delay);
         } else {
@@ -390,7 +422,7 @@
     });
     return goban;
   };
-  angular.module('goban', []).factory('$hash', myHash).factory('$goban', ['$http', '$sce', '$hash', '$timeout', '$window', myGoban]).filter('toIndex', toIndex);
+  angular.module('goban', []).factory('$hash', myHash).factory('$goban', ['$rootScope', '$http', '$sce', '$hash', '$timeout', '$window', myGoban]).filter('toIndex', toIndex);
   function deepEq$(x, y, type){
     var toString = {}.toString, hasOwnProperty = {}.hasOwnProperty,
         has = function (obj, key) { return hasOwnProperty.call(obj, key); };
