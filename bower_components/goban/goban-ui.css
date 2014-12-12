@@ -357,41 +357,46 @@ a {
   #goban-main {
     width: 60%;
   }
+
+  /* line 316, goban-ui.scss */
+  #goban-keyBordCtrl {
+    display: none;
+  }
 }
 @media screen and (min-width: 420px) {
-  /* line 319, goban-ui.scss */
+  /* line 323, goban-ui.scss */
   #goban-side {
     width: 30%;
   }
 
-  /* line 322, goban-ui.scss */
+  /* line 326, goban-ui.scss */
   #goban-main {
     width: 70%;
   }
 }
 @media screen and (min-width: 820px) {
-  /* line 327, goban-ui.scss */
+  /* line 331, goban-ui.scss */
   #goban-side {
     width: 20%;
   }
 
-  /* line 330, goban-ui.scss */
+  /* line 334, goban-ui.scss */
   #goban-main {
     width: 80%;
   }
 }
 @media screen and (min-width: 1024px) {
-  /* line 336, goban-ui.scss */
+  /* line 340, goban-ui.scss */
   #goban-side {
     width: 15%;
   }
 
-  /* line 339, goban-ui.scss */
+  /* line 343, goban-ui.scss */
   #goban-main {
     width: 85%;
   }
 }
-/* line 346, goban-ui.scss */
+/* line 350, goban-ui.scss */
 .zoom0 {
   -moz-transform: scale(1);
   -ms-transform: scale(1);
@@ -399,7 +404,7 @@ a {
   transform: scale(1);
 }
 
-/* line 346, goban-ui.scss */
+/* line 350, goban-ui.scss */
 .zoom1 {
   -moz-transform: scale(1.25);
   -ms-transform: scale(1.25);
@@ -407,7 +412,7 @@ a {
   transform: scale(1.25);
 }
 
-/* line 346, goban-ui.scss */
+/* line 350, goban-ui.scss */
 .zoom2 {
   -moz-transform: scale(1.5);
   -ms-transform: scale(1.5);
@@ -415,7 +420,7 @@ a {
   transform: scale(1.5);
 }
 
-/* line 346, goban-ui.scss */
+/* line 350, goban-ui.scss */
 .zoom3 {
   -moz-transform: scale(1.75);
   -ms-transform: scale(1.75);
@@ -423,7 +428,7 @@ a {
   transform: scale(1.75);
 }
 
-/* line 346, goban-ui.scss */
+/* line 350, goban-ui.scss */
 .zoom4 {
   -moz-transform: scale(2);
   -ms-transform: scale(2);
