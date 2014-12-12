@@ -35,7 +35,7 @@
       <a ng-href="{{goban.path}}{{goban.title}}Config" target="myFrame"><img alt="goban" src="bower_components/goban/Goban_19x19_vide.png" class="goban-logo goban-fixed-right"></a>
     </ul>
   </nav>
-  <div id="goban-side" ng-cloak ng-style="{height: countHeight() - navHeight + 'px'}"><a ng-href="{{goban.path}}{{goban.title}}{{goban.myI}}" target="myFrame"><span id="goban-sectionTitle">{{goban.sectionTitle || '創建'}}</span></a>
+  <div id="goban-side" ng-cloak ng-class="{hidden: hideSideBar}" ng-style="{height: countHeight() - navHeight + 'px'}"><a ng-href="{{goban.path}}{{goban.title}}{{goban.myI}}" target="myFrame"><span id="goban-sectionTitle">{{goban.sectionTitle || '創建'}}</span></a>
     <ul> 
       <li ng-repeat="j in goban.data | toIndex" ng-click="goban.setJ(j)"><a ng-if="goban.data[j].isFolder" ng-click="$parent.goban.data[j].isClosed = !goban.data[j].isClosed;" ng-class="{active: goban.myJ == j}"><img ng-show="goban.data[j].isClosed" src="images/isClosed.png" class="folder"><img ng-show="!goban.data[j].isClosed" src="images/isOpen.png" class="folder">{{goban.data[j].name || j}}<b ng-class="{right: goban.data[j].isClosed, down: !goban.data[j].isClosed}" class="arrowHead"></b></a><a ng-if="!goban.data[j].isFolder" ng-show=" goban.data[j].pIndex == 'self' || !goban.data[goban.data[j].pIndex].isClosed" ng-class="{active: goban.myJ == j}" class="elem" 
       ng-click = "$parent.goban.myJ = j"><img ng-src="http://www.google.com/s2/favicons?domain={{goban.data[j].url}}">{{goban.data[j].name || j}}</a></li>
