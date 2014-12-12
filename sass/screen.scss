@@ -4,3 +4,10 @@
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
 
 @import "compass/reset";
+@import "compass/css3";
+
+
+
+[ng\:cloak], [ng-cloak], .ng-cloak {
+    display: none !important;
+}
