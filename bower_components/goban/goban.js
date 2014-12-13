@@ -157,8 +157,6 @@
             p: 'config'
           });
         }).error(function(){
-          goban.sectionTitle = null;
-          goban.data = [];
           goban.cast('error', {
             p: 'config'
           });
