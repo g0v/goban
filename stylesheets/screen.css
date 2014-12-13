@@ -71,3 +71,40 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 [ng\:cloak], [ng-cloak], .ng-cloak {
   display: none !important;
 }
+
+/* line 15, ../sass/screen.scss */
+#goban-nav select {
+  min-width: 150px;
+  padding: 5px;
+  font-size: 16px;
+}
+
+/* line 23, ../sass/screen.scss */
+#goban-side #goban-sectionTitle {
+  color: black;
+  padding: 2px;
+  border-bottom: 2px dotted #aaf;
+  border-left: 2px dotted #aaf;
+}
+/* line 29, ../sass/screen.scss */
+#goban-side a {
+  color: #666;
+}
+/* line 31, ../sass/screen.scss */
+#goban-side a img {
+  -moz-transition: all 1s ease-in;
+  -o-transition: all 1s ease-in;
+  -webkit-transition: all 1s ease-in;
+  transition: all 1s ease-in;
+}
+/* line 35, ../sass/screen.scss */
+#goban-side a:hover img, #goban-side a:active img, #goban-side a.active img {
+  -moz-transform: scaleX(1.2);
+  -ms-transform: scaleX(1.2);
+  -webkit-transform: scaleX(1.2);
+  transform: scaleX(1.2);
+  -moz-transform-origin: left 50%;
+  -ms-transform-origin: left 50%;
+  -webkit-transform-origin: left 50%;
+  transform-origin: left 50%;
+}

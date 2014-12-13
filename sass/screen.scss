@@ -11,3 +11,31 @@
 [ng\:cloak], [ng-cloak], .ng-cloak {
     display: none !important;
 }
+#goban-nav {
+	select {
+		min-width: 150px;
+		padding: 5px;
+		font-size: 16px;
+	}
+}
+
+#goban-side {
+	#goban-sectionTitle {
+		color: black;
+		padding: 2px;
+		border-bottom: 2px dotted #aaf;
+		border-left: 2px dotted #aaf;
+	}
+	a {
+		color: #666;
+		img {
+			@include transition(all 1s ease-in);
+		}
+		&:hover,&:active,&.active {
+			img {
+				@include transform(scaleX(1.2));
+				@include transform-origin(left);
+			}
+		}
+	}
+}
