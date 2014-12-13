@@ -363,6 +363,7 @@
         return $sce.trustAsResourceUrl(url);
       },
       getCurrentURL: function(){
+        this.data = this.data || [];
         if (this.data[this.myJ] && this.data[this.myJ].isBlank) {
           $window.open(this.data[this.myJ].url);
           this.data[this.myJ].isBlank = false;
