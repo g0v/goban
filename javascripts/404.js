@@ -10,7 +10,7 @@ if (userPath == '404') {
 console.log(userPath);
 
 
-angular.module("automap",["goban"])
+angular.module("automap",["goban","ngAnimate"])
   .controller('autoCtrl',  ['$scope','$window', '$goban', autoCtrl]);
 
   function autoCtrl($scope, $window, $goban){
