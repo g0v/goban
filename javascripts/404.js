@@ -11,7 +11,15 @@ console.log(userPath);
 
 
 angular.module("automap",["goban","ngAnimate"])
-  .controller('autoCtrl',  ['$scope','$window', '$goban', autoCtrl]);
+  .controller('autoCtrl',  ['$scope','$window', '$goban', autoCtrl])
+  .filter('uriFix', myURI)
+  ;
+
+  function myURI() {
+    return function(uri){
+      return decodeURI(uri);
+    }
+  }
 
   function autoCtrl($scope, $window, $goban){
     $scope.goban = $goban.$default({
