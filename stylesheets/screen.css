@@ -105,3 +105,15 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   -webkit-transform-origin: left 50%;
   transform-origin: left 50%;
 }
+
+/* line 43, ../sass/screen.scss */
+#goban-keyBordCtrl {
+  -moz-transition: all 1s ease-in;
+  -o-transition: all 1s ease-in;
+  -webkit-transition: all 1s ease-in;
+  transition: all 1s ease-in;
+}
+/* line 45, ../sass/screen.scss */
+#goban-keyBordCtrl.ng-hide {
+  opacity: 0;
+}
