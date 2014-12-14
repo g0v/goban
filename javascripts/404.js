@@ -13,6 +13,17 @@ console.log(userPath);
 angular.module("automap",['goban','pascalprecht.translate'])
   
 .config(function($translateProvider) {
+
+    var zhTW = {
+      TITLE: '黑客棋盤',
+      OPEN_BLANK: '按此可開啟新頁籤'
+    };
+
+    var zhCN = {
+      TITLE: '黑客棋盘',
+      OPEN_BLANK: '按此可开启新页签'
+    }
+
     // Our translations will go in here
     $translateProvider.translations('en', {
       TITLE: 'hacker\'s goban',
@@ -26,30 +37,24 @@ angular.module("automap",['goban','pascalprecht.translate'])
       TITLE: 'ハッカーのチェス盤',
       OPEN_BLANK: '新しいタブを開くには、ここをクリックしてください'
     })
-    .translations('zh', {
-      TITLE: '黑客棋盤',
-      OPEN_BLANK: '按此可開啟新頁籤'
+    .translations('vi', {
+      TITLE :'hackers bàn cờ',
+      OPEN_BLANK : 'Nhấn vào đây để mở một tab mới'
     })
-    .translations('zh-hk', {
-      TITLE: '黑客棋盤',
-      OPEN_BLANK: '按此可開啟新頁籤'
-    })
-    .translations('zh-cn', {
-      TITLE: '黑客棋盘',
-      OPEN_BLANK: '按此可开启新页签'
-    })
-    .translations('zh-sg', {
-      TITLE: '黑客棋盤',
-      OPEN_BLANK: '按此可開啟新頁籤'
-    })
-    .translations('zh-tw', {
-      TITLE: '黑客棋盤',
-      OPEN_BLANK: '按此可開啟新頁籤'
-    });
-    $translateProvider.preferredLanguage('zh-tw');
+    .translations('zh', zhTW)
+    .translations('zh-hk', zhTW)
+    .translations('zh-HK', zhTW)
+    .translations('zh-cn', zhCN)
+    .translations('zh-CN', zhCN)
+    .translations('zh-sg', zhTW)
+    .translations('zh-tw', zhTW)
+    .translations('zh-TW', zhTW);
+    $translateProvider.preferredLanguage('en');
 })
 
-.controller('autoCtrl',  ['$scope','$window', '$goban', autoCtrl])
+.controller('autoCtrl',  
+    ['$scope','$window', '$goban', '$translate'
+      , autoCtrl])
   .filter('uriFix', myURI)
   ;
 
@@ -59,7 +64,8 @@ angular.module("automap",['goban','pascalprecht.translate'])
     }
   }
 
-  function autoCtrl($scope, $window, $goban){
+  function autoCtrl($scope, $window, $goban, $translate){
+   
     $scope.goban = $goban.$default({
       path : 'https://ethercalc.org/',
       title : userPath || defaultPath,
@@ -68,28 +74,23 @@ angular.module("automap",['goban','pascalprecht.translate'])
     });
     $scope.goban.init();
 
+
     $scope.navHeight = 50;
     $scope.countHeight = function(){
       return $window.innerHeight - 40;
     };
 
 
-    $scope.myOptsNew = [
-      {h:'autolearn_main', n:'非學校教育'}
-    ];
+    $scope.changeLanguage = function (key) {
+      $translate.use(key);
+    };
 
+    console.log(navigator.language);
+    if (['zh-TW','en','zh-cn'].indexOf(navigator.language) > -1){
+      $scope.changeLanguage(navigator.language);
+    }
   } 
   
-
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-26178243-2']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
 
 
 
