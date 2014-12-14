@@ -1,9 +1,7 @@
 angular.module("automap")
 .factory("$langs", function(){
-
   //http://www.metamodpro.com/browser-language-codes
   //http://www.ifreesite.com/flag/
-
   return [  
             ['zh-TW','正體中文','data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADsAAAAkCAMAAAAAe7LPAAAAwFBMVEUAAJUBAZUBAZYCApYEBJYFBZcHB5gLC5oNDZoODpsREZwWFp4XF58bG6AiIqMlJaQmJqUnJ6UtLagwMKk6Oq1AQLBGRrJgYL1kZL9lZb9pacFvb8NwcMNwcMR5ecd/AEuDg8uDg8yEhMyGhsyKis+Li8+MjM+Tk9KWltOZmdWamtWcnNadndalpdmlpdq/v+TExObExOfFxefGxujHx+jMzOrOzurX1+/Y2O/f3/Lg4PL19fv29vv9/f7+AAD///9//XA3AAAAo0lEQVRIx2NgwAfk7fABBurp5WMnTy+bKAuDihADvwA59iop85pJCuvzkayXm49D1EBcTVpVj51HgJU0vVzqxhJ6Nvb2FlLaRmJMJLqZQ1bL1h4IrOREGElzM6eYkoKpPRgoakgKMtNLL9DNMppgN1uS7GZgWJlI6Frb25tL6ZAcVqA4MgTGkRoZcURJ2qAwTVKQF+ibf+3IB6N6R/WO6h2ZegGjW5SOY5ed+wAAAABJRU5ErkJggg=='],
             ['vi','tiếng Việt','data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADYAAAAkCAMAAAD1hTl/AAAAY1BMVEX4AAD4+ADwAADoAAD4qAD48AD4GAD4WAD4CAD4sAD46AD4MAD4KAD4oAD42AD4QAD4yAD4mAD4gAD4eAD4IAD4EAD4uAD4aAD4YAD4wADgAAD4kAD4SAD44AD4OAD40AD4cABjSbOmAAAAy0lEQVQ4y+3VSRKDIBAFUBqVQUaHqJlz/1NGSWlMSkpgm/wVC1/RdKOiE84SgjBKSpaC8I8yI5OYqlMYux5TmIGCJLAzwBDPmAbg8cwA+Kv0s3pkQEOZUDx3KSemX2uu5N5u1D3/GX3ZL7LNv1VFgs7WFGtU9qEtMfqt7rfwTpJuVvwQMwA1szxmbmQ53fbEPYw64ewQwaYZWCEseO7lNptqrMZesGrcsw1mPZR0uTOPYNZZMS/l0YYyUrPVe9fI/1c5iCX/FnF0EH4CzqsHD9pJcrgAAAAASUVORK5CYII='],
@@ -13,41 +11,19 @@ angular.module("automap")
             ['de','Deutsch','data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADsAAAAkCAMAAAAAe7LPAAAAQlBMVEUAAAD4AAD4sAD4uADooAAIAAD4EAD4qADQAADoAADgoADgAADoqADYAAC4AADAAADgmADomADQmADIkADoCADgCAA9I9QyAAAAR0lEQVRIx+3LORKAIBAEwJFFUVwED/7/VV5gMpFlTecNiHzNTMNRVk6p2CfWpqv7evvCetBCIp3IxnJkC6So++drjtsjx68Bos8PqhDXPpUAAAAASUVORK5CYII='],
           ]
 })
-.config(function($translateProvider) {
+.config(function($translateProvider,
+    $zhTW, $zhCN, $en, $ja, $vi, $de) {
    
-
     // Our translations will go in here
-    $translateProvider.translations('en', {
-      TITLE: 'hacker\'s goban',
-      OPEN_BLANK: 'Click here to open a new tab'
-    })
-    .translations('de', {
-      TITLE: 'Hacker Schachbrett',
-      OPEN_BLANK: 'Klicken Sie hier, um einen neuen Tab zu öffnen',
-      CREATE: 'schaffen'
-    })
-    .translations('ja', {
-      TITLE: 'ハッカーのチェス盤',
-      OPEN_BLANK: '新しいタブを開くには、ここをクリックしてください',
-      CREATE: '作る'
-    })
-    .translations('vi', {
-      TITLE :'hackers bàn cờ',
-      OPEN_BLANK : 'Nhấn vào đây để mở một tab mới',
-      CREATE : 'sáng tạo'
-    })
+    $translateProvider.translations('en', $en)
+    .translations('de', $de)
+    .translations('ja', $ja)
+    .translations('vi', $vi)
 
-    var zhTW = {
-      TITLE: '黑客棋盤',
-      OPEN_BLANK: '按此可開啟新頁籤',
-      CREATE: '創建'
-    };
+    console.log($zhTW);
 
-    var zhCN = {
-      TITLE: '黑客棋盘',
-      OPEN_BLANK: '按此可开启新页签',
-      CREATE: '创建'
-    }
+    var zhTW = $zhTW;
+    var zhCN = $zhCN;
 
     $translateProvider.translations('zh', zhTW)
     .translations('zh-hk', zhTW)

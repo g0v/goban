@@ -56,7 +56,6 @@ angular.module("automap",['goban','ngAnimate','pascalprecht.translate'])
     }
 
     $scope.getFlag = function(l){
-        console.log(l);
       return $scope.langs.filter(function(d){
         return d[0] == l;
       })[0][2]
