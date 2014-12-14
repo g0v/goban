@@ -1,13 +1,17 @@
+*use React
+讓smart reload時，不摧毀DOM
+
+
 *animation
 讓切換時的視覺干擾減小
 
 
-*國際化
-ng-translate
-
-*中文 
-用 endodeURI/decodeURI 讓中文名字的goban也能跑
-
-
 *Multipal goban
  => fix goban-compass z-index 
+
+
+======
+
+*多語文 
+用 endodeURI/decodeURI 讓中文名字的goban也能跑
+
