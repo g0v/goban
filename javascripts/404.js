@@ -10,8 +10,46 @@ if (userPath == '404') {
 console.log(userPath);
 
 
-angular.module("automap",["goban","ngAnimate"])
-  .controller('autoCtrl',  ['$scope','$window', '$goban', autoCtrl])
+angular.module("automap",['goban','pascalprecht.translate'])
+  
+.config(function($translateProvider) {
+    // Our translations will go in here
+    $translateProvider.translations('en', {
+      TITLE: 'hacker\'s goban',
+      OPEN_BLANK: 'Click here to open a new tab'
+    })
+    .translations('de', {
+      TITLE: 'Hacker Schachbrett',
+      OPEN_BLANK: 'Klicken Sie hier, um einen neuen Tab zu öffnen'
+    })
+    .translations('ja', {
+      TITLE: 'ハッカーのチェス盤',
+      OPEN_BLANK: '新しいタブを開くには、ここをクリックしてください'
+    })
+    .translations('zh', {
+      TITLE: '黑客棋盤',
+      OPEN_BLANK: '按此可開啟新頁籤'
+    })
+    .translations('zh-hk', {
+      TITLE: '黑客棋盤',
+      OPEN_BLANK: '按此可開啟新頁籤'
+    })
+    .translations('zh-cn', {
+      TITLE: '黑客棋盘',
+      OPEN_BLANK: '按此可开启新页签'
+    })
+    .translations('zh-sg', {
+      TITLE: '黑客棋盤',
+      OPEN_BLANK: '按此可開啟新頁籤'
+    })
+    .translations('zh-tw', {
+      TITLE: '黑客棋盤',
+      OPEN_BLANK: '按此可開啟新頁籤'
+    });
+    $translateProvider.preferredLanguage('zh-tw');
+})
+
+.controller('autoCtrl',  ['$scope','$window', '$goban', autoCtrl])
   .filter('uriFix', myURI)
   ;
 

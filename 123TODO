@@ -1,20 +1,13 @@
-favico
+*animation
+讓切換時的視覺干擾減小
+
+
+*國際化
+ng-translate
 
 *中文 
-
 用 endodeURI/decodeURI 讓中文名字的goban也能跑
-
-
-
-*SASS
- => transition delay => quite disign
-
 
 
 *Multipal goban
  => fix goban-compass z-index 
-
-
-*goban-ui
-
- => rename goban-keyboradctrl into goban-compass

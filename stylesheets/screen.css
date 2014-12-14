@@ -92,10 +92,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 }
 /* line 31, ../sass/screen.scss */
 #goban-side a img {
-  -moz-transition: all 1s ease-in;
-  -o-transition: all 1s ease-in;
-  -webkit-transition: all 1s ease-in;
-  transition: all 1s ease-in;
+  /*		@include transition(transform 1s ease-in);  */
 }
 /* line 35, ../sass/screen.scss */
 #goban-side a:hover img, #goban-side a:active img, #goban-side a.active img {
