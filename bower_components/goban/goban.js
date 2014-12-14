@@ -340,8 +340,7 @@
             if (!isLoop) {
               goban.dx(-1);
             }
-          }
-          if (goban.myJ >= goban.data.length) {
+          } else if (goban.myJ >= goban.data.length) {
             goban.myJ = 0;
             if (!isLoop) {
               goban.dx(1);
