@@ -33,12 +33,17 @@
       class="goban-nav-icon"></a></li>
 
       <a ng-href="{{goban.path}}{{goban.title}}Config" target="myFrame"><img alt="goban" src="bower_components/goban/Goban_19x19_vide.png" class="goban-logo goban-fixed-right"></a>
+
+      <select id = "lang" ng-model = "myLang" ng-change = "changeLanguage(myLang)" ng-options = "l[0] as l[1] for l in langs"></select>
+      <img ng-src = "{{getFlag(myLang)}}"/>
+
     </ul>
   </nav>
   <div id="goban-side" ng-cloak ng-class="{hidden: hideSideBar}"  ng-style="{height: countHeight() - navHeight + 'px'}"
     style = "display:block;overflow:auto">
 
-  <a ng-href="{{goban.path}}{{goban.title}}{{goban.myI}}" target="myFrame"><span id="goban-sectionTitle">{{goban.sectionTitle || '創建'}}</span></a>
+  <a ng-href="{{goban.path}}{{goban.title}}{{goban.myI}}" target="myFrame"><span id="goban-sectionTitle">{{goban.sectionTitle || (CREATE | translate)}}</span></a>
+
     <ul> 
       <li ng-repeat="j in goban.data | toIndex" ng-click="goban.setJ(j)">
 
@@ -84,6 +89,7 @@
   <!-- JS  -->
   <script src = "javascripts/404.js" type="text/javascript" ></script>
 
+  <script src = "javascripts/translate.js" type="text/javascript" ></script>
 
 </body>
 

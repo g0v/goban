@@ -12,48 +12,8 @@ console.log(userPath);
 
 angular.module("automap",['goban','pascalprecht.translate'])
   
-.config(function($translateProvider) {
-
-    var zhTW = {
-      TITLE: '黑客棋盤',
-      OPEN_BLANK: '按此可開啟新頁籤'
-    };
-
-    var zhCN = {
-      TITLE: '黑客棋盘',
-      OPEN_BLANK: '按此可开启新页签'
-    }
-
-    // Our translations will go in here
-    $translateProvider.translations('en', {
-      TITLE: 'hacker\'s goban',
-      OPEN_BLANK: 'Click here to open a new tab'
-    })
-    .translations('de', {
-      TITLE: 'Hacker Schachbrett',
-      OPEN_BLANK: 'Klicken Sie hier, um einen neuen Tab zu öffnen'
-    })
-    .translations('ja', {
-      TITLE: 'ハッカーのチェス盤',
-      OPEN_BLANK: '新しいタブを開くには、ここをクリックしてください'
-    })
-    .translations('vi', {
-      TITLE :'hackers bàn cờ',
-      OPEN_BLANK : 'Nhấn vào đây để mở một tab mới'
-    })
-    .translations('zh', zhTW)
-    .translations('zh-hk', zhTW)
-    .translations('zh-HK', zhTW)
-    .translations('zh-cn', zhCN)
-    .translations('zh-CN', zhCN)
-    .translations('zh-sg', zhTW)
-    .translations('zh-tw', zhTW)
-    .translations('zh-TW', zhTW);
-    $translateProvider.preferredLanguage('en');
-})
-
 .controller('autoCtrl',  
-    ['$scope','$window', '$goban', '$translate'
+    ['$scope','$window', '$goban', '$translate' ,'$langs'
       , autoCtrl])
   .filter('uriFix', myURI)
   ;
@@ -64,7 +24,7 @@ angular.module("automap",['goban','pascalprecht.translate'])
     }
   }
 
-  function autoCtrl($scope, $window, $goban, $translate){
+  function autoCtrl($scope, $window, $goban, $translate, $langs){
    
     $scope.goban = $goban.$default({
       path : 'https://ethercalc.org/',
@@ -81,13 +41,25 @@ angular.module("automap",['goban','pascalprecht.translate'])
     };
 
 
+    $scope.langs = $langs;
+
     $scope.changeLanguage = function (key) {
       $translate.use(key);
     };
 
     console.log(navigator.language);
-    if (['zh-TW','en','zh-cn'].indexOf(navigator.language) > -1){
-      $scope.changeLanguage(navigator.language);
+    if ($scope.langs.map(function(o){
+      return o[0]
+    }).indexOf(navigator.language) > -1){
+      $scope.myLang = navigator.language
+      $scope.changeLanguage($scope.myLang);
+    }
+
+    $scope.getFlag = function(l){
+        console.log(l);
+      return $scope.langs.filter(function(d){
+        return d[0] == l;
+      })[0][2]
     }
   } 
   
