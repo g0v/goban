@@ -42,7 +42,7 @@
   <div id="goban-side" ng-cloak ng-class="{hidden: hideSideBar}"  ng-style="{height: countHeight() - navHeight + 'px'}"
     style = "display:block;overflow:auto">
 
-  <a ng-href="{{goban.path}}{{goban.title}}{{goban.myI}}" target="myFrame"><span id="goban-sectionTitle">{{goban.sectionTitle || (CREATE | translate)}}</span></a>
+  <a ng-href="{{goban.path}}{{goban.title}}{{goban.myI}}" target="myFrame"><span id="goban-sectionTitle">{{goban.sectionTitle || ('CREATE' | translate)}}</span></a>
 
     <ul> 
       <li ng-repeat="j in goban.data | toIndex" ng-click="goban.setJ(j)">
