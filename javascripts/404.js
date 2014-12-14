@@ -14,7 +14,7 @@ angular.module("automap",['goban','ngAnimate','pascalprecht.translate'])
   
 .controller('autoCtrl',  
     ['$scope','$window', '$goban', '$translate' ,'$langs'
-      , autoCtrl])
+      ,'$tips', autoCtrl])
   .filter('uriFix', myURI)
   ;
 
@@ -24,7 +24,7 @@ angular.module("automap",['goban','ngAnimate','pascalprecht.translate'])
     }
   }
 
-  function autoCtrl($scope, $window, $goban, $translate, $langs){
+  function autoCtrl($scope, $window, $goban, $translate, $langs, $tips){
    
     $scope.goban = $goban.$default({
       path : 'https://ethercalc.org/',
@@ -40,6 +40,11 @@ angular.module("automap",['goban','ngAnimate','pascalprecht.translate'])
       return $window.innerHeight - 40;
     };
 
+    angular.extend($scope,
+    {
+      tips: $tips,
+      t: 0
+    });
 
     $scope.langs = $langs;
 
