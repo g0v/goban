@@ -120,23 +120,22 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 
 /* line 50, ../sass/screen.scss */
 footer {
-  -moz-transition: all 1s ease;
-  -o-transition: all 1s ease;
-  -webkit-transition: all 1s ease;
-  transition: all 1s ease;
+  -moz-transition: all 1s ease-in;
+  -o-transition: all 1s ease-in;
+  -webkit-transition: all 1s ease-in;
+  transition: all 1s ease-in;
   font-size: 18px;
   position: fixed;
   bottom: 0px;
   width: 100%;
+  height: 50px;
   text-align: center;
   padding: 15px;
-  color: #00b2b3;
+  color: #007f80;
   background-color: rgba(239, 233, 252, 0.86);
-  -moz-border-radius: 15px 15px 0px 0px;
-  -webkit-border-radius: 15px;
-  border-radius: 15px 15px 0px 0px;
+  border-top: 5px ridge gray;
 }
-/* line 63, ../sass/screen.scss */
+/* line 65, ../sass/screen.scss */
 footer #last, footer #next {
   color: #999;
   font-size: 18px;
@@ -144,7 +143,7 @@ footer #last, footer #next {
   margin-left: 15px;
   margin-right: 15px;
 }
-/* line 70, ../sass/screen.scss */
-footer.ng-hide {
-  bottom: -100px;
+/* line 72, ../sass/screen.scss */
+footer.sunk {
+  bottom: -70px;
 }

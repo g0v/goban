@@ -71,14 +71,13 @@
     <div id="backup" class="backup"><a ng-click="goban.backupAll()"></a></div>
   </div>
 
-  <footer ng-hide = "hideCtrl">
-    <button id ="last" ng-hide = "t == 0" ng-click ="t = t-1">{{'LAST TIP' | translate}}</button>
+  <footer ng-class = "{sunk : hideCtrl}">
+    <button id ="last" ng-hide = "t == 0" ng-click ="t = t-1" ng-bind = "'LAST TIP' | translate"></button>
     
     <span ng-bind = "t+1+'. '"></span>
     <span ng-bind = "tips[t] | translate"></span>
     
-    <button id ="next" ng-hide = "t == tips.length - 1" ng-click ="t = t+1">
-    {{'NEXT TIP' | translate}}</button>
+    <button id ="next" ng-hide = "t == tips.length - 1" ng-click ="t = t+1" ng-bind = "'NEXT TIP' | translate"></button>
   </footer>
 
 

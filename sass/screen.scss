@@ -48,16 +48,18 @@
 }
 
 footer {
-	@include transition(all 1s ease);
+	$h: 50px;
+	@include transition(all 1s ease-in);
 	font-size: 18px;
 	position:fixed;
 	bottom:0px; 
 	width:100%;
+	height: $h;
 	text-align:center;
 	padding: 15px;
-	color: darken(cyan,15);
+	color: darken(cyan,25);
 	background-color: hsla(260, 75%, 95%, 0.86);
-	@include border-radius(15px 15px 0px 0px);
+	border-top: 5px ridge gray;
 	span {
 	}
 	#last, #next {
@@ -67,7 +69,7 @@ footer {
 		margin-left: 15px;
 		margin-right: 15px;
 	}
-	&.ng-hide {
-		bottom: -100px;
+	&.sunk {
+		bottom: -$h - 20px;
 	}
 }
