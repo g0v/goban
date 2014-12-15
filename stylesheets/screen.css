@@ -179,3 +179,35 @@ footer.full {
 #flag {
   height: 25px;
 }
+
+/* line 103, ../sass/screen.scss */
+.big, .gaint {
+  transform-origin: top left;
+  -webkit-transform-origin: top left;
+  -moz-transform-origin: top left;
+  -ms-transform-origin: top left;
+}
+
+/* line 109, ../sass/screen.scss */
+.big {
+  -moz-transform: scale(1.5);
+  -ms-transform: scale(1.5);
+  -webkit-transform: scale(1.5);
+  transform: scale(1.5);
+  width: 66% !important;
+  height: 66% !important;
+}
+
+/* line 115, ../sass/screen.scss */
+.gaint {
+  -moz-transform: scale(2);
+  -ms-transform: scale(2);
+  -webkit-transform: scale(2);
+  transform: scale(2);
+  -moz-transform-origin: top left 50%;
+  -ms-transform-origin: top left 50%;
+  -webkit-transform-origin: top left 50%;
+  transform-origin: top left 50%;
+  width: 55%;
+  height: 55%;
+}

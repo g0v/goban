@@ -58,7 +58,10 @@
   <div id="goban-main" ng-class="{full: hideSideBar}" ng-style="{height: countHeight() - navHeight + 'px'}">
     <div id="myBlank" ng-cloak class="goban-blank"><a ng-href="{{goban.data[goban.myJ].url}}" target="_blank">{{'OPEN_BLANK' | translate}}</a></div>
     
-    <iframe id="myFrame" name = "myFrame" ng-cloak ng-class="{loading: goban.pageLoading}" ng-src="{{goban.getCurrentURL()}}"
+    <iframe id="myFrame" name = "myFrame"
+    ng-cloak
+    class="big" 
+    ng-class="{loading: goban.pageLoading}" ng-src="{{goban.getCurrentURL()}}"
     ng-click = "hideCtrl = 1"
     ng-mouseover = "hideCtrl = 1"
     ng-mouseout = "goban.load(goban.myI); hideCtrl = 0"></iframe>
