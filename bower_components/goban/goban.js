@@ -130,9 +130,6 @@
             }
             goban.myColumnIndex = res$;
           }
-          if (config.icons && config.icons.length) {
-            goban.icons = config.icons;
-          }
           if (config.related && config.related.length) {
             goban.related = config.related.filter(function(o){
               return o && o.n && o.t;
@@ -160,23 +157,15 @@
         });
       },
       parseConfigFromCSV: function(csv){
-        var ans, allTextLines, xAlts, xIcons, zLines;
+        var ans, allTextLines, xAlts, zLines;
         ans = {
           myName: 'Goban',
           colMax: 3,
-          icons: [],
           related: []
         };
         allTextLines = csv.split(/\r\n|\n/);
         xAlts = (allTextLines[1] || "").split(',').slice(2);
-        xIcons = (allTextLines[2] || "").split(',').slice(2);
         ans.myName = allTextLines[1].split(',')[1];
-        ans.icons = xIcons.map(function(u, index){
-          return {
-            u: u,
-            n: xAlts[index]
-          };
-        });
         zLines = allTextLines.slice(1);
         ans.related = zLines.map(function(l){
           return {
