@@ -13,7 +13,7 @@ console.log(userPath);
 angular.module("automap",['goban','ngAnimate','pascalprecht.translate'])
   
 .controller('autoCtrl',  
-    ['$scope','$window', '$goban', '$translate' ,'$langs'
+    ['$scope','$window', '$timeout', '$goban', '$translate' ,'$langs'
       ,'$tips', autoCtrl])
   .filter('uriFix', myURI)
   ;
@@ -24,7 +24,7 @@ angular.module("automap",['goban','ngAnimate','pascalprecht.translate'])
     }
   }
 
-  function autoCtrl($scope, $window, $goban, $translate, $langs, $tips){
+  function autoCtrl($scope, $window, $timeout, $goban, $translate, $langs, $tips){
    
     $scope.goban = $goban.$default({
       path : 'https://ethercalc.org/',
@@ -32,19 +32,26 @@ angular.module("automap",['goban','ngAnimate','pascalprecht.translate'])
       webConfig: true,
       colMax : 3
     });
+
     $scope.goban.init();
 
 
+    //display
     $scope.navHeight = 50;
     $scope.countHeight = function(){
       return $window.innerHeight - 40;
     };
 
+
+
+    //tips
     angular.extend($scope,
     {
       tips: $tips,
       t: 0
     });
+
+    // langs
 
     $scope.langs = $langs;
 
@@ -60,11 +67,46 @@ angular.module("automap",['goban','ngAnimate','pascalprecht.translate'])
       $scope.changeLanguage($scope.myLang);
     }
 
+    //nation flag
+
     $scope.getFlag = function(l){
       return $scope.langs.filter(function(d){
         return d[0] == l;
       })[0][2]
     }
+
+
+    //events
+
+    angular.extend($scope,{
+      countD: 0,
+      countC: 0,
+    })
+
+
+    $scope.$on('goban.error',function(event,args){
+        if (args.p == 'data' && $scope.countD < 5) {            
+            $timeout($goban.load, 500);
+            $scope.countD++;
+        }
+        else if (args.p == 'config' && $scope.countC < 5) {
+            console.log("try reload config");
+            $timeout($goban.loadConfig, 500);
+            $scope.countC++;
+        }
+    });
+
+    $scope.$on('goban.loaded',function(event,args){
+        if (args.p == 'data') {
+            $scope.countD = 0;
+            console.log("data loaded");
+        }
+        else if (args.p == 'config') {
+          $scope.countC = 0;
+          console.log("config loaded");
+        }
+    })
+
   } 
   
 

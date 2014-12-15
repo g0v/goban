@@ -85,21 +85,16 @@
         }
       },
       load: function(num){
-        var folderName;
         num = num || 0;
         if (this.related && this.related[0]) {
           this.title = this.related[this.myK].t;
         }
-        folderName = this.title + num;
-        if (typeof this.folderNames === 'array') {
-          folderName = this.folderNames[num];
-        }
         if (this.webConfig) {
-          this.loadConfig();
+          this.loadConfig(num);
         }
         $http({
           method: "GET",
-          url: this.path + folderName + '.csv',
+          url: this.path + this.title + num + '.csv',
           dataType: "text"
         }).success(function(data){
           goban.data = goban.parseFromCSV(data);
@@ -118,9 +113,10 @@
       loadConfig: function(){
         var folderName;
         folderName = this.title + 'Config';
+        console.log(goban.path + goban.title + 'Config.csv');
         $http({
           method: "GET",
-          url: this.path + folderName + '.csv',
+          url: goban.path + goban.title + 'Config.csv',
           dataType: "text"
         }).success(function(data){
           var config, res$, i$, to$, ridx$;
