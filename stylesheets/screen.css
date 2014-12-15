@@ -186,9 +186,10 @@ footer.full {
   -webkit-transform-origin: top left;
   -moz-transform-origin: top left;
   -ms-transform-origin: top left;
+  -o-transform-origin: top left;
 }
 
-/* line 109, ../sass/screen.scss */
+/* line 110, ../sass/screen.scss */
 .big {
   -moz-transform: scale(1.5);
   -ms-transform: scale(1.5);
@@ -198,7 +199,7 @@ footer.full {
   height: 66% !important;
 }
 
-/* line 115, ../sass/screen.scss */
+/* line 116, ../sass/screen.scss */
 .gaint {
   -moz-transform: scale(2);
   -ms-transform: scale(2);
