@@ -11,6 +11,12 @@
 [ng\:cloak], [ng-cloak], .ng-cloak {
     display: none !important;
 }
+
+body {
+	background-image: url("../images/tiles.png");
+}
+
+
 #goban-nav {
 	select {
 		min-width: 150px;
@@ -49,19 +55,29 @@
 
 footer {
 	$h: 50px;
-	@include transition(all 1s ease-in);
+	background-image: url("../favicon.png");
+	@include transition(all 1s linear);
 	font-size: 18px;
 	position:fixed;
 	bottom:0px; 
 	width:100%;
 	height: $h;
 	text-align:center;
-	padding: 15px;
+	padding: 10px;
 	color: darken(cyan,25);
 	background-color: hsla(260, 75%, 95%, 0.86);
 	border-top: 5px ridge gray;
-	span {
+	ol {
+		display: inline-block;
+		max-width:600px;
+		list-style: upper-roman inside;
+		text-align:left;
+		li {
+			padding: 5px;
+			background-image: url("../images/tiles.png");
+		}
 	}
+	
 	#last, #next {
 		color: #999;
 		font-size: 18px;
@@ -72,4 +88,11 @@ footer {
 	&.sunk {
 		bottom: -$h - 20px;
 	}
+	&.full {
+		@include transition(all 0.5s linear);
+		height: 50%;
+		overflow:auto;
+	}
 }
+
+

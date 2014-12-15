@@ -2,7 +2,7 @@
 <html ng-app = "automap" ng-controller = "autoCtrl">
 <head>
   <meta charset="UTF-8">
-  <title ng-bind-template = "{{goban.title | uriFix }}@{{'TITLE' | translate}}">hacker's goban</title>
+  <title ng-bind-template = "{{goban.title | uriFix }} - {{'TITLE' | translate}}">hacker's goban</title>
 
   <link rel="shortcut icon" type="image/png" href="/favicon.png" />
   <meta property="og:title" content="黑客棋盤"/>
@@ -71,7 +71,7 @@
     <div id="backup" class="backup"><a ng-click="goban.backupAll()"></a></div>
   </div>
 
-  <footer ng-hide = "hideCtrl">
+  <footer ng-class = "{sunk : hideCtrl}">
     <button id ="last" ng-hide = "t == 0" ng-click ="t = t-1" ng-bind = "'LAST TIP' | translate"></button>
     
     <span ng-bind = "t+1+'. '"></span>

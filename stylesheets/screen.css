@@ -73,28 +73,33 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 }
 
 /* line 15, ../sass/screen.scss */
+body {
+  background-image: url("../images/tiles.png");
+}
+
+/* line 21, ../sass/screen.scss */
 #goban-nav select {
   min-width: 150px;
   padding: 5px;
   font-size: 16px;
 }
 
-/* line 23, ../sass/screen.scss */
+/* line 29, ../sass/screen.scss */
 #goban-side #goban-sectionTitle {
   color: black;
   padding: 2px;
   border-bottom: 2px dotted #aaf;
   border-left: 2px dotted #aaf;
 }
-/* line 29, ../sass/screen.scss */
+/* line 35, ../sass/screen.scss */
 #goban-side a {
   color: #666;
 }
-/* line 31, ../sass/screen.scss */
+/* line 37, ../sass/screen.scss */
 #goban-side a img {
   /*		@include transition(transform 1s ease-in);  */
 }
-/* line 35, ../sass/screen.scss */
+/* line 41, ../sass/screen.scss */
 #goban-side a:hover img, #goban-side a:active img, #goban-side a.active img {
   -moz-transform: scaleX(1.2);
   -ms-transform: scaleX(1.2);
@@ -106,36 +111,49 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   transform-origin: left 50%;
 }
 
-/* line 43, ../sass/screen.scss */
+/* line 49, ../sass/screen.scss */
 #goban-keyBordCtrl {
   -moz-transition: all 1s ease-in;
   -o-transition: all 1s ease-in;
   -webkit-transition: all 1s ease-in;
   transition: all 1s ease-in;
 }
-/* line 45, ../sass/screen.scss */
+/* line 51, ../sass/screen.scss */
 #goban-keyBordCtrl.ng-hide {
   opacity: 0;
 }
 
-/* line 50, ../sass/screen.scss */
+/* line 56, ../sass/screen.scss */
 footer {
-  -moz-transition: all 1s ease-in;
-  -o-transition: all 1s ease-in;
-  -webkit-transition: all 1s ease-in;
-  transition: all 1s ease-in;
+  background-image: url("../favicon.png");
+  -moz-transition: all 1s linear;
+  -o-transition: all 1s linear;
+  -webkit-transition: all 1s linear;
+  transition: all 1s linear;
   font-size: 18px;
   position: fixed;
   bottom: 0px;
   width: 100%;
   height: 50px;
   text-align: center;
-  padding: 15px;
+  padding: 10px;
   color: #007f80;
   background-color: rgba(239, 233, 252, 0.86);
   border-top: 5px ridge gray;
 }
-/* line 65, ../sass/screen.scss */
+/* line 70, ../sass/screen.scss */
+footer ol {
+  display: inline-block;
+  max-width: 600px;
+  list-style: upper-roman inside;
+  text-align: left;
+}
+/* line 75, ../sass/screen.scss */
+footer ol li {
+  padding: 5px;
+  background-image: url("../images/tiles.png");
+}
+/* line 81, ../sass/screen.scss */
 footer #last, footer #next {
   color: #999;
   font-size: 18px;
@@ -143,7 +161,16 @@ footer #last, footer #next {
   margin-left: 15px;
   margin-right: 15px;
 }
-/* line 72, ../sass/screen.scss */
+/* line 88, ../sass/screen.scss */
 footer.sunk {
   bottom: -70px;
+}
+/* line 91, ../sass/screen.scss */
+footer.full {
+  -moz-transition: all 0.5s linear;
+  -o-transition: all 0.5s linear;
+  -webkit-transition: all 0.5s linear;
+  transition: all 0.5s linear;
+  height: 50%;
+  overflow: auto;
 }
