@@ -86,9 +86,6 @@
       },
       load: function(num){
         num = num || 0;
-        if (this.related && this.related[0]) {
-          this.title = this.related[this.myK].t;
-        }
         if (this.webConfig) {
           this.loadConfig(num);
         }
@@ -344,6 +341,9 @@
         var goZ;
         goZ = function(o, n){
           o.myK += n;
+          if (this.related && this.related[0]) {
+            this.title = this.related[this.myK].t;
+          }
           o.load();
         };
         if (this.animate.delay) {
