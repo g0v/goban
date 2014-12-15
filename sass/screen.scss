@@ -89,7 +89,7 @@ footer {
 		bottom: -$h - 20px;
 	}
 	&.full {
-		@include transition(all 0.5s linear);
+		@include transition(all 2s linear);
 		height: 50%;
 		overflow:auto;
 	}

@@ -167,10 +167,10 @@ footer.sunk {
 }
 /* line 91, ../sass/screen.scss */
 footer.full {
-  -moz-transition: all 0.5s linear;
-  -o-transition: all 0.5s linear;
-  -webkit-transition: all 0.5s linear;
-  transition: all 0.5s linear;
+  -moz-transition: all 2s linear;
+  -o-transition: all 2s linear;
+  -webkit-transition: all 2s linear;
+  transition: all 2s linear;
   height: 50%;
   overflow: auto;
 }
