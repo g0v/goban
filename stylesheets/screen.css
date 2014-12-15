@@ -174,3 +174,8 @@ footer.full {
   height: 50%;
   overflow: auto;
 }
+
+/* line 98, ../sass/screen.scss */
+#flag {
+  height: 25px;
+}

@@ -35,7 +35,7 @@
       <a ng-href="{{goban.path}}{{goban.title}}Config" target="myFrame"><img alt="goban" src="bower_components/goban/Goban_19x19_vide.png" class="goban-logo goban-fixed-right"></a>
 
       <select id = "lang" ng-model = "myLang" ng-change = "changeLanguage(myLang)" ng-options = "l[0] as l[1] for l in langs"></select>
-      <img ng-src = "{{getFlag(myLang)}}"/>
+      <img id = "flag" ng-src = "{{getFlag(myLang)}}"/>
 
     </ul>
   </nav>
