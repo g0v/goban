@@ -2,7 +2,7 @@
 <html ng-app = "automap" ng-controller = "autoCtrl">
 <head>
   <meta charset="UTF-8">
-  <title ng-bind-template = "{{goban.title | uriFix }} - {{'TITLE' | translate}}">hacker's goban</title>
+  <title ng-bind-template = "{{goban.sectionTitle | uriFix }} - {{'TITLE' | translate}}">hacker's goban</title>
 
   <link rel="shortcut icon" type="image/png" href="/favicon.png" />
   <meta property="og:title" content="黑客棋盤"/>
@@ -44,11 +44,14 @@
   <div id="goban-side" ng-cloak ng-class="{hidden: hideSideBar}"  ng-style="{height: countHeight() - navHeight + 'px'}"
     style = "display:block;overflow:auto">
 
-  <a ng-href="{{goban.path}}{{goban.title}}{{goban.myI}}" target="myFrame"><span id="goban-sectionTitle">{{goban.sectionTitle || ('CREATE' | translate)}}</span></a>
 
-  
+  <div id = "setting-bar">
+    <a ng-href="{{goban.path}}{{goban.title}}{{goban.myI}}" target="myFrame"><span id="goban-sectionTitle">{{(goban.sectionTitle && 'EDIT') || 'CREATE' | translate}}</span></a>
       <select id = "scale" ng-model = "myScale"
         ng-options = "s[0] as s[1] for s in scales"></select>
+  </div>
+
+
 
     <ul> 
       <li ng-repeat="j in goban.data | toIndex" ng-click="goban.setJ(j)">
@@ -67,6 +70,7 @@
     <iframe id="myFrame" name = "myFrame"
     ng-cloak
     ng-class = "{loading: goban.pageLoading,
+                  tiny : myScale == 'tiny',
                   small : myScale == 'small',
                   big : myScale == 'big',
                   gaint: myScale == 'gaint',

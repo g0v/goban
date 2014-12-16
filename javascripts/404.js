@@ -55,10 +55,10 @@ angular.module("automap",['goban','ngAnimate','pascalprecht.translate'])
 
     $scope.langs = $langs;
     $scope.myScale = 'small';
-    $scope.scales = [['tiny','50%'],
+    $scope.scales = [['tiny','80%'],
                       ['small','100%'],
-                        ['big','150%'],
-                            ['gaint','200%']];
+                        ['big','130%'],
+                            ['gaint','150%']];
 
     $scope.changeLanguage = function (key) {
       $translate.use(key);

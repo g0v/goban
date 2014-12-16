@@ -2,6 +2,7 @@ angular.module("automap")
 .constant("$zhTW", {
   	TITLE: '黑客棋盤',
   	OPEN_BLANK: '按此可開啟新頁籤',
+    EDIT: '編輯',
   	CREATE: '創建',
   	'TO CREATE A GOBAN, JAST VISIT https://goban.tw/YOUR_FOLDER' : '前往"https://goban.tw/您的檔名"，即可創建您的黑客棋盤',
   	'CLICK "CREATE" TO ENTER EDITOR' : '點擊「創建」進入編輯器',
@@ -16,6 +17,7 @@ angular.module("automap")
 .constant("$zhCN", {
       TITLE: '黑客棋盘',
       OPEN_BLANK: '按此可开启新页签',
+      EDIT: '编辑',
       CREATE: '创建',
       WEB_CONFIG: '网上设定'  
     })

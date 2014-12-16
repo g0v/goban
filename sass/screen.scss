@@ -108,19 +108,26 @@ footer {
 		-o-transform-origin:top left;
 }
 .tiny {
-	@include transform(scale(0.66));
-  	width: 150% !important;
-  	height: 150% !important;
+	@include transform(scale(0.80));
+	position: relative;
+  	width: 125% !important;
+  	height: 125% !important;
 }
 .big {
-	@include transform(scale(1.5));
-  	width: 66% !important;
-  	height: 66% !important;
+	@include transform(scale(1.3));
+  	width: 77& !important;
+  	height: 77% !important;
 }
 
 .gaint {
-	@include transform(scale(2));
+	@include transform(scale(1.5));
 	@include transform-origin(top left);
-	width: 55%;
-  	height: 55%;
+	width: 66%;
+  	height: 66%;
+}
+
+#setting-bar {
+	#scale {
+		margin-left: 10px;
+	}
 }
