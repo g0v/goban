@@ -69,6 +69,15 @@
       updateHash: function(){
         $hash.upDateFromArray([this.title, this.myI, this.myJ]);
       },
+      updateIndex: function(){
+        var res$, i$, to$, ridx$;
+        res$ = [];
+        for (i$ = 0, to$ = this.colMax; i$ <= to$; ++i$) {
+          ridx$ = i$;
+          res$.push(ridx$);
+        }
+        this.myColumnIndex = res$;
+      },
       cast: function(eventName, arg){
         var broadcastName;
         broadcastName = 'goban.' + eventName;
@@ -116,16 +125,11 @@
           url: goban.path + goban.title + 'Config.csv',
           dataType: "text"
         }).success(function(data){
-          var config, res$, i$, to$, ridx$;
+          var config;
           config = goban.parseConfigFromCSV(data);
           if (config.colMax) {
             goban.colMax = config.colMax;
-            res$ = [];
-            for (i$ = 0, to$ = goban.colMax; i$ <= to$; ++i$) {
-              ridx$ = i$;
-              res$.push(ridx$);
-            }
-            goban.myColumnIndex = res$;
+            goban.updateIndex();
           }
           if (config.related && config.related.length) {
             goban.related = config.related.filter(function(o){
@@ -296,6 +300,12 @@
           if (goban.myI === -1) {
             goban.myI = goban.colMax;
           }
+          if (goban.myI === goban.colMax) {
+            if (!goban.hasLimit) {
+              goban.colMax++;
+              goban.updateIndex();
+            }
+          }
           if (goban.myI === goban.colMax + 1) {
             goban.myI = 0;
             if (!isLoop) {
@@ -397,15 +407,7 @@
       $default: function(obj){
         angular.extend(this, obj);
         this.title = $hash.asArray()[0] || this.title;
-        angular.extend(this, {
-          myColumnIndex: (function(){
-            var i$, to$, results$ = [];
-            for (i$ = 0, to$ = goban.colMax; i$ <= to$; ++i$) {
-              results$.push(i$);
-            }
-            return results$;
-          }())
-        });
+        goban.updateIndex();
         if (location.hash.split('&')[0].replace('#', '')) {
           goban.title = location.hash.split('&')[0].replace('#', '');
         }

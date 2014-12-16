@@ -181,7 +181,7 @@ footer.full {
 }
 
 /* line 103, ../sass/screen.scss */
-.big, .gaint {
+.tiny, .big, .gaint {
   transform-origin: top left;
   -webkit-transform-origin: top left;
   -moz-transform-origin: top left;
@@ -190,6 +190,16 @@ footer.full {
 }
 
 /* line 110, ../sass/screen.scss */
+.tiny {
+  -moz-transform: scale(0.66);
+  -ms-transform: scale(0.66);
+  -webkit-transform: scale(0.66);
+  transform: scale(0.66);
+  width: 150% !important;
+  height: 150% !important;
+}
+
+/* line 115, ../sass/screen.scss */
 .big {
   -moz-transform: scale(1.5);
   -ms-transform: scale(1.5);
@@ -199,7 +209,7 @@ footer.full {
   height: 66% !important;
 }
 
-/* line 116, ../sass/screen.scss */
+/* line 121, ../sass/screen.scss */
 .gaint {
   -moz-transform: scale(2);
   -ms-transform: scale(2);
