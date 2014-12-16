@@ -112,14 +112,14 @@ body {
 }
 
 /* line 49, ../sass/screen.scss */
-#goban-keyBordCtrl {
+#goban-keyBordCtrl, #lang, #flag {
   -moz-transition: all 1s ease-in;
   -o-transition: all 1s ease-in;
   -webkit-transition: all 1s ease-in;
   transition: all 1s ease-in;
 }
 /* line 51, ../sass/screen.scss */
-#goban-keyBordCtrl.ng-hide {
+#goban-keyBordCtrl.ng-hide, #lang.ng-hide, #flag.ng-hide {
   opacity: 0;
 }
 
