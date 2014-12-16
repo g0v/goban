@@ -115,15 +115,15 @@ footer {
 }
 .big {
 	@include transform(scale(1.3));
-  	width: 77& !important;
+  	width: 77% !important;
   	height: 77% !important;
 }
 
 .gaint {
 	@include transform(scale(1.5));
 	@include transform-origin(top left);
-	width: 66%;
-  	height: 66%;
+	width: 66% !important;
+  	height: 66% !important;
 }
 
 #setting-bar {
