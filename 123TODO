@@ -1,17 +1,19 @@
-
-*可選擇3~5種放大倍率
+*debug webConfig load時與 unlimited goban.colMax的衝突
 
 *box-shadow in 羅盤
 
 
-*tips in multi-langs
+====
 
-======
+
+。。。。不急。。。。
 
 *多語文 
 用 endodeURI/decodeURI 讓中文名字的goban也能跑
 
-。。。。不急。。。。
+
+*tips in multi-langs
+
 
 ~use React
 讓smart reload時，不摧毀DOM
