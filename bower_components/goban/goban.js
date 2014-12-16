@@ -32,7 +32,7 @@
     });
     return GobanAnimate;
   };
-  myGoban = function($rootScope, $http, $sce, $hash, $GobanAnimate, $timeout, $window){
+  myGoban = function($rootScope, $http, $sce, $hash, $GobanAnimate, $timeout){
     var goban;
     goban = new Object;
     angular.extend(goban, {
@@ -368,7 +368,7 @@
       getCurrentURL: function(){
         this.data = this.data || [];
         if (this.data[this.myJ] && this.data[this.myJ].isBlank) {
-          $window.open(this.data[this.myJ].url);
+          window.open(this.data[this.myJ].url);
           this.data[this.myJ].isBlank = false;
           return;
         }
@@ -416,7 +416,7 @@
     });
     return goban;
   };
-  angular.module('goban', []).factory('$hash', myHash).factory('$goban', ['$rootScope', '$http', '$sce', '$hash', '$timeout', '$window', myGoban]).filter('toIndex', toIndex);
+  angular.module('goban', []).factory('$hash', myHash).factory('$goban', ['$rootScope', '$http', '$sce', '$hash', '$timeout', myGoban]).filter('toIndex', toIndex);
   function deepEq$(x, y, type){
     var toString = {}.toString, hasOwnProperty = {}.hasOwnProperty,
         has = function (obj, key) { return hasOwnProperty.call(obj, key); };
