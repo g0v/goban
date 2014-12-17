@@ -10,7 +10,7 @@ if (userPath == '404') {
 console.log(userPath);
 
 
-angular.module("automap",['goban','ngAnimate','pascalprecht.translate'])
+angular.module("automap",['goban','pascalprecht.translate'])
   
 .controller('autoCtrl',  
     ['$scope','$window', '$timeout', '$goban', '$translate' ,'$langs'

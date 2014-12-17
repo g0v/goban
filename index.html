@@ -35,10 +35,10 @@
       <a ng-href="{{goban.path}}{{goban.title}}Config" target="myFrame"><img alt="{{'WEB_CONFIG' | translate}}" title = "{{'WEB_CONFIG'| translate}}" src="/bower_components/goban/Goban_19x19_vide.png" class="goban-logo goban-fixed-right"></a>
 
       <select id = "lang"
-         ng-hide = "hideCtrl"
+         ng-class = "{'hidden': hideCtrl}"
          ng-model = "myLang" ng-change = "changeLanguage(myLang)" ng-options = "l[0] as l[1] for l in langs"></select>
       <img id = "flag"
-           ng-hide = "hideCtrl"
+         ng-class = "{'hidden': hideCtrl}"
             ng-src = "{{getFlag(myLang)}}"/>
 
 
@@ -83,7 +83,7 @@
     ng-mouseover = "hideCtrl = 1"
     ng-mouseout = "goban.load(goban.myI); hideCtrl = 0"></iframe>
   </div>
-  <div id="goban-keyBordCtrl" ng-hide = "hideCtrl">
+  <div id="goban-keyBordCtrl" ng-class = "{'hidden': hideCtrl}">
     <div id="up" ng-class="{available: false}" ng-click="goban.dy(-1)"></div>
     <div id="down" ng-class="{available: false}" ng-click="goban.dy(1)"></div>
     <div id="left" ng-class="{available: ture}" ng-click="goban.dx(-1)"></div>

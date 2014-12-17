@@ -48,7 +48,7 @@ body {
 
 #goban-keyBordCtrl, #lang, #flag {
 	@include transition(all 1s ease-in);
-	&.ng-hide {
+	&.hidden {
 		opacity: 0;
 	}
 }

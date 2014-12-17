@@ -119,7 +119,7 @@ body {
   transition: all 1s ease-in;
 }
 /* line 51, ../sass/screen.scss */
-#goban-keyBordCtrl.ng-hide, #lang.ng-hide, #flag.ng-hide {
+#goban-keyBordCtrl.hidden, #lang.hidden, #flag.hidden {
   opacity: 0;
 }
 
