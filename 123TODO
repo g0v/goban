@@ -1,3 +1,21 @@
+responsive
+
+
+*ng-touch
+*viewport
+*ui 
+
+====
+
+!goban.tw/static/BLAH
+
+!goban.tw/goban_hub0	<----- COLLECT ALL GOBANS
+!goban.tw/goban_hub1   	<----- COLLECT ALL RELAITONS
+
+^_____AUTO POST_____^
+
+===
+
 *debug webConfig load時與 unlimited goban.colMax的衝突
 
 *box-shadow in 羅盤
