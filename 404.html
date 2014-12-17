@@ -50,7 +50,7 @@
 
 
   <div id = "setting-bar">
-    <a ng-href="{{goban.path}}{{goban.title}}{{goban.myI}}" target="myFrame"><span id="goban-sectionTitle">{{(goban.sectionTitle && 'EDIT') || 'CREATE' | translate}}</span></a>
+    <a ng-href="{{goban.path}}{{goban.title}}{{goban.myI}}" target="myFrame"><span id="goban-sectionTitle">{{(goban.sectionTitle && 'EDIT') || 'CREATE' | translate}}{{goban.sectionTitle || ''}}</span></a>
       <select id = "scale" ng-model = "myScale"
         ng-options = "s[0] as s[1] for s in scales"></select>
   </div>
