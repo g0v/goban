@@ -1,6 +1,6 @@
 angular.module("automap")
 .constant("$zhTW", {
-  	TITLE: '黑板',
+  	TITLE: '零時黑板',
     LONG_TITLE: '黑客棋盤',
   	OPEN_BLANK: '按此可開啟新頁籤',
     EDIT: '編輯',
@@ -16,7 +16,7 @@ angular.module("automap")
     WEB_CONFIG: '網上設定'	
     })
 .constant("$zhCN", {
-      TITLE : '黑板',
+      TITLE : '零時黑板',
       LONG_TITLE: '黑客棋盘',
       OPEN_BLANK: '按此可开启新页签',
       EDIT: '编辑',

@@ -1,6 +1,6 @@
 angular.module("automap")
 .constant("$en", {
-      TITLE: 'blackboard',
+      TITLE: 'g0v blackboard',
       LONG_TITLE: 'hacker\'s goban',
       OPEN_BLANK: 'Click here to open a new tab',
       EDIT: 'edit',
