@@ -26,7 +26,7 @@ body {
 	ul {
 		li {
 			a {
-				@include border-radius(0% 50% 50% 0%);
+				@include border-radius(5px 50% 50% 5px);
 			}
 		}
 	}
