@@ -27,6 +27,7 @@ body {
 		li {
 			a {
 				@include border-radius(5px 50% 50% 5px);
+				@include transform(skewX(15deg));
 			}
 		}
 	}
