@@ -23,6 +23,13 @@ body {
 		padding: 5px;
 		font-size: 16px;
 	}
+	ul {
+		li {
+			a {
+				@include border-radius(0% 50% 50% 0%);
+			}
+		}
+	}
 }
 
 #goban-side {
