@@ -1,31 +1,21 @@
 
-*debug folder-items show/hide
-
-
 ====
-responsive
+responsive: *ng-touch, *viewport, *ui 
 
-
-
-*ng-touch
-*viewport
-*ui 
-
-====
-
-!goban.tw/static/BLAH
-
-!goban.tw/goban_hub0	<----- COLLECT ALL GOBANS
-!goban.tw/goban_hub1   	<----- COLLECT ALL RELAITONS
-
-^_____AUTO POST_____^
+===
+*box-shadow in 羅盤
 
 ===
 
 *debug webConfig load時與 unlimited goban.colMax的衝突
 
-*box-shadow in 羅盤
+===
 
+!goban.tw/static/BLAH
+!goban.tw/goban_hub0	<----- COLLECT ALL GOBANS
+!goban.tw/goban_hub1   	<----- COLLECT ALL RELAITONS
+
+^_____AUTO POST_____^
 
 ====
 
@@ -34,12 +24,9 @@ responsive
 
 *多語文 
 用 endodeURI/decodeURI 讓中文名字的goban也能跑
+  -> Ethercalc
 
-
+~~~~
 *tips in multi-langs
-
-
-~use React
-讓smart reload時，不摧毀DOM
 
 

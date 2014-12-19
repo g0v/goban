@@ -51,6 +51,23 @@ angular.module("automap",['goban','pascalprecht.translate'])
       t: 0
     });
 
+    //methods
+    angular.extend($scope,
+    {
+      getURL: function(){
+        if ($scope.editBack) {
+          return $goban.trust($scope.editBack);
+        }
+        return $goban.getCurrentURL();
+      },
+
+      sleep: function(){
+        $scope.editBack = '';
+        console.log($scope.editBack);
+      }
+    });
+
+
     // langs
 
     $scope.langs = $langs;
@@ -102,6 +119,7 @@ angular.module("automap",['goban','pascalprecht.translate'])
     });
 
     $scope.$on('goban.loaded',function(event,args){
+        
         if (args.p == 'data') {
             $scope.countD = 0;
             console.log("data loaded");

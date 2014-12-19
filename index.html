@@ -27,12 +27,16 @@
   <nav id="goban-nav" ng-cloak ng-style="{height: navHeight + 'px'}">
     <ul><a id="goban-toggleSidebar" ng-click="hideSideBar = !hideSideBar"><span class="bar1"></span><span class="bar2"></span><span class="bar3"></span></a><span ng-cloak>
         <select ng-model="goban.title" ng-options="o.t as o.n for o in goban.related" ng-change="goban.load()"></select><span class="number">{{goban.myI}}</span><sub>-{{goban.myJ}}</sub></span>
-      <li ng-repeat="i in goban.myColumnIndex"><a ng-class="{active: goban.myI == i}" ng-click="goban.setI(i)"><img ng-show = "goban.icons[i]" ng-src="{{goban.icons[i].u}}" 
+      <li ng-repeat="i in goban.myColumnIndex">
+
+        <a ng-class="{active: goban.myI == i}" ng-click="goban.setI(i);sleep()"><img ng-show = "goban.icons[i]" ng-src="{{goban.icons[i].u}}" 
       alt="{{goban.icons[i].n}}"
       title="{{goban.icons[i].n}}"
       class="goban-nav-icon"></a></li>
 
-      <a ng-href="{{goban.path}}{{goban.title}}Config" target="myFrame"><img alt="{{'WEB_CONFIG' | translate}}" title = "{{'WEB_CONFIG'| translate}}" src="/bower_components/goban/Goban_19x19_vide.png" class="goban-logo goban-fixed-right"></a>
+      <a ng-click = "editBack = goban.path + goban.title + 'Config'">
+
+<!--      <a ng-href="{{goban.path}}{{goban.title}}Config" target="myFrame"> --><img alt="{{'WEB_CONFIG' | translate}}" title = "{{'WEB_CONFIG'| translate}}" src="/bower_components/goban/Goban_19x19_vide.png" class="goban-logo goban-fixed-right"></a>
 
       <select id = "lang"
          ng-class = "{'hidden': hideCtrl}"
@@ -50,7 +54,8 @@
 
 
   <div id = "setting-bar">
-    <a ng-href="{{goban.path}}{{goban.title}}{{goban.myI}}" target="myFrame"><span id="goban-sectionTitle">{{(goban.sectionTitle && 'EDIT') || 'CREATE' | translate}}{{goban.sectionTitle || ''}}</span></a>
+    <a ng-click = "editBack = goban.path + goban.title + goban.myI">
+ <!--   <a ng-href="{{goban.path}}{{goban.title}}{{goban.myI}}" target="myFrame"> --><span id="goban-sectionTitle">{{(goban.sectionTitle && 'EDIT') || 'CREATE' | translate}}{{goban.sectionTitle || ''}}</span></a>
       <select id = "scale" ng-model = "myScale"
         ng-options = "s[0] as s[1] for s in scales"></select>
   </div>
@@ -60,12 +65,15 @@
     <ul> 
       <li ng-repeat="j in goban.data | toIndex" ng-click="goban.setJ(j)">
 
-      <a ng-if="goban.data[j].isFolder" ng-click="$parent.goban.data[j].isClosed = !goban.data[j].isClosed;" ng-class="{active: goban.myJ == j, folder: goban.data[j].isFolder}">
+      <a ng-if="goban.data[j].isFolder"
+        ng-click="$parent.goban.data[j].isClosed = !goban.data[j].isClosed; sleep();"
+        ng-class="{active: goban.myJ == j, folder: goban.data[j].isFolder}">
 
         <img ng-show="goban.data[j].isClosed" src="images/isClosed.png" class="folder"><img ng-show="!goban.data[j].isClosed" src="images/isOpen.png" class="folder">{{goban.data[j].name || j}}<b ng-class="{right: goban.data[j].isClosed, down: !goban.data[j].isClosed}" class="arrowHead"></b></a>
 
       <a ng-if="!goban.data[j].isFolder" ng-show=" goban.data[j].pIndex == 'self' || !goban.data[goban.data[j].pIndex].isClosed" ng-class="{active: goban.myJ == j}" class="elem" 
-      ng-click = "$parent.goban.myJ = j"><img ng-src="http://www.google.com/s2/favicons?domain={{goban.data[j].url}}">{{goban.data[j].name || j}}</a></li>
+      ng-click = "$parent.goban.myJ = j; sleep();">
+      <img ng-src="http://www.google.com/s2/favicons?domain={{goban.data[j].url}}">{{goban.data[j].name || j}}</a></li>
     </ul>
   </div>
   <div id="goban-main" ng-class="{full: hideSideBar}" ng-style="{height: countHeight() - navHeight + 'px'}">
@@ -78,7 +86,7 @@
                   small : myScale == 'small',
                   big : myScale == 'big',
                   gaint: myScale == 'gaint',
-                }" ng-src="{{goban.getCurrentURL()}}"
+                }" ng-src="{{getURL()}}"
     ng-click = "hideCtrl = 1"
     ng-mouseover = "hideCtrl = 1"
     ng-mouseout = "goban.load(goban.myI); hideCtrl = 0"></iframe>
