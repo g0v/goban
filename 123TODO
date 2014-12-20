@@ -1,3 +1,8 @@
+===
+
+use local Storage => 棋子/錨點 => list of stars => 當內容太多時找到定位
+	=> Form: 1-1 Foo, 3-5 Bar, x-y Baz
+
 
 ====
 responsive: *ng-touch, *viewport, *ui 
