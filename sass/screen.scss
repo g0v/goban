@@ -127,6 +127,10 @@ footer {
   	height: 77% !important;
 }
 
+.gray {
+	color: gray;
+}
+
 .gaint {
 	@include transform(scale(1.5));
 	@include transform-origin(top left);

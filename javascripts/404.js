@@ -10,11 +10,11 @@ if (userPath == '404') {
 console.log(userPath);
 
 
-angular.module("automap",['goban','pascalprecht.translate'])
+angular.module("automap",['goban','pascalprecht.translate','ngStorage'])
   
 .controller('autoCtrl',  
     ['$scope','$window', '$timeout', '$goban', '$translate' ,'$langs'
-      ,'$tips', autoCtrl])
+      ,'$tips','$localStorage', autoCtrl])
   .filter('uriFix', myURI)
   ;
 
@@ -24,8 +24,16 @@ angular.module("automap",['goban','pascalprecht.translate'])
     }
   }
 
-  function autoCtrl($scope, $window, $timeout, $goban, $translate, $langs, $tips){
+  function autoCtrl($scope, $window, $timeout, $goban, $translate, $langs, $tips, $localStorage){
    
+    $scope.storage = $localStorage.$default({
+      myAnchors: [['goban_intro','0','0','如何使用']]
+    });
+
+    $scope.myAnchors = $scope.storage.myAnchors;
+    $scope.myAnchors = [['goban_intro','0','0','如何使用']];
+
+
     $scope.goban = $goban.$default({
       path : 'https://ethercalc.org/',
       title : userPath || defaultPath,

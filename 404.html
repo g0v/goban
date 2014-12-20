@@ -75,6 +75,19 @@
       ng-click = "$parent.goban.myJ = j; sleep();">
       <img ng-src="http://www.google.com/s2/favicons?domain={{goban.data[j].url}}">{{goban.data[j].name || j}}</a></li>
     </ul>
+
+    <hr/>
+
+
+    <ul ng-if = 'false' ng-cloak> 我的珍藏
+      <li ng-repeat = "a in myAnchors">
+        <a ng-click = "goban.title = a[0]; goban.myI = a[1]; goban.myJ = a[2]; goban.load(a[1])">
+          {{a[1]}}-{{a[2]}}:{{a[3]}}
+           <br/>
+          <i class = "gray">@{{a[0]}}</i>
+        </a>
+      </li>
+    </ul>
   </div>
   <div id="goban-main" ng-class="{full: hideSideBar}" ng-style="{height: countHeight() - navHeight + 'px'}">
     <div id="myBlank" ng-cloak class="goban-blank"><a ng-href="{{goban.data[goban.myJ].url}}" target="_blank">{{'OPEN_BLANK' | translate}}</a></div>
@@ -118,6 +131,9 @@
   <script src="/bower_components/angular-translate/angular-translate.min.js" type="text/javascript"></script> 
 
   <script src="/bower_components/angular-animate/angular-animate.min.js" type="text/javascript"></script>
+
+
+  <script src="/javascripts/lib/ngStorage.js" type="text/javascript"></script>
 
 <!--  
   

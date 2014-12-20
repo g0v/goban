@@ -221,6 +221,11 @@ footer.full {
 }
 
 /* line 130, ../sass/screen.scss */
+.gray {
+  color: gray;
+}
+
+/* line 134, ../sass/screen.scss */
 .gaint {
   -moz-transform: scale(1.5);
   -ms-transform: scale(1.5);
@@ -234,7 +239,7 @@ footer.full {
   height: 66% !important;
 }
 
-/* line 138, ../sass/screen.scss */
+/* line 142, ../sass/screen.scss */
 #setting-bar #scale {
   margin-left: 10px;
 }
