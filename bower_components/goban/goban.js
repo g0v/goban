@@ -122,11 +122,11 @@
         console.log(goban.path + goban.title + 'Config.csv');
         $http({
           method: "GET",
-          url: goban.path + goban.title + 'Config.csv',
+          url: goban.path + goban.title + 'Config.csv.json',
           dataType: "text"
         }).success(function(data){
           var config;
-          config = goban.parseConfigFromCSV(data);
+          config = goban.parseConfigFromJSON(data);
           if (config.colMax) {
             goban.colMax = config.colMax;
             goban.updateIndex();
@@ -156,6 +156,25 @@
           });
           console.log('error:connot load webConfig');
         });
+      },
+      parseConfigFromJSON: function(data){
+        var ans;
+        ans = {
+          myName: 'Goban',
+          colMax: (data[1] || (data[1] = [])) || 3,
+          related: []
+        };
+        ans.related = data.slice(1).filter(function(l){
+          return l[0];
+        }).map(function(l){
+          return {
+            t: l[0],
+            n: l[1] || l[0]
+          };
+        });
+
+        console.log(ans);
+        return ans;
       },
       parseConfigFromCSV: function(csv){
         var ans, allTextLines, xAlts, zLines;

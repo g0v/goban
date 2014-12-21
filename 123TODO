@@ -12,7 +12,7 @@ responsive: *ng-touch, *viewport, *ui
 
 ===
 
-*debug webConfig load時與 unlimited goban.colMax的衝突
+*debug 動態增加 goban.colMax與load config的衝突
 
 ===
 
