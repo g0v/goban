@@ -1,6 +1,8 @@
+*pre-binding view
+
 ===
 
-use local Storage => 棋子/錨點 => list of stars => 當內容太多時找到定位
+*use local Storage => 棋子/錨點 => list of stars => 當內容太多時找到定位
 	=> Form: haskell 1-1 Foo, goban_intro 3-5 Bar, bt_frontend x-y Baz
 
 
@@ -16,16 +18,15 @@ responsive: *ng-touch, *viewport, *ui
 
 ===
 
+。。。。不急。。。。
+
 !goban.tw/static/BLAH
 !goban.tw/goban_hub0	<----- COLLECT ALL GOBANS
 !goban.tw/goban_hub1   	<----- COLLECT ALL RELAITONS
 
 ^_____AUTO POST_____^
 
-====
 
-
-。。。。不急。。。。
 
 *多語文 
 用 endodeURI/decodeURI 讓中文名字的goban也能跑
