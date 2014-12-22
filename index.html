@@ -32,7 +32,8 @@
         <select ng-model="goban.title" ng-options="o.t as o.n for o in goban.related" ng-change="goban.load()"></select><span class="number">{{goban.myI}}</span><sub>-{{goban.myJ}}</sub></span>
       <li ng-repeat="i in goban.myColumnIndex">
 
-        <a ng-class="{active: goban.myI == i}" ng-click="goban.setI(i);sleep()"><img ng-show = "goban.icons[i]" ng-src="{{goban.icons[i].u}}" 
+        <a ng-class="{active: goban.myI >= i,
+                      dark: goban.myI > i}" ng-click="goban.setI(i);sleep()"><img ng-show = "goban.icons[i]" ng-src="{{goban.icons[i].u}}" 
       alt="{{goban.icons[i].n}}"
       title="{{goban.icons[i].n}}"
       class="goban-nav-icon"></a></li>
