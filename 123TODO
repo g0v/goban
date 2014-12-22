@@ -18,21 +18,22 @@ responsive: *ng-touch, *viewport, *ui
 
 ===
 
-。。。。不急。。。。
+goban.tw/static/BLAH
 
-!goban.tw/static/BLAH
-!goban.tw/goban_hub0	<----- COLLECT ALL GOBANS
-!goban.tw/goban_hub1   	<----- COLLECT ALL RELAITONS
+===
+goban.tw/goban_hub0	<----- COLLECT ALL GOBANS
+goban.tw/goban_hub1   	<----- COLLECT ALL RELAITONS_____AUTO POST_____^
 
-^_____AUTO POST_____^
+===
+
+goto a random goban
+
+==
 
 
+~~~~~~~Ethercalc 介面~~~~
 
-*多語文 
-用 endodeURI/decodeURI 讓中文名字的goban也能跑
-  -> Ethercalc
+用 endodeURI/decodeURI 讓「goban.tw/中文名字」也能跑  
 
-~~~~
-*tips in multi-langs
 
 
