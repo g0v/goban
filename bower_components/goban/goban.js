@@ -161,7 +161,7 @@
         var ans;
         ans = {
           myName: 'Goban',
-          colMax: (data[1] || (data[1] = [])) || 3,
+          colMax: data[0][1] || 3,
           related: []
         };
         ans.related = data.slice(1).filter(function(l){
@@ -172,8 +172,6 @@
             n: l[1] || l[0]
           };
         });
-
-        console.log(ans);
         return ans;
       },
       parseConfigFromCSV: function(csv){
