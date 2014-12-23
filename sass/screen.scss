@@ -53,13 +53,18 @@ body {
 	}
 	a {
 		color: #666;
-		img {
-	/*		@include transition(transform 1s ease-in);  */
-		}
-		&:hover,&:active,&.active {
-			img {
-				@include transform(scaleX(1.2));
-				@include transform-origin(left);
+		&.active {
+			&::after {
+				position:relative;
+				top:-3px;
+				left:12px;
+				display:inline-block;
+				content:"";
+				width: 6px;
+				height: 6px;
+				border-top:2px solid cyan;
+				border-left:2px solid cyan;
+				@include transform(rotate(-45deg));
 			}
 		}
 	}
