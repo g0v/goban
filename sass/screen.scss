@@ -32,6 +32,19 @@ body {
 				&:hover,&:active,&.active{
 					background-color: #999;
 				}
+				&.active {
+					&::after {
+						position:absolute;
+						top:8px;
+						left:7px;
+						display:inline-block;
+						content:"";
+						width: 0px;
+						height: 0px;
+						border:2px solid cyan;
+						@include border-radius(50%);
+					}
+				}
 				&.dark {
 					border: 3px solid gray;
 					@include transform(scaleX(1.2));
