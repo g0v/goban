@@ -1,10 +1,10 @@
-*pre-binding view
+*優化pre-binding view用ng-cloak等
 
 ===
 
-*use local Storage => 棋子/錨點 => list of stars => 當內容太多時找到定位
-	=> Form: haskell 1-1 Foo, goban_intro 3-5 Bar, bt_frontend x-y Baz
-
+*用local Storage
+	=> 棋子/錨點
+	=> list of stars
 
 ====
 responsive: *ng-touch, *viewport, *ui 

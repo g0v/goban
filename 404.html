@@ -94,7 +94,7 @@
     </ul>
   </div>
   <div id="goban-main" ng-class="{full: hideSideBar}" ng-style="{height: countHeight() - navHeight + 'px'}">
-    <div id="myBlank" ng-cloak class="goban-blank"><a ng-href="{{goban.data[goban.myJ].url}}" target="_blank">{{'OPEN_BLANK' | translate}}</a></div>
+    <div id="myBlank" ng-cloak class="goban-blank"><a ng-href="{{getURL()}}" target="_blank">{{'OPEN_BLANK' | translate}}</a></div>
     
     <iframe id="myFrame" name = "myFrame"
     ng-cloak
