@@ -93,8 +93,8 @@ angular.module("automap",['goban','pascalprecht.translate','ngStorage'])
 
       isOutdatedAnchor: function(obj) {
         return ($localStorage.myAnchors.filter(function(o){
-          return o.x == obj.x && o.y == obj.y
-                    && o.t == obj.t && o.n != obj.n;
+          return (o.x == obj.x) && (o.y == obj.y)
+                    && (o.t == obj.t) && (o.n != obj.n);
         })[0]) ? true : false;
       },
 
@@ -103,7 +103,7 @@ angular.module("automap",['goban','pascalprecht.translate','ngStorage'])
           $localStorage.myAnchors = $localStorage.myAnchors
             .map(function(o){
               return (o.x == obj.x && o.y == obj.y
-                    && o.t == obj.t && o.name != obj.name) ? obj : o;
+                    && o.t == obj.t && o.n != obj.n) ? obj : o;
             })
         } else if ($scope.isInAnchor(obj)) {
           $localStorage.myAnchors = $localStorage.myAnchors
