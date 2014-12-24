@@ -3,6 +3,8 @@ angular.module("automap")
   	TITLE: '零時黑板',
     LONG_TITLE: '黑客棋盤',
   	OPEN_BLANK: '按此可開啟新頁籤',
+    MY_STAR: '我的珍藏',
+    GATHER: '採集',
     EDIT: '編輯',
   	CREATE: '創建',
   	'TO CREATE A GOBAN, JAST VISIT https://goban.tw/YOUR_FOLDER' : '前往"https://goban.tw/您的檔名"，即可創建您的黑客棋盤',

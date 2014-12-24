@@ -27,12 +27,10 @@ angular.module("automap",['goban','pascalprecht.translate','ngStorage'])
   function autoCtrl($scope, $window, $timeout, $goban, $translate, $langs, $tips, $localStorage){
    
     $scope.storage = $localStorage.$default({
-      myAnchors: [['goban_intro','0','0','如何使用']]
+      myAnchors: []
     });
 
     $scope.myAnchors = $scope.storage.myAnchors;
-    $scope.myAnchors = [['goban_intro','0','0','如何使用']];
-
 
     $scope.goban = $goban.$default({
       path : 'https://ethercalc.org/',
@@ -72,7 +70,53 @@ angular.module("automap",['goban','pascalprecht.translate','ngStorage'])
       sleep: function(){
         $scope.editBack = '';
         console.log($scope.editBack);
+      },
+
+      myKeydown: function(e) {
+        $goban.keyDown(e);
+        console.log(e.which);
+        if (e.which == 90) {
+          $scope.testing = !$scope.testing;
+        }
+      },
+
+      objNow: function(){
+        return {t: $goban.title,
+                x: $goban.myI,
+                y: $goban.myJ,
+                n: ($goban.data[$goban.myJ] || {}).name}
+      },
+
+      isInAnchor: function(obj) {
+        return ($scope.myAnchors.filter(function(o){
+          return angular.equals(o, obj);
+        })[0]) ? true : false;
+      },
+
+      toggleAnchor: function(obj){
+        if ($scope.isInAnchor(obj)) {
+          $scope.myAnchors = $scope.myAnchors
+            .filter(function(o){
+              return !angular.equals(o, obj)
+            })
+        } else {
+          $scope.myAnchors.push(obj);
+        }
+      },
+
+      resetAnchors: function(){
+          if ($scope.myAnchors[0]) {
+            $scope.myZan = angular.copy($scope.myAnchors);
+            $scope.myAnchors = [];
+          } else {
+            $scope.myAnchors = $scope.myZan;
+          }
+      },
+
+      showStar: function(obj){
+        return $scope.isInAnchor(obj) ? 'images/star.png' : 'images/star_white.png';
       }
+
     });
 
 
