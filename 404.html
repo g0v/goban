@@ -26,7 +26,7 @@
   
 </head>
 
-<body ng-keydown="goban.keyDown($event)" ng-style="{height: countHeight() + 'px'}">
+<body ng-keydown="myKeydown($event)" ng-style="{height: countHeight() + 'px'}">
   <nav id="goban-nav" ng-cloak ng-style="{height: navHeight + 'px'}">
     <ul><a id="goban-toggleSidebar" ng-click="hideSideBar = !hideSideBar"><span class="bar1"></span><span class="bar2"></span><span class="bar3"></span></a><span ng-cloak>
         <select ng-model="goban.title" ng-options="o.t as o.n for o in goban.related" ng-change="goban.load()"></select><span class="number">{{goban.myI}}</span><sub>-{{goban.myJ}}</sub></span>
@@ -38,9 +38,6 @@
       title="{{goban.icons[i].n}}"
       class="goban-nav-icon"></a></li>
 
-      <a ng-click = "editBack = goban.path + goban.title + 'Config'">
-
-<!--      <a ng-href="{{goban.path}}{{goban.title}}Config" target="myFrame"> --><img alt="{{'WEB_CONFIG' | translate}}" title = "{{'WEB_CONFIG'| translate}}" src="/bower_components/goban/Goban_19x19_vide.png" class="goban-logo goban-fixed-right"></a>
 
       <select id = "lang"
          ng-class = "{'hidden': hideCtrl}"
@@ -50,6 +47,8 @@
             ng-src = "{{getFlag(myLang)}}"/>
 
 
+      <a ng-click = "editBack = goban.path + goban.title + 'Config'">
+          <img alt="{{'WEB_CONFIG' | translate}}" title = "{{'WEB_CONFIG'| translate}}" src="/bower_components/goban/Goban_19x19_vide.png" class="goban-logo goban-fixed-right"></a>
 
     </ul>
   </nav>
@@ -83,12 +82,24 @@
     <hr/>
 
 
-    <ul ng-if = 'false' ng-cloak> 我的珍藏
-      <li ng-repeat = "a in myAnchors">
-        <a ng-click = "goban.title = a[0]; goban.myI = a[1]; goban.myJ = a[2]; goban.load(a[1])">
-          {{a[1]}}-{{a[2]}}:{{a[3]}}
+    <ul ng-cloak>
+      <i class = "gray">
+        {{'MY_STAR' | translate }}
+      </i>
+      <a ng-click ="toggleAnchor(objNow())">
+        <img id = "flag" ng-src = "{{showStar(objNow())}}" alt ="{{'GATHER' | translate}}"
+        title="{{'GATHER' | translate}}" />
+      </a>
+      <a ng-click ="resetAnchors()">
+        <img id = "flag" src = "images/mySelf.png"/>
+      </a>
+
+      <li ng-repeat = "a in $s.myAnchors">
+        <a ng-click = "goban.title = a.t; goban.myI = a.x; goban.myJ = a.y; goban.load(a[x])">
+          
+          {{a.x}}-{{a.y}}:{{a.n}}
            <br/>
-          <i class = "gray">@{{a[0]}}</i>
+          <i class = "gray">@{{a.t}}</i>
         </a>
       </li>
     </ul>
@@ -116,7 +127,7 @@
     <div id="backup" class="backup"><a ng-click="goban.backupAll()"></a></div>
   </div>
 
-  <footer ng-class = "{sunk : hideCtrl, full : fullTips}"
+  <footer ng-cloak ng-hide = "1" ng-class = "{sunk : hideCtrl, full : fullTips}"
     ng-mouseover = "fullTips = 1"
     ng-mouseout = "fullTips = 0">  
     
@@ -137,7 +148,7 @@
   <script src="/bower_components/angular-animate/angular-animate.min.js" type="text/javascript"></script>
 
 
-  <script src="/javascripts/lib/ngStorage.js" type="text/javascript"></script>
+  <script src="/bower_components/ngstorage/ngStorage.min.js" type="text/javascript"></script>
 
 <!--  
   
