@@ -94,7 +94,7 @@
         <img id = "flag" src = "images/mySelf.png"/>
       </a>
 
-      <li ng-repeat = "a in myAnchors">
+      <li ng-repeat = "a in $s.myAnchors">
         <a ng-click = "goban.title = a.t; goban.myI = a.x; goban.myJ = a.y; goban.load(a[x])">
           
           {{a.x}}-{{a.y}}:{{a.n}}
@@ -127,7 +127,7 @@
     <div id="backup" class="backup"><a ng-click="goban.backupAll()"></a></div>
   </div>
 
-  <footer ng-class = "{sunk : hideCtrl, full : fullTips}"
+  <footer ng-cloak ng-hide = "1" ng-class = "{sunk : hideCtrl, full : fullTips}"
     ng-mouseover = "fullTips = 1"
     ng-mouseout = "fullTips = 0">  
     
@@ -148,7 +148,7 @@
   <script src="/bower_components/angular-animate/angular-animate.min.js" type="text/javascript"></script>
 
 
-  <script src="/javascripts/lib/ngStorage.js" type="text/javascript"></script>
+  <script src="/bower_components/ngstorage/ngStorage.min.js" type="text/javascript"></script>
 
 <!--  
   

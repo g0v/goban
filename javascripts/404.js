@@ -26,11 +26,9 @@ angular.module("automap",['goban','pascalprecht.translate','ngStorage'])
 
   function autoCtrl($scope, $window, $timeout, $goban, $translate, $langs, $tips, $localStorage){
    
-    $scope.storage = $localStorage.$default({
+    $scope.$s = $localStorage.$default({
       myAnchors: []
     });
-
-    $scope.myAnchors = $scope.storage.myAnchors;
 
     $scope.goban = $goban.$default({
       path : 'https://ethercalc.org/',
@@ -88,28 +86,43 @@ angular.module("automap",['goban','pascalprecht.translate','ngStorage'])
       },
 
       isInAnchor: function(obj) {
-        return ($scope.myAnchors.filter(function(o){
+        return ($localStorage.myAnchors.filter(function(o){
           return angular.equals(o, obj);
         })[0]) ? true : false;
       },
 
+      isOutdatedAnchor: function(obj) {
+        return ($localStorage.myAnchors.filter(function(o){
+          return o.x == obj.x && o.y == obj.y
+                    && o.t == obj.t && o.n != obj.n;
+        })[0]) ? true : false;
+      },
+
       toggleAnchor: function(obj){
-        if ($scope.isInAnchor(obj)) {
-          $scope.myAnchors = $scope.myAnchors
+        if ($scope.isOutdatedAnchor(obj)) {
+          $localStorage.myAnchors = $localStorage.myAnchors
+            .map(function(o){
+              return (o.x == obj.x && o.y == obj.y
+                    && o.t == obj.t && o.name != obj.name) ? obj : o;
+            })
+        } else if ($scope.isInAnchor(obj)) {
+          $localStorage.myAnchors = $localStorage.myAnchors
             .filter(function(o){
               return !angular.equals(o, obj)
             })
         } else {
-          $scope.myAnchors.push(obj);
+          $localStorage.myAnchors.push(obj);
         }
       },
 
       resetAnchors: function(){
-          if ($scope.myAnchors[0]) {
-            $scope.myZan = angular.copy($scope.myAnchors);
-            $scope.myAnchors = [];
+          if ($localStorage.myAnchors[0]) {
+            $scope.myZan = angular.copy($localStorage.myAnchors);
+            $localStorage.myAnchors = $localStorage.myAnchors.filter(function(o){
+              return false;
+            })
           } else {
-            $scope.myAnchors = $scope.myZan;
+            $localStorage.myAnchors = $scope.myZan;
           }
       },
 
