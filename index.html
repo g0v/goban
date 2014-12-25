@@ -27,8 +27,8 @@
 </head>
 
 <body ng-keydown="myKeydown($event)" ng-style="{height: countHeight() + 'px'}">
-  <nav id="goban-nav" ng-cloak ng-style="{height: navHeight + 'px'}">
-    <ul><a id="goban-toggleSidebar" ng-click="hideSideBar = !hideSideBar"><span class="bar1"></span><span class="bar2"></span><span class="bar3"></span></a><span ng-cloak>
+  <nav id="goban-nav" ng-style="{height: navHeight + 'px'}">
+    <ul ng-cloak ><a id="goban-toggleSidebar" ng-click="hideSideBar = !hideSideBar"><span class="bar1"></span><span class="bar2"></span><span class="bar3"></span></a><span ng-cloak>
         <select ng-model="goban.title" ng-options="o.t as o.n for o in goban.related" ng-change="goban.load()"></select><span class="number">{{goban.myI}}</span><sub>-{{goban.myJ}}</sub></span>
       <li ng-repeat="i in goban.myColumnIndex">
 

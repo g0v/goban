@@ -64,6 +64,9 @@ body {
 		border-bottom: 2px dotted #aaf;
 		border-left: 2px dotted #aaf;
 	}
+	ul {
+		min-height:66px;
+	}
 	a {
 		color: #666;
 		&.active {
