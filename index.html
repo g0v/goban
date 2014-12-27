@@ -94,9 +94,12 @@
         <img id = "flag" src = "images/mySelf.png"/>
       </a>
 
+
       <li ng-repeat = "a in $s.myAnchors">
-        <a ng-click = "goban.title = a.t; goban.myI = a.x; goban.myJ = a.y; goban.load(a[x])">
-          
+<!--
+        <a id = "x" class = "gray" ng-click = "cancel(a)">×</a> -->
+
+        <a ng-click = "goban.title = a.t; goban.myI = a.x; goban.myJ = a.y; goban.load(a[x])">          
           {{a.x}}-{{a.y}}:{{a.n}}
            <br/>
           <i class = "gray">@{{a.t}}</i>
