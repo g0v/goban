@@ -102,7 +102,7 @@
         <a ng-click = "goban.title = a.t; goban.myI = a.x; goban.myJ = a.y; goban.load(a[x])">          
           {{a.x}}-{{a.y}}:{{a.n | uriFix }}
            <br/>
-          <i class = "gray">@{{a.t}}</i>
+          <i class = "gray">@{{a.t | uriFix}}</i>
         </a>
       </li>
     </ul>
