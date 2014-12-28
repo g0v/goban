@@ -100,7 +100,7 @@
         <a id = "x" class = "gray" ng-click = "cancel(a)">×</a> -->
 
         <a ng-click = "goban.title = a.t; goban.myI = a.x; goban.myJ = a.y; goban.load(a[x])">          
-          {{a.x}}-{{a.y}}:{{a.n}}
+          {{a.x}}-{{a.y}}:{{a.n | uriFix }}
            <br/>
           <i class = "gray">@{{a.t}}</i>
         </a>
