@@ -66,8 +66,15 @@ angular.module("automap",['goban','pascalprecht.translate','ngStorage'])
       },
 
       sleep: function(){
-        $scope.editBack = '';
+        $scope.editBack = ''; // not in Ethercalc
         console.log($scope.editBack);
+      },
+
+      maybeExtend: function(){
+        if ($goban.myI == $goban.colMax) {
+          $goban.colMax++;
+          $goban.updateIndex();
+        }
       },
 
       myKeydown: function(e) {

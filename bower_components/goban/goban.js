@@ -127,10 +127,6 @@
         }).success(function(data){
           var config;
           config = goban.parseConfigFromJSON(data);
-          if (config.colMax) {
-            goban.colMax = config.colMax;
-            goban.updateIndex();
-          }
           if (config.related && config.related.length) {
             goban.related = config.related.filter(function(o){
               return o && o.n && o.t;
@@ -161,7 +157,6 @@
         var ans;
         ans = {
           myName: 'Goban',
-          colMax: data[0][1] || 3,
           related: []
         };
         ans.related = data.slice(1).filter(function(l){
@@ -178,7 +173,6 @@
         var ans, allTextLines, xAlts, zLines;
         ans = {
           myName: 'Goban',
-          colMax: 3,
           related: []
         };
         allTextLines = csv.split(/\r\n|\n/);
