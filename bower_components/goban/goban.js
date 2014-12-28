@@ -57,6 +57,10 @@
           this.myI = n;
           this.updateHash();
           this.load(this.myI);
+          goban.cast('dx', {
+            d: 0,
+            p: goban.myI
+          });
         }
       },
       setJ: function(n){
@@ -64,6 +68,10 @@
           this.maybeDelay();
           this.myJ = n;
           this.updateHash();
+          goban.cast('dy', {
+            d: 0,
+            p: goban.myJ
+          });
         }
       },
       updateHash: function(){
@@ -332,6 +340,10 @@
         } else {
           goX(n);
         }
+        goban.cast('dx', {
+          d: n,
+          p: goban.myI
+        });
       },
       dy: function(n, isLoop){
         var goY;
@@ -357,6 +369,10 @@
         } else {
           goY(n);
         }
+        goban.cast('dy', {
+          d: n,
+          p: goban.myJ
+        });
       },
       dz: function(n){
         var goZ;

@@ -77,6 +77,10 @@ angular.module("automap",['goban','pascalprecht.translate','ngStorage'])
         }
       },
 
+      goEdit: function(){
+          $scope.editBack = $goban.path + $goban.title + $goban.myI;
+      },
+
       myKeydown: function(e) {
         $goban.keyDown(e);
         console.log(e.which);
@@ -177,6 +181,11 @@ angular.module("automap",['goban','pascalprecht.translate','ngStorage'])
       countC: 0,
     })
 
+    $scope.$on('goban.dx', function(event,args){
+      if ($scope.editBack) {
+        $scope.goEdit();
+      }
+    })
 
     $scope.$on('goban.error',function(event,args){
         if (args.p == 'data' && $scope.countD < 5) {            

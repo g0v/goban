@@ -34,12 +34,10 @@
 
         <a ng-class="{active: i == goban.myI,
                       dark: i < goban.myI}" ng-click="goban.setI(i);
-                        sleep();
                         maybeExtend()"><img ng-show = "goban.icons[i]" ng-src="{{goban.icons[i].u}}" 
       alt="{{goban.icons[i].n}}"
       title="{{goban.icons[i].n}}"
       class="goban-nav-icon"></a></li>
-
 
       <select id = "lang"
          ng-class = "{'hidden': hideCtrl}"
@@ -59,7 +57,7 @@
 
 
   <div id = "setting-bar">
-    <a ng-click = "editBack = goban.path + goban.title + goban.myI">
+    <a ng-click = "goEdit()">
  <!--   <a ng-href="{{goban.path}}{{goban.title}}{{goban.myI}}" target="myFrame"> --><span id="goban-sectionTitle">{{(goban.sectionTitle && 'EDIT') || 'CREATE' | translate}}{{goban.sectionTitle || ''}}</span></a>
       <select id = "scale" ng-model = "myScale"
         ng-options = "s[0] as s[1] for s in scales"></select>
