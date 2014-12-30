@@ -29,7 +29,9 @@
 <body ng-keydown="myKeydown($event)" ng-style="{height: countHeight() + 'px'}">
   <nav id="goban-nav" ng-style="{height: navHeight + 'px'}">
     <ul ng-cloak ><a id="goban-toggleSidebar" ng-click="hideSideBar = !hideSideBar"><span class="bar1"></span><span class="bar2"></span><span class="bar3"></span></a><span ng-cloak>
-        <select ng-model="goban.title" ng-options="o.t as o.n for o in goban.related" ng-change="goban.load()"></select><span class="number">{{goban.myI}}</span><sub>-{{goban.myJ}}</sub></span>
+        <select ng-model="goban.title" ng-options="o.t as o.n group by o.c for o in goban.related" ng-change="goban.load()"></select>
+
+        <span class="number">{{goban.myI}}</span><sub>-{{goban.myJ}}</sub></span>
       <li ng-repeat="i in goban.myColumnIndex">
 
         <a ng-class="{active: i == goban.myI,
@@ -74,7 +76,7 @@
 
         <img ng-show="goban.data[j].isClosed" src="images/isClosed.png" class="folder"><img ng-show="!goban.data[j].isClosed" src="images/isOpen.png" class="folder">{{goban.data[j].name || j}}<b ng-class="{right: goban.data[j].isClosed, down: !goban.data[j].isClosed}" class="arrowHead"></b></a>
 
-      <a ng-if="!goban.data[j].isFolder" ng-show=" goban.data[j].pIndex == 'self' || !goban.data[goban.data[j].pIndex].isClosed" ng-class="{active: goban.myJ == j}" class="elem" 
+      <a ng-if="!goban.data[j].isFolder" ng-show=" goban.data[j].isIsolated || !goban.data[goban.data[j].pIndex].isClosed" ng-class="{active: goban.myJ == j}" class="elem" 
       ng-click = "$parent.goban.myJ = j; sleep();">
       <img ng-src="http://www.google.com/s2/favicons?domain={{goban.data[j].url}}">{{goban.data[j].name || j}}</a></li>
     </ul>

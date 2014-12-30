@@ -1,0 +1,59 @@
+<html ng-app = "testApp">
+
+<head>
+  <meta charset = "utf-8"/>
+  <title>webConfig</title>  
+</head>
+
+<body ng-controller = "ctrl">
+
+
+{{goban.myK}}
+{{goban.title}}
+
+<select ng-model = "goban.title"
+        ng-change = "goban.load()"
+        ng-options = "o.t as o.n for o in goban.related">  
+</select>
+
+
+<i ng-repeat = "r in goban.icons">  
+<img ng-src="{{r.u}}" height = "50"
+    alt="{{r.n}}" title="{{r.n}}" />
+</i>
+
+<a ng-href = "{{goban.path}}{{goban.title}}Config">{{goban.title}}Config</a>
+
+<button ng-click = "goban.backupAll()">backup</button>
+
+<hr/>
+
+<ul>
+  <li ng-repeat = "d in goban.data">
+    {{d.name}}
+  </li>
+</ul>
+
+
+<script type="text/javascript" src = "../bower_components/angular/angular.min.js"></script>  
+
+<script type="text/javascript" src = "../goban.js"></script>  
+
+<script type="text/javascript">
+  angular.module("testApp",["goban"])
+    .controller("ctrl",myCtrl);
+
+function myCtrl ($scope,$goban) {
+  $scope.goban = $goban.$default({
+    webConfig: true,
+    title: 'bt_frontend'
+  });
+
+  $goban.init();
+}
+
+</script>
+
+
+</body>
+</html>

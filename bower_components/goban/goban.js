@@ -162,19 +162,27 @@
         });
       },
       parseConfigFromJSON: function(data){
-        var ans;
+        var ans, myD, myC, myR, i$, len$, s;
         ans = {
           myName: 'Goban',
           related: []
         };
-        ans.related = data.slice(1).filter(function(l){
-          return l[0];
-        }).map(function(l){
-          return {
-            t: l[0],
-            n: l[1] || l[0]
-          };
-        });
+        myD = data.slice(1);
+        myC = '';
+        myR = [];
+        for (i$ = 0, len$ = myD.length; i$ < len$; ++i$) {
+          s = myD[i$];
+          if (s[1] && !s[0]) {
+            myC = s[1];
+          } else if (s[0]) {
+            myR.push({
+              t: s[0],
+              n: s[1] || s[0],
+              c: myC
+            });
+          }
+        }
+        ans.related = myR;
         return ans;
       },
       parseConfigFromCSV: function(csv){
@@ -248,22 +256,22 @@
         });
         lastFolderIndex = 0;
         bestList = goodList.map(function(list, index){
-          var isClosed, isBlank, isIsolate, obj;
+          var isClosed, isBlank, isIsolated, obj;
           isClosed = false;
           if (!list[0]) {
             lastFolderIndex = index;
-            if (list[2] && list[2].search(/exp[ea]nd(.+)true/ > -1)) {
+            if (list[2] && (list[2].search(/exp[ea]nd(.+)true/ > -1) || list[2].search(/open/ > -1))) {
               isClosed = false;
             }
-            if (list[2] && list[2].search(/exp[ea]nd(.+)false/ > -1)) {
+            if (list[2] && (list[2].search(/exp[ea]nd(.+)false/ > -1) || list[2].search(/close/ > -1))) {
               isClosed = true;
             }
           } else {
-            if (list[2] && list[2].search(/target(.+)_blank/ > -1)) {
+            if (list[2] && list[2].search(/blank/ > -1)) {
               isBlank = true;
             }
-            if (list[2] && list[2].search(/isolate(.+)true/ > -1)) {
-              isIsolate = true;
+            if (list[2] && list[2].search(/iso/ > -1)) {
+              isIsolated = true;
             }
           }
           obj = (list[0] && {
@@ -272,7 +280,7 @@
             isFolder: false,
             pIndex: lastFolderIndex,
             isBlank: isBlank,
-            isIsolate: isIsolate
+            isIsolated: isIsolated
           }) || {
             name: list[1],
             isFolder: true,
@@ -311,13 +319,14 @@
           this.data[this.myJ].isClosed = !this.data[this.myJ].isClosed;
         }
       },
-      dx: function(n, isLoop){
+      dx: function(myN, isLoop){
         var goX;
         goX = function(n){
           goban.myI = parseInt(goban.myI);
           goban.myI += n;
           if (goban.myI === -1) {
             goban.myI = goban.colMax;
+            myN = 0;
           }
           if (goban.myI === goban.colMax) {
             if (!goban.hasLimit) {
@@ -327,18 +336,19 @@
           }
           if (goban.myI === goban.colMax + 1) {
             goban.myI = 0;
-            if (!isLoop) {
+            myN = 0;
+            if (!goban.isLoop) {
               goban.dz(1);
             }
           }
           goban.updateHash();
+          goban.maybeDelay();
+          goban.load(goban.myI);
         };
-        this.maybeDelay();
-        this.load(parseInt(this.myI) + n);
         if (this.animate.delay) {
-          $timeout(goX(n), this.animate.delay);
+          $timeout(goX(myN), this.animate.delay);
         } else {
-          goX(n);
+          goX(myN);
         }
         goban.cast('dx', {
           d: n,
