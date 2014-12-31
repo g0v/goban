@@ -248,9 +248,7 @@
         bodyLines = allTextLines.slice(2);
         goodList = bodyLines.map(function(text){
           text = text.replace(/(html|css|js|output),/g, '$1COMMA');
-          return text.split(',').map(function(str){
-            return str.replace(/COMMA/g, ',');
-          });
+          return text.split(/COMMA|,/);
         }).filter(function(list){
           return list[1];
         });
