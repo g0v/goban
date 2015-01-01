@@ -1,5 +1,8 @@
 var pth = location.pathname.split('/');
-var userPath = pth[pth.length-1].replace('.html',''); 
+
+var userPath = pth[pth.length-1] != ''
+      ? pth[pth.length-1].replace('.html','')
+      : pth[pth.length-2].replace('.html',''); 
 
 var defaultPath = 'goban_intro';
 
