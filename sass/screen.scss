@@ -19,6 +19,12 @@ body {
 
 @import "./_navbar.scss";
 
+.goban-blank {
+	a {
+		font-size: 11px !important;
+	}
+}
+
 #goban-side {
 	#goban-sectionTitle {
 		color: black;
