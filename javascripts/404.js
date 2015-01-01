@@ -182,6 +182,9 @@ angular.module("automap",['goban','pascalprecht.translate','ngStorage'])
     })
 
     $scope.$on('goban.dx', function(event,args){
+      
+      $scope.bufferI = parseInt($goban.myI);
+
       if ($scope.editBack) {
         $scope.goEdit();
       }
@@ -201,6 +204,11 @@ angular.module("automap",['goban','pascalprecht.translate','ngStorage'])
 
     $scope.$on('goban.loaded',function(event,args){
         
+        $scope.bufferI = parseInt($goban.myI);
+
+        console.log($goban.myColumnIndex[1]);
+
+
         if (args.p == 'data') {
             $scope.countD = 0;
             console.log("data loaded");

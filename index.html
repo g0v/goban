@@ -2,6 +2,8 @@
 <html ng-app = "automap" ng-controller = "autoCtrl">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
   <title ng-bind-template = "{{goban.sectionTitle | uriFix }} - {{'TITLE' | translate}}">hacker's goban</title>
 
   <link rel="shortcut icon" type="image/png" href="/favicon.png" />
@@ -26,13 +28,22 @@
   
 </head>
 
-<body ng-keydown="myKeydown($event)" ng-style="{height: countHeight() + 'px'}">
+<body ng-keydown="myKeydown($event)" ng-style="{height: countHeight() + 'px'}" ng-init = "v = 0">
+
   <nav id="goban-nav" ng-style="{height: navHeight + 'px'}">
     <ul ng-cloak ><a id="goban-toggleSidebar" ng-click="hideSideBar = !hideSideBar"><span class="bar1"></span><span class="bar2"></span><span class="bar3"></span></a><span ng-cloak>
         <select ng-model="goban.title" ng-options="o.t as o.n group by o.c for o in goban.related" ng-change="goban.load()"></select>
 
-        <span class="number">{{goban.myI}}</span><sub>-{{goban.myJ}}</sub></span>
-      <li ng-repeat="i in goban.myColumnIndex">
+        <span class="number wideOnly">{{goban.myI}}</span><sub class = "wideOnly">-{{goban.myJ}}</sub></span>
+
+      <select class = "phoneOnly"
+              ng-model = "bufferI"
+              ng-options = "o as 'LEV' + o for o in goban.myColumnIndex"
+              ng-change = "goban.setI(bufferI)">
+      </select>
+
+
+      <li class="noPhone" ng-repeat="i in goban.myColumnIndex">
 
         <a ng-class="{active: i == goban.myI,
                       dark: i < goban.myI}" ng-click="goban.setI(i);
@@ -42,9 +53,11 @@
       class="goban-nav-icon"></a></li>
 
       <select id = "lang"
+         class="wideOnly" 
          ng-class = "{'hidden': hideCtrl}"
          ng-model = "myLang" ng-change = "changeLanguage(myLang)" ng-options = "l[0] as l[1] for l in langs"></select>
       <img id = "flag"
+         class="wideOnly"
          ng-class = "{'hidden': hideCtrl}"
             ng-src = "{{getFlag(myLang)}}"/>
 
@@ -54,7 +67,10 @@
 
     </ul>
   </nav>
-  <div id="goban-side" ng-cloak ng-class="{hidden: hideSideBar}"  ng-style="{height: countHeight() - navHeight + 'px'}"
+  <div id="goban-side"
+      ng-cloak
+      ng-click = "hideSideBar = !hideSideBar"
+      ng-class="{hidden: hideSideBar, v0: !hideSideBar && v==0, v1: v==1}"  ng-style="{height: countHeight() - navHeight + 'px'}"
     style = "display:block;overflow:auto">
 
 
@@ -64,7 +80,6 @@
       <select id = "scale" ng-model = "myScale"
         ng-options = "s[0] as s[1] for s in scales"></select>
   </div>
-
 
 
     <ul> 
@@ -109,8 +124,10 @@
       </li>
     </ul>
   </div>
-  <div id="goban-main" ng-class="{full: hideSideBar}" ng-style="{height: countHeight() - navHeight + 'px'}">
-    <div id="myBlank" ng-cloak class="goban-blank"><a ng-href="{{getURL()}}" target="_blank">{{'OPEN_BLANK' | translate}}</a></div>
+  <div id="goban-main"
+  ng-class="{full: hideSideBar, v0: !hideSideBar &&v==0, v1: v==1}" ng-style="{height: countHeight() - navHeight + 'px'}">
+    <div id="myBlank" ng-cloak
+            class="goban-blank noPhone"><a ng-href="{{getURL()}}" target="_blank">{{'OPEN_BLANK' | translate}}</a></div>
     
     <iframe id="myFrame" name = "myFrame"
     ng-cloak

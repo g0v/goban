@@ -6,8 +6,6 @@
 @import "compass/reset";
 @import "compass/css3";
 
-
-
 [ng\:cloak], [ng-cloak], .ng-cloak {
     display: none !important;
 }
@@ -17,45 +15,9 @@ body {
 }
 
 
-#goban-nav {
-	select {
-		min-width: 150px;
-		padding: 5px;
-		font-size: 16px;
-	}
-	ul {
-		li {
-			a {
-				@include transition(all 0.5s ease);
-				@include border-radius(5px 50% 50% 5px);
-				@include transform(skewX(15deg));
-				&:hover,&:active,&.active{
-					background-color: #999;
-				}
-				&.active {
-					&::after {
-						position:absolute;
-						top:8px;
-						left:7px;
-						display:inline-block;
-						content:"";
-						width: 0px;
-						height: 0px;
-						border:2px solid cyan;
-						@include border-radius(50%);
-					}
-				}
-				&.dark {
-					border: 3px solid gray;
-					@include transform(scaleX(1.2));
-					@include border-radius(50%);
-					background-color: #999;
-				
-				}
-			}
-		}
-	}
-}
+@import "./_responsive.scss";
+
+@import "./_navbar.scss";
 
 #goban-side {
 	#goban-sectionTitle {
