@@ -1,0 +1,24 @@
+html(ng-app='automap', ng-controller='autoCtrl')
+  include ./includes/head.jade
+  body(ng-keydown="myKeydown($event)",
+      ng-style="{height: countHeight() + 'px'}",
+      ng-init = "v = 0")
+    include ./includes/nav.jade
+    include ./includes/side-bar.jade
+    include ./includes/main.jade
+    include ./includes/backup-tool.jade
+    include ./includes/footer.jade
+
+    // Components
+    include ./includes/js-components.jade
+    
+    // Main
+    script(src='/javascripts/404.js', type='text/javascript')
+  
+    // Langs
+    include ./includes/js-langs.jade
+    
+    // tips
+    script(src='/javascripts/123tips.js', type='text/javascript')
+
+

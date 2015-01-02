@@ -1,4 +1,11 @@
 #goban-nav {
+	a#goban-toggleSidebar {
+		span {
+			margin-top: 4px;
+			border: 2px solid gray;
+			width: 19px;
+		}
+	}
 	select {
 		min-width: 150px;
 		padding: 5px;

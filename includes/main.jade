@@ -1,0 +1,10 @@
+div#goban-main(ng-class='{full: hideSideBar, v0: !hideSideBar &&v==0, v1: v==1}', ng-style='{height: countHeight() - navHeight + "px"}')
+  div#myBlank.goban-blank.noPhone(ng-cloak='')
+    a(ng-href='{{getURL()}}', target='_blank') {{'OPEN_BLANK' | translate}}
+  iframe#myFrame(name='myFrame', ng-cloak='', ng-class='{loading: goban.pageLoading,\
+  tiny : myScale == "tiny",\
+  small : myScale == "small",\
+  big : myScale == "big",\
+  gaint: myScale == "gaint",\
+  }', ng-src='{{getURL()}}', ng-click='hideCtrl = 1', ng-mouseover='hideCtrl = 1', ng-mouseout='goban.load(goban.myI); hideCtrl = 0')
+    

@@ -1,209 +1,77 @@
-<!DOCTYPE html>
-<html ng-app = "automap" ng-controller = "autoCtrl">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  
-  <title ng-bind-template = "{{goban.sectionTitle | uriFix }} - {{'TITLE' | translate}}">hacker's goban</title>
 
-  <link rel="shortcut icon" type="image/png" href="/favicon.png" />
-  <meta property="og:title" content="零時黑板Hacker's Goban"/>
-  <meta property="og:site_name" content="零時黑板Hacker's Goban"/>
-  <meta property="og:image" content="https://goban.tw/images/Goban_19x19_vide.png"/>
-
-  <meta property="og:description" content="協作分享系列網址與深入的背景知識Collaborate collection of series of URLs and background knowledge"/>
-
-
-  
-  <link href="/bower_components/goban/goban-ui.css" media="screen, projection" rel="stylesheet" type="text/css">
-
-
-  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" />
-  <link href="/stylesheets/print.css" media="print" rel="stylesheet" type="text/css" />
-  <!--[if IE]>
-      <link href="/stylesheets/ie.css" media="screen, projection" rel="stylesheet" type="text/css" />
-  <![endif]-->
-
-
-  
-</head>
-
-<body ng-keydown="myKeydown($event)" ng-style="{height: countHeight() + 'px'}" ng-init = "v = 0">
-
-  <nav id="goban-nav" ng-style="{height: navHeight + 'px'}">
-    <ul ng-cloak ><a id="goban-toggleSidebar" ng-click="hideSideBar = !hideSideBar"><span class="bar1"></span><span class="bar2"></span><span class="bar3"></span></a><span ng-cloak>
-        <select ng-model="goban.title" ng-options="o.t as o.n group by o.c for o in goban.related" ng-change="goban.load()"></select>
-
-        <span class="number wideOnly">{{goban.myI}}</span><sub class = "wideOnly">-{{goban.myJ}}</sub></span>
-
-      <select class = "phoneOnly"
-              ng-model = "bufferI"
-              ng-options = "o as 'LEV' + o for o in goban.myColumnIndex"
-              ng-change = "goban.setI(bufferI)">
-      </select>
-
-
-      <li class="noPhone" ng-repeat="i in goban.myColumnIndex">
-
-        <a ng-class="{active: i == goban.myI,
-                      dark: i < goban.myI}" ng-click="goban.setI(i);
-                        maybeExtend()"><img ng-show = "goban.icons[i]" ng-src="{{goban.icons[i].u}}" 
-      alt="{{goban.icons[i].n}}"
-      title="{{goban.icons[i].n}}"
-      class="goban-nav-icon"></a></li>
-
-      <select id = "lang"
-         class="wideOnly" 
-         ng-class = "{'hidden': hideCtrl}"
-         ng-model = "myLang" ng-change = "changeLanguage(myLang)" ng-options = "l[0] as l[1] for l in langs"></select>
-      <img id = "flag"
-         class="wideOnly"
-         ng-class = "{'hidden': hideCtrl}"
-            ng-src = "{{getFlag(myLang)}}"/>
-
-
-      <a ng-click = "editBack = goban.path + goban.title + 'Config'">
-          <img alt="{{'WEB_CONFIG' | translate}}" title = "{{'WEB_CONFIG'| translate}}" src="/bower_components/goban/Goban_19x19_vide.png" class="goban-logo goban-fixed-right"></a>
-
-    </ul>
-  </nav>
-  <div id="goban-side"
-      ng-cloak
-      ng-click = "hideSideBar = !hideSideBar"
-      ng-class="{hidden: hideSideBar, v0: !hideSideBar && v==0, v1: v==1}"  ng-style="{height: countHeight() - navHeight + 'px'}"
-    style = "display:block;overflow:auto">
-
-
-  <div id = "setting-bar">
-    <a ng-click = "goEdit()">
- <!--   <a ng-href="{{goban.path}}{{goban.title}}{{goban.myI}}" target="myFrame"> --><span id="goban-sectionTitle">{{(goban.sectionTitle && 'EDIT') || 'CREATE' | translate}}{{goban.sectionTitle || ''}}</span></a>
-      <select id = "scale" ng-model = "myScale"
-        ng-options = "s[0] as s[1] for s in scales"></select>
-  </div>
-
-
-    <ul> 
-      <li ng-repeat="j in goban.data | toIndex" ng-click="goban.setJ(j)">
-
-      <a ng-if="goban.data[j].isFolder"
-        ng-click="$parent.goban.data[j].isClosed = !goban.data[j].isClosed; sleep();"
-        ng-class="{active: goban.myJ == j, folder: goban.data[j].isFolder}">
-
-        <img ng-show="goban.data[j].isClosed" src="images/isClosed.png" class="folder"><img ng-show="!goban.data[j].isClosed" src="images/isOpen.png" class="folder">{{goban.data[j].name || j}}<b ng-class="{right: goban.data[j].isClosed, down: !goban.data[j].isClosed}" class="arrowHead"></b></a>
-
-      <a ng-if="!goban.data[j].isFolder" ng-show=" goban.data[j].isIsolated || !goban.data[goban.data[j].pIndex].isClosed" ng-class="{active: goban.myJ == j}" class="elem" 
-      ng-click = "$parent.goban.myJ = j; sleep();">
-      <img ng-src="http://www.google.com/s2/favicons?domain={{goban.data[j].url}}">{{goban.data[j].name || j}}</a></li>
-    </ul>
-
-    <hr/>
-
-
-    <ul ng-cloak>
-      <i class = "gray">
-        {{'MY_STAR' | translate }}
-      </i>
-      <a ng-click ="toggleAnchor(objNow())">
-        <img id = "flag" ng-src = "{{showStar(objNow())}}" alt ="{{'GATHER' | translate}}"
-        title="{{'GATHER' | translate}}" />
-      </a>
-      <a ng-click ="resetAnchors()">
-        <img id = "flag" src = "images/mySelf.png"/>
-      </a>
-
-
-      <li ng-repeat = "a in $s.myAnchors">
-<!--
-        <a id = "x" class = "gray" ng-click = "cancel(a)">×</a> -->
-
-        <a ng-click = "goban.title = a.t; goban.myI = a.x; goban.myJ = a.y; goban.load(a[x])">          
-          {{a.x}}-{{a.y}}:{{a.n | uriFix }}
-           <br/>
-          <i class = "gray">@{{a.t | uriFix}}</i>
-        </a>
-      </li>
-    </ul>
-  </div>
-  <div id="goban-main"
-  ng-class="{full: hideSideBar, v0: !hideSideBar &&v==0, v1: v==1}" ng-style="{height: countHeight() - navHeight + 'px'}">
-    <div id="myBlank" ng-cloak
-            class="goban-blank noPhone"><a ng-href="{{getURL()}}" target="_blank">{{'OPEN_BLANK' | translate}}</a></div>
-    
-    <iframe id="myFrame" name = "myFrame"
-    ng-cloak
-    ng-class = "{loading: goban.pageLoading,
-                  tiny : myScale == 'tiny',
-                  small : myScale == 'small',
-                  big : myScale == 'big',
-                  gaint: myScale == 'gaint',
-                }" ng-src="{{getURL()}}"
-    ng-click = "hideCtrl = 1"
-    ng-mouseover = "hideCtrl = 1"
-    ng-mouseout = "goban.load(goban.myI); hideCtrl = 0"></iframe>
-  </div>
-  <div id="goban-keyBordCtrl" ng-class = "{'hidden': hideCtrl}">
-    <div id="up" ng-class="{available: false}" ng-click="goban.dy(-1)"></div>
-    <div id="down" ng-class="{available: false}" ng-click="goban.dy(1)"></div>
-    <div id="left" ng-class="{available: ture}" ng-click="goban.dx(-1)"></div>
-    <div id="right" ng-class="{available: ture}" ng-click="goban.dx(1)"></div>
-    <div id="backup" class="backup"><a ng-click="goban.backupAll()"></a></div>
-  </div>
-
-  <footer ng-cloak ng-hide = "1" ng-class = "{sunk : hideCtrl, full : fullTips}"
-    ng-mouseover = "fullTips = 1"
-    ng-mouseout = "fullTips = 0">  
-    
-    <ol>
-      <li ng-repeat = "tp in tips">
-        <i id = "tip" ng-bind = "tp | translate"></i>
-      </li>
-    </ol>
-    
-  </footer>
-
-
-<!-- Components  -->
-  <script src="/bower_components/angular/angular.min.js" type="text/javascript"></script>
-
-  <script src="/bower_components/angular-translate/angular-translate.min.js" type="text/javascript"></script> 
-
-  <script src="/bower_components/angular-animate/angular-animate.min.js" type="text/javascript"></script>
-
-
-  <script src="/bower_components/ngstorage/ngStorage.min.js" type="text/javascript"></script>
-
-<!--  
-  
-  <script src="/bower_components/ngInfiniteScroll/build/ng-infinite-scroll.min.js" type="text/javascript"></script> -->
-
-
-
-
-  <script src="/bower_components/goban/goban.js" type="text/javascript"></script>
-
-
-
-
-  <!-- JS  -->
-  <script src = "/javascripts/404.js" type="text/javascript" ></script>
-
-  <script src = "/translates/translate.js" type="text/javascript" ></script>
-
-<!-- langs -->
-  <script src = "/translates/zh.js" type="text/javascript" ></script>
-  <script src = "/translates/en.js" type="text/javascript" ></script>
-  <script src = "/translates/ja.js" type="text/javascript" ></script>
-  <script src = "/translates/de.js" type="text/javascript" ></script>
-  <script src = "/translates/vi.js" type="text/javascript" ></script>
-
-<!-- tips -->
-  <script src = "/javascripts/123tips.js" type="text/javascript" ></script>
-
-
-</body>
-
-
-
-
-
+<html ng-app="automap" ng-controller="autoCtrl">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title ng-bind-template="{{goban.sectionTitle | uriFix }} - {{&quot;TITLE&quot; | translate}}">hacker's goban</title>
+    <link rel="shortcut icon" type="image/png" href="/favicon.png"/>
+    <meta property="og:title" content="零時黑板Hacker&quot;s Goban"/>
+    <meta property="og:site_name" content="零時黑板Hacker&quot;s Goban"/>
+    <meta property="og:image" content="https://goban.tw/images/Goban_19x19_vide.png"/>
+    <meta property="og:description" content="協作分享系列網址與深入的背景知識Collaborate collection of series of URLs and background knowledge"/>
+    <link href="/bower_components/goban/goban-ui.css" media="screen, projection" rel="stylesheet" type="text/css"/>
+    <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css"/>
+    <link href="/stylesheets/print.css" media="print" rel="stylesheet" type="text/css"/>
+    <!--if IElink(href='/stylesheets/ie.css', media='screen, projection', rel='stylesheet', type='text/css')
+    -->
+  </head>
+  <body ng-keydown="myKeydown($event)" ng-style="{height: countHeight() + 'px'}" ng-init="v = 0">
+    <nav id="goban-nav" ng-style="{height: navHeight + &quot;px&quot;}">
+      <ul ng-cloak=""><a id="goban-toggleSidebar" ng-click="hideSideBar = !hideSideBar"><span class="bar1"></span><span class="bar2"></span><span class="bar3"></span></a><span ng-cloak="">
+          <select ng-model="goban.title" ng-options="o.t as o.n group by o.c for o in goban.related" ng-change="goban.load()"></select><span class="number wideOnly">{{goban.myI}}</span><sub class="wideOnly">-{{goban.myJ}}</sub></span>
+        <select ng-model="bufferI" ng-options="o as &quot;LEV&quot; + o for o in goban.myColumnIndex" ng-change="goban.setI(bufferI)" class="phoneOnly"></select>
+        <li ng-repeat="i in goban.myColumnIndex" class="noPhone"><a ng-class="{active: i == goban.myI,      dark: i &lt; goban.myI}" ng-click="goban.setI(i);      maybeExtend()"><img ng-show="goban.icons[i]" ng-src="{{goban.icons[i].u}}" alt="{{goban.icons[i].n}}" title="{{goban.icons[i].n}}" class="goban-nav-icon"/></a></li>
+        <select id="lang" ng-class="{&quot;hidden&quot;: hideCtrl}" ng-model="myLang" ng-change="changeLanguage(myLang)" ng-options="l[0] as l[1] for l in langs" class="wideOnly"></select><img id="flag" ng-class="{&quot;hidden&quot;: hideCtrl}" ng-src="{{getFlag(myLang)}}" class="wideOnly"/><a ng-click="editBack = goban.path + goban.title + &quot;Config&quot;"><img alt="{{&quot;WEB_CONFIG&quot; | translate}}" title="{{&quot;WEB_CONFIG&quot;| translate}}" src="/bower_components/goban/Goban_19x19_vide.png" class="goban-logo goban-fixed-right"/></a>
+      </ul>
+    </nav>
+    <div id="goban-side" ng-cloak="" ng-click="hideSideBar = !hideSideBar" ng-class="{hidden: hideSideBar, v0: !hideSideBar &amp;&amp; v==0, v1: v==1}" ng-style="{height: countHeight() - navHeight + &quot;px&quot;}" style="display:block;overflow:auto">
+      <div id="setting-bar"><a ng-click="goEdit()">
+          <!-- <a ng-href="{{goban.path}}{{goban.title}}{{goban.myI}}" target="myFrame">--><span id="goban-sectionTitle">{{(goban.sectionTitle && 'EDIT') || 'CREATE' | translate}}{{goban.sectionTitle || ''}}</span></a>
+        <select id="scale" ng-model="myScale" ng-options="s[0] as s[1] for s in scales"></select>
+      </div>
+      <ul>
+        <li ng-repeat="j in goban.data | toIndex" ng-click="goban.setJ(j)"><a ng-if="goban.data[j].isFolder" ng-click="$parent.goban.data[j].isClosed = !goban.data[j].isClosed; sleep();" ng-class="{active: goban.myJ == j, folder: goban.data[j].isFolder}"><img ng-show="goban.data[j].isClosed" src="images/isClosed.png" class="folder"/><img ng-show="!goban.data[j].isClosed" src="images/isOpen.png" class="folder"/>{{goban.data[j].name || j}}<b ng-class="{right: goban.data[j].isClosed, down: !goban.data[j].isClosed}" class="arrowHead"></b></a><a ng-if="!goban.data[j].isFolder" ng-show=" goban.data[j].isIsolated || !goban.data[goban.data[j].pIndex].isClosed" ng-class="{active: goban.myJ == j}" ng-click="$parent.goban.myJ = j; sleep();" class="elem"><img ng-src="http://www.google.com/s2/favicons?domain={{goban.data[j].url}}"/>{{goban.data[j].name || j}}</a></li>
+      </ul>
+      <hr/>
+      <ul ng-cloak=""><i class="gray">{{'MY_STAR' | translate }}</i><a ng-click="toggleAnchor(objNow())"><img id="flag" ng-src="{{showStar(objNow())}}" alt="{{&quot;GATHER&quot; | translate}}" title="{{&quot;GATHER&quot; | translate}}"/></a><a ng-click="resetAnchors()"><img id="flag" src="images/mySelf.png"/></a>
+        <li ng-repeat="a in $s.myAnchors">
+          <!--<a id = "x" class = "gray" ng-click = "cancel(a)">×</a> 
+          --><a ng-click="goban.title = a.t; goban.myI = a.x; goban.myJ = a.y; goban.load(a[x])">{{a.x}}-{{a.y}}:{{a.n | uriFix }}<br/><i class="gray">@{{a.t | uriFix}}</i></a>
+        </li>
+      </ul>
+    </div>
+    <div id="goban-main" ng-class="{full: hideSideBar, v0: !hideSideBar &amp;&amp;v==0, v1: v==1}" ng-style="{height: countHeight() - navHeight + &quot;px&quot;}">
+      <div id="myBlank" ng-cloak="" class="goban-blank noPhone"><a ng-href="{{getURL()}}" target="_blank">{{'OPEN_BLANK' | translate}}</a></div>
+      <iframe id="myFrame" name="myFrame" ng-cloak="" ng-class="{loading: goban.pageLoading,  tiny : myScale == &quot;tiny&quot;,  small : myScale == &quot;small&quot;,  big : myScale == &quot;big&quot;,  gaint: myScale == &quot;gaint&quot;,  }" ng-src="{{getURL()}}" ng-click="hideCtrl = 1" ng-mouseover="hideCtrl = 1" ng-mouseout="goban.load(goban.myI); hideCtrl = 0"></iframe>
+    </div>
+    <div id="goban-keyBordCtrl" ng-class="{&quot;hidden&quot;: hideCtrl}">
+      <div id="up" ng-class="{available: false}" ng-click="goban.dy(-1)"></div>
+      <div id="down" ng-class="{available: false}" ng-click="goban.dy(1)"></div>
+      <div id="left" ng-class="{available: ture}" ng-click="goban.dx(-1)"></div>
+      <div id="right" ng-class="{available: ture}" ng-click="goban.dx(1)"></div>
+      <div id="backup" class="backup"><a ng-click="goban.backupAll()"></a></div>
+    </div>
+    <footer ng-cloak="" ng-hide="1" ng-class="{sunk : hideCtrl, full : fullTips}" ng-mouseover="fullTips = 1" ng-mouseout="fullTips = 0">
+      <ol>
+        <li ng-repeat="tp in tips"><i id="tip" ng-bind="tp | translate"></i></li>
+      </ol>
+    </footer>
+    <!-- Components-->
+    <script src="/bower_components/angular/angular.min.js" type="text/javascript"></script>
+    <script src="/bower_components/angular-translate/angular-translate.min.js" type="text/javascript"></script>
+    <script src="/bower_components/angular-animate/angular-animate.min.js" type="text/javascript"></script>
+    <script src="/bower_components/ngstorage/ngStorage.min.js" type="text/javascript"></script>
+    <script src="/bower_components/goban/goban.js" type="text/javascript"></script>
+    <!-- Main-->
+    <script src="/javascripts/404.js" type="text/javascript"></script>
+    <!-- Langs-->
+    <script src="/translates/translate.js" type="text/javascript"></script>
+    <script src="/translates/zh.js" type="text/javascript"></script>
+    <script src="/translates/en.js" type="text/javascript"></script>
+    <script src="/translates/ja.js" type="text/javascript"></script>
+    <script src="/translates/de.js" type="text/javascript"></script>
+    <script src="/translates/vi.js" type="text/javascript"></script>
+    <!-- tips-->
+    <script src="/javascripts/123tips.js" type="text/javascript"></script>
+  </body>
 </html>

@@ -1,0 +1,7 @@
+div#goban-keyBordCtrl(ng-class='{"hidden": hideCtrl}')
+  div#up(ng-class='{available: false}', ng-click='goban.dy(-1)')
+  div#down(ng-class='{available: false}', ng-click='goban.dy(1)')
+  div#left(ng-class='{available: ture}', ng-click='goban.dx(-1)')
+  div#right(ng-class='{available: ture}', ng-click='goban.dx(1)')
+  div#backup.backup
+    a(ng-click='goban.backupAll()')

@@ -131,13 +131,19 @@ body {
     display: none !important;
   }
 }
-/* line 2, ../sass/_navbar.scss */
+/* line 3, ../sass/_navbar.scss */
+#goban-nav a#goban-toggleSidebar span {
+  margin-top: 4px;
+  border: 2px solid gray;
+  width: 19px;
+}
+/* line 9, ../sass/_navbar.scss */
 #goban-nav select {
   min-width: 150px;
   padding: 5px;
   font-size: 16px;
 }
-/* line 9, ../sass/_navbar.scss */
+/* line 16, ../sass/_navbar.scss */
 #goban-nav ul li a {
   -moz-transition: all 0.5s ease;
   -o-transition: all 0.5s ease;
@@ -151,11 +157,11 @@ body {
   -webkit-transform: skewX(15deg);
   transform: skewX(15deg);
 }
-/* line 13, ../sass/_navbar.scss */
+/* line 20, ../sass/_navbar.scss */
 #goban-nav ul li a:hover, #goban-nav ul li a:active, #goban-nav ul li a.active {
   background-color: #999;
 }
-/* line 17, ../sass/_navbar.scss */
+/* line 24, ../sass/_navbar.scss */
 #goban-nav ul li a.active::after {
   position: absolute;
   top: 8px;
@@ -169,7 +175,7 @@ body {
   -webkit-border-radius: 50%;
   border-radius: 50%;
 }
-/* line 29, ../sass/_navbar.scss */
+/* line 36, ../sass/_navbar.scss */
 #goban-nav ul li a.dark {
   border: 3px solid gray;
   -moz-transform: scaleX(1.2);
