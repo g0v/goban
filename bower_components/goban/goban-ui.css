@@ -129,6 +129,7 @@ a {
   display: inline-block;
   width: 22px;
   height: 0px;
+  margin-top:3px;
   border-top: 4px solid gray;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;

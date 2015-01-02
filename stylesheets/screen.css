@@ -131,19 +131,13 @@ body {
     display: none !important;
   }
 }
-/* line 3, ../sass/_navbar.scss */
-nav#goban-nav a#goban-toggleSidebar span {
-  margin-top: 4px !important;
-  border: 2px solid gray !important;
-  width: 19px !important;
-}
-/* line 9, ../sass/_navbar.scss */
+/* line 2, ../sass/_navbar.scss */
 nav#goban-nav select {
   min-width: 150px;
   padding: 5px;
   font-size: 16px;
 }
-/* line 16, ../sass/_navbar.scss */
+/* line 9, ../sass/_navbar.scss */
 nav#goban-nav ul li a {
   -moz-transition: all 0.5s ease;
   -o-transition: all 0.5s ease;
@@ -157,11 +151,11 @@ nav#goban-nav ul li a {
   -webkit-transform: skewX(15deg);
   transform: skewX(15deg);
 }
-/* line 20, ../sass/_navbar.scss */
+/* line 13, ../sass/_navbar.scss */
 nav#goban-nav ul li a:hover, nav#goban-nav ul li a:active, nav#goban-nav ul li a.active {
   background-color: #999;
 }
-/* line 24, ../sass/_navbar.scss */
+/* line 17, ../sass/_navbar.scss */
 nav#goban-nav ul li a.active::after {
   position: absolute;
   top: 8px;
@@ -175,7 +169,7 @@ nav#goban-nav ul li a.active::after {
   -webkit-border-radius: 50%;
   border-radius: 50%;
 }
-/* line 36, ../sass/_navbar.scss */
+/* line 29, ../sass/_navbar.scss */
 nav#goban-nav ul li a.dark {
   border: 3px solid gray;
   -moz-transform: scaleX(1.2);
