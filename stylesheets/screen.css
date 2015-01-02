@@ -132,19 +132,19 @@ body {
   }
 }
 /* line 3, ../sass/_navbar.scss */
-#goban-nav a#goban-toggleSidebar span {
-  margin-top: 4px;
-  border: 2px solid gray;
-  width: 19px;
+nav#goban-nav a#goban-toggleSidebar span {
+  margin-top: 4px !important;
+  border: 2px solid gray !important;
+  width: 19px !important;
 }
 /* line 9, ../sass/_navbar.scss */
-#goban-nav select {
+nav#goban-nav select {
   min-width: 150px;
   padding: 5px;
   font-size: 16px;
 }
 /* line 16, ../sass/_navbar.scss */
-#goban-nav ul li a {
+nav#goban-nav ul li a {
   -moz-transition: all 0.5s ease;
   -o-transition: all 0.5s ease;
   -webkit-transition: all 0.5s ease;
@@ -158,11 +158,11 @@ body {
   transform: skewX(15deg);
 }
 /* line 20, ../sass/_navbar.scss */
-#goban-nav ul li a:hover, #goban-nav ul li a:active, #goban-nav ul li a.active {
+nav#goban-nav ul li a:hover, nav#goban-nav ul li a:active, nav#goban-nav ul li a.active {
   background-color: #999;
 }
 /* line 24, ../sass/_navbar.scss */
-#goban-nav ul li a.active::after {
+nav#goban-nav ul li a.active::after {
   position: absolute;
   top: 8px;
   left: 7px;
@@ -176,7 +176,7 @@ body {
   border-radius: 50%;
 }
 /* line 36, ../sass/_navbar.scss */
-#goban-nav ul li a.dark {
+nav#goban-nav ul li a.dark {
   border: 3px solid gray;
   -moz-transform: scaleX(1.2);
   -ms-transform: scaleX(1.2);

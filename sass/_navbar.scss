@@ -1,9 +1,9 @@
-#goban-nav {
+nav#goban-nav {
 	a#goban-toggleSidebar {
 		span {
-			margin-top: 4px;
-			border: 2px solid gray;
-			width: 19px;
+			margin-top: 4px !important;
+			border: 2px solid gray !important;
+			width: 19px !important;
 		}
 	}
 	select {
