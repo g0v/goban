@@ -29,10 +29,73 @@ angular.module("automap",['goban','pascalprecht.translate','ngStorage'])
 
   function autoCtrl($scope, $window, $timeout, $goban, $translate, $langs, $tips, $localStorage){
    
+    //Display Params
+    angular.extend($scope, {
+      myScale : 'small',
+      scales : [['tiny','80%'],
+                      ['small','100%'],
+                        ['big','130%'],
+                            ['gaint','150%']],
+      navHeight : 50,
+      countHeight : function(){
+        return $window.innerHeight - 40;
+      }
+    });
+
+
+    //Storage  <--
     $scope.$s = $localStorage.$default({
       myAnchors: []
     });
 
+    angular.extend($scope, {
+      isInAnchor: function(obj) {
+        return ($localStorage.myAnchors.filter(function(o){
+          return angular.equals(o, obj);
+        })[0]) ? true : false;
+      },
+
+      showStar: function(obj){
+        return $scope.isInAnchor(obj) ? 'images/star.png' : 'images/star_white.png';
+      },
+
+      isOutdatedAnchor: function(obj) {
+        return ($localStorage.myAnchors.filter(function(o){
+          return (o.x == obj.x) && (o.y == obj.y)
+                    && (o.t == obj.t) && (o.n != obj.n);
+        })[0]) ? true : false;
+      },
+
+      toggleAnchor: function(obj){
+        if ($scope.isOutdatedAnchor(obj)) {
+          $localStorage.myAnchors = $localStorage.myAnchors
+            .map(function(o){
+              return (o.x == obj.x && o.y == obj.y
+                    && o.t == obj.t && o.n != obj.n) ? obj : o;
+            })
+        } else if ($scope.isInAnchor(obj)) {
+          $localStorage.myAnchors = $localStorage.myAnchors
+            .filter(function(o){
+              return !angular.equals(o, obj)
+            })
+        } else {
+          $localStorage.myAnchors.push(obj);
+        }
+      },
+
+      resetAnchors: function(){
+          if ($localStorage.myAnchors[0]) {
+            $scope.myZan = angular.copy($localStorage.myAnchors);
+            $localStorage.myAnchors = $localStorage.myAnchors.filter(function(o){
+              return false;
+            })
+          } else {
+            $localStorage.myAnchors = $scope.myZan;
+          }
+      }
+    });
+
+    //Goban <--
     $scope.goban = $goban.$default({
       path : 'https://ethercalc.org/',
       title : userPath || defaultPath,
@@ -43,22 +106,14 @@ angular.module("automap",['goban','pascalprecht.translate','ngStorage'])
     $scope.goban.init();
 
 
-    //display
-    $scope.navHeight = 50;
-    $scope.countHeight = function(){
-      return $window.innerHeight - 40;
-    };
-
-
-
-    //tips
+    //Tips  <- 123tips.js
     angular.extend($scope,
     {
       tips: $tips,
       t: 0
     });
 
-    //methods
+    //Methods <--
     angular.extend($scope,
     {
       getURL: function(){
@@ -97,68 +152,19 @@ angular.module("automap",['goban','pascalprecht.translate','ngStorage'])
                 x: $goban.myI,
                 y: $goban.myJ,
                 n: ($goban.data[$goban.myJ] || {}).name}
-      },
-
-      isInAnchor: function(obj) {
-        return ($localStorage.myAnchors.filter(function(o){
-          return angular.equals(o, obj);
-        })[0]) ? true : false;
-      },
-
-      isOutdatedAnchor: function(obj) {
-        return ($localStorage.myAnchors.filter(function(o){
-          return (o.x == obj.x) && (o.y == obj.y)
-                    && (o.t == obj.t) && (o.n != obj.n);
-        })[0]) ? true : false;
-      },
-
-      toggleAnchor: function(obj){
-        if ($scope.isOutdatedAnchor(obj)) {
-          $localStorage.myAnchors = $localStorage.myAnchors
-            .map(function(o){
-              return (o.x == obj.x && o.y == obj.y
-                    && o.t == obj.t && o.n != obj.n) ? obj : o;
-            })
-        } else if ($scope.isInAnchor(obj)) {
-          $localStorage.myAnchors = $localStorage.myAnchors
-            .filter(function(o){
-              return !angular.equals(o, obj)
-            })
-        } else {
-          $localStorage.myAnchors.push(obj);
-        }
-      },
-
-      resetAnchors: function(){
-          if ($localStorage.myAnchors[0]) {
-            $scope.myZan = angular.copy($localStorage.myAnchors);
-            $localStorage.myAnchors = $localStorage.myAnchors.filter(function(o){
-              return false;
-            })
-          } else {
-            $localStorage.myAnchors = $scope.myZan;
-          }
-      },
-
-      showStar: function(obj){
-        return $scope.isInAnchor(obj) ? 'images/star.png' : 'images/star_white.png';
       }
-
     });
 
 
-    // langs
+    // Langs  <-- translate/
 
-    $scope.langs = $langs;
-    $scope.myScale = 'small';
-    $scope.scales = [['tiny','80%'],
-                      ['small','100%'],
-                        ['big','130%'],
-                            ['gaint','150%']];
+    angular.extend($scope, {
+      langs : $langs,
+      changeLanguage: function (key) {
+        $translate.use(key)
+      }
+    })
 
-    $scope.changeLanguage = function (key) {
-      $translate.use(key);
-    };
 
     console.log(navigator.language);
     if ($scope.langs.map(function(o){
@@ -175,6 +181,8 @@ angular.module("automap",['goban','pascalprecht.translate','ngStorage'])
         return d[0] == l;
       })[0][2]
     }
+
+
 
 
     //events
@@ -208,9 +216,6 @@ angular.module("automap",['goban','pascalprecht.translate','ngStorage'])
     $scope.$on('goban.loaded',function(event,args){
         
         $scope.bufferI = parseInt($goban.myI);
-
-        console.log($goban.myColumnIndex[1]);
-
 
         if (args.p == 'data') {
             $scope.countD = 0;
