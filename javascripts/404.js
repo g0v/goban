@@ -258,6 +258,9 @@ angular.module("automap",[
                       return ans;
                 });
 
+                //TODO: 應該多一層才對
+                //$scope.hub[$goban.title][$goban.myI]
+
               if ($scope.hub[$goban.title]) {
                 angular.extend( $scope.hub[$goban.title] , {
                   data: angular.copy(extObj)
