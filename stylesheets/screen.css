@@ -181,6 +181,14 @@ nav#goban-nav ul li a.dark {
   border-radius: 50%;
   background-color: #999;
 }
+/* line 36, ../sass/_navbar.scss */
+nav#goban-nav ul li a.zopd {
+  background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHJhZGlhbEdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgY3g9IjI1cHgiIGN5PSIyNXB4IiByPSI0JSI+PHN0b3Agb2Zmc2V0PSIyNSUiIHN0b3AtY29sb3I9IiMwMGZmZmYiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMzMzMzMzMiLz48L3JhZGlhbEdyYWRpZW50PjwvZGVmcz48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyYWQpIiAvPjwvc3ZnPiA=');
+  background-size: 100%;
+  background-image: -moz-radial-gradient(25px 25px, #00ffff 1px, #333333 4px);
+  background-image: -webkit-radial-gradient(25px 25px, #00ffff 1px, #333333 4px);
+  background-image: radial-gradient(25px 25px, #00ffff 1px, #333333 4px);
+}
 
 /* line 23, ../sass/screen.scss */
 .goban-blank a {

@@ -11,7 +11,8 @@ nav#goban-nav(ng-style='{height: navHeight + "px"}')
     select.phoneOnly(ng-model='bufferI', ng-options='o as "LEV" + o for o in goban.myColumnIndex', ng-change='goban.setI(bufferI)')
     li.noPhone(ng-repeat='i in goban.myColumnIndex')
       a(ng-class='{active: i == goban.myI,\
-      dark: i < goban.myI}', ng-click='goban.setI(i);\
+      dark: i < goban.myI,\
+      zopd: i -1 == goban.myI}', ng-click='goban.setI(i);\
       maybeExtend()')
         img.goban-nav-icon(ng-show='goban.icons[i]', ng-src='{{goban.icons[i].u}}', alt='{{goban.icons[i].n}}', title='{{goban.icons[i].n}}')
     select#lang.wideOnly(ng-class='{"hidden": hideCtrl}', ng-model='myLang', ng-change='changeLanguage(myLang)', ng-options='l[0] as l[1] for l in langs')

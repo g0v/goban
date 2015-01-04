@@ -33,6 +33,9 @@ nav#goban-nav {
 					background-color: #999;
 				
 				}
+				&.zopd {	
+					@include background-image(radial-gradient(25px 25px, cyan 1px, #333 4px));				
+				}
 			}
 		}
 	}

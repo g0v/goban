@@ -239,6 +239,7 @@ angular.module("automap",[
             $scope.countD = 0;
             console.log("data loaded");
 
+/*
             //hub
             if ($goban.data && $goban.data
               && $scope.hub) {
@@ -270,7 +271,7 @@ angular.module("automap",[
                       data: angular.copy(extObj) 
                   }
               }
-            }
+            } */
         }
         else if (args.p == 'config') {
           $scope.countC = 0;
