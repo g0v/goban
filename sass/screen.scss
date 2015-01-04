@@ -16,7 +16,6 @@ body {
 
 
 @import "./_responsive.scss";
-
 @import "./_navbar.scss";
 
 .goban-blank {
@@ -25,34 +24,8 @@ body {
 	}
 }
 
-#goban-side {
-	#goban-sectionTitle {
-		color: black;
-		padding: 2px;
-		border-bottom: 2px dotted #aaf;
-		border-left: 2px dotted #aaf;
-	}
-	ul {
-		min-height:66px;
-	}
-	a {
-		color: #666;
-		&.active {
-			&::after {
-				position:relative;
-				top:-3px;
-				left:12px;
-				display:inline-block;
-				content:"";
-				width: 6px;
-				height: 6px;
-				border-top:2px solid cyan;
-				border-left:2px solid cyan;
-				@include transform(rotate(-45deg));
-			}
-		}
-	}
-}
+@import "./_sidebar.scss";
+@import "./_footer.scss";
 
 #goban-keyBordCtrl, #lang, #flag {
 	@include transition(all 1s ease-in);
@@ -61,51 +34,10 @@ body {
 	}
 }
 
-footer {
-	$h: 50px;
-	background-image: url("../favicon.png");
-	@include transition(all 1s linear);
-	font-size: 18px;
-	position:fixed;
-	bottom:0px; 
-	width:100%;
-	height: $h;
-	text-align:center;
-	padding: 10px;
-	color: darken(cyan,25);
-	background-color: hsla(260, 75%, 95%, 0.86);
-	border-top: 5px ridge gray;
-	ol {
-		display: inline-block;
-		max-width:600px;
-		list-style: upper-roman inside;
-		text-align:left;
-		li {
-			padding: 5px;
-			background-image: url("../images/tiles.png");
-		}
-	}
-	
-	#last, #next {
-		color: #999;
-		font-size: 18px;
-		padding: 10px;
-		margin-left: 15px;
-		margin-right: 15px;
-	}
-	&.sunk {
-		bottom: -$h - 20px;
-	}
-	&.full {
-		@include transition(all 2s linear);
-		height: 50%;
-		overflow:auto;
-	}
-}
+
 
 #flag {
 	height: 25px;
-
 }
 
 .tiny,.big,.gaint {

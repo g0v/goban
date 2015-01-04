@@ -239,13 +239,13 @@ angular.module("automap",[
             $scope.countD = 0;
             console.log("data loaded");
 
-/*
+
             //hub
             if ($goban.data && $goban.data
               && $scope.hub) {
 
-
-              var extObj = angular.copy($goban.data)
+              var extObj = {};
+              extObj[$goban.myI] = angular.copy($goban.data)
                 .map(function(o){
                       var ans = {}
                       var ks = Object.keys(o);
@@ -259,21 +259,21 @@ angular.module("automap",[
                       return ans;
                 });
 
-                //TODO: 應該多一層才對
-                //$scope.hub[$goban.title][$goban.myI]
-
               if ($scope.hub[$goban.title]) {
-                angular.extend( $scope.hub[$goban.title] , {
-                  data: angular.copy(extObj)
-                });
+                if ($scope.hub[$goban.title].data) {
+                  $scope.hub[$goban.title].data[$goban.myI] = extObj[$goban.myI];
+                } else {
+                  angular.extend( $scope.hub[$goban.title] , {
+                    data: angular.copy(extObj)
+                  });
+                }
               } else {
                   $scope.hub[$goban.title] = {
                       data: angular.copy(extObj) 
                   }
               }
-            } */
-        }
-        else if (args.p == 'config') {
+            } 
+        } else if (args.p == 'config') {
           $scope.countC = 0;
           console.log("config loaded");
 
