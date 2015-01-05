@@ -17,13 +17,15 @@ angular.module("automap",[
     'goban',
     'pascalprecht.translate',
     'ngStorage',
-    'firebase'])
-  
+    'firebase',
+    'ngEthercalc'])  
 .controller('autoCtrl', 
-    ['$scope','$window', '$timeout', '$goban', '$translate' ,'$langs'
-      ,'$tips','$localStorage','$firebase', autoCtrl])
-  .filter('uriFix', myURI)
-  ;
+    ['$scope','$window', 
+    '$timeout', '$goban',
+     '$translate','$langs'
+      ,'$tips','$localStorage',
+      '$firebase','$ethercalc', autoCtrl])
+.filter('uriFix', myURI);
 
   function myURI() {
     return function(uri){
@@ -31,7 +33,7 @@ angular.module("automap",[
     }
   }
 
-  function autoCtrl($scope, $window, $timeout, $goban, $translate, $langs, $tips, $localStorage, $firebase){
+  function autoCtrl($scope, $window, $timeout, $goban, $translate, $langs, $tips, $localStorage, $firebase, $ethercalc){
    
     //Display Params
     angular.extend($scope, {
@@ -224,10 +226,18 @@ angular.module("automap",[
             $timeout($goban.load, 500);
             $scope.countD++;
         }
-        else if (args.p == 'config' && $scope.countC < 5) {
-            console.log("try reload config");
-            $timeout($goban.loadConfig, 500);
-            $scope.countC++;
+        else if (args.p == 'config') {
+        	if ($scope.countC < 5) {
+	            console.log("try reload config");
+	            $timeout($goban.loadConfig, 500);
+	            $scope.countC++;
+	        } else {
+	          	$ethercalc.post(
+	          		$goban.path,
+	          		$goban.title,
+	          		"A2",
+	          		$goban.title);
+	        }
         }
     });
 
@@ -288,7 +298,18 @@ angular.module("automap",[
                 related : angular.copy($goban.related)
               } 
             }
-          } 
+          }
+
+          //autocomplete
+
+          if (!$goban.related || !$goban.related.length) {
+          	//POST TO ETHERCALC A2 $goban.title
+          		$ethercalc.post(
+	          		$goban.path,
+	          		$goban.title,
+	          		"A2",
+	          		$goban.title);
+          }
         }
     })
 
