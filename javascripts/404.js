@@ -163,7 +163,7 @@ angular.module("automap",[
       },
 
       relationChanged: function(){
-        $goban.loadDataOnly();
+        $goban.load();
       },
 
       blurFrame: function(){
