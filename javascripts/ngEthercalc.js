@@ -4,30 +4,31 @@
   myEthercalc = function($http){
     var obj;
     obj = {
-      post: function(path, title, cell, text){
-        var req;
+      post: function(p){
+        var path, title, cell, sur, text, req;
+        path = p.path || 'https://ethercalc.org/';
+        title = p.title || 'test-25';
+        cell = p.cell || 'A1';
+        sur = p.sur || '';
+        text = p.text || '';
         req = {
           method: 'POST',
-          url: path + '_/' + title,
+          url: path + '_/' + title + sur,
           'Content-Type': 'text/plain',
           dataType: 'application/json',
           contentType: 'text/plain',
           processData: false,
-          data: 'set ' + cell + ' text t ' + text
+          data: {
+            command: 'set ' + cell + ' text t ' + text
+          }
         };
-        $http(req).success(function(data, status, headers, config){}).error(function(data, status, headers, config){});
-        /* 
-        
-            $.ajax({
-                url: "https://ethercalc.org/_/test-12",
-                type: 'POST',
-                dataType: 'application/json',
-                contentType: 'text/plain',
-                processData: false,
-                data: 'set ' + cell + ' text t ' + text
-            });
-        */
-      }
+        $http(req).success(function(data, status, headers, config){
+          console.log('i\'ve just posted ' + text + ' to ' + path + '_/' + title + sur + '\'s cell' + cell);
+        }).error(function(data, status, headers, config){
+          console.log('error');
+        });
+      },
+      append: function(path, title, csv){}
     };
     return obj;
   };

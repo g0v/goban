@@ -6,5 +6,5 @@ div#goban-main(ng-class='{full: hideSideBar, v0: !hideSideBar &&v==0, v1: v==1}'
   small : myScale == "small",\
   big : myScale == "big",\
   gaint: myScale == "gaint",\
-  }', ng-src='{{getURL()}}', ng-click='hideCtrl = 1', ng-mouseover='hideCtrl = 1', ng-mouseout='goban.load(goban.myI); hideCtrl = 0')
+  }', ng-src='{{getURL()}}', ng-click='hideCtrl = 1', ng-mouseover='hideCtrl = 1', ng-mouseout='blurFrame()')
     

@@ -5,10 +5,14 @@ nav#goban-nav(ng-style='{height: navHeight + "px"}')
       span.bar2
       span.bar3
     span(ng-cloak='')
-      select(ng-model='goban.title', ng-options='o.t as o.n group by o.c for o in goban.related', ng-change='goban.load()')
+      select(ng-model='goban.title', 
+            ng-options='o.t as o.n group by o.c for o in goban.related', 
+            ng-change='relationChanged()')
       span.number.wideOnly {{goban.myI}}
       sub.wideOnly -{{goban.myJ}}
-    select.phoneOnly(ng-model='bufferI', ng-options='o as "LEV" + o for o in goban.myColumnIndex', ng-change='goban.setI(bufferI)')
+    select.phoneOnly(ng-model='bufferI',
+                      ng-options='o as "LEV" + o for o in goban.myColumnIndex',
+                      ng-change='goban.setI(bufferI)')
     li.noPhone(ng-repeat='i in goban.myColumnIndex')
       a(ng-class='{active: i == goban.myI,\
       dark: i < goban.myI,\

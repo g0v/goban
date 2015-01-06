@@ -134,6 +134,14 @@ angular.module("automap",[
         console.log($scope.editBack);
       },
 
+      initConfig: function(){
+        $ethercalc.post({
+                title: $goban.title,
+                sur:'Config',
+                cell: "A2",
+                text: $goban.title});
+      },
+
       maybeExtend: function(){
         if ($goban.myI == $goban.colMax) {
           $goban.colMax++;
@@ -141,23 +149,37 @@ angular.module("automap",[
         }
       },
 
-      goEdit: function(){
-          $scope.editBack = $goban.path + $goban.title + $goban.myI;
+      goEdit: function(c){
+          var sur = (c || $goban.myI);
+          $scope.editBack = $goban.path + $goban.title + sur;
       },
 
       myKeydown: function(e) {
         $goban.keyDown(e);
-        console.log(e.which);
+       // console.log(e.which);
         if (e.which == 90) {
           $scope.testing = !$scope.testing;
         }
+      },
+
+      relationChanged: function(){
+        $goban.loadDataOnly();
+      },
+
+      blurFrame: function(){
+        if ($scope.editBack == $goban.path + $goban.title + 'Config') {
+          $goban.loadConfig();
+        } else {
+          $goban.load($goban.myI);
+        }
+        $scope.hideCtrl = 0;
       },
 
       objNow: function(){
         return {t: $goban.title,
                 x: $goban.myI,
                 y: $goban.myJ,
-                n: ($goban.data[$goban.myJ] || {}).name}
+                n: (($goban.data && $goban.data[$goban.myJ]) || {}).name}
       }
     });
 
@@ -232,17 +254,17 @@ angular.module("automap",[
 	            $timeout($goban.loadConfig, 500);
 	            $scope.countC++;
 	        } else {
-	          	$ethercalc.post(
-	          		$goban.path,
-	          		$goban.title,
-	          		"A2",
-	          		$goban.title);
+              console.log($goban.title);
+	          	$scope.initConfig();
 	        }
         }
     });
 
     $scope.$on('goban.loaded',function(event,args){
         
+        if ($scope.editBack){
+          $scope.goEdit('Config');
+        }
         $scope.bufferI = parseInt($goban.myI);
 
         if (args.p == 'data') {
@@ -303,14 +325,10 @@ angular.module("automap",[
           //autocomplete
 
           if (!$goban.related || !$goban.related.length) {
-          	//POST TO ETHERCALC A2 $goban.title
-          		$ethercalc.post(
-	          		$goban.path,
-	          		$goban.title,
-	          		"A2",
-	          		$goban.title);
+          	$scope.initConfig();
           }
         }
+
     })
 
 

@@ -101,11 +101,7 @@
           this.pageLoading = false;
         }
       },
-      load: function(num){
-        num = num || 0;
-        if (this.webConfig) {
-          this.loadConfig(num);
-        }
+      loadCore: function(num){
         $http({
           method: "GET",
           url: this.path + this.title + num + '.csv',
@@ -123,6 +119,17 @@
             p: 'data'
           });
         });
+      },
+      load: function(num){
+        num = num || 0;
+        if (this.webConfig) {
+          this.loadConfig(num);
+        }
+        this.loadCore(num);
+      },
+      loadDataOnly: function(num){
+        num = num || 0;
+        return this.loadCore(num);
       },
       loadConfig: function(){
         var folderName;
@@ -396,6 +403,10 @@
         } else {
           goZ(n);
         }
+        goban.cast('dz', {
+          d: n,
+          p: goban.title
+        });
       },
       trust: function(url){
         return $sce.trustAsResourceUrl(url);
