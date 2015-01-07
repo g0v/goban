@@ -262,7 +262,8 @@ angular.module("automap",[
 
     $scope.$on('goban.loaded',function(event,args){
         
-        if ($scope.editBack){
+        if ($scope.editBack == $goban.path + $goban.title + sur;
+){
           $scope.goEdit('Config');
         }
         $scope.bufferI = parseInt($goban.myI);
