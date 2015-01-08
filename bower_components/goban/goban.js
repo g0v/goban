@@ -102,12 +102,14 @@
         }
       },
       loadCore: function(num){
+        var url;
+        url = this.path + this.title + num + '.csv.json';
         $http({
           method: "GET",
-          url: this.path + this.title + num + '.csv',
+          url: url,
           dataType: "text"
         }).success(function(data){
-          goban.data = goban.parseFromCSV(data);
+          goban.data = goban.parseDataFromJSON(data);
           goban.updateHash();
           goban.cast('loaded', {
             p: 'data'
@@ -134,7 +136,6 @@
       loadConfig: function(){
         var folderName;
         folderName = this.title + 'Config';
-        console.log(goban.path + goban.title + 'Config.csv');
         $http({
           method: "GET",
           url: goban.path + goban.title + 'Config.csv.json',
@@ -212,14 +213,14 @@
       },
       redirect: function(url){
         if (url.indexOf(".csv") === -1) {
-          url += '.csv';
+          url += '.csv.json';
         }
         $http({
           method: "GET",
           url: url,
           dataType: "text"
         }).success(function(data){
-          goban.data = goban.parseFromCSV(data);
+          goban.data = goban.parseDataFromJSON(data);
           goban.cast('loaded', {
             p: 'data',
             isRedirected: true
@@ -239,6 +240,58 @@
         goban.cast('initialized', {
           i: this.myI
         });
+      },
+      parseDataFromJSON: function(d){
+        var maybeRedirect, bodyArrays, goodList, lastFolderIndex, bestList;
+        this.sectionTitle = d[1][1];
+        maybeRedirect = d[0][0];
+        if (!this.sectionTitle && !maybeRedirect) {
+          maybeRedirect = this.path + this.title;
+        }
+        if (maybeRedirect && maybeRedirect.substr(0, 1) !== '#') {
+          goban.redirect(maybeRedirect);
+          return;
+        }
+        bodyArrays = d.slice(2);
+        goodList = bodyArrays.filter(function(list){
+          return list[1];
+        });
+        lastFolderIndex = 0;
+        bestList = goodList.map(function(list, index){
+          var isClosed, isBlank, isIsolated, obj;
+          isClosed = false;
+          if (!list[0]) {
+            lastFolderIndex = index;
+            if (list[2] && (list[2].search(/exp[ea]nd(.+)true/ > -1) || list[2].search(/open/ > -1))) {
+              isClosed = false;
+            }
+            if (list[2] && (list[2].search(/exp[ea]nd(.+)false/ > -1) || list[2].search(/close/ > -1))) {
+              isClosed = true;
+            }
+          } else {
+            if (list[2] && list[2].search(/blank/ > -1)) {
+              isBlank = true;
+            }
+            if (list[2] && list[2].search(/iso/ > -1)) {
+              isIsolated = true;
+            }
+          }
+          obj = (list[0] && {
+            url: list[0].replace(/["\s]/g, ''),
+            name: list[1].replace(/["\s]/g, ''),
+            labels: (list[3] || "").replace(/["\s]/g, '').split('+'),
+            isFolder: false,
+            pIndex: lastFolderIndex,
+            isBlank: isBlank,
+            isIsolated: isIsolated
+          }) || {
+            name: list[1],
+            isFolder: true,
+            isClosed: isClosed
+          };
+          return obj;
+        });
+        return bestList;
       },
       parseFromCSV: function(csv){
         var allTextLines, maybeRedirect, bodyLines, goodList, lastFolderIndex, bestList;
