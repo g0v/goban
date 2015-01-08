@@ -3,6 +3,7 @@ angular.module("automap")
     BACKUP: '備份下載',
     LEVELUP : '前推',
     LEVELDOWN : '倒溯',
+    ASSOCIATE_THINKING : '聯想',
     //
     UP: '向前',
     DOWN: '向後',
@@ -35,6 +36,7 @@ angular.module("automap")
       BACKUP: '备份下载',
       LEVELUP : '前推',
       LEVELDOWN : '倒溯',
+      ASSOCIATE_THINKING : '联想',
       //
       UP: '向前',
       DOWN: '向后',
