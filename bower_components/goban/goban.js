@@ -125,7 +125,7 @@
         if (this.webConfig) {
           this.loadConfig(num);
         }
-        this.loadCore(num);
+        goban.loadCore(num);
       },
       loadDataOnly: function(num){
         num = num || 0;
