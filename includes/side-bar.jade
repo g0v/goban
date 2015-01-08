@@ -1,11 +1,13 @@
-div#goban-side(ng-cloak='', ng-click='hideSideBar = !hideSideBar', ng-class='{hidden: hideSideBar, v0: !hideSideBar && v==0, v1: v==1}', ng-style='{height: countHeight() - navHeight + "px"}', style='display:block;overflow:auto')
+div#goban-side(ng-cloak='',
+    ng-class='{hidden: hideSideBar, v0: !hideSideBar && v==0, v1: v==1}', ng-style='{height: countHeight() - navHeight + "px"}', style='display:block;overflow:auto')
   div#setting-bar
-    a(ng-click='goEdit()')
-      // <a ng-href="{{goban.path}}{{goban.title}}{{goban.myI}}" target="myFrame">
+    a(ng-click='goEdit();hideSideBar = !hideSideBar')
       span#goban-sectionTitle
         | {{(goban.sectionTitle && 'EDIT') || 'CREATE' | translate}}{{goban.sectionTitle || ''}}
-    select#scale(ng-model='myScale', ng-options='s[0] as s[1] for s in scales')
-  ul
+    select#scale(ng-model='myScale',
+        ng-options='s[0] as s[1] for s in scales',
+        title = "{{'SCALE' | translate}}")
+  ul(ng-click='hideSideBar = !hideSideBar')
     li(ng-repeat='j in goban.data | toIndex', ng-click='goban.setJ(j)')
       a(ng-if='goban.data[j].isFolder', ng-click='$parent.goban.data[j].isClosed = !goban.data[j].isClosed; sleep();', ng-class='{active: goban.myJ == j, folder: goban.data[j].isFolder}')
         img.folder(ng-show='goban.data[j].isClosed', src='images/isClosed.png')
@@ -15,16 +17,23 @@ div#goban-side(ng-cloak='', ng-click='hideSideBar = !hideSideBar', ng-class='{hi
       a.elem(ng-if='!goban.data[j].isFolder', ng-show=' goban.data[j].isIsolated || !goban.data[goban.data[j].pIndex].isClosed', ng-class='{active: goban.myJ == j}', ng-click='$parent.goban.myJ = j; sleep();')
         img(ng-src='http://www.google.com/s2/favicons?domain={{goban.data[j].url}}')
         | {{goban.data[j].name || j}}
+
+
         // TODO: 加入Label
         // 從資料的第四欄，讀取並顯示
+
   hr
   ul(ng-cloak='')
     i.gray
       | {{'MY_STAR' | translate }}
     a(ng-click='toggleAnchor(objNow())')
-      img#flag(ng-src='{{showStar(objNow())}}', alt='{{"GATHER" | translate}}', title='{{"GATHER" | translate}}')
+      img#flag(ng-src='{{showStar(objNow())}}',
+        alt='{{"GATHER" | translate}}', 
+        title='{{"GATHER" | translate}}')
     a(ng-click='resetAnchors()')
-      img#flag(src='images/mySelf.png')
+      img#flag(src='images/mySelf.png',
+        alt='{{"ZAZAN" | translate}}', 
+        title='{{"ZAZAN" | translate}}')
     li(ng-repeat='a in $s.myAnchors')
       //
                 <a id = "x" class = "gray" ng-click = "cancel(a)">×</a> 
