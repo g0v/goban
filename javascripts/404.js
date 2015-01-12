@@ -245,7 +245,7 @@ angular.module("automap",[
 
     $scope.$on('goban.error',function(event,args){
         if (args.p == 'data' && $scope.countD < 5) {            
-            $timeout($goban.load, 500);
+            $goban.load($goban.myI);
             $scope.countD++;
         }
         else if (args.p == 'config') {
@@ -268,9 +268,7 @@ angular.module("automap",[
         $scope.bufferI = parseInt($goban.myI);
 
         if (args.p == 'data') {
-            $scope.countD = 0;
             console.log("data loaded");
-
 
             //hub
             if ($goban.data && $goban.data

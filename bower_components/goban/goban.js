@@ -243,8 +243,8 @@
       },
       parseDataFromJSON: function(d){
         var maybeRedirect, bodyArrays, goodList, lastFolderIndex, bestList;
-        this.sectionTitle = d[1][1];
-        maybeRedirect = d[0][0];
+        this.sectionTitle = ((d || [])[1] || [])[1];
+        maybeRedirect = ((d || [])[0] || [])[0];
         if (!this.sectionTitle && !maybeRedirect) {
           maybeRedirect = this.path + this.title;
         }
