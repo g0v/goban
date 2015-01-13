@@ -410,11 +410,11 @@
           goX(myN);
         }
         goban.cast('dx', {
-          d: n,
+          d: myN,
           p: goban.myI
         });
       },
-      dy: function(n, isLoop){
+      dy: function(myN, isLoop){
         var goY;
         goY = function(n){
           goban.myJ = parseInt(goban.myJ);
@@ -434,12 +434,12 @@
         };
         this.maybeDelay();
         if (this.animate.delay) {
-          $timeout(goY(n), this.animate.delay);
+          $timeout(goY(myN), this.animate.delay);
         } else {
           goY(n);
         }
         goban.cast('dy', {
-          d: n,
+          d: myN,
           p: goban.myJ
         });
       },
