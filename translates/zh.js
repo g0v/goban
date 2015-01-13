@@ -4,6 +4,7 @@ angular.module("automap")
     LEVELUP : '前推',
     LEVELDOWN : '倒溯',
     ASSOCIATE_THINKING : '聯想',
+    TOGGLE_SIDEBAR : '顯示/隱藏側欄',
     //
     UP: '向前',
     DOWN: '向後',
@@ -37,6 +38,7 @@ angular.module("automap")
       LEVELUP : '前推',
       LEVELDOWN : '倒溯',
       ASSOCIATE_THINKING : '联想',
+      TOGGLE_SIDEBAR : '显示/隐藏侧栏',
       //
       UP: '向前',
       DOWN: '向后',
