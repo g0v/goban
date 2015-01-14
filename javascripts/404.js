@@ -21,7 +21,7 @@ angular.module("automap",[
     'firebase',
     'ngEthercalc'])  
 .controller('autoCtrl', 
-    ['$scope','$window', 
+    ['$scope','$window', '$swipe',
     '$timeout', '$goban',
      '$translate','$langs'
       ,'$tips','$localStorage',
@@ -34,7 +34,7 @@ angular.module("automap",[
     }
   }
 
-  function autoCtrl($scope, $window, $timeout, $goban, $translate, $langs, $tips, $localStorage, $firebase, $ethercalc){
+  function autoCtrl($scope, $window, $swipe, $timeout, $goban, $translate, $langs, $tips, $localStorage, $firebase, $ethercalc){
    
     //Display Params
     angular.extend($scope, {
@@ -46,6 +46,34 @@ angular.module("automap",[
       navHeight : 50,
       countHeight : function(){
         return $window.innerHeight - 40;
+      }
+    });
+
+    //Swipe <--
+
+    var startX, startY, endX, endY;
+
+    $swipe.bind(angular.element(document.getElementById('body')), {
+      start: function(coords) {
+        startX = coords.x;
+        startY = coords.y;
+      },
+      move: function(coords) {
+        // ...
+      },
+      end: function(coords) {
+        endX = coords.x;
+        endY = coords.y;
+        if (endY - startY > 50) {
+            $scope.toggleAnchor($scope.objNow());
+            // TODO: 改為只存不刪
+        } else if (endY - startY < -50) {
+              $scope.toggleAnchor($scope.objNow());
+              // TODO: 改為只刪不存
+        }
+      },
+      cancel: function(coords) {
+        // ...
       }
     });
 
@@ -249,20 +277,7 @@ angular.module("automap",[
     })
 
     $scope.$on('goban.error',function(event,args){
-        if (args.p == 'data' && $scope.countD < 5) {            
-            $goban.load($goban.myI);
-            $scope.countD++;
-        }
-        else if (args.p == 'config') {
-        	if ($scope.countC < 5) {
-	            console.log("try reload config");
-	            $timeout($goban.loadConfig, 500);
-	            $scope.countC++;
-	        } else {
-              console.log($goban.title);
-	          	$scope.initConfig();
-	        }
-        }
+        console.log("Error on:" + args.p);
     });
 
     $scope.$on('goban.loaded',function(event,args){
