@@ -134,6 +134,10 @@ angular.module("automap",[
         console.log($scope.editBack);
       },
 
+      toggleSideBar: function(){
+          $scope.hideSideBar = !$scope.hideSideBar
+      },
+
       initConfig: function(){
         $ethercalc.post({
                 title: $goban.title,
