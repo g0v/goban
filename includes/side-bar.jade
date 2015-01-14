@@ -28,6 +28,9 @@ div#goban-side(ng-cloak='',
   ul(ng-cloak='')
     i.gray
       | {{'MY_STAR' | translate }}
+
+      // TODO: 改為select, 加入Search的選項
+      
     a(ng-click='toggleAnchor(objNow())')
       img#flag(ng-src='{{showStar(objNow())}}',
         alt='{{"GATHER" | translate}}', 

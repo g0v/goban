@@ -16,6 +16,7 @@ console.log(userPath);
 angular.module("automap",[
     'goban',
     'pascalprecht.translate',
+    'ngTouch',
     'ngStorage',
     'firebase',
     'ngEthercalc'])  

@@ -9,8 +9,13 @@ $md : 1000px;
 	}
 	#goban-nav {
 		select {
-			min-width: 0px !important;
-			width: 80px !important;
+			min-width: 80px !important;
+			// width: 80px !important;
+		}
+		#logo {
+			img.goban-logo.goban-fixed-right {
+				right: 7px;
+			}
 		}
 	}
 	#goban-side {

@@ -85,48 +85,51 @@ body {
 
   /* line 11, ../sass/_responsive.scss */
   #goban-nav select {
-    min-width: 0px !important;
-    width: 80px !important;
+    min-width: 80px !important;
+  }
+  /* line 16, ../sass/_responsive.scss */
+  #goban-nav #logo img.goban-logo.goban-fixed-right {
+    right: 7px;
   }
 
-  /* line 16, ../sass/_responsive.scss */
+  /* line 21, ../sass/_responsive.scss */
   #goban-side {
     position: absolute;
     left: 0%;
   }
-  /* line 19, ../sass/_responsive.scss */
+  /* line 24, ../sass/_responsive.scss */
   #goban-side.v0 {
     width: 100%;
   }
-  /* line 22, ../sass/_responsive.scss */
+  /* line 27, ../sass/_responsive.scss */
   #goban-side.hidden {
     width: 50%;
     left: -50%;
   }
 
-  /* line 27, ../sass/_responsive.scss */
+  /* line 32, ../sass/_responsive.scss */
   #goban-main {
     width: 100%;
   }
-  /* line 29, ../sass/_responsive.scss */
+  /* line 34, ../sass/_responsive.scss */
   #goban-main.v0 {
     width: 0%;
   }
 }
 @media screen and (min-width: 500px) and (max-width: 800px) {
-  /* line 36, ../sass/_responsive.scss */
+  /* line 41, ../sass/_responsive.scss */
   .phoneOnly, .wideOnly {
     display: none !important;
   }
 }
 @media screen and (min-width: 800px) and (max-width: 1000px) {
-  /* line 42, ../sass/_responsive.scss */
+  /* line 47, ../sass/_responsive.scss */
   .phoneOnly {
     display: none !important;
   }
 }
 @media screen and (min-width: 1000px) {
-  /* line 48, ../sass/_responsive.scss */
+  /* line 53, ../sass/_responsive.scss */
   .phoneOnly {
     display: none !important;
   }
