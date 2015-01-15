@@ -1,6 +1,8 @@
 html(ng-app='automap', ng-controller='autoCtrl')
   include ./includes/head.jade
-  body(ng-keydown="myKeydown($event)",
+  body(id = "body" ng-keydown="myKeydown($event)",
+      ng-swipe-right="goban.dx(-1)",
+      ng-swipe-left="goban.dx(1)",
       ng-style="{height: countHeight() + 'px'}",
       ng-init = "v = 0")
     include ./includes/nav.jade
