@@ -203,7 +203,9 @@ angular.module("automap",[
         if ($scope.editBack == $goban.path + $goban.title + 'Config') {
           $goban.loadConfig();
         } else {
-          $goban.load($goban.myI);
+          if ($scope.editBack) {
+          	$goban.load($goban.myI);
+          }
         }
         $scope.hideCtrl = 0;
       },
