@@ -7,7 +7,7 @@ div#goban-side(ng-cloak='',
     select#scale(ng-model='myScale',
         ng-options='s[0] as s[1] for s in scales',
         title = "{{'SCALE' | translate}}")
-  ul
+  ul(ng-keydown="myKeydown($event)")
     li(ng-repeat='j in goban.data | toIndex', ng-click='goban.setJ(j)')
       a(ng-if='goban.data[j].isFolder', ng-click='$parent.goban.data[j].isClosed = !goban.data[j].isClosed; sleep();', ng-class='{active: goban.myJ == j, folder: goban.data[j].isFolder}')
         img.folder(ng-show='goban.data[j].isClosed', src='images/isClosed.png')
@@ -25,24 +25,36 @@ div#goban-side(ng-cloak='',
         // 從資料的第四欄，讀取並顯示
 
   hr
-  ul(ng-cloak='')
-    i.gray
+  ul(id = "tools" ng-cloak='' ng-controller = "hubCtrl")
+    select(ng-model = "trick" ng-options = "t.t as t.n | translate for t in tricks")
+
+    i.gray(ng-cloak='', ng-hide="1")
       | {{'MY_STAR' | translate }}
 
-      // TODO: 改為select, 加入Search的選項
+    span(ng-show = "trick == 'm'")
+      a(ng-click='toggleAnchor(objNow())')
+        img#flag(ng-src='{{showStar(objNow())}}',
+          alt='{{"GATHER" | translate}}', 
+          title='{{"GATHER" | translate}}')
+      a(ng-click='resetAnchors()')
+        img#flag(src='images/mySelf.png',
+          alt='{{"ZAZAN" | translate}}', 
+          title='{{"ZAZAN" | translate}}') 
+
+    li(ng-show = "trick == 's'") 
+      input(type = "search",
+            ng-model = "key",
+            placeholder = "{{'SEARCH' | translate}}")     
+    li(ng-show = "trick == 's'"
+        ng-repeat='g in getIndex(key)')
+      a(ng-click="goban.title = g; goban.load()")
+        | {{g}}
+        
+
+    li(ng-show = "trick == 'm'",
+        ng-repeat='a in $s.myAnchors')
       
-    a(ng-click='toggleAnchor(objNow())')
-      img#flag(ng-src='{{showStar(objNow())}}',
-        alt='{{"GATHER" | translate}}', 
-        title='{{"GATHER" | translate}}')
-    a(ng-click='resetAnchors()')
-      img#flag(src='images/mySelf.png',
-        alt='{{"ZAZAN" | translate}}', 
-        title='{{"ZAZAN" | translate}}')
-    li(ng-repeat='a in $s.myAnchors')
-      //
-                <a id = "x" class = "gray" ng-click = "cancel(a)">×</a> 
-      a(ng-click='goban.title = a.t; goban.myI = a.x; goban.myJ = a.y; goban.load(a[x])')
-        | {{a.x}}-{{a.y}}:{{a.n | uriFix }}
-        br
-        i.gray @{{a.t | uriFix}}
+      a(ng-click='goban.title = a.t; goban.myI = a.x; goban.myJ = a.y; goban.load(a[x])',
+        title = "{{a.x}}-{{a.y}}@{{a.t | uriFix}}")
+        | {{a.n | uriFix }}
+      hr

@@ -198,23 +198,29 @@ nav#goban-nav ul li a.zopd {
   font-size: 11px !important;
 }
 
-/* line 2, ../sass/_sidebar.scss */
-#goban-side #goban-sectionTitle {
+/* line 3, ../sass/_sidebar.scss */
+#goban-side #setting-bar #goban-sectionTitle {
   color: black;
   padding: 2px;
   border-bottom: 2px dotted #aaf;
   border-left: 2px dotted #aaf;
 }
-/* line 8, ../sass/_sidebar.scss */
+/* line 9, ../sass/_sidebar.scss */
+#goban-side #setting-bar select {
+  position: relative;
+  top: 5px;
+  left: 25px;
+}
+/* line 15, ../sass/_sidebar.scss */
 #goban-side ul {
   min-height: 66px;
 }
-/* line 11, ../sass/_sidebar.scss */
-#goban-side a {
+/* line 18, ../sass/_sidebar.scss */
+#goban-side ul li a {
   color: #666;
 }
-/* line 14, ../sass/_sidebar.scss */
-#goban-side a.active::after {
+/* line 21, ../sass/_sidebar.scss */
+#goban-side ul li a.active::after {
   position: relative;
   top: -3px;
   left: 12px;
@@ -228,6 +234,18 @@ nav#goban-nav ul li a.zopd {
   -ms-transform: rotate(-45deg);
   -webkit-transform: rotate(-45deg);
   transform: rotate(-45deg);
+}
+/* line 39, ../sass/_sidebar.scss */
+#goban-side #tools select {
+  font-size: 18px;
+  padding: 5px;
+  position: relative;
+  top: -7px;
+  left: -7px;
+}
+/* line 47, ../sass/_sidebar.scss */
+#goban-side #tools a {
+  font-size: 14px;
 }
 
 /* line 1, ../sass/_footer.scss */

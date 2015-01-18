@@ -1,28 +1,51 @@
 #goban-side {
-	#goban-sectionTitle {
-		color: black;
-		padding: 2px;
-		border-bottom: 2px dotted #aaf;
-		border-left: 2px dotted #aaf;
+	#setting-bar{
+		#goban-sectionTitle {
+			color: black;
+			padding: 2px;
+			border-bottom: 2px dotted #aaf;
+			border-left: 2px dotted #aaf;
+		}
+		select {
+			position: relative;
+			top: 5px;
+			left: 25px;
+		}
 	}
 	ul {
 		min-height:66px;
-	}
-	a {
-		color: #666;
-		&.active {
-			&::after {
-				position:relative;
-				top:-3px;
-				left:12px;
-				display:inline-block;
-				content:"";
-				width: 6px;
-				height: 6px;
-				border-top:2px solid cyan;
-				border-left:2px solid cyan;
-				@include transform(rotate(-45deg));
+		li {
+			a {
+				color: #666;
+				&.active {
+					&::after {
+						position:relative;
+						top:-3px;
+						left:12px;
+						display:inline-block;
+						content:"";
+						width: 6px;
+						height: 6px;
+						border-top:2px solid cyan;
+						border-left:2px solid cyan;
+						@include transform(rotate(-45deg));
+					}
+				}
 			}
+		}
+	}
+	
+	#tools {
+		select {
+			font-size: 18px;
+			padding: 5px;
+			position: relative;
+			top: -7px;
+			left: -7px;
+
+		}
+		a {
+			font-size: 14px;
 		}
 	}
 }

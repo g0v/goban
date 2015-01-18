@@ -246,22 +246,6 @@ angular.module("automap",[
     }
 
 
-    // Firebase
-
-    var u = 'https://goban-hub.firebaseio.com/';
-    var ref = new Firebase(u);
-
-    // create an AngularFire reference to the data
-    var sync = $firebase(ref);
-
-  // download the data into a local object
-    var syncObject = sync.$asObject();
-    // synchronize the object with a three-way data binding
-    // click on `index.html` above to see it used in the DOM!
-    syncObject.$bindTo($scope, "hub");
-
-
-
     //Events for event-driven programming
 
     angular.extend($scope,{
@@ -284,7 +268,7 @@ angular.module("automap",[
 
     $scope.$on('goban.loaded',function(event,args){
         
-        if ($scope.editBack.indexOf('Config') > -1){
+        if ($scope.editBack && $scope.editBack.indexOf('Config') > -1){
           $scope.goEdit('Config');
         }
 
@@ -293,55 +277,11 @@ angular.module("automap",[
         if (args.p == 'data') {
             console.log("data loaded");
 
-            //hub
-            if ($goban.data && $goban.data
-              && $scope.hub) {
-
-              var extObj = {};
-              extObj[$goban.myI] = angular.copy($goban.data)
-                .map(function(o){
-                      var ans = {}
-                      var ks = Object.keys(o);
-                      for (var i = 0; i < ks.length; i++) {
-                        if (typeof(o[ks[i]]) == 'undefined') {
-                          ans[ks[i]] = false
-                        } else {
-                          ans[ks[i]] = decodeURI(o[ks[i]]);
-                        }
-                      };
-                      return ans;
-                });
-
-              if ($scope.hub[$goban.title]) {
-                if ($scope.hub[$goban.title].data) {
-                  $scope.hub[$goban.title].data[$goban.myI] = extObj[$goban.myI];
-                } else {
-                  angular.extend( $scope.hub[$goban.title] , {
-                    data: angular.copy(extObj)
-                  });
-                }
-              } else {
-                  $scope.hub[$goban.title] = {
-                      data: angular.copy(extObj) 
-                  }
-              }
-            } 
+            
         } else if (args.p == 'config') {
           $scope.countC = 0;
           console.log("config loaded");
 
-          //hub
-      
-          if ($goban.related && $goban.related[0]
-            && $scope.hub) {
-            if ($scope.hub[$goban.title]) {
-              $scope.hub[$goban.title].related = angular.copy($goban.related);
-            } else {
-              $scope.hub[$goban.title] = {
-                related : angular.copy($goban.related)
-              } 
-            }
-          }
 
           //autocomplete
 

@@ -1,6 +1,6 @@
 html(ng-app='automap', ng-controller='autoCtrl')
   include ./includes/head.jade
-  body(id = "body" ng-keydown="myKeydown($event)",
+  body(id = "body",
       ng-swipe-right="goban.dx(-1)",
       ng-swipe-left="goban.dx(1)",
       ng-style="{height: countHeight() + 'px'}",
@@ -17,6 +17,7 @@ html(ng-app='automap', ng-controller='autoCtrl')
     // Main
     script(src='/javascripts/ngEthercalc.js', type='text/javascript')
     script(src='/javascripts/404.js', type='text/javascript')
+    script(src='/javascripts/567hub.js', type='text/javascript')
   
     // Langs
     include ./includes/js-langs.jade

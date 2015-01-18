@@ -18,6 +18,8 @@ angular.module("automap")
     GATHER: '採集',
     ZAZAN: '禪定',
     //
+    GOBAN_HUB: '搜詢',
+    //
     EDIT: '編輯',
   	CREATE: '創建',
     //
