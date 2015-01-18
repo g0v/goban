@@ -305,7 +305,7 @@ angular.module("automap",[
                         if (typeof(o[ks[i]]) == 'undefined') {
                           ans[ks[i]] = false
                         } else {
-                          ans[ks[i]] = o[ks[i]];
+                          ans[ks[i]] = decodeURI(o[ks[i]]);
                         }
                       };
                       return ans;
