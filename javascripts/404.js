@@ -196,7 +196,7 @@ angular.module("automap",[
       },
 
       relationChanged: function(){
-        $goban.load();
+            $goban.load();
       },
 
       blurFrame: function(){
@@ -284,9 +284,10 @@ angular.module("automap",[
 
     $scope.$on('goban.loaded',function(event,args){
         
-        if ($scope.editBack == $goban.path + $goban.title + 'Config'){
+        if ($scope.editBack.indexOf('Config') > -1){
           $scope.goEdit('Config');
         }
+
         $scope.bufferI = parseInt($goban.myI);
 
         if (args.p == 'data') {
