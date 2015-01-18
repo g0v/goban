@@ -15,15 +15,17 @@ angular.module("automap")
   	OPEN_BLANK: '按此可開啟新頁籤',
     //
     MY_STAR: '還記得',
-    GATHER: '加入/移除',
-    ZAZAN: '全放下/全回復',
+    GATHER: '採集',
+    ZAZAN: '禪定',
     //
     EDIT: '編輯',
   	CREATE: '創建',
     //
     'LAST TIP':'上一則提示',
     'NEXT TIP':'下一則提示',
-      WEB_CONFIG: '聯想設定',
+    WEB_CONFIG: '聯想設定',
+    
+
     //
   	'TO CREATE A GOBAN, JAST VISIT https://goban.tw/YOUR_FOLDER' : '前往"https://goban.tw/您的檔名"，即可創建您的黑客棋盤',
   	'CLICK "CREATE" TO ENTER EDITOR' : '點擊「創建」進入編輯器',
