@@ -20,28 +20,25 @@
       <ul ng-cloak=""><a id="goban-toggleSidebar" ng-click="hideSideBar = !hideSideBar" title="{{'TOGGLE_SIDEBAR' | translate}}"><span class="bar1"></span><span class="bar2"></span><span class="bar3"></span></a><span ng-cloak="">
           <select ng-model="goban.title" ng-options="o.t as o.n + &quot; &quot; group by o.c for o in goban.related" ng-change="relationChanged()" title="{{'ASSOCIATE_THINKING' | translate}}"></select><span class="number wideOnly">{{goban.myI}}</span><sub class="wideOnly">-{{goban.myJ}}</sub></span>
         <select ng-model="bufferI" ng-options="o as &quot;LEV&quot; + o for o in goban.myColumnIndex" ng-change="goban.setI(bufferI)" class="phoneOnly"></select>
-        <li ng-repeat="i in goban.myColumnIndex" class="noPhone"><a ng-class="{active: i == goban.myI,      dark: i &lt; goban.myI,      zopd: i -1 == goban.myI}" ng-click="goban.setI(i);      maybeExtend()"><img ng-show="goban.icons[i]" ng-src="{{goban.icons[i].u}}" alt="{{goban.icons[i].n}}" title="{{goban.icons[i].n}}" class="goban-nav-icon"/></a></li><a id="logo" ng-click="editBack = goban.path + goban.title + &quot;Config&quot;"><img alt="{{&quot;WEB_CONFIG&quot; | translate}}" title="{{&quot;WEB_CONFIG&quot;| translate}}" src="/bower_components/goban/Goban_19x19_vide.png" class="goban-logo goban-fixed-right"/></a>
+        <li ng-repeat="i in goban.myColumnIndex" class="noPhone"><a ng-class="{active: i == goban.myI,      dark: i &lt; goban.myI,      zopd: i -1 == goban.myI}" ng-click="goban.setI(i);      maybeExtend()"><img ng-show="goban.icons[i]" ng-src="{{goban.icons[i].u}}" alt="{{goban.icons[i].n}}" title="{{goban.icons[i].n}}" class="goban-nav-icon"/></a></li>
+        <select id="scale" ng-model="myScale" ng-options="s[0] as (&quot;SCALE&quot; | translate) + &quot;:&quot; +  s[1] for s in scales" title="{{'SCALE' | translate}}" class="noPhone"></select><a id="logo" ng-click="editBack = goban.path + goban.title + &quot;Config&quot;"><img alt="{{&quot;WEB_CONFIG&quot; | translate}}" title="{{&quot;WEB_CONFIG&quot;| translate}}" src="/bower_components/goban/Goban_19x19_vide.png" class="goban-logo goban-fixed-right"/></a>
       </ul>
     </nav>
     <div id="goban-side" ng-cloak="" ng-class="{hidden: hideSideBar, v0: !hideSideBar &amp;&amp; v==0, v1: v==1}" ng-style="{height: countHeight() - navHeight + &quot;px&quot;}" style="display:block;overflow:auto">
-      <div id="setting-bar"><a ng-click="goEdit();toggleSideBar();"><span id="goban-sectionTitle">{{(goban.sectionTitle && 'EDIT') || 'CREATE' | translate}}{{goban.sectionTitle || ''}}</span></a>
-        <select id="scale" ng-model="myScale" ng-options="s[0] as s[1] for s in scales" title="{{'SCALE' | translate}}"></select>
-      </div>
+      <div id="setting-bar"><a ng-click="goEdit();toggleSideBar();"><span id="goban-sectionTitle">{{(goban.sectionTitle && 'EDIT') || 'CREATE' | translate}}{{goban.sectionTitle || ''}}</span></a></div>
       <ul ng-keydown="myKeydown($event)">
-        <li ng-repeat="j in goban.data | toIndex" ng-click="goban.setJ(j)"><a ng-if="goban.data[j].isFolder" ng-click="$parent.goban.data[j].isClosed = !goban.data[j].isClosed; sleep();" ng-class="{active: goban.myJ == j, folder: goban.data[j].isFolder}"><img ng-show="goban.data[j].isClosed" src="images/isClosed.png" class="folder"/><img ng-show="!goban.data[j].isClosed" src="images/isOpen.png" class="folder"/>{{goban.data[j].name || j}}<b ng-class="{right: goban.data[j].isClosed, down: !goban.data[j].isClosed}" class="arrowHead"></b></a><a ng-if="!goban.data[j].isFolder" ng-show="goban.data[j].isIsolated || !goban.data[goban.data[j].pIndex].isClosed" ng-class="{active: goban.myJ == j}" ng-click="$parent.goban.myJ = j; sleep(); toggleSideBar();" class="elem"><img ng-src="http://www.google.com/s2/favicons?domain={{goban.data[j].url}}"/>{{goban.data[j].name || j}}
-            <!-- TODO: 加入Label-->
-            <!-- 從資料的第四欄，讀取並顯示--></a></li>
+        <li ng-repeat="j in goban.data | toIndex" ng-click="goban.setJ(j)"><a ng-if="goban.data[j].isFolder" ng-click="$parent.goban.data[j].isClosed = !goban.data[j].isClosed; sleep();" ng-class="{active: goban.myJ == j, folder: goban.data[j].isFolder}"><img ng-show="goban.data[j].isClosed" src="images/isClosed.png" class="folder"/><img ng-show="!goban.data[j].isClosed" src="images/isOpen.png" class="folder"/>{{goban.data[j].name || j}}<b ng-class="{right: goban.data[j].isClosed, down: !goban.data[j].isClosed}" class="arrowHead"></b></a><a ng-if="!goban.data[j].isFolder" ng-show="goban.data[j].isIsolated || !goban.data[goban.data[j].pIndex].isClosed" ng-class="{active: goban.myJ == j}" ng-click="$parent.goban.myJ = j; sleep(); toggleSideBar();" class="elem"><img ng-src="http://www.google.com/s2/favicons?domain={{goban.data[j].url}}"/>{{goban.data[j].name || j}}</a></li>
       </ul>
       <hr/>
-      <ul id="tools" ng-cloak="" ng-controller="hubCtrl">
-        <select ng-model="trick" ng-options="t.t as t.n | translate for t in tricks"></select><i ng-cloak="" ng-hide="1" class="gray">{{'MY_STAR' | translate }}</i><span ng-show="trick == 'm'"><a ng-click="toggleAnchor(objNow())"><img id="flag" ng-src="{{showStar(objNow())}}" alt="{{&quot;GATHER&quot; | translate}}" title="{{&quot;GATHER&quot; | translate}}"/></a><a ng-click="resetAnchors()"><img id="flag" src="images/mySelf.png" alt="{{&quot;ZAZAN&quot; | translate}}" title="{{&quot;ZAZAN&quot; | translate}}"/></a></span>
-        <li ng-show="trick == 's'"> 
+      <ul id="tools" ng-cloak="" ng-controller="hubCtrl" ng-keydown="keyPressed($event)">
+        <li> 
           <input type="search" ng-model="key" placeholder="{{'SEARCH' | translate}}"/>
         </li>
-        <li ng-show="trick == 's'" ng-repeat="g in getIndex(key)"><a ng-click="goban.title = g; goban.load()">{{g}}</a></li>
-        <li ng-show="trick == 'm'" ng-repeat="a in $s.myAnchors"><a ng-click="goban.title = a.t; goban.myI = a.x; goban.myJ = a.y; goban.load(a[x])" title="{{a.x}}-{{a.y}}@{{a.t | uriFix}}">{{a.n | uriFix }}</a>
-          <hr/>
-        </li>
+        <li ng-repeat="k in getIndex(key)"><a ng-click="jumpTo(k)" ng-class="{active: curious == $index}" title="{{hub[k] &amp;&amp; hub[k].related[0] &amp;&amp; hub[k].related[0].n}}">{{k}}</a></li>
+      </ul>
+      <hr/>
+      <ul id="tools" ng-cloak=""><i ng-cloak="" class="gray">{{'MY_STAR' | translate }}</i><span><a ng-click="toggleAnchor(objNow())"><img id="flag" ng-src="{{showStar(objNow())}}" alt="{{&quot;GATHER&quot; | translate}}" title="{{&quot;GATHER&quot; | translate}}"/></a><a ng-click="resetAnchors()"><img id="flag" src="images/mySelf.png" alt="{{&quot;ZAZAN&quot; | translate}}" title="{{&quot;ZAZAN&quot; | translate}}"/></a></span>
+        <li ng-repeat="a in $s.myAnchors"><a ng-click="goban.title = a.t; goban.myI = a.x; goban.myJ = a.y; goban.load(a[x])" title="{{a.x}}-{{a.y}}@{{a.t | uriFix}}">{{a.n | uriFix }}</a></li>
       </ul>
     </div>
     <div id="goban-main" ng-class="{full: hideSideBar, v0: !hideSideBar &amp;&amp;v==0, v1: v==1}" ng-style="{height: countHeight() - navHeight + &quot;px&quot;}">

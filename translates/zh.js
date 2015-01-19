@@ -8,7 +8,8 @@ angular.module("automap")
     //
     UP: '向前',
     DOWN: '向後',
-    SACLE: '縮放',
+    SCALE: '縮放',
+    SEARCH: '搜詢',
     //
   	TITLE: '零時黑板',
     LONG_TITLE: '黑客棋盤',
@@ -46,7 +47,8 @@ angular.module("automap")
       //
       UP: '向前',
       DOWN: '向后',
-      SACLE: '缩放',
+      SCALE: '缩放',
+      SCALE: '搜询',
       //
       TITLE : '零時黑板',
       LONG_TITLE: '黑客棋盘',

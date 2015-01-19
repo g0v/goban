@@ -3,6 +3,11 @@ nav#goban-nav {
 		min-width: 150px;
 		padding: 5px;
 		font-size: 16px;
+		&#scale {
+			position: absolute;
+			right: 100px;
+			min-width: 0px;
+		}
 	}
 	ul {
 		li {

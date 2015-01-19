@@ -10,7 +10,7 @@ angular.module("automap")
 function hubCtrl($scope, $window, $goban, $translate, $langs, $firebase, $ethercalc){
 
 
-
+/*
   angular.extend($scope, {
     tricks: [
       {t:'m', n:"MY_STAR"},
@@ -19,17 +19,35 @@ function hubCtrl($scope, $window, $goban, $translate, $langs, $firebase, $etherc
     hub: {}
   })
 
-  $scope.trick = $scope.tricks[0].t;
+  $scope.trick = $scope.tricks[0].t; */
 
 
   angular.extend($scope, {
     getIndex: function(key){
-      return Object.keys($scope.hub)
+      return Object.keys($scope.hub || {})
         .filter(function(s){
           return (s.substr(0,1) != '$' &&
-                (!key || s.indexOf(key) > -1)
+                (key && s.indexOf(key) > -1)
               )
+        })
+        .sort(function(a,b){
+          return a.indexOf(key) - b.indexOf(key);
         });
+    },
+    jumpTo: function(k){
+      $goban.title = k; $goban.load();
+    },
+    keyPressed: function(e){
+      if (e.which == 40) {
+          $scope.curious = (typeof($scope.curious) != "undefined" && $scope.curious+1) || 0;
+      }
+      if (e.which == 38) {
+        $scope.curious = ($scope.curious && $scope.curious-1) || undefined;
+      }
+      if (e.which == 13) {
+        var l = $scope.getIndex($scope.key);
+        $scope.jumpTo(l[$scope.curious]);
+      };
     }
   })
 

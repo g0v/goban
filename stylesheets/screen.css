@@ -140,7 +140,13 @@ nav#goban-nav select {
   padding: 5px;
   font-size: 16px;
 }
-/* line 9, ../sass/_navbar.scss */
+/* line 6, ../sass/_navbar.scss */
+nav#goban-nav select#scale {
+  position: absolute;
+  right: 100px;
+  min-width: 0px;
+}
+/* line 14, ../sass/_navbar.scss */
 nav#goban-nav ul li a {
   -moz-transition: all 0.5s ease;
   -o-transition: all 0.5s ease;
@@ -154,11 +160,11 @@ nav#goban-nav ul li a {
   -webkit-transform: skewX(15deg);
   transform: skewX(15deg);
 }
-/* line 13, ../sass/_navbar.scss */
+/* line 18, ../sass/_navbar.scss */
 nav#goban-nav ul li a:hover, nav#goban-nav ul li a:active, nav#goban-nav ul li a.active {
   background-color: #999;
 }
-/* line 17, ../sass/_navbar.scss */
+/* line 22, ../sass/_navbar.scss */
 nav#goban-nav ul li a.active::after {
   position: absolute;
   top: 8px;
@@ -172,7 +178,7 @@ nav#goban-nav ul li a.active::after {
   -webkit-border-radius: 50%;
   border-radius: 50%;
 }
-/* line 29, ../sass/_navbar.scss */
+/* line 34, ../sass/_navbar.scss */
 nav#goban-nav ul li a.dark {
   border: 3px solid gray;
   -moz-transform: scaleX(1.2);
@@ -184,7 +190,7 @@ nav#goban-nav ul li a.dark {
   border-radius: 50%;
   background-color: #999;
 }
-/* line 36, ../sass/_navbar.scss */
+/* line 41, ../sass/_navbar.scss */
 nav#goban-nav ul li a.zopd {
   background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHJhZGlhbEdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgY3g9IjI1cHgiIGN5PSIyNXB4IiByPSI0JSI+PHN0b3Agb2Zmc2V0PSIyNSUiIHN0b3AtY29sb3I9IiMwMGZmZmYiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMzMzMzMzMiLz48L3JhZGlhbEdyYWRpZW50PjwvZGVmcz48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyYWQpIiAvPjwvc3ZnPiA=');
   background-size: 100%;
@@ -239,11 +245,11 @@ nav#goban-nav ul li a.zopd {
 #goban-side #tools select {
   font-size: 18px;
   padding: 5px;
-  position: relative;
-  top: -7px;
-  left: -7px;
+  margin: 5px;
+  margin-top: 20px;
+  height: 60px;
 }
-/* line 47, ../sass/_sidebar.scss */
+/* line 46, ../sass/_sidebar.scss */
 #goban-side #tools a {
   font-size: 14px;
 }

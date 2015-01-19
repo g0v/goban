@@ -24,5 +24,9 @@ nav#goban-nav(ng-style='{height: navHeight + "px"}')
         img.goban-nav-icon(ng-show='goban.icons[i]', ng-src='{{goban.icons[i].u}}', alt='{{goban.icons[i].n}}', title='{{goban.icons[i].n}}')
     
 
+    select#scale.noPhone(ng-model='myScale',
+      ng-options='s[0] as ("SCALE" | translate) + ":" +  s[1] for s in scales',
+      title = "{{'SCALE' | translate}}")
+
     a(id = "logo" ng-click='editBack = goban.path + goban.title + "Config"')
       img.goban-logo.goban-fixed-right(alt='{{"WEB_CONFIG" | translate}}', title='{{"WEB_CONFIG"| translate}}', src='/bower_components/goban/Goban_19x19_vide.png')
