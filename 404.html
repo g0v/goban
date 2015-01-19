@@ -25,7 +25,7 @@
         <li ng-hide="1" class="noPhone"><a></a></li>
         <li ng-hide="1" class="noPhone"><a></a></li>
         <li ng-repeat="i in goban.myColumnIndex" class="noPhone"><a ng-class="{active: i == goban.myI,      dark: i &lt; goban.myI,      zopd: i -1 == goban.myI}" ng-click="goban.setI(i);      maybeExtend()"></a></li>
-        <select id="scale" ng-model="myScale" ng-class="{hidden: hideCtrl}" ng-options="s[0] as (&quot;SCALE&quot; | translate) + &quot;:&quot; +  s[1] for s in scales" title="{{'SCALE' | translate}}" class="noPhone"></select><a id="logo" ng-click="editBack = goban.path + goban.title + &quot;Config&quot;"><img alt="{{&quot;WEB_CONFIG&quot; | translate}}" title="{{&quot;WEB_CONFIG&quot;| translate}}" src="/bower_components/goban/Goban_19x19_vide.png" class="goban-logo"/></a>
+        <select id="scale" ng-model="myScale" ng-class="{hidden: hideCtrl}" ng-options="s[0] as (&quot;SCALE&quot; | translate) + &quot; &quot; +  s[1] for s in scales" title="{{'SCALE' | translate}}" class="noPhone"></select><a id="logo" ng-click="editBack = goban.path + goban.title + &quot;Config&quot;"><img alt="{{&quot;WEB_CONFIG&quot; | translate}}" title="{{&quot;WEB_CONFIG&quot;| translate}}" src="/bower_components/goban/Goban_19x19_vide.png" class="goban-logo"/></a>
       </ul>
     </nav>
     <div id="goban-side" ng-cloak="" ng-class="{hidden: hideSideBar, v0: !hideSideBar &amp;&amp; v==0, v1: v==1}" ng-style="{height: countHeight() - navHeight + &quot;px&quot;}" style="display:block;overflow:auto">
