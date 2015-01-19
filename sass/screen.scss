@@ -26,13 +26,7 @@ body {
 
 @import "./_sidebar.scss";
 @import "./_footer.scss";
-
-#goban-keyBordCtrl, #lang, #flag {
-	@include transition(all 1s ease-in);
-	&.hidden {
-		opacity: 0;
-	}
-}
+@import "./hidden.scss";
 
 
 

@@ -3,8 +3,10 @@ div#setting-bar
     span#goban-sectionTitle
       | {{(goban.sectionTitle && 'EDIT') || 'CREATE' | translate}}{{goban.sectionTitle || ''}}
  
-ul(ng-keydown="myKeydown($event)")
-  li(ng-repeat='j in goban.data | toIndex', ng-click='goban.setJ(j)')
+ul
+  li(ng-repeat='j in goban.data | toIndex',
+    ng-click='goban.setJ(j)',
+    ng-keydown="myKeydown($event)")
     a(ng-if='goban.data[j].isFolder', ng-click='$parent.goban.data[j].isClosed = !goban.data[j].isClosed; sleep();', ng-class='{active: goban.myJ == j, folder: goban.data[j].isFolder}')
       img.folder(ng-show='goban.data[j].isClosed', src='images/isClosed.png')
       img.folder(ng-show='!goban.data[j].isClosed', src='images/isOpen.png')
@@ -16,3 +18,8 @@ ul(ng-keydown="myKeydown($event)")
             ng-click='$parent.goban.myJ = j; sleep(); toggleSideBar();')
       img(ng-src='http://www.google.com/s2/favicons?domain={{goban.data[j].url}}')
       | {{goban.data[j].name || j}}
+//-  li#append
+    input(type = "text" placeholder = "URL")
+    input(type = "text" placeholder = "TITILE")
+    bottom
+      |{{'APPEND' | translate}} -//

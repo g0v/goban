@@ -1,32 +1,44 @@
 nav#goban-nav(ng-style='{height: navHeight + "px"}')
-  ul(ng-cloak='')
+  ul
     a#goban-toggleSidebar(ng-click='hideSideBar = !hideSideBar',
       title="{{'TOGGLE_SIDEBAR' | translate}}")
-      
       span.bar1
       span.bar2
       span.bar3
-    span(ng-cloak='')
+    span
       select(ng-model='goban.title',
             ng-options='o.t as o.n + " " group by o.c for o in goban.related', 
             ng-change='relationChanged()',
             title = "{{'ASSOCIATE_THINKING' | translate}}")
-      span.number.wideOnly {{goban.myI}}
-      sub.wideOnly -{{goban.myJ}}
+      span.number.wideOnly(ng-bind = "goban.myI")
+        |^
+      sub.wideOnly(ng-bind-template = " -{{goban.myJ}}")
+        |_^
+
     select.phoneOnly(ng-model='bufferI',
                       ng-options='o as "LEV" + o for o in goban.myColumnIndex',
                       ng-change='goban.setI(bufferI)')
+    
+
+    li.noPhone(ng-hide="1")
+      a
+    li.noPhone(ng-hide="1")
+      a
+    li.noPhone(ng-hide="1")
+      a
+    li.noPhone(ng-hide="1")
+      a
     li.noPhone(ng-repeat='i in goban.myColumnIndex')
       a(ng-class='{active: i == goban.myI,\
       dark: i < goban.myI,\
       zopd: i -1 == goban.myI}', ng-click='goban.setI(i);\
       maybeExtend()')
-        img.goban-nav-icon(ng-show='goban.icons[i]', ng-src='{{goban.icons[i].u}}', alt='{{goban.icons[i].n}}', title='{{goban.icons[i].n}}')
-    
 
+        
     select#scale.noPhone(ng-model='myScale',
-      ng-options='s[0] as ("SCALE" | translate) + ":" +  s[1] for s in scales',
-      title = "{{'SCALE' | translate}}")
+        ng-class = "{hidden: hideCtrl}"
+        ng-options='s[0] as ("SCALE" | translate) + ":" +  s[1] for s in scales',
+        title = "{{'SCALE' | translate}}")
 
     a(id = "logo" ng-click='editBack = goban.path + goban.title + "Config"')
-      img.goban-logo.goban-fixed-right(alt='{{"WEB_CONFIG" | translate}}', title='{{"WEB_CONFIG"| translate}}', src='/bower_components/goban/Goban_19x19_vide.png')
+      img.goban-logo(alt='{{"WEB_CONFIG" | translate}}', title='{{"WEB_CONFIG"| translate}}', src='/bower_components/goban/Goban_19x19_vide.png')

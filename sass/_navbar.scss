@@ -6,7 +6,7 @@ nav#goban-nav {
 		&#scale {
 			position: absolute;
 			right: 100px;
-			min-width: 0px;
+			min-width: 100px;
 		}
 	}
 	ul {
@@ -42,6 +42,14 @@ nav#goban-nav {
 					@include background-image(radial-gradient(25px 25px, cyan 1px, #333 4px));				
 				}
 			}
+		}
+	}
+	#logo {
+		position: absolute;
+		right: 5px;
+		top: 5px;
+		img {
+			@include border-radius(50%);
 		}
 	}
 }

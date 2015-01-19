@@ -1,0 +1,9 @@
+#goban-keyBordCtrl, 
+#lang, 
+#flag,
+#scale {
+	@include transition(all 1s ease-in);
+	&.hidden {
+		opacity: 0;
+	}
+}
