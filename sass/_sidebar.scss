@@ -36,6 +36,13 @@
 	}
 	
 	#tools {
+		$bb: darken(cyan, 20);
+		.gray {
+			margin-right: 15px;
+			padding:2px;
+			border-left: 2px dotted $bb;
+			border-top: 2px dotted $bb;
+		}
 		select {
 			font-size: 18px;
 			padding: 5px;

@@ -35,14 +35,18 @@ function hubCtrl($scope, $window, $goban, $translate, $langs, $firebase, $etherc
         });
     },
     jumpTo: function(k){
-      $goban.title = k; $goban.load();
+      $goban.title = k;
+      $goban.load();
+      $scope.curious = undefined;
     },
     keyPressed: function(e){
       if (e.which == 40) {
           $scope.curious = (typeof($scope.curious) != "undefined" && $scope.curious+1) || 0;
       }
       if (e.which == 38) {
-        $scope.curious = ($scope.curious && $scope.curious-1) || undefined;
+        if (!$scope.curious) $scope.curious = undefined; 
+        if ($scope.curious == 1) $scope.curious = 0;
+        if ($scope.curious > 1) $scope.curious--;
       }
       if (e.which == 13) {
         var l = $scope.getIndex($scope.key);

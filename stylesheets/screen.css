@@ -241,7 +241,14 @@ nav#goban-nav ul li a.zopd {
   -webkit-transform: rotate(-45deg);
   transform: rotate(-45deg);
 }
-/* line 39, ../sass/_sidebar.scss */
+/* line 40, ../sass/_sidebar.scss */
+#goban-side #tools .gray {
+  margin-right: 15px;
+  padding: 2px;
+  border-left: 2px dotted #009999;
+  border-top: 2px dotted #009999;
+}
+/* line 46, ../sass/_sidebar.scss */
 #goban-side #tools select {
   font-size: 18px;
   padding: 5px;
@@ -249,7 +256,7 @@ nav#goban-nav ul li a.zopd {
   margin-top: 20px;
   height: 60px;
 }
-/* line 46, ../sass/_sidebar.scss */
+/* line 53, ../sass/_sidebar.scss */
 #goban-side #tools a {
   font-size: 14px;
 }
