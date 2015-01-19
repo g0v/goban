@@ -7,3 +7,14 @@
 		opacity: 0;
 	}
 }
+
+#goban-keyBordCtrl {
+	&.hidden {
+		width:0px;		
+		@include filter(grayscale(100%) blur(1px));
+	}
+}
+
+#goban-main:hover .goban-blank {
+	opacity: 0;
+}

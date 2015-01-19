@@ -18,7 +18,7 @@
   <body id="body" ng-swipe-right="goban.dx(-1)" ng-swipe-left="goban.dx(1)" ng-style="{height: countHeight() + 'px'}" ng-init="v = 0">
     <nav id="goban-nav" ng-style="{height: navHeight + &quot;px&quot;}">
       <ul><a id="goban-toggleSidebar" ng-click="hideSideBar = !hideSideBar" title="{{'TOGGLE_SIDEBAR' | translate}}"><span class="bar1"></span><span class="bar2"></span><span class="bar3"></span></a><span>
-          <select ng-model="goban.title" ng-options="o.t as o.n + &quot; &quot; group by o.c for o in goban.related" ng-change="relationChanged()" title="{{'ASSOCIATE_THINKING' | translate}}"></select><span ng-bind="goban.myI" class="number wideOnly">^</span><sub ng-bind-template=" -{{goban.myJ}}" class="wideOnly">_^</sub></span>
+          <select id="title" ng-model="goban.title" ng-options="o.t as o.n + &quot; &quot; group by o.c for o in goban.related" ng-change="relationChanged()" title="{{'ASSOCIATE_THINKING' | translate}}"></select><span ng-bind="goban.myI" class="number wideOnly">^</span><sub ng-bind-template=" -{{goban.myJ}}" class="wideOnly">_^</sub></span>
         <select ng-model="bufferI" ng-options="o as &quot;LEV&quot; + o for o in goban.myColumnIndex" ng-change="goban.setI(bufferI)" class="phoneOnly"></select>
         <li ng-hide="1" class="noPhone"><a></a></li>
         <li ng-hide="1" class="noPhone"><a></a></li>
@@ -50,12 +50,17 @@
       <iframe id="myFrame" name="myFrame" ng-cloak="" ng-class="{loading: goban.pageLoading,  tiny : myScale == &quot;tiny&quot;,  small : myScale == &quot;small&quot;,  big : myScale == &quot;big&quot;,  gaint: myScale == &quot;gaint&quot;,  }" ng-src="{{getURL()}}" ng-click="hideCtrl = 1" ng-mouseover="hideCtrl = 1" ng-mouseout="blurFrame()"></iframe>
     </div>
     <div id="goban-keyBordCtrl" ng-class="{&quot;hidden&quot;: hideCtrl}">
-      <div id="up" ng-class="{available: false}" ng-click="goban.dy(-1)" title="{{'UP'|translate}}"></div>
-      <div id="down" ng-class="{available: false}" ng-click="goban.dy(1)" title="{{'DOWN'|translate}}"></div>
-      <div id="left" ng-class="{available: ture}" ng-click="goban.dx(-1)" title="{{'LEVELDOWN'|translate}}"></div>
-      <div id="right" ng-class="{available: ture}" ng-click="goban.dx(1)" title="{{'LEVELUP'|translate}}"></div>
       <div id="backup" class="backup"><a ng-click="goban.backupAll()" title="{{'BACKUP'|translate}}"></a></div>
     </div>
+    <!--  div#up(ng-class='{available: false}', ng-click='goban.dy(-1)',-->
+    <!--  	  	    title ="{{'UP'|translate}}")-->
+    <!--  div#down(ng-class='{available: false}', ng-click='goban.dy(1)',-->
+    <!--  	    	title ="{{'DOWN'|translate}}")-->
+    <!--  div#left(ng-class='{available: ture}', ng-click='goban.dx(-1)',-->
+    <!--  	    	title ="{{'LEVELDOWN'|translate}}")-->
+    <!--  div#right(ng-class='{available: ture}', ng-click='goban.dx(1)',-->
+    <!--    	title ="{{'LEVELUP'|translate}}")
+    -->
     <footer ng-cloak="" ng-hide="1" ng-class="{sunk : hideCtrl, full : fullTips}" ng-mouseover="fullTips = 1" ng-mouseout="fullTips = 0">
       <ol>
         <li ng-repeat="tp in tips"><i id="tip" ng-bind="tp | translate"></i></li>

@@ -29,7 +29,17 @@ body {
 @import "./hidden.scss";
 
 
-
+#goban-keyBordCtrl {
+	div {
+		@include box-shadow(0px 10px 30px 0px gray);
+		&#backup {
+			a {
+				top: 32px;
+			}
+		}
+	}
+}
+	
 #flag {
 	height: 25px;
 }
@@ -62,10 +72,4 @@ body {
 	@include transform-origin(top left);
 	width: 66% !important;
   	height: 66% !important;
-}
-
-#setting-bar {
-	#scale {
-		margin-left: 10px;
-	}
 }

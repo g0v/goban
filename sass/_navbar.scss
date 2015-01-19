@@ -1,11 +1,20 @@
 nav#goban-nav {
 	select {
+		&:hover,&:active,&.active{
+			@include transition(all 0s linear);
+			@include box-shadow(0px 5px 20px 0px #666);
+		}
 		min-width: 150px;
 		padding: 5px;
 		font-size: 16px;
+		&#title {
+			position: relative;
+			top: -8px;
+		}
 		&#scale {
 			position: absolute;
 			right: 100px;
+			top: 15px;	
 			min-width: 100px;
 		}
 	}
@@ -50,6 +59,11 @@ nav#goban-nav {
 		top: 5px;
 		img {
 			@include border-radius(50%);
+		}
+		&:hover,&:active,&.active{
+			img {
+				@include box-shadow(0px 5px 30px 0px #999);
+			}
 		}
 	}
 }
