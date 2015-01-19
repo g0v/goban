@@ -259,6 +259,20 @@ nav#goban-nav ul li a.zopd {
 /* line 53, ../sass/_sidebar.scss */
 #goban-side #tools a {
   font-size: 14px;
+  margin-left: 5px;
+}
+/* line 56, ../sass/_sidebar.scss */
+#goban-side #tools a #star {
+  width: 20px;
+  height: 20px;
+}
+/* line 60, ../sass/_sidebar.scss */
+#goban-side #tools a #zazan {
+  width: 20px;
+  height: 20px;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
 }
 
 /* line 1, ../sass/_footer.scss */

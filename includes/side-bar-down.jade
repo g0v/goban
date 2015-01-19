@@ -15,14 +15,16 @@ hr
 
 ul(id = "tools" ng-cloak='')
   i.gray(ng-cloak='')
+    span(ng-hide = "$s.myAnchors && $s.myAnchors.length")
+      | {{'NOT' | translate }}
     | {{'MY_STAR' | translate }}
   span
     a(ng-click='toggleAnchor(objNow())')
-      img#flag(ng-src='{{showStar(objNow())}}',
+      img#star(ng-src='{{showStar(objNow())}}',
         alt='{{"GATHER" | translate}}', 
         title='{{"GATHER" | translate}}')
     a(ng-click='resetAnchors()')
-      img#flag(src='images/mySelf.png',
+      img#zazan(src='images/mySelf.png',
         alt='{{"ZAZAN" | translate}}', 
         title='{{"ZAZAN" | translate}}')       
 

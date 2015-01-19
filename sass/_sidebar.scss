@@ -52,6 +52,16 @@
 		}
 		a {
 			font-size: 14px;
+			margin-left: 5px;
+			#star{
+				width: 20px;
+				height: 20px;				
+			}
+			#zazan {
+				width: 20px;
+				height: 20px;
+				@include border-radius(50%);
+			}
 		}
 	}
 }

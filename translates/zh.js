@@ -15,6 +15,7 @@ angular.module("automap")
     LONG_TITLE: '黑客棋盤',
   	OPEN_BLANK: '按此可開啟新頁籤',
     //
+    NOT: '不',
     MY_STAR: '記得',
     GATHER: '採集',
     ZAZAN: '禪定',
@@ -54,6 +55,7 @@ angular.module("automap")
       LONG_TITLE: '黑客棋盘',
       OPEN_BLANK: '按此可开启新页签',
       //
+      NOT: '不',
       MY_STAR: '记得',
       GATHER: '加入/移除',
       ZAZAN: '全放下/全回复',
