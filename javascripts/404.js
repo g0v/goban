@@ -187,6 +187,8 @@ angular.module("automap",[
           $scope.editBack = $goban.path + $goban.title + sur;
       },
 
+
+      //not called?
       myKeydown: function(e) {
         $goban.keyDown(e);
        // console.log(e.which);
