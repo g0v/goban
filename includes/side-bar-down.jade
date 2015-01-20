@@ -1,4 +1,4 @@
-ul(id = "tools" ng-cloak='',
+ul#long-term-memory.tools(ng-cloak='',
   ng-controller = "hubCtrl",
   ng-keydown = "keyPressed($event)")
   li 
@@ -7,23 +7,30 @@ ul(id = "tools" ng-cloak='',
           placeholder = "{{'SEARCH' | translate}}")     
   li(ng-repeat='k in getIndex(key)')
     a(ng-click="jumpTo(k)",
-      ng-class="{active: curious == $index}"
+      ng-class="{active: curious == $index}",
       title = "{{hub[k] && hub[k].related[0] && hub[k].related[0].n}}")
       | {{k}}
+  li
+    a(ng-click="createNew(key)",
+      ng-show="key",
+      ng-class="{active: curious == (getIndex(key)||[]).length + 1}"
+      title = "{{'CREATE' | translate}}")
+      | {{'CREATE' | translate }}{{key}}
 
-hr
+hr.noPrint
 
-ul(id = "tools" ng-cloak='')
-  i.gray(ng-cloak='')
+ul#short-term-memory.tools(ng-cloak='',
+  ng-class = "{noPrint: !$s.myAnchors || !$s.myAnchors.length}")
+  i#remember.gray(ng-cloak='')
     span(ng-hide = "$s.myAnchors && $s.myAnchors.length")
       | {{'NOT' | translate }}
     | {{'MY_STAR' | translate }}
   span
-    a(ng-click='toggleAnchor(objNow())')
+    a.noPrint(ng-click='toggleAnchor(objNow())')
       img#star(ng-src='{{showStar(objNow())}}',
         alt='{{"GATHER" | translate}}', 
         title='{{"GATHER" | translate}}')
-    a(ng-click='resetAnchors()')
+    a.noPrint(ng-click='resetAnchors()')
       img#zazan(src='images/mySelf.png',
         alt='{{"ZAZAN" | translate}}', 
         title='{{"ZAZAN" | translate}}')       
@@ -33,6 +40,8 @@ ul(id = "tools" ng-cloak='')
     
     a(ng-click='goban.title = a.t; goban.myI = a.x; goban.myJ = a.y; goban.load(a[x])',
       title = "{{a.x}}-{{a.y}}@{{a.t | uriFix}}")
-      | {{a.n | uriFix }}
-
-
+      img(ng-src='http://www.google.com/s2/favicons?domain={{a.url}}')
+      span.text
+        | {{a.n | uriFix }}
+      img#QR.printOnly(ng-src="http://chart.apis.google.com/chart?chs=200x200&cht=qr&chld=|1&chl=http%3A%2F%2F{{a.url | makeQR}}%2F" alt="qrcode_ex")
+      

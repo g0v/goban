@@ -36,9 +36,14 @@ function hubCtrl($scope, $window, $goban, $translate, $langs, $firebase, $etherc
     },
     jumpTo: function(k){
       $goban.title = k;
+      $goban.myI = 0;
+      $goban.myJ = 0;
       $goban.load();
       $scope.curious = undefined;
       $scope.key = '';
+    },
+    createNew: function(k) {
+      $scope.jumpTo(k);
     },
     keyPressed: function(e){
       if (e.which == 40) {

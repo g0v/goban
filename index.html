@@ -29,20 +29,23 @@
       </ul>
     </nav>
     <div id="goban-side" ng-cloak="" ng-class="{hidden: hideSideBar, v0: !hideSideBar &amp;&amp; v==0, v1: v==1}" ng-style="{height: countHeight() - navHeight + &quot;px&quot;}" style="display:block;overflow:auto">
-      <div id="setting-bar"><a ng-click="goEdit();toggleSideBar();"><span id="goban-sectionTitle">{{(goban.sectionTitle && 'EDIT') || 'CREATE' | translate}}{{goban.sectionTitle || ''}}</span></a></div>
+      <div id="setting-bar"><a ng-click="goEdit();toggleSideBar();"><span id="goban-sectionTitle"><span class="action">{{(goban.sectionTitle && 'EDIT') || 'CREATE' | translate}}</span><span class="text">
+               
+              {{goban.sectionTitle || ''}}</span></span></a></div>
       <ul>
-        <li ng-repeat="j in goban.data | toIndex" ng-click="goban.setJ(j)" ng-keydown="myKeydown($event)"><a ng-if="goban.data[j].isFolder" ng-click="$parent.goban.data[j].isClosed = !goban.data[j].isClosed; sleep();" ng-class="{active: goban.myJ == j, folder: goban.data[j].isFolder}"><img ng-show="goban.data[j].isClosed" src="images/isClosed.png" class="folder"/><img ng-show="!goban.data[j].isClosed" src="images/isOpen.png" class="folder"/>{{goban.data[j].name || j}}<b ng-class="{right: goban.data[j].isClosed, down: !goban.data[j].isClosed}" class="arrowHead"></b></a><a ng-if="!goban.data[j].isFolder" ng-show="goban.data[j].isIsolated || !goban.data[goban.data[j].pIndex].isClosed" ng-class="{active: goban.myJ == j}" ng-click="$parent.goban.myJ = j; sleep(); toggleSideBar();" class="elem"><img ng-src="http://www.google.com/s2/favicons?domain={{goban.data[j].url}}"/>{{goban.data[j].name || j}}</a></li>
+        <li ng-repeat="j in goban.data | toIndex" ng-show="goban.data[j].isFolder || goban.data[j].isIsolated || !goban.data[goban.data[j].pIndex].isClosed" ng-click="goban.setJ(j)" ng-class="{noPrint: goban.data[j].isFolder}" ng-keydown="myKeydown($event)"><a ng-show="goban.data[j].isFolder" ng-click="$parent.goban.data[j].isClosed = !goban.data[j].isClosed; sleep();" ng-class="{active: goban.myJ == j, folder: goban.data[j].isFolder}" class="folder"><img ng-show="goban.data[j].isClosed" src="images/isClosed.png" class="folder"/><img ng-show="!goban.data[j].isClosed" src="images/isOpen.png" class="folder"/>{{goban.data[j].name || j}}<b ng-class="{right: goban.data[j].isClosed, down: !goban.data[j].isClosed}" class="arrowHead"></b></a><a ng-show="!goban.data[j].isFolder" ng-class="{active: goban.myJ == j}" ng-click="$parent.goban.myJ = j; sleep(); toggleSideBar();" class="elem"><img ng-src="http://www.google.com/s2/favicons?domain={{goban.data[j].url}}"/><span class="text">{{goban.data[j].name || j}}</span><img id="QR" ng-src="http://chart.apis.google.com/chart?chs=200x200&amp;cht=qr&amp;chld=|1&amp;chl=http%3A%2F%2F{{goban.data[j].url | makeQR}}%2F" alt="qrcode_ex" class="printOnly"/><span class="printOnly"><br/>{{goban.data[j].url}}</span></a></li>
       </ul>
       <hr/>
-      <ul id="tools" ng-cloak="" ng-controller="hubCtrl" ng-keydown="keyPressed($event)">
+      <ul id="long-term-memory" ng-cloak="" ng-controller="hubCtrl" ng-keydown="keyPressed($event)" class="tools">
         <li> 
           <input type="search" ng-model="key" placeholder="{{'SEARCH' | translate}}"/>
         </li>
         <li ng-repeat="k in getIndex(key)"><a ng-click="jumpTo(k)" ng-class="{active: curious == $index}" title="{{hub[k] &amp;&amp; hub[k].related[0] &amp;&amp; hub[k].related[0].n}}">{{k}}</a></li>
+        <li><a ng-click="createNew(key)" ng-show="key" ng-class="{active: curious == (getIndex(key)||[]).length + 1}" title="{{'CREATE' | translate}}">{{'CREATE' | translate }}{{key}}</a></li>
       </ul>
-      <hr/>
-      <ul id="tools" ng-cloak=""><i ng-cloak="" class="gray"><span ng-hide="$s.myAnchors &amp;&amp; $s.myAnchors.length">{{'NOT' | translate }}</span>{{'MY_STAR' | translate }}</i><span><a ng-click="toggleAnchor(objNow())"><img id="star" ng-src="{{showStar(objNow())}}" alt="{{&quot;GATHER&quot; | translate}}" title="{{&quot;GATHER&quot; | translate}}"/></a><a ng-click="resetAnchors()"><img id="zazan" src="images/mySelf.png" alt="{{&quot;ZAZAN&quot; | translate}}" title="{{&quot;ZAZAN&quot; | translate}}"/></a></span>
-        <li ng-repeat="a in $s.myAnchors"><a ng-click="goban.title = a.t; goban.myI = a.x; goban.myJ = a.y; goban.load(a[x])" title="{{a.x}}-{{a.y}}@{{a.t | uriFix}}">{{a.n | uriFix }}</a></li>
+      <hr class="noPrint"/>
+      <ul id="short-term-memory" ng-cloak="" ng-class="{noPrint: !$s.myAnchors || !$s.myAnchors.length}" class="tools"><i id="remember" ng-cloak="" class="gray"><span ng-hide="$s.myAnchors &amp;&amp; $s.myAnchors.length">{{'NOT' | translate }}</span>{{'MY_STAR' | translate }}</i><span><a ng-click="toggleAnchor(objNow())" class="noPrint"><img id="star" ng-src="{{showStar(objNow())}}" alt="{{&quot;GATHER&quot; | translate}}" title="{{&quot;GATHER&quot; | translate}}"/></a><a ng-click="resetAnchors()" class="noPrint"><img id="zazan" src="images/mySelf.png" alt="{{&quot;ZAZAN&quot; | translate}}" title="{{&quot;ZAZAN&quot; | translate}}"/></a></span>
+        <li ng-repeat="a in $s.myAnchors"><a ng-click="goban.title = a.t; goban.myI = a.x; goban.myJ = a.y; goban.load(a[x])" title="{{a.x}}-{{a.y}}@{{a.t | uriFix}}"><img ng-src="http://www.google.com/s2/favicons?domain={{a.url}}"/><span class="text">{{a.n | uriFix }}</span><img id="QR" ng-src="http://chart.apis.google.com/chart?chs=200x200&amp;cht=qr&amp;chld=|1&amp;chl=http%3A%2F%2F{{a.url | makeQR}}%2F" alt="qrcode_ex" class="printOnly"/></a></li>
       </ul>
     </div>
     <div id="goban-main" ng-class="{full: hideSideBar, v0: !hideSideBar &amp;&amp;v==0, v1: v==1}" ng-style="{height: countHeight() - navHeight + &quot;px&quot;}">
@@ -66,6 +69,7 @@
         <li ng-repeat="tp in tips"><i id="tip" ng-bind="tp | translate"></i></li>
       </ol>
     </footer>
+    <div id="ad-print" class="printOnly">{{'GENERATED_BY_GOBAN' | translate}} @ http://goban.tw</div>
     <!-- Components-->
     <script src="/bower_components/angular/angular.min.js" type="text/javascript"></script>
     <script src="/bower_components/angular-translate/angular-translate.min.js" type="text/javascript"></script>

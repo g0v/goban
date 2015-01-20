@@ -11,6 +11,9 @@ html(ng-app='automap', ng-controller='autoCtrl')
     include ./includes/backup-tool.jade
     include ./includes/footer.jade
 
+    div#ad-print.printOnly
+      {{'GENERATED_BY_GOBAN' | translate}} @ http://goban.tw
+
     // Components
     include ./includes/js-components.jade
     

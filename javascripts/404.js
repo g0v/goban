@@ -26,7 +26,16 @@ angular.module("automap",[
      '$translate','$langs'
       ,'$tips','$localStorage',
       '$firebase','$ethercalc', autoCtrl])
-.filter('uriFix', myURI);
+.filter('uriFix', myURI)
+.filter('makeQR', makeQR);
+
+  function makeQR(){
+    return function(str){
+      return (str||"")
+      .replace('https://','')
+      .replace('http://','');
+    }
+  }
 
   function myURI() {
     return function(uri){
@@ -216,6 +225,7 @@ angular.module("automap",[
         return {t: $goban.title,
                 x: $goban.myI,
                 y: $goban.myJ,
+                url: $goban.data && $goban.data[$goban.myJ] && $goban.data[$goban.myJ].url,
                 n: (($goban.data && $goban.data[$goban.myJ]) || {}).name}
       }
     });
