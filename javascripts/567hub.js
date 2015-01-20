@@ -38,6 +38,7 @@ function hubCtrl($scope, $window, $goban, $translate, $langs, $firebase, $etherc
       $goban.title = k;
       $goban.load();
       $scope.curious = undefined;
+      $scope.key = '';
     },
     keyPressed: function(e){
       if (e.which == 40) {
