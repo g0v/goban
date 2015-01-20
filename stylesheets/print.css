@@ -27,29 +27,40 @@ nav,
 #QR {
   height: 60px;
   width: 60px;
-  position: absolute;
-  right: 0px;
+  position: relative;
+  left: 50px;
   -moz-box-shadow: 5px 5px 20px 0px #666;
   -webkit-box-shadow: 5px 5px 20px 0px #666;
   box-shadow: 5px 5px 20px 0px #666;
 }
 
-/* line 34, ../sass/print.scss */
+/* line 33, ../sass/print.scss */
+* {
+  overflow: visible !important;
+}
+
+/* line 37, ../sass/print.scss */
+ul {
+  max-height: none;
+}
+/* line 39, ../sass/print.scss */
 ul li {
   min-height: 80px;
   margin-top: 10px;
   line-height: 160%;
 }
-/* line 38, ../sass/print.scss */
-ul li .text {
+/* line 43, ../sass/print.scss */
+ul li span.text {
+  display: inline-block;
   font-size: 22px;
+  min-width: 400px;
 }
-/* line 41, ../sass/print.scss */
+/* line 48, ../sass/print.scss */
 ul li img {
   margin-right: 15px;
 }
 
-/* line 47, ../sass/print.scss */
+/* line 54, ../sass/print.scss */
 #setting-bar {
   font-size: 60px;
   line-height: 100px;
@@ -58,7 +69,7 @@ ul li img {
   box-shadow: 5px 5px 20px 0px #666;
 }
 
-/* line 53, ../sass/print.scss */
+/* line 60, ../sass/print.scss */
 i.gray {
   position: relative;
   left: -20px;

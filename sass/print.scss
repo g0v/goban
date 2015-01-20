@@ -25,18 +25,25 @@ nav,
 #QR {
 	height:60px;
 	width:60px;
-	position: absolute;
-	right:0px;
+	position: relative;
+	left: 50px;
 	@include box-shadow(5px 5px 20px 0px #666);
 }
 
+* {
+	overflow:visible !important;
+}
+
 ul {
+	max-height:none;
 	li {
 		min-height: 80px;
 		margin-top: 10px;
 		line-height: 160%;
-		.text {
+		span.text {
+			display: inline-block;
 			font-size: 22px;
+			min-width: 400px; 
 		}
 		img{
 			margin-right: 15px;
