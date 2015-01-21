@@ -64,17 +64,7 @@ ul li img {
 #setting-bar {
   font-size: 60px;
   line-height: 100px;
-  -moz-box-shadow: 5px 5px 20px 0px #666;
-  -webkit-box-shadow: 5px 5px 20px 0px #666;
-  box-shadow: 5px 5px 20px 0px #666;
-}
-
-/* line 60, ../sass/print.scss */
-i.gray {
-  position: relative;
-  left: -20px;
-  font-size: 60px !important;
-  font-style: normal !important;
+  padding: 10px;
   -moz-box-shadow: 5px 5px 20px 0px #666;
   -webkit-box-shadow: 5px 5px 20px 0px #666;
   box-shadow: 5px 5px 20px 0px #666;

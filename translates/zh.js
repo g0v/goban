@@ -1,5 +1,7 @@
 angular.module("automap")
 .constant("$zhTW", {
+    GENERATED_BY_GOBAN:'由零時黑板生成',
+    //
     BACKUP: '備份下載',
     LEVELUP : '前推',
     LEVELDOWN : '倒溯',

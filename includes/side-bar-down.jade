@@ -19,9 +19,8 @@ ul#long-term-memory.tools(ng-cloak='',
 
 hr.noPrint
 
-ul#short-term-memory.tools(ng-cloak='',
-  ng-class = "{noPrint: !$s.myAnchors || !$s.myAnchors.length}")
-  i#remember.gray(ng-cloak='')
+ul#short-term-memory.tools(ng-cloak='')
+  i#remember.noPrint.gray(ng-cloak='')
     span(ng-hide = "$s.myAnchors && $s.myAnchors.length")
       | {{'NOT' | translate }}
     | {{'MY_STAR' | translate }}
@@ -36,7 +35,7 @@ ul#short-term-memory.tools(ng-cloak='',
         title='{{"ZAZAN" | translate}}')       
 
 
-  li(ng-repeat='a in $s.myAnchors')
+  li.noPrint(ng-repeat='a in $s.myAnchors')
     
     a(ng-click='goban.title = a.t; goban.myI = a.x; goban.myJ = a.y; goban.load(a[x])',
       title = "{{a.x}}-{{a.y}}@{{a.t | uriFix}}")
@@ -44,6 +43,8 @@ ul#short-term-memory.tools(ng-cloak='',
       span.text
         | {{a.n | uriFix }}
       img#QR.printOnly(ng-src="http://chart.apis.google.com/chart?chs=200x200&cht=qr&chld=|1&chl=http%3A%2F%2F{{a.url | makeQR}}%2F" alt="qrcode_ex")
-  
+      span.printOnly
+        br
+        | {{a.url}}
   li.printOnly
     include ad.jade    
