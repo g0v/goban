@@ -42,7 +42,7 @@ ul#short-term-memory.tools(ng-cloak='')
       img(ng-src='http://www.google.com/s2/favicons?domain={{a.url}}')
       span.text
         | {{a.n | uriFix }}
-      img#QR.printOnly(ng-src="http://chart.apis.google.com/chart?chs=200x200&cht=qr&chld=|1&chl=http%3A%2F%2F{{a.url | makeQR}}%2F" alt="qrcode_ex")
+      img#QR.printOnly(ng-src="http://chart.apis.google.com/chart?chs=200x200&cht=qr&chld=|1&chl=http%3A%2F%2F{{a.url | makeQR}}" alt="qrcode_ex")
       span.printOnly
         br
         | {{a.url}}

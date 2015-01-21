@@ -25,7 +25,7 @@ ul
       img(ng-src='http://www.google.com/s2/favicons?domain={{goban.data[j].url}}')
       span.text
         | {{goban.data[j].name || j}}
-      img#QR.printOnly(ng-src="http://chart.apis.google.com/chart?chs=200x200&cht=qr&chld=|1&chl=http%3A%2F%2F{{goban.data[j].url | makeQR}}%2F" alt="qrcode_ex")
+      img#QR.printOnly(ng-src="http://chart.apis.google.com/chart?chs=200x200&cht=qr&chld=|1&chl=http%3A%2F%2F{{goban.data[j].url | makeQR}}" alt="qrcode_ex")
       span.printOnly
         br
         | {{goban.data[j].url}}
