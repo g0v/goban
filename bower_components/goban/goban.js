@@ -110,7 +110,7 @@
           url: url,
           dataType: "text"
         }).success(function(data){
-          if (this.useJSON === '.json') {
+          if (goban.useJSON === '.json') {
             goban.data = goban.parseDataFromJSON(data);
           } else {
             goban.data = goban.parseDataFromCSV(data);
