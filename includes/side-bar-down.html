@@ -1,0 +1,13 @@
+
+<ul id="long-term-memory" ng-cloak="" ng-controller="hubCtrl" ng-keydown="keyPressed($event)" class="tools">
+  <li> 
+    <input type="search" ng-model="key" placeholder="{{'SEARCH' | translate}}"/>
+  </li>
+  <li ng-repeat="k in getIndex(key)"><a ng-click="jumpTo(k)" ng-class="{active: curious == $index}" title="{{hub[k] &amp;&amp; hub[k].related[0] &amp;&amp; hub[k].related[0].n}}">{{k}}</a></li>
+  <li><a ng-click="createNew(key)" ng-show="key" ng-class="{active: curious == (getIndex(key)||[]).length + 1}" title="{{'CREATE' | translate}}">{{'CREATE' | translate }}{{key}}</a></li>
+</ul>
+<hr class="noPrint"/>
+<ul id="short-term-memory" ng-cloak="" ng-class="{noPrint: !$s.myAnchors || !$s.myAnchors.length}" class="tools"><i id="remember" ng-cloak="" class="gray"><span ng-hide="$s.myAnchors &amp;&amp; $s.myAnchors.length">{{'NOT' | translate }}</span>{{'MY_STAR' | translate }}</i><span><a ng-click="toggleAnchor(objNow())" class="noPrint"><img id="star" ng-src="{{showStar(objNow())}}" alt="{{&quot;GATHER&quot; | translate}}" title="{{&quot;GATHER&quot; | translate}}"/></a><a ng-click="resetAnchors()" class="noPrint"><img id="zazan" src="images/mySelf.png" alt="{{&quot;ZAZAN&quot; | translate}}" title="{{&quot;ZAZAN&quot; | translate}}"/></a></span>
+  <li ng-repeat="a in $s.myAnchors"><a ng-click="goban.title = a.t; goban.myI = a.x; goban.myJ = a.y; goban.load(a[x])" title="{{a.x}}-{{a.y}}@{{a.t | uriFix}}"><img ng-src="http://www.google.com/s2/favicons?domain={{a.url}}"/><span class="text">{{a.n | uriFix }}</span><img id="QR" ng-src="http://chart.apis.google.com/chart?chs=200x200&amp;cht=qr&amp;chld=|1&amp;chl=http%3A%2F%2F{{a.url | makeQR}}%2F" alt="qrcode_ex" class="printOnly"/></a></li>
+  <li class="printOnly"><a><span>{{'GENERATED_BY_GOBAN' | translate}} @ http://goban.tw/{{goban.title}}</span><img id="QR" ng-src="http://chart.apis.google.com/chart?chs=200x200&amp;cht=qr&amp;chld=|1&amp;chl=http%3A%2F%2F{{('http://goban.tw/'+goban.title )| makeQR}}%2F" alt="qrcode_ex" class="printOnly"/></a></li>
+</ul>

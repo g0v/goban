@@ -47,6 +47,7 @@
       colMax: 3,
       myColumnIndex: [0, 1, 2, 3],
       webConfig: false,
+      useJSON: '.json',
       pageLoading: false,
       animate: $GobanAnimate
     });
@@ -103,13 +104,17 @@
       },
       loadCore: function(num){
         var url;
-        url = this.path + this.title + num + '.csv.json';
+        url = this.path + this.title + num + '.csv' + this.useJSON;
         $http({
           method: "GET",
           url: url,
           dataType: "text"
         }).success(function(data){
-          goban.data = goban.parseDataFromJSON(data);
+          if (this.useJSON === '.json') {
+            goban.data = goban.parseDataFromJSON(data);
+          } else {
+            goban.data = goban.parseDataFromCSV(data);
+          }
           goban.updateHash();
           goban.cast('loaded', {
             p: 'data'
@@ -138,7 +143,7 @@
         folderName = this.title + 'Config';
         $http({
           method: "GET",
-          url: goban.path + goban.title + 'Config.csv.json',
+          url: goban.path + goban.title + 'Config.csv' + goban.useJSON,
           dataType: "text"
         }).success(function(data){
           var config;
@@ -213,7 +218,7 @@
       },
       redirect: function(url){
         if (url.indexOf(".csv") === -1) {
-          url += '.csv.json';
+          url += '.csv' + goban.useJSON;
         }
         $http({
           method: "GET",
@@ -293,7 +298,7 @@
         });
         return bestList;
       },
-      parseFromCSV: function(csv){
+      parseDataFromCSV: function(csv){
         var allTextLines, maybeRedirect, bodyLines, goodList, lastFolderIndex, bestList;
         allTextLines = csv.split(/\r\n|\n/);
         this.sectionTitle = allTextLines[1].split(',')[1];

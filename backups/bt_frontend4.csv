@@ -1,0 +1,26 @@
+,,
+,抓取遠端資料,
+,,
+http://zh.wikipedia.org/wiki/AJAX,AJAX,
+,,
+,寫法,"{""expand"":""false""}"
+https://docs.angularjs.org/api/ng/service/$http,Angular寫法,
+" http://www.w3schools.com/jquery/jquery_ref_ajax.asp",jQuery寫法,
+,,
+,,
+,資料格式,"{""expand"":""false""}"
+" http://zh.wikipedia.org/zh-tw/XML",XML,
+" http://zh.wikipedia.org/wiki/JSON",JSON,
+" http://zh.wikipedia.org/wiki/%E9%80%97%E5%8F%B7%E5%88%86%E9%9A%94%E5%80%BC",CSV,
+" http://zh.wikipedia.org/wiki/YAML",YAML,
+,,
+,,
+,取用權限,"{""expand"":""false""}"
+" http://www.corsproxy.com/ ",繞過權限的Proxy,
+,,
+,單純javascript,"{""expand"":""false""}"
+" http://jsbin.com/cenoxofiso/1/edit?html,js",範例一：小按鈕,
+" http://www.w3schools.com/js/js_htmldom_events.asp",在html上觸發事件,
+" http://www.w3schools.com/jsref/dom_obj_event.asp",DOM事件,
+" http://www.w3schools.com/js/js_htmldom_html.asp",修改值或屬性,
+" http://www.javascriptkit.com/javatutors/touchevents.shtml",觸控事件,
