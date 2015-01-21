@@ -25,8 +25,8 @@ nav,
 
 /* line 25, ../sass/print.scss */
 #QR {
-  height: 60px;
-  width: 60px;
+  height: 80px;
+  width: 80px;
   position: relative;
   left: 50px;
   -moz-box-shadow: 5px 5px 20px 0px #666;
