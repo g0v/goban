@@ -139,13 +139,17 @@ body {
     display: none !important;
   }
 }
-/* line 2, ../sass/_navbar.scss */
+/* line 1, ../sass/_navbar.scss */
+nav#goban-nav {
+  background-color: #ccc;
+}
+/* line 4, ../sass/_navbar.scss */
 nav#goban-nav select {
   min-width: 150px;
   padding: 5px;
   font-size: 16px;
 }
-/* line 3, ../sass/_navbar.scss */
+/* line 5, ../sass/_navbar.scss */
 nav#goban-nav select:hover, nav#goban-nav select:active, nav#goban-nav select.active {
   -moz-transition: all 0s linear;
   -o-transition: all 0s linear;
@@ -155,19 +159,19 @@ nav#goban-nav select:hover, nav#goban-nav select:active, nav#goban-nav select.ac
   -webkit-box-shadow: 0px 5px 20px 0px #666;
   box-shadow: 0px 5px 20px 0px #666;
 }
-/* line 10, ../sass/_navbar.scss */
+/* line 12, ../sass/_navbar.scss */
 nav#goban-nav select#title {
   position: relative;
   top: -8px;
 }
-/* line 14, ../sass/_navbar.scss */
+/* line 16, ../sass/_navbar.scss */
 nav#goban-nav select#scale {
   position: absolute;
   right: 100px;
   top: 15px;
   min-width: 100px;
 }
-/* line 23, ../sass/_navbar.scss */
+/* line 25, ../sass/_navbar.scss */
 nav#goban-nav ul li a {
   -moz-transition: all 0.5s ease;
   -o-transition: all 0.5s ease;
@@ -181,11 +185,11 @@ nav#goban-nav ul li a {
   -webkit-transform: skewX(15deg);
   transform: skewX(15deg);
 }
-/* line 27, ../sass/_navbar.scss */
+/* line 29, ../sass/_navbar.scss */
 nav#goban-nav ul li a:hover, nav#goban-nav ul li a:active, nav#goban-nav ul li a.active {
   background-color: #999;
 }
-/* line 31, ../sass/_navbar.scss */
+/* line 33, ../sass/_navbar.scss */
 nav#goban-nav ul li a.active::after {
   position: absolute;
   top: 8px;
@@ -199,7 +203,7 @@ nav#goban-nav ul li a.active::after {
   -webkit-border-radius: 50%;
   border-radius: 50%;
 }
-/* line 43, ../sass/_navbar.scss */
+/* line 45, ../sass/_navbar.scss */
 nav#goban-nav ul li a.dark {
   border: 3px solid gray;
   -moz-transform: scaleX(1.2);
@@ -211,27 +215,27 @@ nav#goban-nav ul li a.dark {
   border-radius: 50%;
   background-color: #999;
 }
-/* line 50, ../sass/_navbar.scss */
+/* line 52, ../sass/_navbar.scss */
 nav#goban-nav ul li a.zopd {
-  background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHJhZGlhbEdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgY3g9IjI1cHgiIGN5PSIyNXB4IiByPSI0JSI+PHN0b3Agb2Zmc2V0PSIyNSUiIHN0b3AtY29sb3I9IiMwMGZmZmYiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMzMzMzMzMiLz48L3JhZGlhbEdyYWRpZW50PjwvZGVmcz48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyYWQpIiAvPjwvc3ZnPiA=');
+  background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHJhZGlhbEdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgY3g9IjI1cHgiIGN5PSIyNXB4IiByPSI0JSI+PHN0b3Agb2Zmc2V0PSIyNSUiIHN0b3AtY29sb3I9IiMwMGZmZmYiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNjY2NjY2MiLz48L3JhZGlhbEdyYWRpZW50PjwvZGVmcz48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyYWQpIiAvPjwvc3ZnPiA=');
   background-size: 100%;
-  background-image: -moz-radial-gradient(25px 25px, #00ffff 1px, #333333 4px);
-  background-image: -webkit-radial-gradient(25px 25px, #00ffff 1px, #333333 4px);
-  background-image: radial-gradient(25px 25px, #00ffff 1px, #333333 4px);
+  background-image: -moz-radial-gradient(25px 25px, #00ffff 1px, #cccccc 4px);
+  background-image: -webkit-radial-gradient(25px 25px, #00ffff 1px, #cccccc 4px);
+  background-image: radial-gradient(25px 25px, #00ffff 1px, #cccccc 4px);
 }
-/* line 56, ../sass/_navbar.scss */
+/* line 58, ../sass/_navbar.scss */
 nav#goban-nav #logo {
   position: absolute;
   right: 5px;
   top: 5px;
 }
-/* line 60, ../sass/_navbar.scss */
+/* line 62, ../sass/_navbar.scss */
 nav#goban-nav #logo img {
   -moz-border-radius: 50%;
   -webkit-border-radius: 50%;
   border-radius: 50%;
 }
-/* line 64, ../sass/_navbar.scss */
+/* line 66, ../sass/_navbar.scss */
 nav#goban-nav #logo:hover img, nav#goban-nav #logo:active img, nav#goban-nav #logo.active img {
   -moz-box-shadow: 0px 5px 30px 0px #999;
   -webkit-box-shadow: 0px 5px 30px 0px #999;

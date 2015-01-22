@@ -1,4 +1,6 @@
 nav#goban-nav {
+	$nav-bgcolor: #ccc;
+	background-color: $nav-bgcolor;
 	select {
 		&:hover,&:active,&.active{
 			@include transition(all 0s linear);
@@ -48,7 +50,7 @@ nav#goban-nav {
 				
 				}
 				&.zopd {	
-					@include background-image(radial-gradient(25px 25px, cyan 1px, #333 4px));				
+					@include background-image(radial-gradient(25px 25px, cyan 1px, $nav-bgcolor 4px));				
 				}
 			}
 		}
