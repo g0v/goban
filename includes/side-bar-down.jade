@@ -12,7 +12,7 @@ ul#long-term-memory.tools(ng-cloak='',
       | {{k}}
   li
     a(ng-click="createNew(key)",
-      ng-show="key",
+      ng-show="key && !getIndex(key).length",
       ng-class="{active: curious == (getIndex(key)||[]).length + 1}"
       title = "{{'CREATE' | translate}}")
       | {{'CREATE' | translate }}{{key}}
