@@ -25,6 +25,7 @@ nav,
 
 /* line 25, ../sass/print.scss */
 #QR {
+  page-break-inside: avoid;
   height: 80px;
   width: 80px;
   position: relative;
@@ -34,33 +35,34 @@ nav,
   box-shadow: 5px 5px 20px 0px #666;
 }
 
-/* line 33, ../sass/print.scss */
+/* line 34, ../sass/print.scss */
 * {
   overflow: visible !important;
 }
 
-/* line 37, ../sass/print.scss */
+/* line 38, ../sass/print.scss */
 ul {
   max-height: none;
 }
-/* line 39, ../sass/print.scss */
+/* line 40, ../sass/print.scss */
 ul li {
-  min-height: 80px;
+  page-break-inside: avoid;
+  min-height: 144px;
   margin-top: 10px;
   line-height: 160%;
 }
-/* line 43, ../sass/print.scss */
+/* line 45, ../sass/print.scss */
 ul li span.text {
   display: inline-block;
   font-size: 22px;
   min-width: 400px;
 }
-/* line 48, ../sass/print.scss */
+/* line 50, ../sass/print.scss */
 ul li img {
   margin-right: 15px;
 }
 
-/* line 54, ../sass/print.scss */
+/* line 56, ../sass/print.scss */
 #setting-bar {
   font-size: 60px;
   line-height: 100px;

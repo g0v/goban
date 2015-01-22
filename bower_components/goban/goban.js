@@ -147,7 +147,12 @@
           dataType: "text"
         }).success(function(data){
           var config;
-          config = goban.parseConfigFromJSON(data);
+          config = {};
+          if (goban.useJSON === '.json') {
+            config = goban.parseConfigFromJSON(data);
+          } else {
+            config = goban.parseConfigFromCSV(data);
+          }
           if (config.related && config.related.length) {
             goban.related = config.related.filter(function(o){
               return o && o.n && o.t;
@@ -180,6 +185,9 @@
           myName: 'Goban',
           related: []
         };
+        if (data && data[1]) {
+          ans.myName = data[1][1] || data[1][0];
+        }
         myD = data.slice(1);
         myC = '';
         myR = [];

@@ -23,6 +23,7 @@ nav,
 }
 
 #QR {
+	page-break-inside: avoid;
 	height:80px;
 	width:80px;
 	position: relative;
@@ -37,7 +38,8 @@ nav,
 ul {
 	max-height:none;
 	li {
-		min-height: 80px;
+		page-break-inside: avoid;
+		min-height: 144px;
 		margin-top: 10px;
 		line-height: 160%;
 		span.text {
