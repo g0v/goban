@@ -31,8 +31,9 @@ nav#goban-nav(ng-style='{height: navHeight + "px"}')
     li.noPhone(ng-repeat='i in goban.myColumnIndex')
       a(ng-class='{active: i == goban.myI,\
       dark: i < goban.myI,\
-      zopd: i -1 == goban.myI}', ng-click='goban.setI(i);\
-      maybeExtend()')
+      zopd: i -1 == goban.myI}',
+        ng-click='goban.setI(i);maybeExtend()',
+        title="{{goban.getSectionTitle(i)}}")
 
         
     select#scale.noPhone(ng-model='myScale',

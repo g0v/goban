@@ -39,6 +39,7 @@
       data: [],
       icons: [],
       related: [],
+      matrix: [[]],
       path: 'https://ethercalc.org/',
       title: $hash.asArray()[0] || '',
       myI: $hash.asArray()[1] || 0,
@@ -87,6 +88,10 @@
         }
         this.myColumnIndex = res$;
       },
+      getSectionTitle: function(i){
+        console.log(this.matrix);
+        return this.matrix && this.matrix[i] && this.matrix[i].sectionTitle;
+      },
       cast: function(eventName, arg){
         var broadcastName;
         broadcastName = 'goban.' + eventName;
@@ -102,6 +107,33 @@
           this.pageLoading = false;
         }
       },
+      loadMatrix: function(){
+        var i$, ref$, len$, k, url;
+        for (i$ = 0, len$ = (ref$ = this.myColumnIndex).length; i$ < len$; ++i$) {
+          k = ref$[i$];
+          url = this.path + this.title + k + '.csv' + this.useJSON;
+          $http({
+            method: "GET",
+            url: url,
+            dataType: "text"
+          }).success(fn$).error(fn1$);
+        }
+        function fn$(data){
+          if (goban.useJSON === '.json') {
+            goban.matrix[k] = goban.parseDataFromJSON(data);
+          } else {
+            goban.matrix[k] = goban.parseDataFromCSV(data);
+          }
+          goban.cast('loaded', {
+            p: 'matrix'
+          });
+        }
+        function fn1$(){
+          goban.cast('error', {
+            p: 'matrix'
+          });
+        }
+      },
       loadCore: function(num){
         var url;
         url = this.path + this.title + num + '.csv' + this.useJSON;
@@ -115,6 +147,7 @@
           } else {
             goban.data = goban.parseDataFromCSV(data);
           }
+          goban.matrix[goban.myI] = angular.copy(goban.data);
           goban.updateHash();
           goban.cast('loaded', {
             p: 'data'
