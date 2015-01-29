@@ -78,7 +78,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 }
 
 /* line 17, ../sass/screen.scss */
-body {
+iframe {
   background-image: url("../images/tiles.png");
 }
 
