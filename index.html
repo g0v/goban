@@ -29,7 +29,7 @@
       </ul>
     </nav>
     <div id="goban-side" ng-cloak="" ng-class="{hidden: hideSideBar, v0: !hideSideBar &amp;&amp; v==0, v1: v==1}" ng-style="{height: countHeight() - navHeight + &quot;px&quot;}" style="display:block;overflow:auto">
-      <div id="setting-bar"><a ng-click="goEdit();toggleSideBar();"><span id="goban-sectionTitle"><span class="action">{{(goban.sectionTitle && 'EDIT') || 'CREATE' | translate}}</span><span class="text">
+      <div id="setting-bar"><a ng-click="goEdit();toggleSideBar();"><span id="goban-sectionTitle"><span ng-hide="goban.sectionTitle" class="action"> {{'CREATE' | translate}}</span><span title="{{'EDIT' | translate}}" class="text">
                
               {{goban.sectionTitle || ''}}</span></span></a></div>
       <ul>

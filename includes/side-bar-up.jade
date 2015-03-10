@@ -1,9 +1,9 @@
 div#setting-bar
   a(ng-click='goEdit();toggleSideBar();')
     span#goban-sectionTitle
-      span.action
-        | {{(goban.sectionTitle && 'EDIT') || 'CREATE' | translate}}
-      span.text 
+      span.action(ng-hide = "goban.sectionTitle")
+        |  {{'CREATE' | translate}}
+      span.text(title = "{{'EDIT' | translate}}") 
         | {{goban.sectionTitle || ''}}
  
 ul
