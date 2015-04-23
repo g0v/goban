@@ -16,6 +16,6 @@ angular.module("automap")
 	WEB_CONFIG: 'configurate via web',
 	SCALE: 'scale',
 
-	NOT: 'not ',
-	MY_START: 'remember'
+	NOT: 'no ',
+	MY_STAR: 'memory'
 })
