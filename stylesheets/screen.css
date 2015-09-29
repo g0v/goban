@@ -1,466 +1,72 @@
-/* Welcome to Compass.
- * In this file you should write your main styles. (or centralize your imports)
- * Import this file using the following HTML or equivalent:
- * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
-/* line 5, ../../../../../Library/Ruby/Gems/1.8/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font: inherit;
-  font-size: 100%;
-  vertical-align: baseline;
-}
+/*
+Error: Invalid CSS after "}": expected "}", was ""
+        on line 87 of /Users/imac/Documents/goban.tw/sass/_sidebar.scss
+        from line 31 of /Users/imac/Documents/goban.tw/sass/screen.scss
 
-/* line 22, ../../../../../Library/Ruby/Gems/1.8/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
-html {
-  line-height: 1;
-}
+82: 	     background: hsla(250,70%,70%,1);
+83: 	     width: 11px;
+84: 	     height: 5px;
+85: 	     @include transform(rotate(45deg));
+86:     }
+87: }
 
-/* line 24, ../../../../../Library/Ruby/Gems/1.8/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
-ol, ul {
-  list-style: none;
-}
-
-/* line 26, ../../../../../Library/Ruby/Gems/1.8/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-
-/* line 28, ../../../../../Library/Ruby/Gems/1.8/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
-caption, th, td {
-  text-align: left;
-  font-weight: normal;
-  vertical-align: middle;
-}
-
-/* line 30, ../../../../../Library/Ruby/Gems/1.8/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
-q, blockquote {
-  quotes: none;
-}
-/* line 103, ../../../../../Library/Ruby/Gems/1.8/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
-q:before, q:after, blockquote:before, blockquote:after {
-  content: "";
-  content: none;
-}
-
-/* line 32, ../../../../../Library/Ruby/Gems/1.8/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
-a img {
-  border: none;
-}
-
-/* line 116, ../../../../../Library/Ruby/Gems/1.8/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
-article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
-  display: block;
-}
-
-/* line 9, ../sass/screen.scss */
-[ng\:cloak], [ng-cloak], .ng-cloak {
-  display: none !important;
-}
-
-/* line 13, ../sass/screen.scss */
-.printOnly {
-  display: none !important;
-}
-
-/* line 17, ../sass/screen.scss */
-iframe {
-  background-image: url("../images/tiles.png");
-}
-
-@media screen and (max-width: 500px) {
-  /* line 7, ../sass/_responsive.scss */
-  .noPhone, .wideOnly {
-    display: none !important;
-  }
-
-  /* line 11, ../sass/_responsive.scss */
-  #goban-nav select {
-    min-width: 80px !important;
-  }
-  /* line 16, ../sass/_responsive.scss */
-  #goban-nav #logo img.goban-logo.goban-fixed-right {
-    right: 7px;
-  }
-
-  /* line 21, ../sass/_responsive.scss */
-  #goban-side {
-    position: absolute;
-    left: 0%;
-  }
-  /* line 24, ../sass/_responsive.scss */
-  #goban-side.v0 {
-    width: 100%;
-  }
-  /* line 27, ../sass/_responsive.scss */
-  #goban-side.hidden {
-    width: 50%;
-    left: -50%;
-  }
-
-  /* line 32, ../sass/_responsive.scss */
-  #goban-main {
-    width: 100%;
-  }
-  /* line 34, ../sass/_responsive.scss */
-  #goban-main.v0 {
-    width: 0%;
-  }
-}
-@media screen and (min-width: 500px) and (max-width: 800px) {
-  /* line 41, ../sass/_responsive.scss */
-  .phoneOnly, .wideOnly {
-    display: none !important;
-  }
-}
-@media screen and (min-width: 800px) and (max-width: 1000px) {
-  /* line 47, ../sass/_responsive.scss */
-  .phoneOnly {
-    display: none !important;
-  }
-}
-@media screen and (min-width: 1000px) {
-  /* line 53, ../sass/_responsive.scss */
-  .phoneOnly {
-    display: none !important;
-  }
-}
-/* line 1, ../sass/_navbar.scss */
-nav#goban-nav {
-  background-color: #ccc;
-}
-/* line 4, ../sass/_navbar.scss */
-nav#goban-nav select {
-  min-width: 150px;
-  padding: 5px;
-  font-size: 16px;
-}
-/* line 5, ../sass/_navbar.scss */
-nav#goban-nav select:hover, nav#goban-nav select:active, nav#goban-nav select.active {
-  -moz-transition: all 0s linear;
-  -o-transition: all 0s linear;
-  -webkit-transition: all 0s linear;
-  transition: all 0s linear;
-  -moz-box-shadow: 0px 5px 20px 0px #666;
-  -webkit-box-shadow: 0px 5px 20px 0px #666;
-  box-shadow: 0px 5px 20px 0px #666;
-}
-/* line 12, ../sass/_navbar.scss */
-nav#goban-nav select#title {
-  position: relative;
-  top: -8px;
-}
-/* line 16, ../sass/_navbar.scss */
-nav#goban-nav select#scale {
-  position: absolute;
-  right: 100px;
-  top: 15px;
-  min-width: 100px;
-}
-/* line 25, ../sass/_navbar.scss */
-nav#goban-nav ul li a {
-  -moz-transition: all 0.5s ease;
-  -o-transition: all 0.5s ease;
-  -webkit-transition: all 0.5s ease;
-  transition: all 0.5s ease;
-  -moz-border-radius: 5px 50% 50% 5px;
-  -webkit-border-radius: 5px;
-  border-radius: 5px 50% 50% 5px;
-  -moz-transform: skewX(15deg);
-  -ms-transform: skewX(15deg);
-  -webkit-transform: skewX(15deg);
-  transform: skewX(15deg);
-}
-/* line 29, ../sass/_navbar.scss */
-nav#goban-nav ul li a:hover, nav#goban-nav ul li a:active, nav#goban-nav ul li a.active {
-  background-color: #999;
-}
-/* line 33, ../sass/_navbar.scss */
-nav#goban-nav ul li a.active::after {
-  position: absolute;
-  top: 8px;
-  left: 7px;
-  display: inline-block;
-  content: "";
-  width: 0px;
-  height: 0px;
-  border: 2px solid cyan;
-  -moz-border-radius: 50%;
-  -webkit-border-radius: 50%;
-  border-radius: 50%;
-}
-/* line 45, ../sass/_navbar.scss */
-nav#goban-nav ul li a.dark {
-  border: 3px solid gray;
-  -moz-transform: scaleX(1.2);
-  -ms-transform: scaleX(1.2);
-  -webkit-transform: scaleX(1.2);
-  transform: scaleX(1.2);
-  -moz-border-radius: 50%;
-  -webkit-border-radius: 50%;
-  border-radius: 50%;
-  background-color: #999;
-}
-/* line 52, ../sass/_navbar.scss */
-nav#goban-nav ul li a.zopd {
-  background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHJhZGlhbEdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgY3g9IjI1cHgiIGN5PSIyNXB4IiByPSI0JSI+PHN0b3Agb2Zmc2V0PSIyNSUiIHN0b3AtY29sb3I9IiMwMGZmZmYiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNjY2NjY2MiLz48L3JhZGlhbEdyYWRpZW50PjwvZGVmcz48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyYWQpIiAvPjwvc3ZnPiA=');
-  background-size: 100%;
-  background-image: -moz-radial-gradient(25px 25px, #00ffff 1px, #cccccc 4px);
-  background-image: -webkit-radial-gradient(25px 25px, #00ffff 1px, #cccccc 4px);
-  background-image: radial-gradient(25px 25px, #00ffff 1px, #cccccc 4px);
-}
-/* line 58, ../sass/_navbar.scss */
-nav#goban-nav #logo {
-  position: absolute;
-  right: 5px;
-  top: 5px;
-}
-/* line 62, ../sass/_navbar.scss */
-nav#goban-nav #logo img {
-  -moz-border-radius: 50%;
-  -webkit-border-radius: 50%;
-  border-radius: 50%;
-}
-/* line 66, ../sass/_navbar.scss */
-nav#goban-nav #logo:hover img, nav#goban-nav #logo:active img, nav#goban-nav #logo.active img {
-  -moz-box-shadow: 0px 5px 30px 0px #999;
-  -webkit-box-shadow: 0px 5px 30px 0px #999;
-  box-shadow: 0px 5px 30px 0px #999;
-}
-
-/* line 26, ../sass/screen.scss */
-.goban-blank a {
-  font-size: 11px !important;
-}
-
-/* line 3, ../sass/_sidebar.scss */
-#goban-side #setting-bar #goban-sectionTitle {
-  color: black;
-  padding: 2px;
-  border-bottom: 2px dotted #aaf;
-  border-left: 2px dotted #aaf;
-}
-/* line 9, ../sass/_sidebar.scss */
-#goban-side #setting-bar select {
-  position: relative;
-  top: 5px;
-  left: 25px;
-}
-/* line 15, ../sass/_sidebar.scss */
-#goban-side ul {
-  min-height: 66px;
-}
-/* line 18, ../sass/_sidebar.scss */
-#goban-side ul li a {
-  color: #666;
-}
-/* line 21, ../sass/_sidebar.scss */
-#goban-side ul li a.active::after {
-  position: relative;
-  top: -3px;
-  left: 12px;
-  display: inline-block;
-  content: "";
-  width: 6px;
-  height: 6px;
-  border-top: 2px solid cyan;
-  border-left: 2px solid cyan;
-  -moz-transform: rotate(-45deg);
-  -ms-transform: rotate(-45deg);
-  -webkit-transform: rotate(-45deg);
-  transform: rotate(-45deg);
-}
-/* line 40, ../sass/_sidebar.scss */
-#goban-side .tools .gray {
-  margin-right: 15px;
-  padding: 2px;
-  border-left: 2px dotted #009999;
-  border-top: 2px dotted #009999;
-}
-/* line 46, ../sass/_sidebar.scss */
-#goban-side .tools select {
-  font-size: 18px;
-  padding: 5px;
-  margin: 5px;
-  margin-top: 20px;
-  height: 60px;
-}
-/* line 53, ../sass/_sidebar.scss */
-#goban-side .tools a {
-  font-size: 14px;
-  margin-left: 5px;
-}
-/* line 56, ../sass/_sidebar.scss */
-#goban-side .tools a #star {
-  width: 20px;
-  height: 20px;
-}
-/* line 60, ../sass/_sidebar.scss */
-#goban-side .tools a #zazan {
-  width: 20px;
-  height: 20px;
-  -moz-border-radius: 50%;
-  -webkit-border-radius: 50%;
-  border-radius: 50%;
-}
-
-/* line 1, ../sass/_footer.scss */
-footer {
-  background-image: url("../favicon.png");
-  -moz-transition: all 1s linear;
-  -o-transition: all 1s linear;
-  -webkit-transition: all 1s linear;
-  transition: all 1s linear;
-  font-size: 18px;
-  position: fixed;
-  bottom: 0px;
-  width: 100%;
-  height: 50px;
-  text-align: center;
-  padding: 10px;
-  color: #007f80;
-  background-color: rgba(239, 233, 252, 0.86);
-  border-top: 5px ridge gray;
-}
-/* line 15, ../sass/_footer.scss */
-footer ol {
-  display: inline-block;
-  max-width: 600px;
-  list-style: upper-roman inside;
-  text-align: left;
-}
-/* line 20, ../sass/_footer.scss */
-footer ol li {
-  padding: 5px;
-  background-image: url("../images/tiles.png");
-}
-/* line 26, ../sass/_footer.scss */
-footer #last, footer #next {
-  color: #999;
-  font-size: 18px;
-  padding: 10px;
-  margin-left: 15px;
-  margin-right: 15px;
-}
-/* line 33, ../sass/_footer.scss */
-footer.sunk {
-  bottom: -70px;
-}
-/* line 36, ../sass/_footer.scss */
-footer.full {
-  -moz-transition: all 2s linear;
-  -o-transition: all 2s linear;
-  -webkit-transition: all 2s linear;
-  transition: all 2s linear;
-  height: 50%;
-  overflow: auto;
-}
-
-/* line 1, ../sass/_hidden.scss */
-#goban-keyBordCtrl,
-#lang,
-#flag,
-#scale {
-  -moz-transition: all 1s ease-in;
-  -o-transition: all 1s ease-in;
-  -webkit-transition: all 1s ease-in;
-  transition: all 1s ease-in;
-}
-/* line 6, ../sass/_hidden.scss */
-#goban-keyBordCtrl.hidden,
-#lang.hidden,
-#flag.hidden,
-#scale.hidden {
-  opacity: 0;
-}
-
-/* line 12, ../sass/_hidden.scss */
-#goban-keyBordCtrl.hidden {
-  width: 0px;
-  -webkit-filter: grayscale(100%) blur(1px);
-  filter: grayscale(100%) blur(1px);
-}
-
-/* line 18, ../sass/_hidden.scss */
-#goban-main:hover .goban-blank {
-  opacity: 0;
-}
-
-/* line 37, ../sass/screen.scss */
-#goban-keyBordCtrl div {
-  -moz-box-shadow: 0px 10px 30px 0px gray;
-  -webkit-box-shadow: 0px 10px 30px 0px gray;
-  box-shadow: 0px 10px 30px 0px gray;
-}
-/* line 40, ../sass/screen.scss */
-#goban-keyBordCtrl div#backup a {
-  top: 32px;
-}
-
-/* line 47, ../sass/screen.scss */
-#flag {
-  height: 25px;
-}
-
-/* line 51, ../sass/screen.scss */
-.tiny, .big, .gaint {
-  transform-origin: top left;
-  -webkit-transform-origin: top left;
-  -moz-transform-origin: top left;
-  -ms-transform-origin: top left;
-  -o-transform-origin: top left;
-}
-
-/* line 58, ../sass/screen.scss */
-.tiny {
-  -moz-transform: scale(0.8);
-  -ms-transform: scale(0.8);
-  -webkit-transform: scale(0.8);
-  transform: scale(0.8);
-  position: relative;
-  width: 125% !important;
-  height: 125% !important;
-}
-
-/* line 64, ../sass/screen.scss */
-.big {
-  -moz-transform: scale(1.3);
-  -ms-transform: scale(1.3);
-  -webkit-transform: scale(1.3);
-  transform: scale(1.3);
-  width: 77% !important;
-  height: 77% !important;
-}
-
-/* line 70, ../sass/screen.scss */
-.gray {
-  color: gray;
-}
-
-/* line 74, ../sass/screen.scss */
-.gaint {
-  -moz-transform: scale(1.5);
-  -ms-transform: scale(1.5);
-  -webkit-transform: scale(1.5);
-  transform: scale(1.5);
-  -moz-transform-origin: top left 50%;
-  -ms-transform-origin: top left 50%;
-  -webkit-transform-origin: top left 50%;
-  transform-origin: top left 50%;
-  width: 66% !important;
-  height: 66% !important;
-}
+Backtrace:
+/Users/imac/Documents/goban.tw/sass/_sidebar.scss:87
+/Users/imac/Documents/goban.tw/sass/screen.scss:31
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.5/lib/sass/scss/parser.rb:1163:in `expected'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.5/lib/sass/scss/parser.rb:1099:in `expected'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.5/lib/sass/scss/parser.rb:1094:in `tok!'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.5/lib/sass/scss/parser.rb:643:in `block'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.5/lib/sass/scss/parser.rb:635:in `ruleset'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.5/lib/sass/scss/parser.rb:660:in `block_child'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.5/lib/sass/scss/parser.rb:650:in `block_contents'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.5/lib/sass/scss/parser.rb:117:in `stylesheet'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.5/lib/sass/scss/parser.rb:42:in `parse'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.5/lib/sass/engine.rb:393:in `_to_tree'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.5/lib/sass/engine.rb:299:in `to_tree'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.5/lib/sass/tree/visitors/perform.rb:313:in `block in visit_import'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.5/lib/sass/stack.rb:88:in `block in with_import'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.5/lib/sass/stack.rb:115:in `with_frame'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.5/lib/sass/stack.rb:88:in `with_import'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.5/lib/sass/tree/visitors/perform.rb:312:in `visit_import'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.5/lib/sass/tree/visitors/base.rb:36:in `visit'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.5/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.5/lib/sass/stack.rb:79:in `block in with_base'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.5/lib/sass/stack.rb:115:in `with_frame'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.5/lib/sass/stack.rb:79:in `with_base'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.5/lib/sass/tree/visitors/perform.rb:158:in `visit'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.5/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.5/lib/sass/tree/visitors/base.rb:52:in `map'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.5/lib/sass/tree/visitors/base.rb:52:in `visit_children'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.5/lib/sass/tree/visitors/perform.rb:167:in `block in visit_children'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.5/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.5/lib/sass/tree/visitors/perform.rb:166:in `visit_children'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.5/lib/sass/tree/visitors/base.rb:36:in `block in visit'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.5/lib/sass/tree/visitors/perform.rb:186:in `visit_root'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.5/lib/sass/tree/visitors/base.rb:36:in `visit'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.5/lib/sass/tree/visitors/perform.rb:157:in `visit'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.5/lib/sass/tree/visitors/perform.rb:8:in `visit'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.5/lib/sass/tree/root_node.rb:36:in `css_tree'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.5/lib/sass/tree/root_node.rb:20:in `render'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.5/lib/sass/engine.rb:268:in `render'
+/Library/Ruby/Gems/2.0.0/gems/compass-import-once-1.0.5/lib/compass/import-once/engine.rb:17:in `block in render'
+/Library/Ruby/Gems/2.0.0/gems/compass-import-once-1.0.5/lib/compass/import-once/engine.rb:29:in `with_import_scope'
+/Library/Ruby/Gems/2.0.0/gems/compass-import-once-1.0.5/lib/compass/import-once/engine.rb:16:in `render'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.5/lib/sass/plugin/compiler.rb:491:in `update_stylesheet'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.5/lib/sass/plugin/compiler.rb:215:in `block in update_stylesheets'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.5/lib/sass/plugin/compiler.rb:209:in `each'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.5/lib/sass/plugin/compiler.rb:209:in `update_stylesheets'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.5/lib/sass/plugin/compiler.rb:469:in `on_file_changed'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.5/lib/sass/plugin/compiler.rb:328:in `block in watch'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.5/vendor/listen/lib/listen/listener.rb:252:in `call'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.5/vendor/listen/lib/listen/listener.rb:252:in `on_change'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.5/vendor/listen/lib/listen/listener.rb:290:in `block in initialize_adapter'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.5/vendor/listen/lib/listen/adapter.rb:254:in `call'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.5/vendor/listen/lib/listen/adapter.rb:254:in `report_changes'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.5/vendor/listen/lib/listen/adapter.rb:323:in `poll_changed_directories'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.5/vendor/listen/lib/listen/adapter.rb:299:in `block in start_poller'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: Invalid CSS after \"}\": expected \"}\", was \"\"\A         on line 87 of /Users/imac/Documents/goban.tw/sass/_sidebar.scss\A         from line 31 of /Users/imac/Documents/goban.tw/sass/screen.scss\A \A 82: 	     background: hsla(250,70%,70%,1);\A 83: 	     width: 11px;\A 84: 	     height: 5px;\A 85: 	     @include transform(rotate(45deg));\A 86:     }\A 87: }"; }

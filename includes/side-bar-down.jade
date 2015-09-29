@@ -1,7 +1,8 @@
 ul#long-term-memory.tools(ng-cloak='',
   ng-controller = "hubCtrl",
   ng-keydown = "keyPressed($event)")
-  li 
+  li
+    i.looking-glass 
     input(type = "search",
           ng-model = "key",
           placeholder = "{{'SEARCH' | translate}}")     
