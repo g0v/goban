@@ -325,12 +325,13 @@ nav#goban-nav #logo:hover img, nav#goban-nav #logo:active img, nav#goban-nav #lo
   width: 10px;
   height: 10px;
   border: 3px solid #8f7de8;
-  position: relative;
+  position: absolute;
+  left: 175px;
   -moz-border-radius: 50%;
   -webkit-border-radius: 50%;
   border-radius: 50%;
 }
-/* line 75, ../sass/_sidebar.scss */
+/* line 76, ../sass/_sidebar.scss */
 #goban-side .looking-glass::before {
   content: "";
   display: inline-block;
