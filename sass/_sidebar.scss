@@ -65,23 +65,24 @@
 		}
 	}
 	.looking-glass{
-	   font-size: 15px; /* This controls the size. */
-	   display: inline-block;
-	   width: 10px;
-	   height: 10px;
-	   border: 3px solid hsla(250,70%,70%,1);
-	   position: relative;
-	   @include border-radius(50%);
-	   &::before{
-	     content: "";
-	     display: inline-block;
-	     position: absolute;
-	     left: 7px;
-	     top: 10px;
-	     border-width: 0;
-	     background: hsla(250,70%,70%,1);
-	     width: 11px;
-	     height: 5px;
-	     @include transform(rotate(45deg));
-    }
+	   	font-size: 15px; /* This controls the size. */
+	   	display: inline-block;
+	   	width: 10px;
+	   	height: 10px;
+	   	border: 3px solid hsla(250,70%,70%,1);
+	   	position: relative;
+	   	@include border-radius(50%);
+	   	&::before{
+	     	content: "";
+	     	display: inline-block;
+	     	position: absolute;
+	     	left: 7px;
+	     	top: 10px;
+	     	border-width: 0;
+	     	background: hsla(250,70%,70%,1);
+	     	width: 11px;
+	     	height: 5px;
+	     	@include transform(rotate(45deg));
+    	}
+	}
 }
