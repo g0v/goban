@@ -326,7 +326,7 @@ nav#goban-nav #logo:hover img, nav#goban-nav #logo:active img, nav#goban-nav #lo
   height: 10px;
   border: 3px solid #8f7de8;
   position: absolute;
-  left: 175px;
+  left: 2px;
   -moz-border-radius: 50%;
   -webkit-border-radius: 50%;
   border-radius: 50%;
@@ -346,6 +346,10 @@ nav#goban-nav #logo:hover img, nav#goban-nav #logo:active img, nav#goban-nav #lo
   -ms-transform: rotate(45deg);
   -webkit-transform: rotate(45deg);
   transform: rotate(45deg);
+}
+/* line 89, ../sass/_sidebar.scss */
+#goban-side input {
+  font-size: 18px;
 }
 
 /* line 1, ../sass/_footer.scss */

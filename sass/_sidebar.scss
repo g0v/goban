@@ -71,7 +71,7 @@
 	   	height: 10px;
 	   	border: 3px solid hsla(250,70%,70%,1);
 	   	position: absolute;
-	   	left: 175px;
+	   	left: 2px;
 	   	@include border-radius(50%);
 	   	&::before{
 	     	content: "";
@@ -85,5 +85,8 @@
 	     	height: 5px;
 	     	@include transform(rotate(45deg));
     	}
+	}
+	input {
+		font-size: 18px;
 	}
 }
