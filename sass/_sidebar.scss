@@ -65,22 +65,24 @@
 		}
 	}
 	.looking-glass{
+		$l: #999;
 	   	font-size: 15px; /* This controls the size. */
 	   	display: inline-block;
 	   	width: 10px;
 	   	height: 10px;
-	   	border: 3px solid hsla(250,70%,70%,1);
-	   	position: absolute;
-	   	left: 2px;
+	   	border: 3px solid $l;
+	   	position: relative;
+	   	left: -15px;
+	   	top: 20;
 	   	@include border-radius(50%);
 	   	&::before{
 	     	content: "";
 	     	display: inline-block;
-	     	position: absolute;
+	     	position: relative;
 	     	left: 7px;
 	     	top: 10px;
 	     	border-width: 0;
-	     	background: hsla(250,70%,70%,1);
+	     	background: $l;
 	     	width: 11px;
 	     	height: 5px;
 	     	@include transform(rotate(45deg));

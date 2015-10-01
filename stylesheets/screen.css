@@ -324,22 +324,23 @@ nav#goban-nav #logo:hover img, nav#goban-nav #logo:active img, nav#goban-nav #lo
   display: inline-block;
   width: 10px;
   height: 10px;
-  border: 3px solid #8f7de8;
-  position: absolute;
-  left: 2px;
+  border: 3px solid #999;
+  position: relative;
+  left: -15px;
+  top: 20;
   -moz-border-radius: 50%;
   -webkit-border-radius: 50%;
   border-radius: 50%;
 }
-/* line 76, ../sass/_sidebar.scss */
+/* line 78, ../sass/_sidebar.scss */
 #goban-side .looking-glass::before {
   content: "";
   display: inline-block;
-  position: absolute;
+  position: relative;
   left: 7px;
   top: 10px;
   border-width: 0;
-  background: #8f7de8;
+  background: #999;
   width: 11px;
   height: 5px;
   -moz-transform: rotate(45deg);
@@ -347,7 +348,7 @@ nav#goban-nav #logo:hover img, nav#goban-nav #logo:active img, nav#goban-nav #lo
   -webkit-transform: rotate(45deg);
   transform: rotate(45deg);
 }
-/* line 89, ../sass/_sidebar.scss */
+/* line 91, ../sass/_sidebar.scss */
 #goban-side input {
   font-size: 18px;
 }

@@ -11,18 +11,18 @@ angular.module("automap")
     UP: '向前',
     DOWN: '向後',
     SCALE: '縮放',
-    SEARCH: '搜詢',
+    SEARCH: '搜尋',
     //
   	TITLE: '零時黑板',
     LONG_TITLE: '黑客棋盤',
   	OPEN_BLANK: '按此可開啟新頁籤',
     //
-    NOT: '不',
+    NOT: '可',
     MY_STAR: '記得',
     GATHER: '採集',
     ZAZAN: '禪定',
     //
-    GOBAN_HUB: '搜詢',
+    GOBAN_HUB: '搜尋',
     //
     EDIT: '編輯',
   	CREATE: '創建',
@@ -51,7 +51,7 @@ angular.module("automap")
       UP: '向前',
       DOWN: '向后',
       SCALE: '缩放',
-      SCALE: '搜询',
+      SCALE: '搜尋',
       //
       TITLE : '零時黑板',
       LONG_TITLE: '黑客棋盘',
