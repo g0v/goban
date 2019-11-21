@@ -1,24 +1,23 @@
 <template>
   <div id="app">
     <h1>Hello</h1>
-    {{ gobans }}
     <router-view :gobans = "gobans"/>
   </div>
 </template>
 
 <script>
 
-import { db } from './firebase/db'
+import { gobansRef } from './firebase/db'
 
 export default {
   name: 'App',
   data () {
     return {
-      gobans: []
+      gobans: undefined
     }
   },
-  firestore: {
-    gobans: db.collection('gobans')
+  firebase: {
+    gobans: gobansRef
   }
 }
 

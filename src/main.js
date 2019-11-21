@@ -3,6 +3,9 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import { rtdbPlugin } from 'vuefire'
+
+Vue.use( rtdbPlugin )
 
 Vue.config.productionTip = false
 
