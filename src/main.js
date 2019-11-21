@@ -4,8 +4,13 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import { rtdbPlugin } from 'vuefire'
+import VueResource from 'vue-resource'
+import SuiVue from 'semantic-ui-vue'
+import 'semantic-ui-css/semantic.min.css'
 
-Vue.use( rtdbPlugin )
+Vue.use(SuiVue)
+Vue.use(VueResource)
+Vue.use(rtdbPlugin)
 
 Vue.config.productionTip = false
 

@@ -1,7 +1,7 @@
 <template>
   <div class="hello">
     <ul>
-      <li v-for = "g in gobans">
+      <li v-for = "g in gobans" :key = "g">
         <router-link :to = "'see/' + g">
           {{g}}
         </router-link>
