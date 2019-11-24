@@ -1,12 +1,12 @@
 <template>
   <div class="hello">
-    <ul>
-      <li v-for = "g in gobans" :key = "g">
+    <div class="ui divided horizontal list">
+      <div class="item" v-for = "g in Object.keys(gobans)" :key = "g">
         <router-link :to = "'see/' + g">
-          {{g}}
+          {{ g }}
         </router-link>
-      </li>
-    </ul>
+      </div>
+    </div>
   </div>
 </template>
 

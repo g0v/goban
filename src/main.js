@@ -8,6 +8,8 @@ import VueResource from 'vue-resource'
 import SuiVue from 'semantic-ui-vue'
 import 'semantic-ui-css/semantic.min.css'
 
+require('semantic-ui-css/semantic.css')
+
 Vue.use(SuiVue)
 Vue.use(VueResource)
 Vue.use(rtdbPlugin)
