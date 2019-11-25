@@ -9,7 +9,7 @@
       </router-link>
     </div>
     <div class="ui grid">
-      <div class="four wide column">
+      <div class="four wide right aligned column">
         <div class="ui list">
           <div class = "item">
             <router-link :to = "'/see/' + $route.params.id + '/' + $route.params.lev + '/new'">
