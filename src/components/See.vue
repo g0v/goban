@@ -8,34 +8,36 @@
         {{ j }}
       </router-link>
     </div>
-    <div id = "side">
-      <div class="ui list">
-        <div class = "item">
-          <a :href="'https://ethercalc.org/' + $route.params.id + $route.params.lev" target="iframe">
-            <img :src="'https://www.google.com/s2/favicons?domain=https://ethercalc.org/'">
-            {{name || $route.params.id + $route.params.lev}}
-          </a>
-        </div>
-        <hr/>
-        <div class = "item" v-for = "d in data" :key = "d.name">
-          <div v-if = "d.type == 'link'" v-show = "!d.parentIndex || data[d.parentIndex].open">
-            <span v-if = "d.parentIndex">&nbsp;&nbsp;&nbsp;&nbsp;</span>
-            <a :href="d.url" :target="tar(d)">
-            <img :src="'https://www.google.com/s2/favicons?domain=' + d.url">{{ d.name }}</a>
+    <div class="ui grid">
+      <div class="four wide column">
+        <div class="ui list">
+          <div class = "item">
+            <router-link :to = "'/see/' + $route.params.id + '/' + $route.params.lev + '/new'">
+              <img :src="'https://www.google.com/s2/favicons?domain=https://ethercalc.org/'">
+              {{name || $route.params.id + $route.params.lev}}
+            </router-link>
           </div>
-          <div v-if = "d.type == 'folder'">
-            <a @click = "d.open = !d.open">
-              {{d.name}}
-              <img class = "ui mini image" src="/static/images/isClosed.png" v-show = "!d.open">
-              <img class = "ui mini image" src="/static/images/isOpen.png" v-show = "d.open">
-            </a>
+          <hr/>
+          <div class = "item" v-for = "(d, index) in data" :key = "d.name">
+            <div v-if = "d.type == 'link'" v-show = "!d.parentIndex || data[d.parentIndex].open">
+              <span v-if = "d.parentIndex">&nbsp;&nbsp;&nbsp;&nbsp;</span>
+              <router-link :to = "'/see/' + $route.params.id + '/' + $route.params.lev + '/' + index">
+              <img :src="'https://www.google.com/s2/favicons?domain=' + d.url">{{ d.name }}</router-link>
+            </div>
+            <div v-if = "d.type == 'folder'">
+              <a @click = "d.open = !d.open">
+                {{d.name}}
+                <img class = "ui mini image" src="/static/images/isClosed.png" v-show = "!d.open">
+                <img class = "ui mini image" src="/static/images/isOpen.png" v-show = "d.open">
+              </a>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div id = "main" @mouseout = "reload()">
-      <iframe id = "iframe" name="iframe" :src="'https://ethercalc.org/' + $route.params.id + $route.params.lev">
-      </iframe>
+      <div class="twelve wide column" @mouseout = "reload()">
+        <iframe id = "iframe" name="iframe" :src="$route.params.index == 'new' ? 'https://ethercalc.org/' + $route.params.id + $route.params.lev : data[$route.params.index].url">
+        </iframe>
+      </div>
     </div>
   </div>
 </template>

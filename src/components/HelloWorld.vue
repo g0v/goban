@@ -10,7 +10,7 @@
     <div class="ui segment container">
       <div class="ui divided horizontal list">
         <div class="item" v-for = "g in Object.keys(gobans)" :key = "g" v-show = "!myKey || g.match(new RegExp(myKey))">
-          <router-link :to = "'see/' + g + '/0'">
+          <router-link :to = "'see/' + g + '/0/0'">
             <img src="/static/favicon.png">
             {{ g }}
           </router-link>
@@ -31,6 +31,7 @@ export default {
   methods: {
     create: function (k) {
       this.$emit('create', k)
+      this.$router.push('/see/' + k + '/0/new')
     }
   }
 }
