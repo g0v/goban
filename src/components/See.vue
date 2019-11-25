@@ -94,10 +94,12 @@ export default {
         this.$forceUpdate()
       }, response => {
         console.log(response)
+        this.data = []
+        this.$router.push('/see/' + this.$route.params.id + '/' + this.$route.params.lev + '/new')
       })
     },
     parse: function (d) {
-      this.name = d[1][1]
+      if(d[1]) { this.name = d[1][1] }
       var ans = d.slice(2)
       var idx
       ans = ans.map(function (l) {
