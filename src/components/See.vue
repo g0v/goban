@@ -99,7 +99,7 @@ export default {
       })
     },
     parse: function (d) {
-      if(d[1]) { this.name = d[1][1] }
+      if (d[1]) { this.name = d[1][1] }
       var ans = d.slice(2)
       var idx
       ans = ans.map(function (l) {
