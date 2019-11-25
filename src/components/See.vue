@@ -4,7 +4,7 @@
       <router-link class = "item" to = "/">
         <sui-icon size="small" name="home" /> home
       </router-link>
-      <router-link class = "item" v-for = "j in [0,1,2,3]" :key = "j" :to = "'/see/' + $route.params.id + '/' + j">
+      <router-link class = "item" v-for = "j in [0,1,2,3]" :key = "j" :to = "'/see/' + $route.params.id + '/' + j + '0'">
         {{ j }}
       </router-link>
     </div>
