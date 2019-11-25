@@ -114,16 +114,6 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  #side {
-    width: 200px;
-    float: left;
-    text-align: left;
-    padding: 5px;
-  }
-  #main {
-    width: calc(100% - 200px);
-    float: right;
-  }
   iframe {
     width: 100%;
     height: calc(100vh - 100px)
