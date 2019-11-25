@@ -29,7 +29,9 @@
           <div class = "item" v-for = "(d, index) in data" :key = "d.name">
             <div v-if = "d.type == 'link'" v-show = "!d.parentIndex || data[d.parentIndex].open">
               <span v-if = "d.parentIndex">&nbsp;&nbsp;&nbsp;&nbsp;</span>
-              <router-link :to = "'/see/' + $route.params.id + '/' + $route.params.lev + '/' + index">
+              <a :href="d.url" target="_blank" v-if = "tar(d) == '_blank'"><img :src="'https://www.google.com/s2/favicons?domain=' + d.url">{{ d.name }}<sui-icon name = "right arrow"/>
+              </a>
+              <router-link v-else :to = "'/see/' + $route.params.id + '/' + $route.params.lev + '/' + index">
               <img :src="'https://www.google.com/s2/favicons?domain=' + d.url">{{ d.name }}</router-link>
             </div>
             <div v-if = "d.type == 'folder'">
