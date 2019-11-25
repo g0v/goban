@@ -1,15 +1,16 @@
 <template>
   <div class="hello">
     <h1 class="ui header">零時黑板</h1>
+    <h3 class="sub header">網址分享的好工具</h3>
     <div class="ui form container">
       <div class="field">
         <input type="search" name="" v-model="myKey" placeholder="搜詢黑板" autofocus="true" />
         <a class="ui green button" @click="create(myKey)" v-if ="myKey">創建{{myKey}}</a>
       </div>
     </div>
-    <div class="ui segment container">
-      <div class="ui divided horizontal list">
-        <div class="item" v-for = "g in Object.keys(gobans)" :key = "g" v-show = "!myKey || g.match(new RegExp(myKey))">
+    <div class="ui segment left aligned container">
+      <div class="ui grid">
+        <div class="four wide doubling column" v-for = "g in Object.keys(gobans)" :key = "g" v-show = "!myKey || g.match(new RegExp(myKey))">
           <router-link :to = "'see/' + g + '/0/0'">
             <img src="/static/favicon.png">
             {{ g }}
