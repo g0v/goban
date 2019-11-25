@@ -33,7 +33,7 @@
         </div>
       </div>
     </div>
-    <div id = "main">
+    <div id = "main" @mouseout = "reload()">
       <iframe id = "iframe" name="iframe" :src="'https://ethercalc.org/' + $route.params.id + $route.params.lev">
       </iframe>
     </div>
@@ -128,5 +128,7 @@ export default {
   }
   .ui.mini.image {
     display: inline;
+    width: 1.5em;
+    height: 1.5em;
   }
 </style>

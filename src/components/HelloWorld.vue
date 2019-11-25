@@ -2,7 +2,7 @@
   <div class="hello">
     <div class="ui form">
       <div class="field">
-        <input type="search" name="" v-model="myKey" placeholder="搜詢黑板" />
+        <input type="search" name="" v-model="myKey" placeholder="搜詢黑板" autofocus="true" />
         <a class="ui green button" @click="create(myKey)" v-if ="myKey">創建{{myKey}}</a>
       </div>
     </div>
@@ -10,6 +10,7 @@
       <div class="ui divided horizontal list">
         <div class="item" v-for = "g in Object.keys(gobans)" :key = "g" v-show = "!myKey || g.match(new RegExp(myKey))">
           <router-link :to = "'see/' + g + '/0'">
+            <img src="/static/favicon.png">
             {{ g }}
           </router-link>
         </div>

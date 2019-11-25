@@ -6,7 +6,7 @@
 
 <script>
 
-import { gobansRef } from './firebase/db'
+import { db, gobansRef } from './firebase/db'
 
 export default {
   name: 'App',
@@ -17,9 +17,7 @@ export default {
   },
   methods: {
     create: function (k) {
-      var obj = {}
-      obj.k = 'test'
-      gobansRef.add(obj)
+      db.ref('gobans/' + k).set(k)
     }
   },
   firebase: {
