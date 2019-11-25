@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <router-view :gobans = "gobans"/>
+    <router-view :gobans = "gobans" @create = "create"/>
   </div>
 </template>
 
@@ -13,6 +13,13 @@ export default {
   data () {
     return {
       gobans: undefined
+    }
+  },
+  methods: {
+    create: function (k) {
+      var obj = {}
+      obj.k = 'test'
+      gobansRef.add(obj)
     }
   },
   firebase: {
@@ -31,4 +38,9 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+
+.router-link-exact-active {
+  background-color: #ccf !important;
+}
+
 </style>

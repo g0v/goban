@@ -13,7 +13,7 @@ export default new Router({
       component: HelloWorld
     },
     {
-      path: '/see/:id',
+      path: '/see/:id/:lev',
       name: 'See',
       component: See
     }

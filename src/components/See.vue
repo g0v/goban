@@ -4,13 +4,16 @@
       <router-link class = "item" to = "/">
         <sui-icon size="small" name="home" /> home
       </router-link>
+      <router-link class = "item" v-for = "j in [0,1,2,3]" :to = "'/see/' + $route.params.id + '/' + j">
+        {{ j }}
+      </router-link>
     </div>
     <div id = "side">
       <div class="ui list">
         <div class = "item">
-          <a :href="'https://ethercalc.org/' + $route.params.id + '0'" target="iframe">
+          <a :href="'https://ethercalc.org/' + $route.params.id + $route.params.lev" target="iframe">
             <img :src="'https://www.google.com/s2/favicons?domain=https://ethercalc.org/'">
-            {{name || $route.params.id}}
+            {{name || $route.params.id + $route.params.lev}}
           </a>
         </div>
         <hr/>
@@ -31,7 +34,7 @@
       </div>
     </div>
     <div id = "main">
-      <iframe id = "iframe" name="iframe" :src="'https://ethercalc.org/' + $route.params.id + '0'">
+      <iframe id = "iframe" name="iframe" :src="'https://ethercalc.org/' + $route.params.id + $route.params.lev">
       </iframe>
     </div>
   </div>
@@ -47,6 +50,11 @@ export default {
     }
   },
   props: ['gobans'],
+  watch: {
+    $route(to, from) {
+      this.reload()
+    }
+  },
   methods: {
     tar: function (x) {
       if ((x.note + '').match(/blank/)) {
@@ -54,6 +62,17 @@ export default {
       } else {
         return 'iframe'
       }
+    },
+    reload: function () {
+      console.log('reload...')
+      // GET /someUrl
+      this.$http.get('https://ethercalc.org/' + this.$route.params.id + this.$route.params.lev + '.csv.json').then(response => {
+        // get body data
+        this.data = this.parse(response.body)
+        this.$forceUpdate()
+      }, response => {
+        console.log(response)
+      })
     },
     parse: function (d) {
       this.name = d[1][1]
@@ -86,13 +105,7 @@ export default {
     }
   },
   mounted () {
-    // GET /someUrl
-    this.$http.get('https://ethercalc.org/' + this.$route.params.id + '0.csv.json').then(response => {
-      // get body data
-      this.data = this.parse(response.body)
-    }, response => {
-      console.log(response)
-    })
+    this.reload()
   }
 }
 </script>
