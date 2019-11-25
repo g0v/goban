@@ -8,7 +8,10 @@
         {{ j }}
       </router-link>
       <div class="right menu">
-        <a class = "item" :href="data[$route.params.index].url" target="_blank">
+        <a v-if = "data[$route.params.index]" class = "item" :href="data[$route.params.index].url" target="_blank">
+          <sui-icon size="small" name="right arrow" /> 開新頁籤
+        </a>
+        <a v-if = "$route.params.index == 'new'" class = "item" :href="'https://ethercalc.org/' + $route.params.id + $route.params.lev" target="_blank">
           <sui-icon size="small" name="right arrow" /> 開新頁籤
         </a>
       </div>
@@ -40,7 +43,7 @@
         </div>
       </div>
       <div class="twelve wide column" @mouseout = "reload()">
-        <iframe id = "iframe" name="iframe" :src="$route.params.index == 'new' ? 'https://ethercalc.org/' + $route.params.id + $route.params.lev : data[$route.params.index].url">
+        <iframe id = "iframe" name="iframe" :src="getSrc()">
         </iframe>
       </div>
     </div>
@@ -63,6 +66,16 @@ export default {
     }
   },
   methods: {
+    getSrc: function () {
+      if (this.$route.params.index === 'new') {
+        return 'https://ethercalc.org/' + this.$route.params.id + this.$route.params.lev
+      } else {
+        if (this.data[this.$route.params.index]) {
+          return this.data[this.$route.params.index].url
+        }
+      }
+      return undefined
+    },
     tar: function (x) {
       if ((x.note + '').match(/blank/)) {
         return '_blank'
