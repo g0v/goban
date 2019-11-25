@@ -1,6 +1,7 @@
 <template>
   <div class="hello">
-    <div class="ui form">
+    <h1 class="ui header">零時黑板</h1>
+    <div class="ui form container">
       <div class="field">
         <input type="search" name="" v-model="myKey" placeholder="搜詢黑板" autofocus="true" />
         <a class="ui green button" @click="create(myKey)" v-if ="myKey">創建{{myKey}}</a>
