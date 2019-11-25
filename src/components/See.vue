@@ -7,6 +7,11 @@
       <router-link class = "item" v-for = "j in [0,1,2,3]" :key = "j" :to = "'/see/' + $route.params.id + '/' + j + '/0'">
         {{ j }}
       </router-link>
+      <div class="right menu">
+        <a class = "item" :href="data[$route.params.index].url" target="_blank">
+          <sui-icon size="small" name="right arrow" /> 開新頁籤
+        </a>
+      </div>
     </div>
     <div class="ui grid">
       <div class="four wide right aligned column">
