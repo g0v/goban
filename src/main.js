@@ -7,6 +7,9 @@ import { rtdbPlugin } from 'vuefire'
 import VueResource from 'vue-resource'
 import SuiVue from 'semantic-ui-vue'
 import 'semantic-ui-css/semantic.min.css'
+import VueLocalStorage from 'vue-localstorage'
+
+Vue.use(VueLocalStorage)
 
 require('semantic-ui-css/semantic.css')
 

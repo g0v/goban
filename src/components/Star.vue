@@ -1,7 +1,7 @@
 <template>
   <div class="hello">
-    <h1 class="ui header">零時黑板</h1>
-    <h3 class="sub header">網址分享的好工具</h3>
+    <h1 class="ui header">我的珍藏</h1>
+    <h3 class="sub header">我珍藏的黑板</h3>
     <div class="ui form container">
       <div class="field">
         <input type="search" name="" v-model="myKey" placeholder="搜詢黑板" autofocus="true" />
@@ -10,7 +10,7 @@
     </div>
     <div class="ui segment left aligned container">
       <div class="ui grid">
-        <div class="four wide doubling column" v-for = "g in Object.keys(gobans)" :key = "g" v-show = "!myKey || g.match(new RegExp(myKey))">
+        <div class="four wide doubling column" v-for = "g in Object.keys(gobans)" :key = "g" v-if = "stars[g] > 0" v-show = "!myKey || g.match(new RegExp(myKey))">
           <router-link :to = "'see/' + g + '/0/0'">
             <img src="/static/favicon.png">
             {{ g }}
@@ -45,7 +45,7 @@ export default {
       if (!this.stars[g]) { this.stars[g] = 0 }
       this.stars[g] += r
       if (this.stars[g] === 10) { this.stars[g] = 0 }
-      this.$localStorage.set('stars', JSON.stringify(this.stars))
+      this.$localStorage.set('stars', this.stars)
       this.$forceUpdate()
     },
     loadStars: function () {
