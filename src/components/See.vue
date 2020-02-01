@@ -1,55 +1,43 @@
-<template>
-  <div class="hello">
-    <div class="ui fixed top menu">
-      <router-link class = "item" to = "/">
-        <sui-icon size="small" name="home" /> home
-      </router-link>
-      <router-link class = "item" v-for = "j in [0,1,2,3]" :key = "j" :to = "'/see/' + $route.params.id + '/' + j + '/0'">
-        {{ j }}
-      </router-link>
-      <div class="right menu">
-        <a v-if = "data[$route.params.index]" class = "item" :href="data[$route.params.index].url" target="_blank">
-          <sui-icon size="small" name="right arrow" /> 開新頁籤
-        </a>
-        <a v-if = "$route.params.index == 'new'" class = "item" :href="'https://ethercalc.org/' + $route.params.id + $route.params.lev" target="_blank">
-          <sui-icon size="small" name="right arrow" /> 開新頁籤
-        </a>
-      </div>
-    </div>
-    <div class="ui grid">
-      <div class="four wide right aligned column">
-        <div class="ui list">
-          <div class = "item">
-            <router-link :to = "'/see/' + $route.params.id + '/' + $route.params.lev + '/new'">
-              <img :src="'https://www.google.com/s2/favicons?domain=https://ethercalc.org/'">
-              {{name || $route.params.id + $route.params.lev}}
-            </router-link>
-          </div>
-          <hr/>
-          <div class = "item" v-for = "(d, index) in data" :key = "d.name">
-            <div v-if = "d.type == 'link'" v-show = "!d.parentIndex || data[d.parentIndex].open">
-              <span v-if = "d.parentIndex">&nbsp;&nbsp;&nbsp;&nbsp;</span>
-              <a :href="d.url" target="_blank" v-if = "tar(d) == '_blank'"><img :src="'https://www.google.com/s2/favicons?domain=' + d.url">{{ d.name }}<sui-icon name = "right arrow"/>
-              </a>
-              <router-link v-else :to = "'/see/' + $route.params.id + '/' + $route.params.lev + '/' + index">
-              <img :src="'https://www.google.com/s2/favicons?domain=' + d.url">{{ d.name }}</router-link>
-            </div>
-            <div v-if = "d.type == 'folder'">
-              <a @click = "d.open = !d.open">
-                {{d.name}}
-                <img class = "ui mini image" src="/static/images/isClosed.png" v-show = "!d.open">
-                <img class = "ui mini image" src="/static/images/isOpen.png" v-show = "d.open">
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="twelve wide column" @mouseout = "reload()">
-        <iframe id = "iframe" name="iframe" :src="getSrc()">
-        </iframe>
-      </div>
-    </div>
-  </div>
+<template lang="pug">
+  .hello
+    .ui.fixed.top.menu
+      router-link.item(to='/')
+        sui-icon(size='small', name='home')
+          | home
+      router-link.item(v-for='j in [0,1,2,3]', :key='j', :to="'/see/' + $route.params.id + '/' + j + '/0'")
+        | {{ j }}
+      .right.menu
+        a.item(v-if='data[$route.params.index]', :href='data[$route.params.index].url', target='_blank')
+          sui-icon(size='small', name='right arrow')
+            | 開新頁籤
+        a.item(v-if="$route.params.index == 'new'", :href="'https://ethercalc.org/' + $route.params.id + $route.params.lev", target='_blank')
+          sui-icon(size='small', name='right arrow')
+            | 開新頁籤
+    .ui.grid
+      .four.wide.right.aligned.column
+        .ui.list
+          .item
+            router-link(:to="'/see/' + $route.params.id + '/' + $route.params.lev + '/new'")
+              img(:src="'https://www.google.com/s2/favicons?domain=https://ethercalc.org/'")
+              | {{name || $route.params.id + $route.params.lev}}
+          hr
+          .item(v-for='(d, index) in data', :key='d.name')
+            div(v-if="d.type == 'link'", v-show='!d.parentIndex || data[d.parentIndex].open')
+              span(v-if='d.parentIndex')
+              a(:href='d.url', target='_blank', v-if="tar(d) == '_blank'")
+                img(:src="'https://www.google.com/s2/favicons?domain=' + d.url")
+                | {{ d.name }}
+                sui-icon(name='right arrow')
+              router-link(v-else='', :to="'/see/' + $route.params.id + '/' + $route.params.lev + '/' + index")
+                img(:src="'https://www.google.com/s2/favicons?domain=' + d.url")
+                | {{ d.name }}
+            div(v-if="d.type == 'folder'")
+              a(@click='d.open = !d.open')
+                | {{d.name}}
+                img.ui.mini.image(src='/static/images/isClosed.png', v-show='!d.open')
+                img.ui.mini.image(src='/static/images/isOpen.png', v-show='d.open')
+      .twelve.wide.column(@mouseout='reload()')
+        iframe#iframe(name='iframe', :src='getSrc()')
 </template>
 
 <script>

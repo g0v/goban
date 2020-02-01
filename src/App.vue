@@ -1,15 +1,11 @@
-<template>
-  <div id="app">
-    <div class="ui fixed top menu">
-      <router-link class ="item" to="/">
-        <sui-icon name = "home"/>
-      </router-link>
-      <router-link class ="item" to="/star">
-        <sui-icon name = "star"/>
-      </router-link>
-    </div>
-    <router-view :gobans = "gobans" @create = "create"/>
-  </div>
+<template lang="pug">
+  #app
+    .ui.fixed.top.menu
+      router-link.item(to='/')
+        sui-icon(name='home')
+      router-link.item(to='/star')
+        sui-icon(name='star')
+    router-view(:gobans='gobans', @create='create')
 </template>
 
 <script>

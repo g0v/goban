@@ -15,6 +15,9 @@
   },
   "dependencies": {
     "firebase": "^7.4.0",
+    "html-loader": "^0.5.5",
+    "pug": "^2.0.4",
+    "pug-html-loader": "^1.1.5",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-vue": "^0.8.1",
     "vue": "^2.5.2",
