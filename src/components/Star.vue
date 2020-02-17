@@ -4,7 +4,7 @@
     h3.sub.header 我珍藏的黑板
     .ui.form.container
       .field
-        input(type='search', name='', v-model='myKey', placeholder='搜詢黑板', autofocus='true')
+        input(v-autofocus="dynamicvalue", type='search', name='', v-model='myKey', placeholder='搜詢黑板', autofocus='true')
         a.ui.green.button(@click='create(myKey)', v-if='myKey') 創建{{myKey}}
     .ui.segment.left.aligned.container
       .ui.grid
