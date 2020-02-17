@@ -8,11 +8,12 @@
         a.ui.green.button(@click='create(myKey)', v-if='myKey') 創建{{myKey}}
     .ui.segment.left.aligned.container
       .ui.grid
-        .four.wide.doubling.column(v-for='g in Object.keys(gobans)', :key='g', v-if='stars[g] > 0', v-show='!myKey || g.match(new RegExp(myKey))')
-          router-link(:to="'see/' + g + '/0/0'")
-            img(src='/static/favicon.png')
-            |             {{ g }}
-          a(@click='handleRate(g, 5)')
+        .doubling.four.column.row
+          .column(v-for='g in Object.keys(gobans)', :key='g', v-if='stars[g] > 0', v-show='!myKey || g.match(new RegExp(myKey))')
+            router-link(:to="'see/' + g + '/0/0'")
+              img(src='/static/favicon.png')
+              |             {{ g }}
+            a(@click='handleRate(g, 5)')
             sui-icon(name='star', :class="stars[g] ? 'yellow' : 'gray'")
 </template>
 
@@ -72,6 +73,9 @@ a {
 }
 .gray {
   color: gray;
+}
+.column {
+  min-height: 1.6em;
 }
 
 </style>
