@@ -1,0 +1,8 @@
+a
+	img(src='/favicon.png')
+	span.text
+		| {{'GENERATED_BY_GOBAN' | translate}}
+	img#QR.printOnly(ng-src="http://chart.apis.google.com/chart?chs=200x200&cht=qr&chld=|1&chl=http%3A%2F%2F{{('http://goban.tw/'+goban.title )| makeQR}}" alt="qrcode_ex")
+	span.printOnly
+		br
+		| http://goban.tw/{{goban.title}}

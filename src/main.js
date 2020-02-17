@@ -8,9 +8,6 @@ import VueResource from 'vue-resource'
 import SuiVue from 'semantic-ui-vue'
 import 'semantic-ui-css/semantic.min.css'
 import VueLocalStorage from 'vue-localstorage'
-import autofocus from 'vue-autofocus-directive'
-
-Vue.directive('autofocus', autofocus)
 
 Vue.use(VueLocalStorage)
 

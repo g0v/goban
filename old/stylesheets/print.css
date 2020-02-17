@@ -1,0 +1,73 @@
+/* Welcome to Compass. Use this file to define print styles.
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/print.css" media="print" rel="stylesheet" type="text/css" /> */
+/* line 7, ../sass/print.scss */
+#ad-print {
+  position: fixed;
+  z-index: 99999;
+  bottom: 0px;
+  right: 0px;
+  padding: 5px;
+  -moz-box-shadow: 5px 5px 20px 0px #666;
+  -webkit-box-shadow: 5px 5px 20px 0px #666;
+  box-shadow: 5px 5px 20px 0px #666;
+}
+
+/* line 16, ../sass/print.scss */
+nav,
+#goban-main,
+#long-term-memory,
+.folder,
+.action,
+.noPrint {
+  display: none !important;
+}
+
+/* line 25, ../sass/print.scss */
+#QR {
+  page-break-inside: avoid;
+  height: 80px;
+  width: 80px;
+  position: relative;
+  left: 50px;
+  -moz-box-shadow: 5px 5px 20px 0px #666;
+  -webkit-box-shadow: 5px 5px 20px 0px #666;
+  box-shadow: 5px 5px 20px 0px #666;
+}
+
+/* line 34, ../sass/print.scss */
+* {
+  overflow: visible !important;
+}
+
+/* line 38, ../sass/print.scss */
+ul {
+  max-height: none;
+}
+/* line 40, ../sass/print.scss */
+ul li {
+  page-break-inside: avoid;
+  min-height: 144px;
+  margin-top: 10px;
+  line-height: 160%;
+}
+/* line 45, ../sass/print.scss */
+ul li span.text {
+  display: inline-block;
+  font-size: 22px;
+  min-width: 400px;
+}
+/* line 50, ../sass/print.scss */
+ul li img {
+  margin-right: 15px;
+}
+
+/* line 56, ../sass/print.scss */
+#setting-bar {
+  font-size: 60px;
+  line-height: 100px;
+  padding: 10px;
+  -moz-box-shadow: 5px 5px 20px 0px #666;
+  -webkit-box-shadow: 5px 5px 20px 0px #666;
+  box-shadow: 5px 5px 20px 0px #666;
+}

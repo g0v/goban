@@ -1,0 +1,10 @@
+div#goban-main(ng-class='{full: hideSideBar, v0: !hideSideBar &&v==0, v1: v==1}',
+	 ng-style='{height: countHeight() - navHeight + "px"}')
+
+  h1
+    陌生人的螢幕，就是你的黑板
+  input(type = "search",
+          ng-model = "key",
+          placeholder = "{{'SEARCH' | translate}}")     
+  a(ng-click="jumpTo(key)")
+    創建

@@ -1,0 +1,56 @@
+
+$xs : 500px;
+$sm : 800px;
+$md : 1000px;
+
+@media screen and (max-width: $xs) {
+	.noPhone, .wideOnly {
+		display: none !important;
+	}
+	#goban-nav {
+		select {
+			min-width: 80px !important;
+			// width: 80px !important;
+		}
+		#logo {
+			img.goban-logo.goban-fixed-right {
+				right: 7px;
+			}
+		}
+	}
+	#goban-side {
+		position: absolute;
+		left:0%;
+		&.v0 {
+			width: 100%;
+		}
+		&.hidden {
+			width: 50%;
+			left: -50%;
+		}
+	}
+	#goban-main {
+		width: 100%;
+		&.v0 {
+			width: 0%; 
+		}
+	}
+}
+
+@media screen and (min-width: $xs ) and (max-width : $sm) {
+	.phoneOnly, .wideOnly {
+		display: none !important;
+	}
+}
+
+@media screen and (min-width: $sm) and (max-width : $md) {
+	.phoneOnly {
+		display: none !important;
+	}
+}
+
+@media screen and (min-width: $md) {
+	.phoneOnly {
+		display: none !important;
+	}
+}

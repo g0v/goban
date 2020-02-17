@@ -1,0 +1,94 @@
+#goban-side {
+	#setting-bar{
+		#goban-sectionTitle {
+			color: black;
+			padding: 2px;
+			border-bottom: 2px dotted #aaf;
+			border-left: 2px dotted #aaf;
+		}
+		select {
+			position: relative;
+			top: 5px;
+			left: 25px;
+		}
+	}
+	ul {
+		min-height:66px;
+		li {
+			a {
+				color: #666;
+				&.active {
+					&::after {
+						position:relative;
+						top:-3px;
+						left:12px;
+						display:inline-block;
+						content:"";
+						width: 6px;
+						height: 6px;
+						border-top:2px solid cyan;
+						border-left:2px solid cyan;
+						@include transform(rotate(-45deg));
+					}
+				}
+			}
+		}
+	}
+	
+	.tools {
+		$bb: darken(cyan, 20);
+		.gray {
+			margin-right: 15px;
+			padding:2px;
+			border-left: 2px dotted $bb;
+			border-top: 2px dotted $bb;
+		}
+		select {
+			font-size: 18px;
+			padding: 5px;
+			margin: 5px;
+			margin-top: 20px;
+			height: 60px;
+		}
+		a {
+			font-size: 14px;
+			margin-left: 5px;
+			#star{
+				width: 20px;
+				height: 20px;				
+			}
+			#zazan {
+				width: 20px;
+				height: 20px;
+				@include border-radius(50%);
+			}
+		}
+	}
+	.looking-glass{
+		$l: #999;
+	   	font-size: 15px; /* This controls the size. */
+	   	display: inline-block;
+	   	width: 10px;
+	   	height: 10px;
+	   	border: 3px solid $l;
+	   	position: relative;
+	   	left: -15px;
+	   	top: 20;
+	   	@include border-radius(50%);
+	   	&::before{
+	     	content: "";
+	     	display: inline-block;
+	     	position: relative;
+	     	left: 7px;
+	     	top: 10px;
+	     	border-width: 0;
+	     	background: $l;
+	     	width: 11px;
+	     	height: 5px;
+	     	@include transform(rotate(45deg));
+    	}
+	}
+	input {
+		font-size: 18px;
+	}
+}

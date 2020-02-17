@@ -1,0 +1,76 @@
+,,,,,,,,,,,,,,,,,,
+,前端入門第0課,,,,,,,,,,,,,,,,,前端入門第0課
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,https://docs.google.com/presentation/d/1Saln6qIuSJr2JJI4sU1vfI6oYWEXMVV-oCInCgFQUB0/edit#slide=id.p,"Web App設計入門"
+" https://docs.google.com/presentation/d/1Saln6qIuSJr2JJI4sU1vfI6oYWEXMVV-oCInCgFQUB0/edit#slide=id.p","Web App設計入門",,,,,,,,,,,,,,,,https://autolearn.hackpad.com/App-okrHPEtsWQc,問答區
+,,,,,,,,,,,,,,,,,,
+,起始包,"{""expand"":""false""}",,,,,,,,,,,,,,,,起始包
+" http://jsbin.com/sedevuyiwuqe/4/watch?output",範例一：排版,,,,,,,,,,,,,,,," http://jsbin.com/sedevuyiwuqe/4/watch?output",範例一：排版
+" http://jsbin.com/halux/8/watch?html,css,output",範例二：列印,,,,,,,,,,,,,,,," http://jsbin.com/halux/5/watch?output",範例二：列印
+" http://jsbin.com/xonevo/2/watch?html,css,output",小工具一：箭頭,,,,,,,,,,,,,,,,,配色
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,," http://en.wikipedia.org/wiki/Comparison_of_color_models_in_computer_graphics",配色系統
+,,,,,,,,,,,,,,,,," http://en.wikipedia.org/wiki/HSL_and_HSV",色相-彩度-明度
+,,,,,,,,,,,,,,,,," http://jsbin.com/piloh/1/watch?output",範例三：配色
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,同學作品
+,,,,,,,,,,,,,,,,," https://autolearn.hackpad.com/33EfKKhNtF8",赤皮仔
+,,,,,,,,,,,,,,,,,,
+,配色,"{""expand"":""false""}",,,,,,,,,,,,,,,,
+" http://en.wikipedia.org/wiki/Comparison_of_color_models_in_computer_graphics",配色系統,,,,,,,,,,,,,,,,,
+" http://en.wikipedia.org/wiki/HSL_and_HSV",色相-彩度-明度,,,,,,,,,,,,,,,,,
+" http://www.december.com/html/spec/colorcodes.html","color cord",,,,,,,,,,,,,,,,,
+" http://jsbin.com/hasecuroduri/2/watch?html,css,output",範例三：配色,,,,,,,,,,,,,,,,,查詢資源
+,,,,,,,,,,,,,,,,," http://www.w3schools.com/html/default.asp",HTML
+,自我校正,"{""expand"":""false""}",,,,,,,,,,,,,,," http://www.w3schools.com/css/default.asp",CSS
+" http://blog.fishsaut.com/2010/03/css-selector.html",CSS選擇器,,,,,,,,,,,,,,,,,
+" http://www.phd.com.tw/knowledge/html/structure/",HTML文件結構,,,,,,,,,,,,,,,,,例子
+" http://www.webstepbook.com/supplements/slides/images/dom_tree.gif","DOM tree(文件物件模型樹，即俄羅斯娃娃)",,,,,,,,,,,,,,,," http://map.alearn.org.tw/presentations/%E6%95%99%E6%94%B9200%E5%B9%B4.html#/",教改200年
+,,,,,,,,,,,,,,,,," http://bestian.github.io/freemath/%E5%B7%A5%E5%85%B7%E8%BB%9F%E9%AB%94/%E5%96%AE%E6%A9%9F%E9%96%83%E5%8D%A1.html",數學閃卡
+,,,,,,,,,,,,,,,,," http://g0v.github.io/reporter/",公民記者證產生器
+,,,,,,,,,,,,,,,,," http://bestian.github.io/freemath/%E5%AD%B8%E7%BF%92%E5%9C%B0%E5%9C%96/indexD3.html",動態數學地圖
+,,,,,,,,,,,,,,,,," http://bestian.github.io/freemath/%E5%B7%A5%E5%85%B7%E8%BB%9F%E9%AB%94/%E6%96%B9%E6%A0%BC%E7%B4%99.html",方格紙產生器
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,資源
+,,,,,,,,,,,,,,,,," http://www.w3schools.com/",W3CSchool
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,課堂學習單,"{""expand"":""false""}",,,,,,,,,,,,,,," http://lab.hakim.se/reveal-js/",revealJS
+" http://jsbin.com/mucuta/1/","DOM Tree剖析練習",,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,," https://ihatetomatoes.net/demos/parallax-scroll-effect/",skrollrJS
+,,,,,,,,,,,,,,,,," http://d3js.org/",D3JS
+,,,,,,,,,,,,,,,,," https://angularjs.org/",AngularJS
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,CSS特效,"{""expand"":""false""}",,,,,,,,,,,,,,,,
+" http://jsbin.com/lagiza/3/watch?html,css,output",範例四：互動特效,,,,,,,,,,,,,,,,,
+" http://jsbin.com/yinefu/7/watch?html,css,output",範例五：持續特效,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+" http://www.w3schools.com/css/css3_animations.asp","css animation",,,,,,,,,,,,,,,,,
+" http://cubic-bezier.com/#.16,-0.61,.83,.67",貝茲動畫工具,,,,,,,,,,,,,,,,,
+" http://zh.wikipedia.org/wiki/%E8%B2%9D%E8%8C%B2%E6%9B%B2%E7%B7%9A",貝茲曲線,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,查詢,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+" http://www.w3schools.com/",W3CSchool,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,授權,"{""expand"":""false""}",,,,,,,,,,,,,,,,
+" http://creativecommons.tw/explore",創用CC授權,,,,,,,,,,,,,,,,,
+" http://creativecommons.tw/public_domain",公共領域,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,習作,,,,,,,,,,,,,,,,,
+" https://docs.google.com/drawings/d/10M-JkRQ5aMOCmIKkrJETZjZOQ3i2dyMcBd7e0nKviac/edit?usp=sharing",作業流程,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,開發工具,"{""expand"":""false""}",,,,,,,,,,,,,,,,
+" http://www.sublimetext.com/",sublime編輯器,,,,,,,,,,,,,,,,,
+" http://www.lipsum.com/",假文產生器(英),,,,,,,,,,,,,,,,,
+" http://more.handlino.com/",假文產生器(中),,,,,,,,,,,,,,,,,

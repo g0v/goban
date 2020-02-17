@@ -1,0 +1,62 @@
+/* Welcome to Compass. Use this file to define print styles.
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/print.css" media="print" rel="stylesheet" type="text/css" /> */
+
+@import "compass/css3";
+
+#ad-print{
+	position:fixed;
+	z-index: 99999;
+	bottom:0px;
+	right:0px;
+	padding:5px;
+	@include box-shadow(5px 5px 20px 0px #666);
+}
+
+nav,
+#goban-main,
+#long-term-memory,
+.folder,
+.action,
+.noPrint{
+	display: none !important;
+}
+
+#QR {
+	page-break-inside: avoid;
+	height:80px;
+	width:80px;
+	position: relative;
+	left: 50px;
+	@include box-shadow(5px 5px 20px 0px #666);
+}
+
+* {
+	overflow:visible !important;
+}
+
+ul {
+	max-height:none;
+	li {
+		page-break-inside: avoid;
+		min-height: 144px;
+		margin-top: 10px;
+		line-height: 160%;
+		span.text {
+			display: inline-block;
+			font-size: 22px;
+			min-width: 400px; 
+		}
+		img{
+			margin-right: 15px;
+		}
+	}
+}
+
+#setting-bar {
+	font-size: 60px;
+	line-height: 100px;
+	padding:10px;
+	@include box-shadow(5px 5px 20px 0px #666);
+}
+

@@ -4,7 +4,7 @@
     h3.sub.header 網址分享的好工具
     .ui.form.container
       .field
-        input(v-autofocus="dynamicValue", type='search', name='', v-model='myKey', placeholder='搜詢黑板', autofocus='true')
+        input(type='search', name='', v-model='myKey', placeholder='搜詢黑板', autofocus='true')
         a.ui.green.button(@click='create(myKey)', v-if='myKey') 創建{{myKey}}
     .ui.segment.left.aligned.container
       .ui.grid

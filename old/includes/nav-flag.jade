@@ -1,0 +1,2 @@
+select#lang.wideOnly(ng-class='{"hidden": hideCtrl}', ng-model='myLang', ng-change='changeLanguage(myLang)', ng-options='l[0] as l[1] for l in langs')
+img#flag.wideOnly(ng-class='{"hidden": hideCtrl}', ng-src='{{getFlag(myLang)}}')
