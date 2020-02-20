@@ -2,6 +2,9 @@
   .hello
     h1.ui.header 零時黑板
     h3.sub.header 網址分享的好工具
+      | &nbsp;
+      router-link.ui.green.button(to = "intro") 瞭解更多
+        i.right.arrow.icon
     .ui.form.container
       .field
         input(v-autofocus="dynamicvalue", type='search', name='', v-model='myKey', placeholder='搜詢黑板', autofocus='true')
