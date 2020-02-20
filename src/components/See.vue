@@ -14,10 +14,9 @@
           sui-icon(size='small', name='right arrow')
             | 開新頁籤
     .ui.grid
-      .four.wide.right.aligned.column
+      .four.wide.left.aligned.column
         .ui.list
-          .item
-            router-link(:to="'/see/' + $route.params.id + '/' + $route.params.lev + '/new'")
+          router-link.item(:to="'/see/' + $route.params.id + '/' + $route.params.lev + '/new'")
               img(:src="'https://www.google.com/s2/favicons?domain=https://ethercalc.org/'")
               | {{name || $route.params.id + $route.params.lev}}
           hr
@@ -25,12 +24,12 @@
             div(v-if="d.type == 'link'", v-show='!d.parentIndex || data[d.parentIndex].open')
               span(v-if='d.parentIndex')
               a(:href='d.url', target='_blank', v-if="tar(d) == '_blank'")
-                img(:src="'https://www.google.com/s2/favicons?domain=' + d.url")
                 | {{ d.name }}
+                img.floating.right(:src="'https://www.google.com/s2/favicons?domain=' + d.url")
                 sui-icon(name='right arrow')
               router-link(v-else='', :to="'/see/' + $route.params.id + '/' + $route.params.lev + '/' + index")
-                img(:src="'https://www.google.com/s2/favicons?domain=' + d.url")
                 | {{ d.name }}
+                img.floating.right(:src="'https://www.google.com/s2/favicons?domain=' + d.url")
             div(v-if="d.type == 'folder'")
               a(@click='d.open = !d.open')
                 | {{d.name}}
@@ -132,5 +131,11 @@ export default {
     display: inline;
     width: 1.5em;
     height: 1.5em;
+  }
+  .list .item {
+    padding-left: 1em;
+  }
+  .floating.right {
+    float: right;
   }
 </style>
