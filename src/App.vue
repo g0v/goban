@@ -26,7 +26,11 @@ export default {
   },
   methods: {
     create: function (k) {
-      db.ref('gobans/' + k).set(k)
+      var obj = {id: k}
+      obj.t = k
+      obj.tags = [k]
+      obj.related = [k]
+      db.ref('gobans/' + k).set(obj)
     }
   },
   firebase: {
