@@ -23,6 +23,8 @@
             .inner(v-show="!myKey || has(g, myKey)")
               a(v-for = "j in [1,2,3,4,5]" @click='handleRate(g.id, j)')
                 sui-icon(name='star', :class="stars[g.id] >= j ? 'yellow' : 'gray'")
+              router-link(:to="'update/' + g.id" )
+                i.edit.icon
               router-link(:to="'see/' + g.id + '/0/0'" )
                 h2.ui.header(:style="{color: g.hex || '#42b983'}") {{ g.id }}
                   .sub.header - {{ g.t }}

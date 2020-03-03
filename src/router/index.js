@@ -4,6 +4,7 @@ import HelloWorld from '@/components/HelloWorld'
 import See from '@/components/See'
 import Star from '@/components/Star'
 import Intro from '@/components/Intro'
+import Update from '@/components/Update'
 
 Vue.use(Router)
 
@@ -28,6 +29,10 @@ export default new Router({
       path: '/intro',
       name: 'Intro',
       component: Intro
+    },
+    { path: '/update/:id',
+      name: 'Update',
+      component: Update
     }
   ]
 })
