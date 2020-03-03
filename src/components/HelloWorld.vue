@@ -28,7 +28,7 @@
                   .sub.header - {{ g.t }}
               p 相關黑板:
                 br
-                router-link.r(v-for = "r in g.related" :to="'see/' + r + '/0/0'" ) {{ r }}
+                router-link.r(v-for = "r in g.related", :key="r", :to="'see/' + r + '/0/0'" ) {{ r }}
 </template>
 
 <script>
@@ -54,7 +54,7 @@ export default {
     },
     handleRate: function (g, r) {
       if (!this.stars[g]) { this.stars[g] = 0 }
-      if (this.stars[g] === r) { 
+      if (this.stars[g] === r) {
         this.stars[g] = 0
       } else {
         this.stars[g] = r
