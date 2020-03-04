@@ -4,10 +4,10 @@
     .ui.button.group
       a.ui.orange.button(href="https://play.google.com/store/apps/details?id=tw.goban.app", target="_blank")
         i.google.play.icon
-        | Google Play
-      a.ui.green.button(href="https://play.google.com/store/apps/details?id=tw.goban.app", target="_blank")
+        | App on Google Play
+      //a.ui.green.button(href="https://play.google.com/store/apps/details?id=tw.goban.app", target="_blank")
         i.app.store.icon
-        | App Store
+        | App on App Store
     h1.ui.header 如何使用
     iframe(width="560" height="315" src="https://www.youtube.com/embed/mWbvcHlGCOg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen)
 </template>
