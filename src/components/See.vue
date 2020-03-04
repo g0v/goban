@@ -23,16 +23,16 @@
           .item(v-for='(d, index) in data', :key='d.name')
             div(v-if="d.type == 'link'", v-show='!d.parentIndex || data[d.parentIndex].open')
               span(v-if='d.parentIndex')
-              a(:href='d.url', target='_blank', v-if="tar(d) == '_blank'")
-                | {{ d.name }}
+              a(:href='decodeURIComponent(d.url)', target='_blank', v-if="tar(d) == '_blank'")
+                | {{ decodeURIComponent(d.name) }}
                 img.floating.right(:src="'https://www.google.com/s2/favicons?domain=' + d.url")
                 sui-icon(name='right arrow')
               router-link(v-else='', :to="'/see/' + $route.params.id + '/' + $route.params.lev + '/' + index")
-                | {{ d.name }}
-                img.floating.right(:src="'https://www.google.com/s2/favicons?domain=' + d.url")
+                | {{ decodeURIComponent(d.name) }}
+                img.floating.right(:src="'https://www.google.com/s2/favicons?domain=' + decodeURIComponent(d.url)")
             div(v-if="d.type == 'folder'")
               a(@click='d.open = !d.open')
-                | {{d.name}}
+                | {{decodeURIComponent(d.name)}}
                 img.ui.mini.image(src='/static/images/isClosed.png', v-show='!d.open')
                 img.ui.mini.image(src='/static/images/isOpen.png', v-show='d.open')
       .twelve.wide.column(@mouseout='reload()')
@@ -60,7 +60,7 @@ export default {
         return 'https://ethercalc.org/' + this.$route.params.id + this.$route.params.lev
       } else {
         if (this.data[this.$route.params.index]) {
-          return this.data[this.$route.params.index].url
+          return decodeURIComponent(this.data[this.$route.params.index].url)
         }
       }
       return undefined
