@@ -11,6 +11,12 @@
           router-link.item(v-for='j in [0,1,2,3]', :key='j', :to="'/see/' + $route.params.id + '/' + j + '/0'")
             | 等級{{ j }}
       .right.menu
+        .ui.simple.dropdown.item(v-if='gobans[$route.params.id].id')
+          | 相關
+          i.dropdown.icon
+          .menu
+            router-link.item(v-for='r in gobans[$route.params.id].related', :key='r', :to="'/see/' + r + '/0/0'")
+              | {{ r }}
         a.item(@click="backup($route.params.id, $route.params.lev)")
           | 備份
           i.cloud.download.icon

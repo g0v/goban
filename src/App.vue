@@ -25,11 +25,13 @@ export default {
     }
   },
   methods: {
-    create: function (k) {
-      var obj = {id: k}
-      obj.t = k
-      obj.tags = [k]
-      obj.related = [k]
+    create: function (k, o) {
+      var obj = o || {id: k}
+      obj.id = k
+      obj.t = obj.t || k
+      obj.hex = obj.hex || '#c9c9c9'
+      obj.tags = obj.tags || [k]
+      obj.related = obj.related || [k]
       db.ref('gobans/' + k).set(obj)
     }
   },
