@@ -8,6 +8,8 @@
       router-link.item(to='/intro')
         sui-icon(name='question')
       .right.menu
+        a.item(href="https://github.com/g0v/goban", target="_blank")
+          i.github.icon
         .item
           iframe(src="https://www.facebook.com/plugins/share_button.php?href=http%3A%2F%2Fgoban.tw&layout=button_count&size=small&appId=485195848253155&width=71&height=20" width="71" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media")
     router-view(:gobans='gobans', @create='create')

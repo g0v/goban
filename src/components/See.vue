@@ -148,6 +148,9 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+  .ui.fixed.top.menu {
+    height: 48px;
+  }
   iframe {
     width: 100%;
     height: calc(100vh - 100px)

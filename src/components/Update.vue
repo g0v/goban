@@ -8,7 +8,10 @@
           .field
             .ui.labeled.input
               .ui.label 色碼:
-              input.my-picker(v-model='hex' no-header='' no-footer='')
+              input.my-picker(v-model='hex', type='search', name='', list="cs")
+              datalist#cs
+                option(v-for = "c in colors", v-bind:key = "c", :value = "c") {{ c }}
+              .ui.label(:style="{'background-color': hex}") &nbsp;&nbsp;
             .ui.labeled.input
               .ui.label 簡介:
               input(type='text' name='' v-model='gobans[$route.params.id].t' placeholder='輸入黑板的簡介' autofocus='true')
@@ -30,7 +33,8 @@ export default {
     return {
       myRelated: [],
       myTags: [],
-      hex: '#c9c9c9',
+      hex: 'green',
+      colors: ['red', 'green', 'blue', 'black', 'orange', 'brown'],
       stars: { goban_intro: 5 }
     }
   },
@@ -53,6 +57,7 @@ export default {
           tags: this.myTags,
           hex: this.hex
         })
+      window.alert('更新成功')
     },
     reload: function () {
       this.$emit('reload')
