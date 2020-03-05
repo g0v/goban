@@ -56,4 +56,8 @@ export default {
   background-color: #ccf !important;
 }
 
+a, button {
+  cursor:pointer;
+}
+
 </style>
