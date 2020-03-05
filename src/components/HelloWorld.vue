@@ -14,7 +14,9 @@
       i.right.arrow.icon
     .ui.form.container
       .field
-        input(v-autofocus="", type='search', name='', v-model='myKey', placeholder='搜詢黑板', autofocus='true')
+        input(v-autofocus="", type='search', name='', v-model='myKey', placeholder='搜詢黑板', autofocus='true', list="gs")
+        datalist#gs
+          option(v-for = "g in gobans", v-bind:key = "g.id" :value="g.id") {{ g.id }}
         a.ui.green.button(@click='create(myKey)', v-if='myKey && !gobans[myKey]') 創建{{myKey}}
     .ui.segment.left.aligned.container
       .ui.grid
@@ -98,7 +100,7 @@ a {
   color: gray;
 }
 .ui.grid > .doubling.row > .column, .ui.doubling.grid > .row > .column {
-  padding: 0 !important;
+  padding: 0 1em !important;
 }
 .column .inner {
   min-height: 1.6em;

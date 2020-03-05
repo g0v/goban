@@ -4,15 +4,22 @@
       router-link.item(to='/')
         sui-icon(size='small', name='home')
           | home
-      router-link.item(v-for='j in [0,1,2,3]', :key='j', :to="'/see/' + $route.params.id + '/' + j + '/0'")
-        | {{ j }}
+      .ui.simple.dropdown.item
+        | 等級
+        i.dropdown.icon
+        .menu
+          router-link.item(v-for='j in [0,1,2,3]', :key='j', :to="'/see/' + $route.params.id + '/' + j + '/0'")
+            | 等級{{ j }}
       .right.menu
+        a.item(@click="backup($route.params.id, $route.params.lev)")
+          | 備份
+          i.cloud.download.icon
         a.item(v-if='data[$route.params.index]', :href='data[$route.params.index].url', target='_blank')
+          | 新頁籤
           sui-icon(size='small', name='right arrow')
-            | 開新頁籤
         a.item(v-if="$route.params.index == 'new'", :href="'https://ethercalc.org/' + $route.params.id + $route.params.lev", target='_blank')
+          | 編輯
           sui-icon(size='small', name='right arrow')
-            | 開新頁籤
     .ui.grid
       .four.wide.left.aligned.column
         .ui.list
@@ -55,6 +62,18 @@ export default {
     }
   },
   methods: {
+    downloadObjectAsJson: function (exportObj, exportName){
+      var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(exportObj));
+      var downloadAnchorNode = document.createElement('a');
+      downloadAnchorNode.setAttribute("href",     dataStr);
+      downloadAnchorNode.setAttribute("download", exportName + ".json");
+      document.body.appendChild(downloadAnchorNode); // required for firefox
+      downloadAnchorNode.click();
+      downloadAnchorNode.remove();
+    },
+    backup: function (id, lev) {
+      this.downloadObjectAsJson(this.data, this.name + lev)
+    },
     getSrc: function () {
       if (this.$route.params.index === 'new') {
         return 'https://ethercalc.org/' + this.$route.params.id + this.$route.params.lev

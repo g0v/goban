@@ -7,7 +7,7 @@
         input(v-autofocus="", type='search', name='', v-model='myKey', placeholder='搜詢黑板', autofocus='true')
     .ui.segment.left.aligned.container
       .ui.grid
-        .doubling.two.column.row
+        .doubling.one.column.row
           .column(v-for='g in gobans', :key='g.id')
             .inner(v-if = "stars[g.id] > 0" v-show="!myKey || has(g, myKey)")
               a(v-for = "j in [1,2,3,4,5]" @click='handleRate(g.id, j)')
@@ -84,9 +84,7 @@ a {
 .gray {
   color: gray;
 }
-.ui.grid > .doubling.row > .column, .ui.doubling.grid > .row > .column {
-  padding: 0 !important;
-}
+
 .column .inner {
   min-height: 1.6em;
   padding: 1em 0;
