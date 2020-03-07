@@ -7,11 +7,11 @@
         i.edit.icon
       sui-dropdown.item(text = "相關")
         sui-dropdown-menu(v-if='gobans[$route.params.id].id')
-          sui-dropdown-item(v-for='r in gobans[$route.params.id].related', :key='r', :to="'/see/' + r + '/0/0'")
+          sui-dropdown-item(v-for='r in gobans[$route.params.id].related', :key='r', @click="$router.push('/see/' + r + '/0/0')")
             | {{ r }}
       sui-dropdown.item(text = "等級")
         sui-dropdown-menu
-          sui-dropdown-item(v-for='j in [0,1,2,3]', :key='j', :to="'/see/' + $route.params.id + '/' + j + '/0'")
+          sui-dropdown-item(v-for='j in [0,1,2,3]', :key='j', @click="$router.push('/see/' + $route.params.id + '/' + j + '/0')")
             | 等級{{ j }}
       .right.menu
         a.item(@click="backup($route.params.id, $route.params.lev)")
