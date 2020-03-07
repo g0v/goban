@@ -21,7 +21,9 @@
           a(@click='adRel(g.id)' :class="myRelated.indexOf(g.id) > -1 ? 'yellow' : 'gray'")
             | {{ g.id }}
       .ui.row
-        a.ui.blue.huge.button(@click="crt()", v-if='$route.params.id') {{ '更新' + $route.params.id }}
+        .ui.button.group
+          a.ui.blue.huge.button(@click="crt()", v-if='$route.params.id') {{ '更新' + $route.params.id }}
+          router-link.ui.green.huge.button(:to="'/see/'+ $route.params.id + '/0/0'") {{ '前往' + $route.params.id }}
 </template>
 
 <script>

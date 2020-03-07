@@ -14,7 +14,7 @@
       i.right.arrow.icon
     .ui.form.container
       .field
-        input(v-autofocus="", type='search', name='', v-model='myKey', placeholder='搜詢黑板', autofocus='true', list="gs")
+        input(v-autofocus="", type='search', name='', v-model='myKey', placeholder='搜詢黑板', autofocus='true', list="gs" @keydown.enter = "($router.push('/see/' + myKey + '/0/0'))")
         datalist#gs
           option(v-for = "g in gobans", v-bind:key = "g.id" :value="g.id") {{ g.id }}
         a.ui.green.button(@click='create(myKey)', v-if='myKey && !gobans[myKey]') 創建{{myKey}}

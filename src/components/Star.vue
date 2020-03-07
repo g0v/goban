@@ -4,7 +4,7 @@
     h3.sub.header 我珍藏的黑板
     .ui.form.container
       .field
-        input(v-autofocus="", type='search', name='', v-model='myKey', placeholder='搜詢黑板', autofocus='true')
+        input(v-autofocus="", type='search', name='', v-model='myKey', placeholder='搜詢黑板', autofocus='true', @keydown.enter = "($router.push('/see/' + myKey + '/0/0'))")
     .ui.segment.left.aligned.container
       .ui.grid
         .doubling.one.column.row

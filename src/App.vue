@@ -3,6 +3,8 @@
     .ui.fixed.top.menu
       router-link.item(to='/')
         sui-icon(name='home')
+      a.item(@click="$router.go(-1)")
+        sui-icon(name='left arrow')
       router-link.item(to='/star')
         sui-icon(name='star')
       router-link.item(to='/intro')
