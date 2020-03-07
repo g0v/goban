@@ -5,24 +5,19 @@
         sui-icon(size='small', name='home')
       router-link.item(:to = "'/update/' + $route.params.id")
         i.edit.icon
-      .ui.simple.dropdown.item(v-if='gobans[$route.params.id].id')
-        | 相關
-        i.dropdown.icon
-        .menu
-          router-link.item(v-for='r in gobans[$route.params.id].related', :key='r', :to="'/see/' + r + '/0/0'")
+      sui-dropdown.item(text = "相關")
+        sui-dropdown-menu(v-if='gobans[$route.params.id].id')
+          sui-dropdown-item(v-for='r in gobans[$route.params.id].related', :key='r', :to="'/see/' + r + '/0/0'")
             | {{ r }}
-      .ui.simple.dropdown.item
-        | 等級
-        i.dropdown.icon
-        .menu
-          router-link.item(v-for='j in [0,1,2,3]', :key='j', :to="'/see/' + $route.params.id + '/' + j + '/0'")
+      sui-dropdown.item(text = "等級")
+        sui-dropdown-menu
+          sui-dropdown-item(v-for='j in [0,1,2,3]', :key='j', :to="'/see/' + $route.params.id + '/' + j + '/0'")
             | 等級{{ j }}
       .right.menu
         a.item(@click="backup($route.params.id, $route.params.lev)")
-          | 備份
           i.cloud.download.icon
         a.item(v-if='data[$route.params.index]', :href='data[$route.params.index].url', target='_blank')
-          | 新頁籤
+          | 新頁
           sui-icon(size='small', name='right arrow')
         a.item(v-if="$route.params.index == 'new'", :href="'https://ethercalc.org/' + $route.params.id + $route.params.lev", target='_blank')
           | 編輯
@@ -31,10 +26,11 @@
       .four.wide.left.aligned.column
         .ui.list
           router-link.item(:to="'/see/' + $route.params.id + '/' + $route.params.lev + '/new'")
-              img(:src="'https://www.google.com/s2/favicons?domain=https://ethercalc.org/'")
-              | {{name || $route.params.id + $route.params.lev}}
+            img(:src="'https://www.google.com/s2/favicons?domain=https://ethercalc.org/'")
+            | {{name || $route.params.id + $route.params.lev}}
+            i.inline.edit.icon
           hr
-          .item(v-for='(d, index) in data', :key='d.name')
+          .item(v-for='(d, index) in data', :key='d.name + index')
             div(v-if="d.type == 'link'", v-show='!d.parentIndex || data[d.parentIndex].open')
               span(v-if='d.parentIndex')
               a(:href='decodeURIComponent(d.url)', target='_blank', v-if="tar(d) == '_blank'")
@@ -166,5 +162,13 @@ export default {
   }
   .floating.right {
     float: right;
+  }
+  .ui.dropdown {
+    position: relative;
+  }
+
+  .inline {
+    display: inline !important;
+    color: blue !important;
   }
 </style>
