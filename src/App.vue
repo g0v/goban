@@ -70,7 +70,6 @@ a, button {
   cursor:pointer;
 }
 
-
   @media screen and (max-width: 420px) {
     .fat-only {
       display: none !important;
