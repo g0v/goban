@@ -1,0 +1,193 @@
+{
+  "gobans" : {
+    "autolearn_main" : {
+      "hex" : "green",
+      "id" : "autolearn_main",
+      "related" : [ "g0v", "test", "goban_intro", "bestian_apps" ],
+      "t" : "自主學習"
+    },
+    "baby" : {
+      "id" : "baby",
+      "name" : "baby",
+      "related" : [ "food", "bt_farm", "baby" ],
+      "t" : "溫柔生產",
+      "text" : "溫柔生產"
+    },
+    "bestian_apps" : {
+      "hex" : "blue",
+      "id" : "bestian_apps",
+      "related" : [ "vue", "test" ],
+      "t" : "bestian_apps"
+    },
+    "bt_farm" : {
+      "id" : "bt_farm",
+      "name" : "bt_farm",
+      "related" : [ "bt_farm", "baby", "food" ],
+      "t" : "自然農法",
+      "text" : "自然農法"
+    },
+    "bt_frontend" : {
+      "hex" : "green",
+      "id" : "bt_frontend",
+      "related" : [ "code", "html", "css", "javascript", "frontend" ],
+      "t" : "小巴的前端工程教材"
+    },
+    "chemistry" : {
+      "hex" : "#c9c9c9",
+      "id" : "chemistry",
+      "related" : [ "chemistry" ],
+      "t" : "chemistry",
+      "tags" : [ "chemistry" ]
+    },
+    "code" : {
+      "hex" : "green",
+      "id" : "code",
+      "related" : [ "code", "bt_frontend", "html", "css", "javascript" ],
+      "t" : "程式入門程教材"
+    },
+    "css" : {
+      "hex" : "green",
+      "id" : "css",
+      "related" : [ "code", "css", "vue", "javascript", "sui", "frontend", "bt_frontend", "html" ],
+      "t" : "網站設計語法"
+    },
+    "deslyxia" : {
+      "id" : "deslyxia",
+      "related" : [ "css" ],
+      "t" : "失讀症",
+      "tags" : [ "education" ]
+    },
+    "elder" : {
+      "hex" : "#c9c9c9",
+      "id" : "elder",
+      "related" : [ "elder" ],
+      "t" : "elder",
+      "tags" : [ "elder" ]
+    },
+    "ethercalc" : {
+      "id" : "ethercalc",
+      "related" : [ "ethercalc" ],
+      "t" : "開放的後端平台",
+      "tags" : [ "ethercalc" ]
+    },
+    "food" : {
+      "id" : "food",
+      "name" : "food",
+      "related" : [ "食氣", "bt_farm", "baby", "bestian_apps" ],
+      "t" : "食物",
+      "text" : "食物"
+    },
+    "frontend" : {
+      "hex" : "#c9c9c9",
+      "id" : "frontend",
+      "related" : [ "frontend", "bt_frontend", "vue", "css", "html", "javascript" ],
+      "t" : "前端工程"
+    },
+    "g0v" : {
+      "id" : "g0v",
+      "related" : [ "g0v", "goban_intro" ],
+      "t" : "零時政府",
+      "tags" : [ "g0v" ]
+    },
+    "goban_intro" : {
+      "hex" : "#c9c9c9",
+      "id" : "goban_intro",
+      "related" : [ "code", "g0v", "vue", "test" ],
+      "t" : "零時黑板說明"
+    },
+    "html" : {
+      "hex" : "blue",
+      "id" : "html",
+      "related" : [ "html", "css", "bt_frontend", "sui", "vue", "javascript", "frontend" ],
+      "t" : "html"
+    },
+    "javascript" : {
+      "hex" : "blue",
+      "id" : "javascript",
+      "related" : [ "javascript", "html", "css", "bt_frontend", "vue", "frontend" ],
+      "t" : "javascript"
+    },
+    "music" : {
+      "id" : "music",
+      "related" : [ "music" ],
+      "t" : "music",
+      "tags" : [ "music" ]
+    },
+    "sql" : {
+      "hex" : "#c9c9c9",
+      "id" : "sql",
+      "related" : [ "sql" ],
+      "t" : "sql",
+      "tags" : [ "sql" ]
+    },
+    "sui" : {
+      "hex" : "#5c61f2",
+      "id" : "sui",
+      "name" : "sui",
+      "related" : [ "frontend", "code", "bt_frontend", "vue" ],
+      "t" : "語意式UI",
+      "text" : "語意式UI"
+    },
+    "test" : {
+      "hex" : "#a31010",
+      "id" : "test",
+      "name" : "test",
+      "related" : [ "goban_intro" ],
+      "t" : "試作品",
+      "text" : "試作品"
+    },
+    "vTaiwan" : {
+      "id" : "vTaiwan",
+      "related" : [ "vTaiwan" ],
+      "t" : "vTaiwan",
+      "tags" : [ "vTaiwan" ]
+    },
+    "vue" : {
+      "hex" : "#00ed18",
+      "id" : "vue",
+      "related" : [ "frontend", "javascript", "test", "css", "bt_frontend", "html", "vue" ],
+      "t" : "vue教學"
+    },
+    "京劇" : {
+      "id" : "京劇",
+      "name" : "京劇",
+      "related" : [ "孫悟空" ],
+      "t" : "京劇集錦",
+      "text" : "京劇集錦"
+    },
+    "國中數學" : {
+      "id" : "國中數學",
+      "name" : "國中數學",
+      "related" : [ "autolearn_main" ],
+      "t" : "國中數學開放教材",
+      "text" : "國中數學開放教材"
+    },
+    "孫悟空" : {
+      "hex" : "#0043fc",
+      "id" : "孫悟空",
+      "name" : "孫悟空",
+      "related" : [ "京劇", "孫悟空", "bestian_apps" ],
+      "t" : "孫悟空影集",
+      "text" : "孫悟空影集"
+    },
+    "沙盒" : {
+      "id" : "沙盒",
+      "related" : [ "沙盒" ],
+      "t" : "沙盒",
+      "tags" : [ "沙盒" ]
+    },
+    "電影" : {
+      "id" : "電影",
+      "related" : [ "電影" ],
+      "t" : "電影",
+      "tags" : [ "電影" ]
+    },
+    "食氣" : {
+      "id" : "食氣",
+      "name" : "食氣",
+      "related" : [ "food", "baby", "bt_farm" ],
+      "t" : "漸漸不食",
+      "text" : "漸漸不食"
+    }
+  }
+}
