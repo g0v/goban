@@ -1,7 +1,7 @@
 <template lang="pug">
   .hello
     h1.ui.header 零時黑板
-    h3.sub.header 網址分享的好工具
+    h3.sub.header 共同筆記的黑客公事包
     .ui.button.group.thin-only
       a.ui.orange.button(href="https://play.google.com/store/apps/details?id=tw.goban.app", target="_blank")
         i.google.play.icon
@@ -19,14 +19,16 @@
           option(v-for = "g in gobans", v-bind:key = "g.id" :value="g.id") {{ g.id }}
         a.ui.green.button(@click='create(myKey)', v-if='myKey && !gobans[myKey]') 創建{{myKey}}
     .ui.segment.left.aligned.container
+      .ui.active.dimmer(v-if = "!gobans")
+        .ui.text.loader Loading...
       .ui.grid
         .doubling.two.column.row
           .column(v-for='g in gobans', :key='g.id')
             .inner(v-show="!myKey || has(g, myKey)")
               a(v-for = "j in [1,2,3,4,5]" @click='handleRate(g.id, j)')
                 sui-icon(name='star', :class="stars[g.id] >= j ? 'yellow' : 'gray'")
-              router-link(:to="'update/' + g.id" )
-                i.edit.icon
+              router-link(:to="'update/' + g.id" , data-content="設定", title="設定")
+                i.cogs.icon
               router-link(:to="'see/' + g.id + '/0/0'" )
                 h2.ui.header(:style="{color: g.hex || '#42b983'}") {{ g.id }}
                   .sub.header - {{ g.t }}

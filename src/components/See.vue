@@ -1,12 +1,12 @@
 <template lang="pug">
   .hello
     .ui.fixed.top.menu
-      router-link.item(to='/')
+      router-link.item(to='/', data-content="首頁", title="首頁")
         sui-icon(size='small', name='home')
-      router-link.item(:to = "'/update/' + $route.params.id")
-        i.edit.icon
+      router-link.item(:to = "'/update/' + $route.params.id", data-content="設定", title="設定")
+        i.cogs.icon
       sui-dropdown.item(text = "相關")
-        sui-dropdown-menu(v-if='gobans[$route.params.id].id')
+        sui-dropdown-menu(v-if='gobans[$route.params.id] && gobans[$route.params.id].id')
           sui-dropdown-item(v-for='r in gobans[$route.params.id].related', :key='r', @click="$router.push('/see/' + r + '/0/0')")
             | {{ r }}
       sui-dropdown.item(text = "等級")
@@ -14,18 +14,18 @@
           sui-dropdown-item(v-for='j in [0,1,2,3]', :key='j', @click="$router.push('/see/' + $route.params.id + '/' + j + '/0')")
             | 等級{{ j }}
       .right.menu
-        a.item(@click="backup($route.params.id, $route.params.lev)")
+        a.item(@click="backup($route.params.id, $route.params.lev)", data-content="備份", title="備份")
           i.cloud.download.icon
-        a.item(v-if='data[$route.params.index]', :href='data[$route.params.index].url', target='_blank')
+        a.item(v-if='data[$route.params.index]', :href='data[$route.params.index].url', target='_blank', data-content="開新分頁", title="開新分頁")
           | 新頁
           sui-icon(size='small', name='right arrow')
-        a.item(v-if="$route.params.index == 'new'", :href="'https://ethercalc.org/' + $route.params.id + $route.params.lev", target='_blank')
+        a.item(v-if="$route.params.index == 'new'", :href="'https://ethercalc.org/' + $route.params.id + $route.params.lev", target='_blank', data-content="編輯", title="編輯")
           | 編輯
           sui-icon(size='small', name='right arrow')
     .ui.grid
       .four.wide.left.aligned.column
         .ui.list
-          router-link.item(:to="'/see/' + $route.params.id + '/' + $route.params.lev + '/new'")
+          router-link.item(:to="'/see/' + $route.params.id + '/' + $route.params.lev + '/new'", data-content="編輯", title="編輯")
             img(:src="'https://www.google.com/s2/favicons?domain=https://ethercalc.org/'")
             | {{name || $route.params.id + $route.params.lev}}
             i.inline.edit.icon
@@ -46,7 +46,9 @@
                 img.ui.mini.image(src='/static/images/isClosed.png', v-show='!d.open')
                 img.ui.mini.image(src='/static/images/isOpen.png', v-show='d.open')
       .twelve.wide.column(@mouseout='reload()')
-        iframe#iframe(name='iframe', :src='getSrc()')
+        iframe#iframe(v-if = "getSrc()" name='iframe', :src='getSrc()', alt="Loading...")
+        .ui.active.dimmer(v-else)
+          .ui.text.loader Loading...
 </template>
 
 <script>
@@ -170,5 +172,9 @@ export default {
   .inline {
     display: inline !important;
     color: blue !important;
+  }
+
+  .ui.active.dimmer {
+    height: 100vh;
   }
 </style>

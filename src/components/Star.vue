@@ -6,12 +6,16 @@
       .field
         input(v-autofocus="", type='search', name='', v-model='myKey', placeholder='搜詢黑板', autofocus='true', @keydown.enter = "($router.push('/see/' + myKey + '/0/0'))")
     .ui.segment.left.aligned.container
+      .ui.active.dimmer(v-if = "!gobans")
+        .ui.text.loader Loading...
       .ui.grid
         .doubling.one.column.row
           .column(v-for='g in gobans', :key='g.id')
             .inner(v-if = "stars[g.id] > 0" v-show="!myKey || has(g, myKey)")
               a(v-for = "j in [1,2,3,4,5]" @click='handleRate(g.id, j)')
                 sui-icon(name='star', :class="stars[g.id] >= j ? 'yellow' : 'gray'")
+              router-link(:to="'update/' + g.id" , data-content="設定", title="設定")
+                i.cogs.icon
               router-link(:to="'see/' + g.id + '/0/0'" )
                 h2.ui.header(:style="{color: g.hex || '#42b983'}") {{ g.id }}
                   .sub.header - {{ g.t }}

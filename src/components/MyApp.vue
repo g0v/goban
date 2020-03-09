@@ -1,0 +1,25 @@
+<template lang="pug">
+  .hello
+    h1.ui.header 零時黑板-手機App
+    .ui.button.group
+      a.ui.orange.huge.button(href="https://play.google.com/store/apps/details?id=tw.goban.app", target="_blank")
+        i.google.play.icon
+        | App on Google Play
+      //a.ui.green.button(href="https://play.google.com/store/apps/details?id=tw.goban.app", target="_blank")
+        i.app.store.icon
+        | App on App Store
+
+</template>
+
+<script>
+export default {
+  data () {
+    return {
+    }
+  }
+}
+</script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped>
+</style>

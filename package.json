@@ -17,6 +17,7 @@
     "@babel/polyfill": "^7.8.7",
     "firebase": "^7.4.0",
     "html-loader": "^0.5.5",
+    "portal-vue": "^2.1.7",
     "pug": "^2.0.4",
     "pug-html-loader": "^1.1.5",
     "semantic-ui-css": "^2.4.1",

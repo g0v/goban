@@ -1,16 +1,22 @@
 <template lang="pug">
-  #app
+  portal-target#app(name="semantic-ui-vue")
     .ui.fixed.top.menu
       router-link.item(to='/')
-        sui-icon(name='home')
-      a.item(@click="$router.go(-1)" v-if = "$router.currentRoute.path != '/'")
+        sui-icon(name='home', data-content="首頁", title="首頁")
+      a.item(@click="$router.go(-1)" v-if = "$router.currentRoute.path != '/'", data-content="回上一頁", title="回上一頁")
         sui-icon(name='left arrow')
-      router-link.item(to='/star')
+      router-link.item(to='/star', data-content="珍藏", title="珍藏")
         sui-icon(name='star')
       router-link.item(to='/intro')
-        sui-icon(name='question')
+        sui-icon(name='question', data-content="介紹", title="介紹")
+      sui-dropdown.item(icon="save outline", data-content="工具", title="工具")
+        sui-dropdown-menu
+          sui-dropdown-item(@click="$router.push('/myapp')")
+            | 手機App
+          sui-dropdown-item(@click="$router.push('/extension')")
+            | 瀏覽器插件
       .right.menu
-        a.item(href="https://github.com/g0v/goban", target="_blank")
+        a.item(href="https://github.com/g0v/goban", target="_blank", data-content="原始碼", title="原始碼")
           i.github.icon
         .item
           iframe(src="https://www.facebook.com/plugins/share_button.php?href=http%3A%2F%2Fgoban.tw&layout=button_count&size=small&appId=485195848253155&width=71&height=20" width="71" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media")

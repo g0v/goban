@@ -10,6 +10,8 @@ import 'semantic-ui-css/semantic.min.css'
 import VueLocalStorage from 'vue-localstorage'
 import autofocus from 'vue-autofocus-directive'
 import '@babel/polyfill'
+import PortalVue from 'portal-vue'
+Vue.use(PortalVue)
 
 Vue.directive('autofocus', autofocus)
 
