@@ -17,8 +17,7 @@
               router-link(:to="'update/' + g.id" , data-content="設定", title="設定")
                 i.cogs.icon
               router-link(:to="'see/' + g.id + '/0/0'" )
-                h2.ui.header(:style="{color: g.hex || '#42b983'}") {{ g.id }}
-                  .sub.header - {{ g.t }}
+                h2.ui.header(:style="{color: g.hex || '#42b983'}") {{ g.id }} - {{ g.t }}
               p 相關黑板:
                 br
                 router-link.r(v-for = "r in g.related", :key="r", :to="'see/' + r + '/0/0'" ) {{ r }}

@@ -16,9 +16,9 @@
           sui-dropdown-item(@click="$router.push('/extension')")
             | 瀏覽器插件
       .right.menu
-        a.item(href="https://github.com/g0v/goban", target="_blank", data-content="原始碼", title="原始碼")
+        a.item.fat-only(href="https://github.com/g0v/goban", target="_blank", data-content="原始碼", title="原始碼")
           i.github.icon
-        .item
+        .item.fat-only
           iframe(src="https://www.facebook.com/plugins/share_button.php?href=http%3A%2F%2Fgoban.tw&layout=button_count&size=small&appId=485195848253155&width=71&height=20" width="71" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media")
     router-view(:gobans='gobans', @create='create')
 </template>
@@ -70,4 +70,14 @@ a, button {
   cursor:pointer;
 }
 
+
+  @media screen and (max-width: 420px) {
+    .fat-only {
+      display: none !important;
+    }
+
+    p {
+      overflow-x: scroll;
+    }
+  }
 </style>

@@ -14,7 +14,7 @@
           sui-dropdown-item(v-for='j in [0,1,2,3]', :key='j', @click="$router.push('/see/' + $route.params.id + '/' + j + '/0')")
             | 等級{{ j }}
       .right.menu
-        a.item(@click="backup($route.params.id, $route.params.lev)", data-content="備份", title="備份")
+        a.item.fat-only(@click="backup($route.params.id, $route.params.lev)", data-content="備份", title="備份")
           i.cloud.download.icon
         a.item(v-if='data[$route.params.index]', :href='data[$route.params.index].url', target='_blank', data-content="開新分頁", title="開新分頁")
           | 新頁
@@ -26,7 +26,7 @@
       .four.wide.left.aligned.column
         .ui.list
           router-link.item(:to="'/see/' + $route.params.id + '/' + $route.params.lev + '/new'", data-content="編輯", title="編輯")
-            img(:src="'https://www.google.com/s2/favicons?domain=https://ethercalc.org/'")
+            img.fat-only(:src="'https://www.google.com/s2/favicons?domain=https://ethercalc.org/'")
             span(:style="{color: gobans[$route.params.id].hex || 'blue'}") {{name || $route.params.id + $route.params.lev}}
             i.inline.edit.large.icon(:style="{color: gobans[$route.params.id].hex || 'blue'}")
           hr
@@ -184,5 +184,15 @@ export default {
 
   i.inline.edit.icon {
     margin-left: 0.5em;
+  }
+
+  @media screen and (max-width: 420px) {
+    a.link {
+      margin-left: 0;
+    }
+
+    i.inline.edit.icon {
+      margin-left: 0;
+    }
   }
 </style>

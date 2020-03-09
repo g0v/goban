@@ -87,4 +87,8 @@ export default {
 .gray {
   color: gray;
 }
+.ui.header {
+  margin-left: 1em;
+}
+
 </style>
