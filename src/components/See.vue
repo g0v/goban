@@ -27,17 +27,17 @@
         .ui.list
           router-link.item(:to="'/see/' + $route.params.id + '/' + $route.params.lev + '/new'", data-content="編輯", title="編輯")
             img(:src="'https://www.google.com/s2/favicons?domain=https://ethercalc.org/'")
-            | {{name || $route.params.id + $route.params.lev}}
-            i.inline.edit.icon
+            span(:style="{color: gobans[$route.params.id].hex || 'blue'}") {{name || $route.params.id + $route.params.lev}}
+            i.inline.edit.large.icon(:style="{color: gobans[$route.params.id].hex || 'blue'}")
           hr
           .item(v-for='(d, index) in data', :key='d.name + index')
             div(v-if="d.type == 'link'", v-show='!d.parentIndex || data[d.parentIndex].open')
               span(v-if='d.parentIndex')
-              a(:href='decodeURIComponent(d.url)', target='_blank', v-if="tar(d) == '_blank'")
+              a.link(:href='decodeURIComponent(d.url)', target='_blank', v-if="tar(d) == '_blank'")
                 | {{ decodeURIComponent(d.name) }}
                 img.floating.right(:src="'https://www.google.com/s2/favicons?domain=' + d.url")
                 sui-icon(name='right arrow')
-              router-link(v-else='', :to="'/see/' + $route.params.id + '/' + $route.params.lev + '/' + index")
+              router-link.link(v-else='', :to="'/see/' + $route.params.id + '/' + $route.params.lev + '/' + index")
                 | {{ decodeURIComponent(d.name) }}
                 img.floating.right(:src="'https://www.google.com/s2/favicons?domain=' + decodeURIComponent(d.url)")
             div(v-if="d.type == 'folder'")
@@ -176,5 +176,13 @@ export default {
 
   .ui.active.dimmer {
     height: 100vh;
+  }
+
+  a.link {
+    margin-left: 1em;
+  }
+
+  i.inline.edit.icon {
+    margin-left: 0.5em;
   }
 </style>
