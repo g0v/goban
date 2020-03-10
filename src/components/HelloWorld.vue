@@ -74,7 +74,7 @@ export default {
     },
     has: function (g, k) {
       var r = new RegExp(k)
-      return r.test(g.id)
+      return r.test(g.id + g.t)
     },
     handleRate: function (g, r) {
       if (!this.stars[g]) { this.stars[g] = 0 }
