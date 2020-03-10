@@ -2,7 +2,7 @@
   .hello
     h1.ui.header 零時黑板
     h3.sub.header 共同筆記的黑客公事包
-    .ui.button.group.thin-only
+    .ui.button.group.thin-only(v-show="!iOS()")
       a.ui.orange.button(href="https://play.google.com/store/apps/details?id=tw.goban.app", target="_blank")
         i.google.play.icon
         | App on Google Play
@@ -49,6 +49,25 @@ export default {
     stars: {'goban_intro': 5}
   },
   methods: {
+    iOS: function () {
+      var ans = false
+      var iDevices = [
+        'iPad Simulator',
+        'iPhone Simulator',
+        'iPod Simulator',
+        'iPad',
+        'iPhone',
+        'iPod'
+      ]
+      console.log(navigator.platform)
+      if (navigator.platform) {
+        while (iDevices.length) {
+          if (navigator.platform === iDevices.pop()) { ans = true }
+        }
+      }
+      console.log(ans)
+      return ans
+    },
     create: function (k) {
       this.$emit('create', k)
       this.$router.push('/see/' + k + '/0/new')

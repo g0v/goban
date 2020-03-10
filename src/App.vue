@@ -11,7 +11,7 @@
         sui-icon(name='question', data-content="介紹", title="介紹")
       sui-dropdown.item(icon="save outline", data-content="工具", title="工具")
         sui-dropdown-menu
-          sui-dropdown-item(@click="$router.push('/myapp')")
+          sui-dropdown-item(v-show="!iOS()", @click="$router.push('/myapp')")
             | 手機App
           sui-dropdown-item(@click="$router.push('/extension')")
             | 瀏覽器插件
@@ -35,6 +35,25 @@ export default {
     }
   },
   methods: {
+    iOS: function () {
+      var ans = false
+      var iDevices = [
+        'iPad Simulator',
+        'iPhone Simulator',
+        'iPod Simulator',
+        'iPad',
+        'iPhone',
+        'iPod'
+      ]
+      console.log(navigator.platform)
+      if (navigator.platform) {
+        while (iDevices.length) {
+          if (navigator.platform === iDevices.pop()) { ans = true }
+        }
+      }
+      console.log(ans)
+      return ans
+    },
     create: function (k, o) {
       var obj = o || {id: k}
       obj.id = k
