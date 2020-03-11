@@ -1,7 +1,6 @@
 <template lang="pug">
   .hello
     h1.ui.header 我的珍藏
-    h3.sub.header 我珍藏的黑板
     .ui.form.container
       .field
         input(v-autofocus="", type='search', name='', v-model='myKey', placeholder='搜詢黑板', autofocus='true', @keydown.enter = "($router.push('/see/' + myKey + '/0/0'))")
@@ -10,7 +9,7 @@
         .ui.text.loader Loading...
       .ui.grid
         .doubling.one.column.row
-          .column(v-for='g in gobans', :key='g.id')
+          #goban.column(v-for='g in gobans', :key='g.id')
             .inner(v-if = "stars[g.id] > 0" v-show="!myKey || has(g, myKey)")
               a(v-for = "j in [1,2,3,4,5]" @click='handleRate(g.id, j)')
                 sui-icon(name='star', :class="stars[g.id] >= j ? 'yellow' : 'gray'")
@@ -91,6 +90,13 @@ a {
 .column .inner {
   min-height: 1.6em;
   padding: 1em 0;
+}
+
+@media only screen and (max-width: 767px) {
+  #goban {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
 }
 
 </style>

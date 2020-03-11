@@ -119,9 +119,7 @@ a {
 .gray {
   color: gray;
 }
-.ui.grid > .doubling.row > .column, .ui.doubling.grid > .row > .column {
-  padding: 0 1em !important;
-}
+
 .column .inner {
   min-height: 1.6em;
   padding: 1em 0;
