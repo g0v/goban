@@ -136,7 +136,7 @@ export default {
     loadStars: function () {
       console.log(JSON.parse(this.$localStorage.get('stars')))
       this.stars = JSON.parse(this.$localStorage.get('stars'))
-    }
+    },
     parse: function (d) {
       if (d[1]) { this.name = d[1][1] }
       var ans = d.slice(2)
