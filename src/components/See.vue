@@ -71,16 +71,6 @@ export default {
     }
   },
   methods: {
-    handleRate: function (g, r) {
-      if (!this.stars[g]) { this.stars[g] = 0 }
-      if (this.stars[g] === r) {
-        this.stars[g] = 0
-      } else {
-        this.stars[g] = r
-      }
-      this.$localStorage.set('stars', JSON.stringify(this.stars))
-      this.$forceUpdate()
-    },
     downloadObjectAsJson: function (exportObj, exportName) {
       var dataStr = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(exportObj))
       var downloadAnchorNode = document.createElement('a')
@@ -165,20 +155,6 @@ export default {
       })
       console.log(ans)
       return ans
-    },
-    handleRate: function (g, r) {
-      if (!this.stars[g]) { this.stars[g] = 0 }
-      if (this.stars[g] === r) {
-        this.stars[g] = 0
-      } else {
-        this.stars[g] = r
-      }
-      this.$localStorage.set('stars', JSON.stringify(this.stars))
-      this.$forceUpdate()
-    },
-    loadStars: function () {
-      console.log(JSON.parse(this.$localStorage.get('stars')))
-      this.stars = JSON.parse(this.$localStorage.get('stars'))
     }
   },
   mounted () {
