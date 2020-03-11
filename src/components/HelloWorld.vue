@@ -1,7 +1,7 @@
 <template lang="pug">
   .hello
-    h1.ui.header 零時黑板
-    h3.sub.header 共同筆記的黑客公事包
+    h1.ui.header 共同筆記的公事包
+    h3.sub.header 搜詢或創建公事包，與他人分享網址
     .ui.button.group.thin-only(v-show="!iOS()")
       a.ui.orange.button(href="https://play.google.com/store/apps/details?id=tw.goban.app", target="_blank")
         i.google.play.icon
@@ -10,8 +10,6 @@
         i.app.store.icon
         | App on App Store
       | &nbsp;
-    router-link.ui.green.button(to = "intro") 瞭解更多
-      i.right.arrow.icon
     .ui.form.container
       .field
         input(v-autofocus="", type='search', name='', v-model='myKey', placeholder='搜詢或創建新黑板', autofocus='true', list="gs" @keydown.enter = "($router.push('/see/' + myKey + '/0/0'))")
@@ -34,6 +32,8 @@
               p 相關黑板:
                 br
                 router-link.r(v-for = "r in g.related", :key="r", :to="'see/' + r + '/0/0'" ) {{ r }}
+    router-link.ui.green.button(to = "intro") 瞭解更多
+      i.right.arrow.icon
 </template>
 
 <script>
