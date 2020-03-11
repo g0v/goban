@@ -118,12 +118,6 @@ li {
 a {
   color: #42b983;
 }
-.yellow {
-  color: yellow;
-}
-.gray {
-  color: gray;
-}
 
 .column .inner {
   min-height: 1.6em;

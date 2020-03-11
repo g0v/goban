@@ -3,6 +3,8 @@
     .ui.fixed.top.menu#navbar
       router-link.item(to='/', data-content="首頁", title="首頁")
         sui-icon(size='small', name='home')
+      router-link.item(to='/stars', data-content="珍藏", title="珍藏")
+        sui-icon(size='small', name='star', :style="{color: stars[$route.params.id] ? 'yellow' : 'gray'}")
       router-link.item(:to = "'/update/' + $route.params.id", data-content="設定", title="設定")
         i.cogs.icon
       sui-dropdown.item(text = "相關")
@@ -46,6 +48,8 @@
                 img.ui.mini.image(src='/static/images/isClosed.png', v-show='!d.open')
                 img.ui.mini.image(src='/static/images/isOpen.png', v-show='d.open')
       .twelve.wide.column(@mouseout='reload()')
+        a(v-for = "j in [1,2,3,4,5]" @click='handleRate($route.params.id, j)')
+          sui-icon(name='star', :class="stars[$route.params.id] >= j ? 'yellow' : 'gray'")
         iframe#iframe(v-if = "getSrc()" name='iframe', :src='getSrc()', alt="Loading...")
         .ui.active.dimmer(v-else)
           .ui.text.loader Loading...
@@ -57,7 +61,8 @@ export default {
   data () {
     return {
       data: [],
-      name: ''
+      name: '',
+      stars: {'goban_intro': 5}
     }
   },
   props: ['gobans'],
@@ -67,6 +72,16 @@ export default {
     }
   },
   methods: {
+    handleRate: function (g, r) {
+      if (!this.stars[g]) { this.stars[g] = 0 }
+      if (this.stars[g] === r) {
+        this.stars[g] = 0
+      } else {
+        this.stars[g] = r
+      }
+      this.$localStorage.set('stars', JSON.stringify(this.stars))
+      this.$forceUpdate()
+    },
     downloadObjectAsJson: function (exportObj, exportName) {
       var dataStr = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(exportObj))
       var downloadAnchorNode = document.createElement('a')
@@ -137,10 +152,25 @@ export default {
       })
       console.log(ans)
       return ans
+    },
+    handleRate: function (g, r) {
+      if (!this.stars[g]) { this.stars[g] = 0 }
+      if (this.stars[g] === r) {
+        this.stars[g] = 0
+      } else {
+        this.stars[g] = r
+      }
+      this.$localStorage.set('stars', JSON.stringify(this.stars))
+      this.$forceUpdate()
+    },
+    loadStars: function () {
+      console.log(JSON.parse(this.$localStorage.get('stars')))
+      this.stars = JSON.parse(this.$localStorage.get('stars'))
     }
   },
   mounted () {
     this.reload()
+    this.loadStars()
   }
 }
 </script>

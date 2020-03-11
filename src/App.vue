@@ -105,6 +105,13 @@ export default {
   margin-top: 60px;
 }
 
+.yellow {
+  color: yellow;
+}
+.gray {
+  color: gray;
+}
+
 .router-link-exact-active {
   background-color: #ccf !important;
 }
