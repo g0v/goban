@@ -17,7 +17,6 @@
         a.item.fat-only(@click="backup($route.params.id, $route.params.lev)", data-content="備份", title="備份")
           i.cloud.download.icon
         a.item(v-if='data[$route.params.index]', :href='data[$route.params.index].url', target='_blank', data-content="開新分頁", title="開新分頁")
-          | 新頁
           sui-icon(size='small', name='right arrow')
         a.item(v-if="$route.params.index == 'new'", :href="'https://ethercalc.org/' + $route.params.id + $route.params.lev", target='_blank', data-content="編輯", title="編輯")
           | 編輯
