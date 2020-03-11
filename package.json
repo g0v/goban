@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.8.7",
+    "axios": "^0.19.2",
     "firebase": "^7.4.0",
     "html-loader": "^0.5.5",
     "portal-vue": "^2.1.7",
@@ -24,6 +25,7 @@
     "semantic-ui-vue": "^0.8.1",
     "vue": "^2.5.2",
     "vue-autofocus-directive": "^1.0.4",
+    "vue-error-page": "^1.1.7",
     "vue-localstorage": "^0.6.2",
     "vue-resource": "^1.5.1",
     "vue-router": "^3.0.1",

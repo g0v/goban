@@ -11,6 +11,20 @@ import VueLocalStorage from 'vue-localstorage'
 import autofocus from 'vue-autofocus-directive'
 import '@babel/polyfill'
 import PortalVue from 'portal-vue'
+
+import ErrorPage from 'vue-error-page'
+
+window.eventBus = new Vue()
+
+Vue.use(ErrorPage, {
+  tagName: 'app-view',
+  bus: 'eventBus',
+  event: 'error-page',
+  resolver: (component) => {
+    return require('./views/Errors/' + component).default
+  }
+})
+
 Vue.use(PortalVue)
 
 Vue.directive('autofocus', autofocus)
