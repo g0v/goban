@@ -1,6 +1,32 @@
 <template lang="pug">
   portal-target#app(name="semantic-ui-vue")
-    .ui.fixed.top.menu
+    .ui.fixed.top.labeled.icon.menu.fat-only
+      router-link.item(to='/')
+        i.home.icon
+        | 首頁
+      a.item(@click="$router.go(-1)" v-if = "$router.currentRoute.path != '/'")
+        i.left.arrow.icon
+        | 回上一頁
+      router-link.item(to='/star')
+        i.star.icon
+        | 珍藏
+      router-link.item(to='/intro')
+        i.question.icon
+        | 介紹
+      sui-dropdown.item(icon="save outline")
+        | 工具
+        sui-dropdown-menu
+          sui-dropdown-item(v-show="!iOS()", @click="$router.push('/myapp')")
+            | 手機App
+          sui-dropdown-item(@click="$router.push('/extension')")
+            | 瀏覽器插件
+      .right.menu
+        a.item(href="https://github.com/g0v/goban", target="_blank")
+          i.github.icon
+          | 原始碼
+        .item
+          iframe(src="https://www.facebook.com/plugins/share_button.php?href=http%3A%2F%2Fgoban.tw&layout=button_count&size=small&appId=485195848253155&width=71&height=20" width="71" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media")
+    .ui.fixed.top.menu.thin-only
       router-link.item(to='/')
         sui-icon(name='home', data-content="首頁", title="首頁")
       a.item(@click="$router.go(-1)" v-if = "$router.currentRoute.path != '/'", data-content="回上一頁", title="回上一頁")
@@ -16,10 +42,8 @@
           sui-dropdown-item(@click="$router.push('/extension')")
             | 瀏覽器插件
       .right.menu
-        a.item.fat-only(href="https://github.com/g0v/goban", target="_blank", data-content="原始碼", title="原始碼")
+        a.item(href="https://github.com/g0v/goban", target="_blank", data-content="原始碼", title="原始碼")
           i.github.icon
-        .item.fat-only
-          iframe(src="https://www.facebook.com/plugins/share_button.php?href=http%3A%2F%2Fgoban.tw&layout=button_count&size=small&appId=485195848253155&width=71&height=20" width="71" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media")
     router-view(:gobans='gobans', @create='create')
 </template>
 
@@ -89,13 +113,25 @@ a, button {
   cursor:pointer;
 }
 
-  @media screen and (max-width: 420px) {
-    .fat-only {
-      display: none !important;
-    }
-
-    p {
-      overflow-x: scroll;
-    }
+@media screen and (max-width: 420px) {
+  .fat-only {
+    display: none !important;
   }
+
+  p {
+    overflow-x: scroll;
+  }
+}
+
+@media screen and (min-width: 420px) {
+  .thin-only {
+    display: none !important;
+  }
+  #app {
+    margin-top: 100px;
+  }
+  #navbar {
+    height: 74px;
+  }
+}
 </style>

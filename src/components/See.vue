@@ -1,6 +1,6 @@
 <template lang="pug">
   .hello
-    .ui.fixed.top.menu
+    .ui.fixed.top.menu#navbar
       router-link.item(to='/', data-content="首頁", title="首頁")
         sui-icon(size='small', name='home')
       router-link.item(:to = "'/update/' + $route.params.id", data-content="設定", title="設定")
