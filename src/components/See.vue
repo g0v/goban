@@ -155,6 +155,7 @@ export default {
   },
   mounted () {
     this.reload()
+    this.loadStars()
   }
 }
 </script>
