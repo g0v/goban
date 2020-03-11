@@ -19,7 +19,6 @@
         a.item.fat-only(@click="backup($route.params.id, $route.params.lev)", data-content="備份", title="備份")
           i.cloud.download.icon
         a.item(v-if='data[$route.params.index]', :href='data[$route.params.index].url', target='_blank', data-content="開新分頁", title="開新分頁")
-          | 新頁
           sui-icon(size='small', name='right arrow')
         a.item(v-if="$route.params.index == 'new'", :href="'https://ethercalc.org/' + $route.params.id + $route.params.lev", target='_blank', data-content="編輯", title="編輯")
           | 編輯
@@ -124,6 +123,20 @@ export default {
         this.$router.push('/see/' + this.$route.params.id + '/' + this.$route.params.lev + '/new')
       })
     },
+    handleRate: function (g, r) {
+      if (!this.stars[g]) { this.stars[g] = 0 }
+      if (this.stars[g] === r) {
+        this.stars[g] = 0
+      } else {
+        this.stars[g] = r
+      }
+      this.$localStorage.set('stars', JSON.stringify(this.stars))
+      this.$forceUpdate()
+    },
+    loadStars: function () {
+      console.log(JSON.parse(this.$localStorage.get('stars')))
+      this.stars = JSON.parse(this.$localStorage.get('stars'))
+    }
     parse: function (d) {
       if (d[1]) { this.name = d[1][1] }
       var ans = d.slice(2)
