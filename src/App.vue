@@ -82,7 +82,7 @@ export default {
       var obj = o || {id: k}
       obj.id = k
       obj.t = obj.t || k
-      obj.hex = obj.hex || '#c9c9c9'
+      obj.hex = obj.hex || 'black'
       obj.tags = obj.tags || [k]
       obj.related = obj.related || [k]
       db.ref('gobans/' + k).set(obj)

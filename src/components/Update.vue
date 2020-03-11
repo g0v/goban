@@ -2,7 +2,7 @@
   .ui.container
     .ui.grid
       .ui.row
-        h2.ui.header(:style="{color: hex || 'c9c9c9'}") 更新{{ $route.params.id }}
+        h2.ui.header(:style="{color: hex || 'black'}") 更新{{ $route.params.id }}
       .ui.row
         .ui.form
           .field

@@ -12,7 +12,7 @@
           #goban.column(v-for='g in gobans', :key='g.id')
             .inner(v-if = "stars[g.id] > 0" v-show="!myKey || has(g, myKey)")
               a(v-for = "j in [1,2,3,4,5]")
-                sui-icon(name='star', :class="stars[g.id] >= j ? 'yellow' : 'gray'")
+                sui-icon(name='star', :style="stars[g.id] >= j ? 'yellow' : 'gray'")
               router-link(:to="'update/' + g.id" , data-content="設定", title="設定")
                 i.cogs.icon
               router-link(:to="'see/' + g.id + '/0/0'" )
