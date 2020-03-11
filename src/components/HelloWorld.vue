@@ -34,6 +34,11 @@
                 router-link.r(v-for = "r in g.related", :key="r", :to="'see/' + r + '/0/0'" ) {{ r }}
     router-link.ui.green.button(to = "intro") 瞭解更多
       i.right.arrow.icon
+    h3.ui.header 我的珍藏
+    .span#fast(v-for = "g in gobans", :key='g.id')
+      .inner(v-if = "stars[g.id] > 0", v-show="!myKey || has(g, myKey)")
+        router-link(:to="'see/' + g.id + '/0/0'", :style="{color: g.hex || '#42b983'}") {{ g.id }} - {{ g.t }}
+          i.right.arrow.icon
 </template>
 
 <script>
@@ -136,6 +141,10 @@ a {
 
 .ui.form.container {
   margin: 1em 0;
+}
+
+#fast {
+  margin-top: .5em;
 }
 
 </style>
