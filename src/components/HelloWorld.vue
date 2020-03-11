@@ -21,7 +21,7 @@
         .ui.text.loader Loading...
       .ui.grid
         .doubling.two.column.row
-          .column(v-for='g in gobans', :key='g.id')
+          .column#goban(v-for='g in gobans', :key='g.id')
             .inner(v-show="has(g, myKey)")
               a(v-for = "j in [1,2,3,4,5]" @click='handleRate(g.id, j)')
                 sui-icon(name='star', :class="stars[g.id] >= j ? 'yellow' : 'gray'")
@@ -129,6 +129,14 @@ a {
   min-height: 1.6em;
   padding: 1em 0;
 }
+
+@media only screen and (max-width: 767px) {
+  #goban {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+}
+
 .r {
   margin: 0 1em;
 }
