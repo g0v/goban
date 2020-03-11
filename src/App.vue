@@ -44,7 +44,7 @@
       .right.menu
         a.item(href="https://github.com/g0v/goban", target="_blank", data-content="原始碼", title="原始碼")
           i.github.icon
-    app-view(:gobans='gobans', @create='create')
+    router-view(:gobans='gobans', @create='create')
 </template>
 
 <script>
