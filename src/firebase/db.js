@@ -7,3 +7,4 @@ export const db = firebase
   .database()
 
 export const gobansRef = db.ref('gobans')
+export const chatsRef = db.ref('chats')
