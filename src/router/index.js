@@ -7,6 +7,7 @@ import Intro from '@/components/Intro'
 import Update from '@/components/Update'
 import MyApp from '@/components/MyApp'
 import Extension from '@/components/Extension'
+import Chat from '@/components/Chat'
 
 Vue.use(Router)
 
@@ -44,6 +45,10 @@ export default new Router({
     { path: '/extension',
       name: 'Extension',
       component: Extension
+    },
+    { path: '/chat',
+      name: 'Chat',
+      component: Chat
     }
   ]
 })

@@ -21,6 +21,9 @@
           sui-dropdown-item(@click="$router.push('/extension')")
             | 瀏覽器插件
       .right.menu
+        router-link.item(to = "/chat", target="_blank")
+          i.chat.icon
+          | 留言板
         a.item(href="https://github.com/g0v/goban", target="_blank")
           i.github.icon
           | 原始碼
@@ -42,23 +45,40 @@
           sui-dropdown-item(@click="$router.push('/extension')")
             | 瀏覽器插件
       .right.menu
-        a.item(href="https://github.com/g0v/goban", target="_blank", data-content="原始碼", title="原始碼")
+        router-link.item(to = "/chat", target="_blank")
+          i.chat.icon
+        a.item(href="https://github.com/g0v/goban", target="_blank")
           i.github.icon
-    router-view(:gobans='gobans', @create='create')
+    router-view(:gobans='gobans', @create='create', :chats = "chats", @submit = "submit")
 </template>
 
 <script>
 
-import { db, gobansRef } from './firebase/db'
+import { db, gobansRef, chatsRef } from './firebase/db'
 
 export default {
   name: 'App',
   data () {
     return {
-      gobans: undefined
+      gobans: undefined,
+      chats: undefined
     }
   },
   methods: {
+    submit: function (n, email, t) {
+      var o = {
+        n: n,
+        email: email,
+        t: t,
+        time: (new Date()).getTime()
+      }
+      if (t) {
+        this.$firebaseRefs.chats.push(o)
+        window.alert('留言已送出')
+      } else {
+        window.alert('請輸入留言')
+      }
+    },
     iOS: function () {
       var ans = false
       var iDevices = [
@@ -89,7 +109,8 @@ export default {
     }
   },
   firebase: {
-    gobans: gobansRef
+    gobans: gobansRef,
+    chats: chatsRef
   }
 }
 
