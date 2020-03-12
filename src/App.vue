@@ -89,7 +89,6 @@ export default {
         'iPhone',
         'iPod'
       ]
-      console.log(navigator.platform)
       if (navigator.platform) {
         while (iDevices.length) {
           if (navigator.platform === iDevices.pop()) { ans = true }
@@ -105,6 +104,7 @@ export default {
       obj.hex = obj.hex || 'black'
       obj.tags = obj.tags || [k]
       obj.related = obj.related || [k]
+      obj.use_lev = obj.use_lev || false
       db.ref('gobans/' + k).set(obj)
     }
   },

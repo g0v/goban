@@ -4,14 +4,14 @@
       router-link.item(to='/', data-content="首頁", title="首頁")
         sui-icon(size='small', name='home')
       router-link.item(to='/star', data-content="珍藏", title="珍藏")
-        sui-icon(size='small', name='star', :style="{color: stars[$route.params.id] ? 'yellow' : 'gray'}")
+        sui-icon(size='small', name='star', :style="{color: stars[$route.params.id] ? '#F4D03F' : 'gray'}")
       router-link.item(:to = "'/update/' + $route.params.id", data-content="設定", title="設定")
         i.cogs.icon
-      sui-dropdown.item(text = "相關")
-        sui-dropdown-menu(v-if='gobans[$route.params.id] && gobans[$route.params.id].id')
+      sui-dropdown.item(text = "相關", v-if='gobans[$route.params.id] && gobans[$route.params.id].id')
+        sui-dropdown-menu
           sui-dropdown-item(v-for='r in gobans[$route.params.id].related', :key='r', @click="$router.push('/see/' + r + '/0/0')")
             | {{ r }}
-      sui-dropdown.item(text = "等級")
+      sui-dropdown.item(text = "等級", v-if='gobans[$route.params.id] && gobans[$route.params.id].use_lev')
         sui-dropdown-menu
           sui-dropdown-item(v-for='j in [0,1,2,3]', :key='j', @click="$router.push('/see/' + $route.params.id + '/' + j + '/0')")
             | 等級{{ j }}
@@ -20,7 +20,7 @@
           i.cloud.download.icon
         a.item(v-if='data[$route.params.index]', :href='data[$route.params.index].url', target='_blank', data-content="開新分頁", title="開新分頁")
           sui-icon(size='small', name='right arrow')
-        a.item(v-if="$route.params.index == 'new'", :href="'https://ethercalc.org/' + $route.params.id + $route.params.lev", target='_blank', data-content="編輯", title="編輯")
+        a.item(v-if="$route.params.index == 'new'", :href="editURL()", target='_blank', data-content="編輯", title="編輯")
           | 編輯
           sui-icon(size='small', name='right arrow')
     .ui.grid
@@ -71,6 +71,24 @@ export default {
     }
   },
   methods: {
+    editURL: function () {
+      var ans
+      if (this.gobans[this.$route.params.id].use_lev) {
+        ans = 'https://ethercalc.org/' + this.$route.params.id + this.$route.params.lev
+      } else {
+        ans = 'https://ethercalc.org/' + this.$route.params.id
+      }
+      return ans
+    },
+    srcURL: function () {
+      var ans
+      if (this.gobans[this.$route.params.id].use_lev) {
+      ans = 'https://ethercalc.org/' + this.$route.params.id + (this.$route.params.lev === '_' ? '' : this.$route.params.lev) + '.csv.json'
+      } else {
+        ans = 'https://ethercalc.org/' + this.$route.params.id + '.csv.json'
+      }
+      return ans
+    },
     downloadObjectAsJson: function (exportObj, exportName) {
       var dataStr = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(exportObj))
       var downloadAnchorNode = document.createElement('a')
@@ -81,11 +99,17 @@ export default {
       downloadAnchorNode.remove()
     },
     backup: function (id, lev) {
+      if (lev === '_') {
+        lev = ''
+      }
       this.downloadObjectAsJson(this.data, this.name + lev)
+    },
+    useLev: function (g) {
+      return g.use_lev
     },
     getSrc: function () {
       if (this.$route.params.index === 'new') {
-        return 'https://ethercalc.org/' + this.$route.params.id + this.$route.params.lev
+        return 'https://ethercalc.org/' + this.$route.params.id + (this.$route.params.lev === '_' ? '' : this.$route.params.lev)
       } else {
         if (this.data[this.$route.params.index]) {
           return decodeURIComponent(this.data[this.$route.params.index].url)
@@ -103,14 +127,14 @@ export default {
     reload: function () {
       console.log('reload...')
       // GET /someUrl
-      this.$http.get('https://ethercalc.org/' + this.$route.params.id + this.$route.params.lev + '.csv.json').then(response => {
+      this.$http.get(this.srcURL()).then(response => {
         // get body data
         this.data = this.parse(response.body)
         this.$forceUpdate()
       }, response => {
         console.log(response)
         this.data = []
-        this.$router.push('/see/' + this.$route.params.id + '/' + this.$route.params.lev + '/new')
+        this.$router.push('/see/' + this.$route.params.id + '/' + (this.$route.params.lev === '_' ? '' : this.$route.params.lev) + '/new')
       })
     },
     handleRate: function (g, r) {
