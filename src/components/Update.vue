@@ -36,7 +36,7 @@ export default {
       myRelated: [],
       myTags: [],
       hex: 'green',
-      colors: ['red', 'green', 'blue', 'black', 'orange', 'brown'],
+      colors: ['red', 'green', 'blue', 'black', 'orange', 'brown', 'purple'],
       stars: { goban_intro: 5 }
     }
   },
