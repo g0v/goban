@@ -36,7 +36,7 @@
       i.right.arrow.icon
     h3.ui.header 我的珍藏
     .span#fast(v-for = "g in gobans", :key='g.id')
-      .inner(v-if = "stars[g.id] > 0", v-show="!myKey || has(g, myKey)")
+      .inner(v-if = "stars[g.id] > 0")
         router-link(:to="'see/' + g.id + '/0/0'", :style="{color: g.hex || '#42b983'}") {{ g.id }} - {{ g.t }}
           i.right.arrow.icon
 </template>
