@@ -15,6 +15,10 @@
             .ui.labeled.input
               .ui.label 簡介:
               input(type='text' name='' v-model='gobans[$route.params.id].t' placeholder='輸入黑板的簡介' autofocus='true')
+          .field
+            .ui.checkbox
+              input(type="checkbox" name="use_lev" v-model = "use_lev")
+              <label>使用等級(取消的話將會連到不同的資料網址)</label>
       .ui.two.column.row
         .column 相關黑板： {{myRelated }}
         .column(v-for='g in gobans' v-bind:key='g.id')
@@ -57,7 +61,8 @@ export default {
         { t: this.gobans[this.$route.params.id].t,
           related: this.myRelated,
           tags: this.myTags,
-          hex: this.hex
+          hex: this.hex,
+          use_lev: this.use_lev
         })
       window.alert('更新成功')
     },
@@ -71,11 +76,16 @@ export default {
     getHex: function () {
       var id = this.$route.params.id
       return this.gobans[id].hex
+    },
+    getUseLev: function () {
+      var id = this.$route.params.id
+      return this.gobans[id].use_lev
     }
   },
   mounted () {
     this.myRelated = this.getMyRelated()
     this.hex = this.getHex()
+    this.use_lev = this.getUseLev()
   }
 }
 </script>
