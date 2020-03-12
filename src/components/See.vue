@@ -182,8 +182,8 @@ export default {
     }
   },
   mounted () {
-    this.reload()
     this.loadStars()
+    this.reload()
   }
 }
 </script>
