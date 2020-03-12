@@ -31,9 +31,7 @@ export default {
     }
   },
   props: ['gobans'],
-  localStorage: {
-    stars: {'goban_intro': 5}
-  },
+  localStorage: ['stars'],
   methods: {
     has: function (g, k) {
       var r = new RegExp(k)
@@ -50,12 +48,12 @@ export default {
       } else {
         this.stars[g] = r
       }
-      this.$localStorage.set('stars', JSON.stringify(this.stars))
+      localStorage.setItem('stars', JSON.stringify(this.stars))
       this.$forceUpdate()
     },
     loadStars: function () {
-      console.log(JSON.parse(this.$localStorage.get('stars')))
-      this.stars = JSON.parse(this.$localStorage.get('stars'))
+      console.log(JSON.parse(localStorage.getItem('stars')))
+      this.stars = JSON.parse(localStorage.getItem('stars'))
     }
   },
   mounted () {
@@ -86,11 +84,9 @@ a {
   padding: 1em 0;
 }
 
-@media only screen and (max-width: 767px) {
-  #goban {
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
-  }
+#goban {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
 }
 
 </style>

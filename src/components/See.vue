@@ -144,12 +144,12 @@ export default {
       } else {
         this.stars[g] = r
       }
-      this.$localStorage.set('stars', JSON.stringify(this.stars))
+      localStorage.setItem('stars', JSON.stringify(this.stars))
       this.$forceUpdate()
     },
     loadStars: function () {
-      console.log(JSON.parse(this.$localStorage.get('stars')))
-      this.stars = JSON.parse(this.$localStorage.get('stars'))
+      console.log(JSON.parse(localStorage.getItem('stars')))
+      this.stars = JSON.parse(localStorage.getItem('stars'))
     },
     parse: function (d) {
       if (d[1]) { this.name = d[1][1] }
