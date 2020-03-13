@@ -15,7 +15,7 @@
             .ui.labeled.input
               .ui.label 簡介:
               input(type='text' name='' v-model='gobans[$route.params.id].t' placeholder='輸入黑板的簡介' autofocus='true')
-          .field
+          //.field
             .ui.checkbox
               input(type="checkbox" name="use_lev" v-model = "use_lev")
               <label>使用等級(取消的話將會連到不同的資料網址)</label>
