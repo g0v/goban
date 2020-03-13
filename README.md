@@ -21,8 +21,8 @@
 
 # 相關專案
 
-1. [q-goban](https://github.com/bestian/q-goban)
-2. [ext-goban](https://github.com/bestian/ext-goban)
+1. App [q-goban](https://github.com/bestian/q-goban)
+2. 插件 [ext-goban](https://github.com/bestian/ext-goban)
 
 
 # 錯誤回報
