@@ -52,7 +52,7 @@
 ## 網址範例
 
 1. http://goban.tw/#/see/css/0/0
-2. http://goban.tw/#/see/%E9%9B%B6%E6%99%82%E5%B0%8F%E5%AD%B8%E6%A0%A1/0/0
+2. http://goban.tw/#/see/零時小學校/0/0
 3. http://goban.tw/#/see/vue/0/0
 
 # 相關專案(Todo)
