@@ -27,10 +27,10 @@
     .ui.grid
       .four.wide.left.aligned.column
         .ui.list
-          router-link.item(:to="'/see/' + $route.params.id + '/' + $route.params.lev + '/new'", data-content="編輯", title="編輯")
-            img.fat-only(:src="'https://www.google.com/s2/favicons?domain=https://ethercalc.org/'")
-            span(:style="{color: gobans[$route.params.id].hex || 'blue'}") {{name || $route.params.id + $route.params.lev}}
-            i.inline.edit.large.icon(:style="{color: gobans[$route.params.id].hex || 'blue'}")
+          router-link.item#e(:to="'/see/' + $route.params.id + '/' + $route.params.lev + '/new'", data-content="編輯", title="編輯")
+            h3.ui.header#e-text(:style="{color: gobans[$route.params.id].hex || 'blue'}")
+              | {{name || $route.params.id + $route.params.lev}}
+              i#e-icon.inline.edit.large.icon
           hr
           .item(v-for='(d, index) in data', :key='d.name + index')
             div(v-if="d.type == 'link'", v-show='!d.parentIndex || data[d.parentIndex].open')
@@ -191,6 +191,13 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+  #e {
+    margin: 0 1em;
+  }
+  #e-icon {
+    margin-left: .2em;
+    color: inherit;
+  }
   .ui.fixed.top.menu {
     height: 48px;
   }

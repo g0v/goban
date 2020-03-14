@@ -104,7 +104,7 @@ export default {
       obj.hex = obj.hex || 'black'
       obj.tags = obj.tags || [k]
       obj.related = obj.related || [k]
-      obj.use_lev = obj.use_lev || false
+      obj.use_lev = obj.use_lev || true
       db.ref('gobans/' + k).set(obj)
     }
   },
