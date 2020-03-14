@@ -1,5 +1,6 @@
 <template lang="pug">
   .hello
+    vue-headful(title="手機App@零時黑板", description="手機App@零時黑板")
     h1.ui.header 零時黑板-手機App
     .ui.button.group
       a.ui.orange.huge.button(v-show="!iOS()" href="https://play.google.com/store/apps/details?id=tw.goban.app", target="_blank")

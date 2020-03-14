@@ -1,5 +1,6 @@
 <template lang="pug">
   .ui.container
+    vue-headful(:title="'更新' + $route.params.id", :description="'更新' + $route.params.id")
     .ui.grid
       .ui.row
         h2.ui.header(:style="{color: hex || 'black'}") 更新{{ $route.params.id }}

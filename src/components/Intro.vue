@@ -1,15 +1,11 @@
 <template lang="pug">
   .hello
+    vue-headful(title="介紹@零時黑板", description="零時黑板(Goban)也是g0v社群的開源專案之一。是一個類似hackfoldr的「黑客公事包」")
     h1.ui.header 如何使用
     .ui.container
       .ui.left.aligned.segment
         h2.ui.header 簡介
         p 你知道嗎？近來的太陽花、停建核四等公民運動，都採用 hackfoldr（唸作 hack-folder）來架設資訊入口網站。
-
-        p hackfoldr 是
-          a(href="http://g0v.tw", target="_blank") g0v社群
-          | 的開源專案之一，本來是為了整理社群在黑客松產出的大量文件而誕生。
-        p 現在，它是個開放給所有人使用的平台，你也可以為專案、活動，建立屬於自己的「黑客公事包」，讓所有文件、網頁一目了然。
 
         p 零時黑板(Goban)也是
           a(href="http://g0v.tw", target="_blank") g0v社群

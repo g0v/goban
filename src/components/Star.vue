@@ -1,5 +1,6 @@
 <template lang="pug">
   .hello
+    vue-headful(title="珍藏@零時黑板", description="個人珍藏的零時黑板")
     h1.ui.header 我的珍藏
     .ui.form.container
       .field

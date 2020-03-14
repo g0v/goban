@@ -1,5 +1,6 @@
 <template lang="pug">
   .chats
+    vue-headful(title="留言板@零時黑板", description="留言板@零時黑板")
     sui-header(size="large") {{ msg }}
     .ui.left.aligned.segment.container
       .ui.comments
