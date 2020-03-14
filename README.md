@@ -2,11 +2,13 @@
 
 你知道嗎？近來的太陽花、停建核四等公民運動，都採用 hackfoldr（唸作 hack-folder）來架設資訊入口網站。
 
-零時黑板(Goban)也是g0v社群的開源專案之一。是一個類似hackfoldr的「黑客公事包」，其差別在於：
+零時黑板(Goban)也是g0v社群的開源專案之一。跟Hackfoldr的功能性差別差別在於：
    
-* 您可以在各個公事包之間設立關聯
-* 您不僅可以創建，也可以搜詢到別人創建的公事包
-* 您可以和他人一起協作共用的公事包
+1. 可以用關鍵字搜詢別人創建的黑板。
+2. 黑板之間可以設定關聯性，是一個知識庫的概念。
+3. 可以備份。
+4. 用Hackfoldr也可以開啟零時黑板上的資料。
+5. 未來可以把Hackfoldr的資料很容易地直接copy過來，兩者有一定的相容性。
  
 # 如何創建
 
@@ -21,13 +23,14 @@
 
 # 相關專案
 
-1. App [q-goban](https://github.com/bestian/q-goban)
-2. 插件 [ext-goban](https://github.com/bestian/ext-goban)
+1. 行動App(開發中) [q-goban](https://github.com/bestian/q-goban)
+2. 瀏覽器插件(開發中) [ext-goban](https://github.com/bestian/ext-goban)
 
 
 # 錯誤回報
 
 1. [請寫進這裡](https://github.com/g0v/goban/issues)
+2. [共筆頁](https://hackmd.io/3pvyN_W9TjSsuBok4w2XYA)
 
 # 寫給開發者
 
