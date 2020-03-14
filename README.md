@@ -55,7 +55,7 @@
 2. http://goban.tw/#/see/%E9%9B%B6%E6%99%82%E5%B0%8F%E5%AD%B8%E6%A0%A1/0/0
 3. http://goban.tw/#/see/vue/0/0
 
-# 相關專案
+# 相關專案(Todo)
 
 1. 行動App(開發中) [q-goban](https://github.com/bestian/q-goban)
 2. 瀏覽器插件(開發中) [ext-goban](https://github.com/bestian/ext-goban)
