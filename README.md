@@ -59,15 +59,11 @@
 1. 行動App(開發中) [q-goban](https://github.com/bestian/q-goban)
 2. 瀏覽器插件(開發中) [ext-goban](https://github.com/bestian/ext-goban)
 
-# 入坑邀約(請留言在此)
+# 入坑請留言在此
 
+> [name=Bestian Tang 小巴]前端工程師
 
-* 徵文件寫手(說明文件優化)
-* Youtuber(拍簡介短片)
-* 前端工程師(功能流暢化)
-> [name=Bestian Tang 小巴]前端工程師* 設計師(修改介面、配色等)
-* 數位教師(創建資料、[回報錯誤](https://github.com/g0v/goban/issues))
-* 一般使用者(創建資料、[回報錯誤](https://github.com/g0v/goban/issues))
+(徵文件寫手、前端工程師、設計師、數位教師、一般使用者)
 
 
 # 錯誤回報
