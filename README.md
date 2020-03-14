@@ -7,7 +7,8 @@
 
 ## 簡介
 
-零時黑板(Goban)是g0v社群的開源專案之一。
+零時黑板(Goban)是g0v社群的開源專案之一。[原始碼repo在此](http://www.github.com/g0v/goban/)。
+
 跟Hackfoldr類似，還附有以下功能性：
    
 1. 可以用關鍵字搜詢別人創建的黑板。
@@ -64,7 +65,7 @@
 
 * 徵文件寫手(說明文件優化)
 * Youtuber(拍簡介短片)
-* 前端工程師(功能流暢化)
+* 前端工程師(功能流暢化、插件開發、App開發)
 > [name=Bestian Tang 小巴]前端工程師* 設計師(修改介面、配色等)
 * 數位教師(創建資料、[回報錯誤](https://github.com/g0v/goban/issues))
 * 一般使用者(創建資料、[回報錯誤](https://github.com/g0v/goban/issues))
