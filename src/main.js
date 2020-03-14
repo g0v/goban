@@ -11,8 +11,11 @@ import VueLocalStorage from 'vue-localstorage'
 import autofocus from 'vue-autofocus-directive'
 import '@babel/polyfill'
 import PortalVue from 'portal-vue'
-
 import ErrorPage from 'vue-error-page'
+
+import vueHeadful from 'vue-headful'
+
+Vue.component('vue-headful', vueHeadful)
 
 window.eventBus = new Vue()
 

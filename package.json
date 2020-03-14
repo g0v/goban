@@ -26,6 +26,7 @@
     "vue": "^2.5.2",
     "vue-autofocus-directive": "^1.0.4",
     "vue-error-page": "^1.1.7",
+    "vue-headful": "^2.1.0",
     "vue-localstorage": "^0.6.2",
     "vue-resource": "^1.5.1",
     "vue-router": "^3.0.1",
