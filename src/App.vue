@@ -113,8 +113,8 @@ export default {
     chats: chatsRef
   },
   created: function () {
-    var vm = this;
-    vm.$i18n.locale = 'zh-TW'; //Set the locale here
+    var vm = this
+    vm.$i18n.locale = 'zh-TW'
   }
 }
 
