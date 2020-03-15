@@ -60,13 +60,14 @@ export default {
       try {
         this.stars = JSON.parse(localStorage.getItem('stars'))
       } catch (e) {}
-    },
+    }
   },
   mounted () {
-    if (this.checkJSON(localStorage.getItem('stars'))) { this.loadStars() }
-      else {
-        localStorage.setItem('stars', JSON.stringify(this.stars))
-      }
+    if (this.checkJSON(localStorage.getItem('stars'))) {
+      this.loadStars()
+    } else {
+      localStorage.setItem('stars', JSON.stringify(this.stars))
+    }
   }
 }
 </script>

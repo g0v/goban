@@ -100,10 +100,11 @@ export default {
     }
   },
   mounted () {
-    if (this.checkJSON(localStorage.getItem('stars'))) { this.loadStars() }
-      else {
-        localStorage.setItem('stars', JSON.stringify(this.stars))
-      }
+    if (this.checkJSON(localStorage.getItem('stars'))) {
+      this.loadStars()
+    } else {
+      localStorage.setItem('stars', JSON.stringify(this.stars))
+    }
   }
 }
 </script>
