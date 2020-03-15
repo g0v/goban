@@ -53,8 +53,9 @@ export default {
       this.$forceUpdate()
     },
     loadStars: function () {
-      console.log(JSON.parse(localStorage.getItem('stars')))
-      this.stars = JSON.parse(localStorage.getItem('stars'))
+      try {
+        this.stars = JSON.parse(localStorage.getItem('stars'))
+      } catch (e) {}
     }
   },
   mounted () {
