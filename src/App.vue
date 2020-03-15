@@ -111,6 +111,10 @@ export default {
   firebase: {
     gobans: gobansRef,
     chats: chatsRef
+  },
+  created: function () {
+    var vm = this;
+    vm.$i18n.locale = 'zh-TW'; //Set the locale here
   }
 }
 

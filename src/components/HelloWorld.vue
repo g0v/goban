@@ -1,7 +1,7 @@
 <template lang="pug">
   .hello
-    h1.ui.header 網址集錦共同筆記
-    h3.sub.header 搜尋或創建黑板，與他人分享
+    h1.ui.header {{ $t('hello') }}
+    h3.sub.header {{ $t('hello2') }}
     .ui.button.group.thin-only(v-show="!iOS()")
       a.ui.orange.button(href="https://play.google.com/store/apps/details?id=tw.goban.app", target="_blank")
         i.google.play.icon
@@ -48,6 +48,7 @@ import mixin from '../mixins/stars.js'
 export default {
   data () {
     return {
+      navigator: navigator,
       myKey: '',
       stars: {'goban_intro': 5}
     }
