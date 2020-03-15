@@ -1,7 +1,7 @@
 <template lang="pug">
   .hello
-    h1.ui.header 共同筆記的公事包
-    h3.sub.header 搜詢或創建公事包，與他人分享網址
+    h1.ui.header 網址集錦共同筆記
+    h3.sub.header 搜尋或創建黑板，與他人分享
     .ui.button.group.thin-only(v-show="!iOS()")
       a.ui.orange.button(href="https://play.google.com/store/apps/details?id=tw.goban.app", target="_blank")
         i.google.play.icon
@@ -12,7 +12,7 @@
       | &nbsp;
     .ui.form.container
       .field
-        input(v-autofocus="", type='search', name='', v-model='myKey', placeholder='搜詢或創建新黑板', autofocus='true', list="gs" @keydown.enter = "($router.push('/see/' + myKey + '/0/0'))")
+        input(v-autofocus="", type='search', name='', v-model='myKey', placeholder='搜尋或創建新黑板', autofocus='true', list="gs" @keydown.enter = "($router.push('/see/' + myKey + '/0/0'))")
         datalist#gs
           option(v-for = "g in gobans", v-bind:key = "g.id" :value="g.id") {{ g.id }}
         a.ui.green.button(@click='create(myKey)', v-if='myKey && !gobans[myKey]') 創建{{myKey}}
@@ -32,7 +32,7 @@
               p 相關黑板:
                 br
                 router-link.r(v-for = "r in g.related", :key="r", :to="'see/' + r + '/0/0'" ) {{ r }}
-    router-link.ui.green.button(to = "intro") 瞭解更多
+    router-link.ui.green.large.button(to = "intro") 瞭解更多
       i.right.arrow.icon
     h3.ui.header 我的珍藏
     span(v-for = "g in gobans", :key='g.id')

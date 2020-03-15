@@ -4,7 +4,7 @@
     h1.ui.header 我的珍藏
     .ui.form.container
       .field
-        input(v-autofocus="", type='search', name='', v-model='myKey', placeholder='搜詢黑板', autofocus='true', @keydown.enter = "($router.push('/see/' + myKey + '/0/0'))")
+        input(v-autofocus="", type='search', name='', v-model='myKey', placeholder='搜尋黑板', autofocus='true', @keydown.enter = "($router.push('/see/' + myKey + '/0/0'))")
     .ui.segment.left.aligned.container
       .ui.active.dimmer(v-if = "!gobans")
         .ui.text.loader Loading...
