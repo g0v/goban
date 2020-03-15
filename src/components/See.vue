@@ -56,6 +56,9 @@
 </template>
 
 <script>
+
+import mixin from '../mixins/stars.js'
+
 export default {
   name: 'See',
   data () {
@@ -66,6 +69,7 @@ export default {
     }
   },
   props: ['gobans'],
+  mixins: [mixin],
   watch: {
     $route (to, from) {
       this.reload()
@@ -184,8 +188,11 @@ export default {
     }
   },
   mounted () {
-    // this.loadStars()
     this.reload()
+    if (this.checkJSON(localStorage.getItem('stars'))) { this.loadStars() }
+      else {
+        localStorage.setItem('stars', JSON.stringify(this.stars))
+      }
   }
 }
 </script>

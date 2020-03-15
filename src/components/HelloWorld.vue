@@ -42,6 +42,9 @@
 </template>
 
 <script>
+
+import mixin from '../mixins/stars.js'
+
 export default {
   data () {
     return {
@@ -50,6 +53,7 @@ export default {
     }
   },
   props: ['gobans'],
+  mixins: [mixin],
   localStorage: ['stars'],
   methods: {
     iOS: function () {
@@ -90,14 +94,16 @@ export default {
       this.$forceUpdate()
     },
     loadStars: function () {
-      // localStorage.setItem('stars', JSON.stringify(this.stars))
       try {
         this.stars = JSON.parse(localStorage.getItem('stars'))
       } catch (e) {}
     }
   },
   mounted () {
-    // this.loadStars()
+    if (this.checkJSON(localStorage.getItem('stars'))) { this.loadStars() }
+      else {
+        localStorage.setItem('stars', JSON.stringify(this.stars))
+      }
   }
 }
 </script>

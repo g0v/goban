@@ -24,6 +24,9 @@
 </template>
 
 <script>
+
+import mixin from '../mixins/stars.js'
+
 export default {
   data () {
     return {
@@ -32,6 +35,7 @@ export default {
     }
   },
   props: ['gobans'],
+  mixins: [mixin],
   localStorage: ['stars'],
   methods: {
     has: function (g, k) {
@@ -56,10 +60,13 @@ export default {
       try {
         this.stars = JSON.parse(localStorage.getItem('stars'))
       } catch (e) {}
-    }
+    },
   },
   mounted () {
-    // this.loadStars()
+    if (this.checkJSON(localStorage.getItem('stars'))) { this.loadStars() }
+      else {
+        localStorage.setItem('stars', JSON.stringify(this.stars))
+      }
   }
 }
 </script>

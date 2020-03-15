@@ -51,8 +51,8 @@
 
 ## 網址範例
 
-1. http://goban.tw/#/see/css/0/0
-2. http://goban.tw/#/see/零時小學校/0/0
+1. http://goban.tw/#/see/goban_intro/0/0
+2. http://goban.tw/#/see/css/0/0
 3. http://goban.tw/#/see/vue/0/0
 
 # 相關專案(Todo)
