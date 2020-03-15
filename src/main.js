@@ -12,8 +12,17 @@ import autofocus from 'vue-autofocus-directive'
 import '@babel/polyfill'
 import PortalVue from 'portal-vue'
 import ErrorPage from 'vue-error-page'
-
 import vueHeadful from 'vue-headful'
+
+import VueAnalytics from 'vue-analytics'
+
+Vue.use(VueAnalytics, {
+  id: 'UA-26178243-14',
+  router,
+  autoTracking: {
+    pageviewOnLoad: false
+  }
+})
 
 Vue.component('vue-headful', vueHeadful)
 

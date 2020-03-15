@@ -24,6 +24,7 @@
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-vue": "^0.8.1",
     "vue": "^2.5.2",
+    "vue-analytics": "^5.22.1",
     "vue-autofocus-directive": "^1.0.4",
     "vue-error-page": "^1.1.7",
     "vue-headful": "^2.1.0",
