@@ -1,28 +1,26 @@
 <template>
   <div class="hello">
-    <vue-markdown id ="readme"> {{ someData }} </vue-markdown>
+    <h1>介紹</h1>
+    <vue-simple-markdown :source="someData"></vue-simple-markdown>
   </div>
 
 </template>
 
 <script>
 
-import VueMarkdown from 'vue-markdown'
-
 export default {
   data () {
     return {
-      someData: '零時黑板(Goban)也是g0v社群的開源專案之一。是一個類似hackfoldr的「黑客公事包」'
+      someData: undefined
     }
-  },
-  components: {
-    VueMarkdown
   },
   methods: {
     readMe () {
+      var vm = this
       this.$http.get('https://raw.githubusercontent.com/g0v/goban/master/README.md').then(response => {
         // get body data
-        this.someData = response.body
+        console.log(response.body)
+        vm.someData = response.body
       }, response => {
         // error callback
       })
@@ -36,5 +34,11 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+
+.hello {
+  font-size: 16px;
+  text-align: left;
+  padding: 1em 3em;
+}
 
 </style>

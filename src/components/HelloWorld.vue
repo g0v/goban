@@ -90,6 +90,7 @@ export default {
       this.$forceUpdate()
     },
     loadStars: function () {
+      // localStorage.setItem('stars', JSON.stringify(this.stars))
       try {
         this.stars = JSON.parse(localStorage.getItem('stars'))
       } catch (e) {}

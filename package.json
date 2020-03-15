@@ -32,6 +32,7 @@
     "vue-markdown": "^2.2.4",
     "vue-resource": "^1.5.1",
     "vue-router": "^3.0.1",
+    "vue-simple-markdown": "^1.1.1",
     "vuefire": "^2.2.0"
   },
   "devDependencies": {

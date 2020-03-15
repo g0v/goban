@@ -16,6 +16,14 @@ import vueHeadful from 'vue-headful'
 
 import VueAnalytics from 'vue-analytics'
 
+import VueSimpleMarkdown from 'vue-simple-markdown'
+
+// require('semantic-ui-css/semantic.css')
+
+import 'vue-simple-markdown/dist/vue-simple-markdown.css'
+
+Vue.use(VueSimpleMarkdown)
+
 Vue.use(VueAnalytics, {
   id: 'UA-26178243-14',
   router,
@@ -40,10 +48,7 @@ Vue.use(ErrorPage, {
 Vue.use(PortalVue)
 
 Vue.directive('autofocus', autofocus)
-
 Vue.use(VueLocalStorage)
-
-require('semantic-ui-css/semantic.css')
 
 Vue.use(SuiVue)
 Vue.use(VueResource)
