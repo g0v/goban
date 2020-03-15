@@ -15,7 +15,7 @@
         input(v-autofocus="", type='search', name='', v-model='myKey', placeholder='搜尋或創建新黑板', autofocus='true', list="gs" @keydown.enter = "($router.push('/see/' + myKey + '/0/0'))")
         datalist#gs
           option(v-for = "g in gobans", v-bind:key = "g.id" :value="g.id") {{ g.id }}
-        a.ui.green.button(@click='create(myKey)', v-if='myKey && !gobans[myKey]') 創建{{myKey}}
+        a.ui.green.button(@click='create(myKey)', v-if='myKey && !gobans[myKey]') {{$t('create')}}{{myKey}}
     .ui.segment.left.aligned.container(v-if="myKey")
       .ui.active.dimmer(v-if = "!gobans")
         .ui.text.loader Loading...
