@@ -96,7 +96,7 @@ export default {
     }
   },
   mounted () {
-    this.loadStars()
+    // this.loadStars()
   }
 }
 </script>

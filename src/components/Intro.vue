@@ -1,7 +1,7 @@
-<template lang="pug">
-  .hello
-    vue-headful(title="介紹@零時黑板", description="零時黑板(Goban)也是g0v社群的開源專案之一。是一個類似hackfoldr的「黑客公事包」")
-    vue-markdown#readme {{ someData }}
+<template>
+  <div class="hello">
+    <vue-markdown id ="readme"> {{ someData }} </vue-markdown>
+  </div>
 
 </template>
 
