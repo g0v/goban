@@ -28,6 +28,7 @@
     "vue-analytics": "^5.22.1",
     "vue-autofocus-directive": "^1.0.4",
     "vue-error-page": "^1.1.7",
+    "vue-gtag": "^1.6.2",
     "vue-headful": "^2.1.0",
     "vue-i18n": "^8.0.0",
     "vue-localstorage": "^0.6.2",

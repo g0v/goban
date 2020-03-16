@@ -15,19 +15,13 @@ import ErrorPage from 'vue-error-page'
 import vueHeadful from 'vue-headful'
 import i18n from './i18n'
 import VueSimpleMarkdown from 'vue-simple-markdown'
-import VueAnalytics from 'vue-analytics'
+import VueGtag from 'vue-gtag'
+
+Vue.use(VueGtag, {
+  config: { id: 'UA-26178243-14' }
+})
 
 Vue.use(VueSimpleMarkdown)
-
-// require('semantic-ui-css/semantic.css')
-
-Vue.use(VueAnalytics, {
-  id: 'UA-26178243-14',
-  router,
-  autoTracking: {
-    pageviewOnLoad: false
-  }
-})
 
 Vue.component('vue-headful', vueHeadful)
 

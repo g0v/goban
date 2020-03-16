@@ -80,6 +80,8 @@
 
 ## Build Setup
 
+> [原始碼repo在此](http://www.github.com/g0v/goban/)
+
 ``` bash
 # install dependencies
 npm install
