@@ -14,16 +14,15 @@ import PortalVue from 'portal-vue'
 import ErrorPage from 'vue-error-page'
 import vueHeadful from 'vue-headful'
 import i18n from './i18n'
+import VueSimpleMarkdown from 'vue-simple-markdown'
+
+Vue.use(VueSimpleMarkdown)
 
 import VueAnalytics from 'vue-analytics'
-
-import VueSimpleMarkdown from 'vue-simple-markdown'
 
 // require('semantic-ui-css/semantic.css')
 
 import 'vue-simple-markdown/dist/vue-simple-markdown.css'
-
-Vue.use(VueSimpleMarkdown)
 
 Vue.use(VueAnalytics, {
   id: 'UA-26178243-14',
