@@ -135,11 +135,11 @@ export default {
 <style>
 
 body {
-  background-color: hsla(120, 30%, 30%, 1);
+  background-color: hsla(120, 30%, 30%, 1) !important;
 }
 
 .ui.menu {
-  background-color: hsla(30, 55%, 33%, 1);
+  background-color: hsla(30, 55%, 33%, 1) !important;
   border: none !important;
 }
 
@@ -152,11 +152,11 @@ body {
 }
 
 .ui.header {
-  color: white;
+  color: white !important;
 }
 
 h3.sub.header {
-  color: yellow;
+  color: yellow !important;
 }
 
 #app {
@@ -168,21 +168,21 @@ h3.sub.header {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: white;
+  color: white !important;
   margin-top: 60px;
 }
 
 a {
-    color: white;
+    color: white !important;
     text-decoration: none;
 }
 
 a.r {
-  margin: 0 1em;
+  margin: 0 1em !important;
 }
 
 .ui.segment {
-  background-color: hsla(30, 55%, 33%, 1);
+  background-color: hsla(30, 55%, 33%, 1) !important;
 }
 
 .yellow {
@@ -202,7 +202,7 @@ a, button {
   }
 
   p {
-    overflow-x: scroll;
+    overflow-x: scroll !important;
   }
 }
 
