@@ -254,4 +254,8 @@ export default {
       margin-left: 0;
     }
   }
+
+  #iframe {
+    background-color: white !important;
+  }
 </style>
