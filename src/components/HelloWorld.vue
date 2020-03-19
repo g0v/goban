@@ -67,13 +67,13 @@ export default {
         'iPhone',
         'iPod'
       ]
-      console.log(navigator.platform)
+      // console.log(navigator.platform)
       if (navigator.platform) {
         while (iDevices.length) {
           if (navigator.platform === iDevices.pop()) { ans = true }
         }
       }
-      console.log(ans)
+      // console.log(ans)
       return ans
     },
     create: function (k) {

@@ -18,7 +18,7 @@ import VueSimpleMarkdown from 'vue-simple-markdown'
 import VueGtag from 'vue-gtag'
 
 Vue.use(VueGtag, {
-  config: { id: 'UA-26178243-8' }
+  config: { id: 'UA-26178243-14' }
 })
 
 Vue.use(VueSimpleMarkdown)

@@ -21,7 +21,7 @@
           sui-dropdown-item(@click="$router.push('/extension')")
             | 瀏覽器插件
       .right.menu
-        router-link.item(to = "/chat", target="_blank")
+        router-link.item(to = "/chat")
           i.chat.icon
           | 留言板
         a.item(href="https://github.com/g0v/goban", target="_blank")
@@ -94,7 +94,7 @@ export default {
           if (navigator.platform === iDevices.pop()) { ans = true }
         }
       }
-      console.log(ans)
+      // console.log(ans)
       return ans
     },
     create: function (k, o) {
@@ -115,6 +115,18 @@ export default {
   created: function () {
     var vm = this
     vm.$i18n.locale = 'zh-TW'
+  },
+  watch: {
+    $route (to, from) {
+      console.log(from.path)
+      console.log(to.path)
+      this.$gtag.event('action', {
+        event_category: 'navigate',
+        event_action: 'from:' + from.path + ' to:' + to.path,
+        event_label: 'from:' + from.path + ' to:' + to.path,
+        value: 'from:' + from.path + ' to:' + to.path
+      })
+    }
   }
 }
 
@@ -134,7 +146,6 @@ body {
 .ui.menu .item {
   color: white !important;
 }
-
 
 .router-link-exact-active {
   background-color: hsla(30, 55%, 16%, 1) !important;
@@ -171,7 +182,7 @@ a.r {
 }
 
 .ui.segment {
-  background-color: hsla(30, 55%, 33%, 1);  
+  background-color: hsla(30, 55%, 33%, 1);
 }
 
 .yellow {
@@ -180,7 +191,6 @@ a.r {
 .gray {
   color: #ccc !important;
 }
-
 
 a, button {
   cursor:pointer;

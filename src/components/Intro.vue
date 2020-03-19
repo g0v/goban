@@ -19,7 +19,7 @@ export default {
       var vm = this
       this.$http.get('https://raw.githubusercontent.com/g0v/goban/master/README.md').then(response => {
         // get body data
-        console.log(response.body)
+        // console.log(response.body)
         vm.someData = response.body
       }, response => {
         // error callback
