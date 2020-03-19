@@ -7,7 +7,7 @@
         h3.ui.dividing.header 歡迎留言
         .comment(v-for="c in chats" :key="c.time")
           .content
-            a.author(:href="'mailto:' + c.email", target="_blank") 
+            a.author(:href="'mailto:' + c.email", target="_blank")
               i.large.user.icon
               | {{ c.n }} 說：
             vue-simple-markdown.text(:source="c.t")
