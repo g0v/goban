@@ -217,4 +217,9 @@ a, button {
     height: 74px;
   }
 }
+
+.markdown-body img {
+  max-width: 80vw;
+}
+
 </style>
