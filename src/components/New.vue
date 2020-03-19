@@ -9,7 +9,7 @@
       router-link.ui.inverted.huge.button(to = "/create")
         i.user.add.icon
         | 創建
-      router-link.ui.inverted.huge.button(to = "/intro") 
+      router-link.ui.inverted.huge.button(to = "/intro")
         i.question.icon
         | 介紹
     h3.ui.header 快速前往
