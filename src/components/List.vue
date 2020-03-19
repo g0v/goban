@@ -2,12 +2,11 @@
   .hello
     h1.ui.header {{ $t('hello') }}
     h3.sub.header {{ $t('hello2') }}
-    .ui.form.container
+    .ui.form.container#myForm
       .field
-        input(v-autofocus="", type='search', name='', v-model='myKey', placeholder='搜尋或創建新黑板', autofocus='true', list="gs" @keydown.enter = "($router.push('/see/' + myKey + '/0/0'))")
+        input(v-autofocus="", type='search', name='', v-model='myKey', placeholder='搜尋黑板', autofocus='true', list="gs" @keydown.enter = "($router.push('/see/' + myKey + '/0/0'))")
         datalist#gs
           option(v-for = "g in gobans", v-bind:key = "g.id" :value="g.id") {{ g.id }}
-        a.ui.green.button(@click='create(myKey)', v-if='myKey && !gobans[myKey]') {{$t('create')}}{{myKey}}
     .ui.segment.left.aligned.container(v-if="myKey")
       .ui.active.dimmer(v-if = "!gobans")
         .ui.text.loader Loading...
@@ -104,6 +103,12 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+
+#myForm {
+  margin-top: 2em;
+  margin-bottom: 4em;
+}
+
 h1, h2 {
   font-weight: normal;
 }
@@ -114,9 +119,6 @@ ul {
 li {
   display: inline-block;
   margin: 0 10px;
-}
-a {
-  color: #42b983;
 }
 
 .column .inner {
