@@ -2,14 +2,6 @@
   .hello
     h1.ui.header {{ $t('hello') }}
     h3.sub.header {{ $t('hello2') }}
-    .ui.button.group.thin-only()
-      a.ui.orange.button(v-show="!iOS()", href="https://play.google.com/store/apps/details?id=tw.goban.app", target="_blank")
-        i.google.play.icon
-        | App on Google Play
-      a.ui.green.button.thin-only(v-show="iOS()", href="https://apps.apple.com/us/app/%E9%9B%B6%E6%99%82%E9%BB%91%E6%9D%BF/id1500095725?l=zh&ls=1", target="_blank")
-        i.app.store.icon
-        | App on App Store
-      | &nbsp;
     .ui.form.container
       .field
         input(v-autofocus="", type='search', name='', v-model='myKey', placeholder='搜尋或創建新黑板', autofocus='true', list="gs" @keydown.enter = "($router.push('/see/' + myKey + '/0/0'))")
