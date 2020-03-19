@@ -48,25 +48,6 @@ export default {
   mixins: [mixin],
   localStorage: ['stars'],
   methods: {
-    iOS: function () {
-      var ans = false
-      var iDevices = [
-        'iPad Simulator',
-        'iPhone Simulator',
-        'iPod Simulator',
-        'iPad',
-        'iPhone',
-        'iPod'
-      ]
-      // console.log(navigator.platform)
-      if (navigator.platform) {
-        while (iDevices.length) {
-          if (navigator.platform === iDevices.pop()) { ans = true }
-        }
-      }
-      // console.log(ans)
-      return ans
-    },
     create: function (k) {
       this.$emit('create', k)
       this.$router.push('/see/' + k + '/0/new')
@@ -76,6 +57,7 @@ export default {
       return r.test(g.id + g.t)
     },
     handleRate: function (id, r) {
+      var or = this.stars[id]
       if (!this.stars[id]) { this.stars[id] = 0 }
       if (this.stars[id] === r) {
         this.stars[id] = 0
@@ -83,6 +65,7 @@ export default {
         this.stars[id] = r
       }
       localStorage.setItem('stars', JSON.stringify(this.stars))
+      this.setStars(id, this.gobans[id], this.stars[id], or)
       this.$forceUpdate()
     },
     loadStars: function () {

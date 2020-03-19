@@ -142,14 +142,16 @@ export default {
         this.$router.push('/see/' + this.$route.params.id + '/' + (this.$route.params.lev === '_' ? '' : this.$route.params.lev) + '/new')
       })
     },
-    handleRate: function (g, r) {
-      if (!this.stars[g]) { this.stars[g] = 0 }
-      if (this.stars[g] === r) {
-        this.stars[g] = 0
+    handleRate: function (id, r) {
+      var or = this.stars[id]
+      if (!this.stars[id]) { this.stars[id] = 0 }
+      if (this.stars[id] === r) {
+        this.stars[id] = 0
       } else {
-        this.stars[g] = r
+        this.stars[id] = r
       }
       localStorage.setItem('stars', JSON.stringify(this.stars))
+      this.setStars(id, this.gobans[id], this.stars[id], or)
       this.$forceUpdate()
     },
     loadStars: function () {
