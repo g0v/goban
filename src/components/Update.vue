@@ -24,7 +24,7 @@
         .column 相關黑板： {{myRelated }}
         .column(v-for='g in gobans' v-bind:key='g.id')
           a(@click='adRel(g.id)' :class="myRelated.indexOf(g.id) > -1 ? 'yellow' : 'gray'")
-            | {{ g.id }}
+            | {{ g.id }} -- {{ g.t }}
       .ui.row
         .ui.button.group
           a.ui.blue.huge.button(@click="crt()", v-if='$route.params.id') {{ '更新' + $route.params.id }}
@@ -41,7 +41,7 @@ export default {
       myRelated: [],
       myTags: [],
       hex: 'green',
-      colors: ['yellow', 'red', 'green', 'blue', 'black', 'orange', 'brown', 'purple'],
+      colors: ['white', 'yellow', 'red', 'green', 'blue', 'black', 'orange', 'brown', 'purple'],
       stars: { goban_intro: 5 }
     }
   },
