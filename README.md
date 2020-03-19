@@ -80,7 +80,7 @@
 # 錯誤回報
 
 1. [請寫進這裡](https://github.com/g0v/goban/issues)
-2. [共筆頁](https://hackmd.io/3pvyN_W9TjSsuBok4w2XYA)
+2. [共筆頁在這裡](https://hackmd.io/3pvyN_W9TjSsuBok4w2XYA)
 
 # 寫給開發者
 
