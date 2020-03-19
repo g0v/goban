@@ -6,13 +6,13 @@
       .ui.comments
         h3.ui.dividing.header 歡迎留言
         .comment(v-for="c in chats" :key="c.time")
-          a.avatar
-            img(src="../assets/logo.png")
           .content
-            a.author(:href="'mailto:' + c.email", target="_blank")   {{ c.n }} 說：
+            a.author(:href="'mailto:' + c.email", target="_blank") 
+              i.large.user.icon
+              | {{ c.n }} 說：
             vue-simple-markdown.text(:source="c.t")
-              .metadata
-                span.date -{{ parseTime(c.time) }}
+            .metadata
+              span.date -{{ parseTime(c.time) }}
       .ui.form
         .two.fields
           .required.field
@@ -67,5 +67,17 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+
+.text {
+  color: white !important ;
+}
+
+a {
+  color: #c9c9ff !important;
+}
+
+.date {
+  color: #ccc;
+}
 
 </style>
