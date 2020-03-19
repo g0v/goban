@@ -41,7 +41,7 @@ export default {
       myRelated: [],
       myTags: [],
       hex: 'green',
-      colors: ['red', 'green', 'blue', 'black', 'orange', 'brown', 'purple'],
+      colors: ['yellow', 'red', 'green', 'blue', 'black', 'orange', 'brown', 'purple'],
       stars: { goban_intro: 5 }
     }
   },
@@ -96,7 +96,7 @@ export default {
   color: #dd0;
 }
 .gray {
-  color: gray;
+  color: #ccc;
 }
 .ui.header {
   margin-left: 1em;

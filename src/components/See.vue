@@ -231,7 +231,6 @@ export default {
 
   .inline {
     display: inline !important;
-    color: blue !important;
   }
 
   .ui.active.dimmer {

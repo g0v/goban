@@ -12,8 +12,8 @@
         .doubling.one.column.row
           #goban.column(v-for='g in gobans', :key='g.id')
             .inner(v-if = "stars[g.id] > 0" v-show="!myKey || has(g, myKey)")
-              a(v-for = "j in [1,2,3,4,5]")
-                sui-icon(name='star', :style="stars[g.id] >= j ? 'yellow' : 'gray'")
+              a(v-for = "j in [1,2,3,4,5]" @click = "handleRate(g.id, j)")
+                sui-icon(name='star', :class="stars[g.id] >= j ? 'yellow' : 'gray'")
               router-link(:to="'update/' + g.id" , data-content="設定", title="設定")
                 i.cogs.icon
               router-link(:to="'see/' + g.id + '/0/0'" )
@@ -46,12 +46,12 @@ export default {
       this.$emit('create', k)
       this.$router.push('/see/' + k + '/0/new')
     },
-    handleRate: function (g, r) {
-      if (!this.stars[g]) { this.stars[g] = 0 }
-      if (this.stars[g] === r) {
-        this.stars[g] = 0
+    handleRate: function (id, r) {
+      if (!this.stars[id]) { this.stars[id] = 0 }
+      if (this.stars[id] === r) {
+        this.stars[id] = 0
       } else {
-        this.stars[g] = r
+        this.stars[id] = r
       }
       localStorage.setItem('stars', JSON.stringify(this.stars))
       this.$forceUpdate()

@@ -121,25 +121,66 @@ export default {
 </script>
 
 <style>
+
+body {
+  background-color: hsla(120, 30%, 30%, 1);
+}
+
+.ui.menu {
+  background-color: hsla(30, 55%, 33%, 1);
+  border: none !important;
+}
+
+.ui.menu .item {
+  color: white !important;
+}
+
+
+.router-link-exact-active {
+  background-color: hsla(30, 55%, 16%, 1) !important;
+}
+
+.ui.header {
+  color: white;
+}
+
+h3.sub.header {
+  color: yellow;
+}
+
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: 'Avenir', Helvetica, Arial, sans-serif,
+               'Microsoft JhengHei',
+                'Microsoft YaHei',
+                'STHeiti',
+                'Apple LiGothic Medium';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: white;
   margin-top: 60px;
 }
 
-.yellow {
-  color: yellow;
-}
-.gray {
-  color: gray;
+a {
+    color: white;
+    text-decoration: none;
 }
 
-.router-link-exact-active {
-  background-color: #ccf !important;
+a.r {
+  margin: 0 1em;
 }
+
+.ui.segment {
+  background-color: hsla(30, 55%, 33%, 1);  
+}
+
+.yellow {
+  color: yellow !important;
+}
+.gray {
+  color: #ccc !important;
+}
+
 
 a, button {
   cursor:pointer;

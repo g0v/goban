@@ -34,7 +34,7 @@
                 router-link.r(v-for = "r in g.related", :key="r", :to="'see/' + r + '/0/0'" ) {{ r }}
     router-link.ui.green.large.button(to = "intro") 瞭解更多
       i.right.arrow.icon
-    h3.ui.header 我的珍藏
+    h3.ui.header 快速前往
     span(v-for = "g in gobans", :key='g.id')
       .inner(v-if = "stars[g.id] > 0")
         router-link(:to="'see/' + g.id + '/0/0'", :style="{color: g.hex || '#42b983'}") {{ g.id }} - {{ g.t }}
@@ -84,12 +84,12 @@ export default {
       var r = new RegExp(k)
       return r.test(g.id + g.t)
     },
-    handleRate: function (g, r) {
-      if (!this.stars[g]) { this.stars[g] = 0 }
-      if (this.stars[g] === r) {
-        this.stars[g] = 0
+    handleRate: function (id, r) {
+      if (!this.stars[id]) { this.stars[id] = 0 }
+      if (this.stars[id] === r) {
+        this.stars[id] = 0
       } else {
-        this.stars[g] = r
+        this.stars[id] = r
       }
       localStorage.setItem('stars', JSON.stringify(this.stars))
       this.$forceUpdate()
@@ -135,10 +135,6 @@ a {
 #goban {
   padding-top: 0 !important;
   padding-bottom: 0 !important;
-}
-
-.r {
-  margin: 0 1em;
 }
 
 @media only screen and (min-width: 600px) {
