@@ -27,7 +27,7 @@ export default {
       obj.tags = obj.tags || [k]
       obj.related = obj.related || [k]
       obj.use_lev = obj.use_lev || true
-      obj.stars = (obj.stars || 0) + s - or
+      obj.stars = (obj.stars || 0) + s - (or || 0)
       db.ref('gobans/' + k).set(obj)
     }
   }

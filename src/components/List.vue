@@ -19,22 +19,26 @@
               router-link(:to="'update/' + g.id" , data-content="設定", title="設定")
                 i.cogs.icon
               router-link(:to="'see/' + g.id + '/0/0'" )
-                h2.ui.header(:style="{color: g.hex || '#42b983'}") {{ g.id }} - {{ g.t }}
+                h2.ui.header(:style="{color: g.hex || '#42b983'}") {{ g.id }} - {{ g.t }}({{g.stars || 0}}顆星)
               p 相關黑板:
                 br
                 router-link.r(v-for = "r in g.related", :key="r", :to="'see/' + r + '/0/0'" ) {{ r }}
-    router-link.ui.green.large.button(to = "intro") 瞭解更多
       i.right.arrow.icon
-    h3.ui.header 快速前往
-    span(v-for = "g in gobans", :key='g.id')
-      .inner(v-if = "stars[g.id] > 0")
-        router-link(:to="'see/' + g.id + '/0/0'", :style="{color: g.hex || '#42b983'}") {{ g.id }} - {{ g.t }}({{g.stars}}顆星)
-          i.right.arrow.icon
-    h3.ui.header 人氣黑板
-    span(v-for = "g in gobans", :key='g.id')
-      .inner(v-if = "g.stars > 5")
-        router-link(:to="'see/' + g.id + '/0/0'", :style="{color: g.hex || '#42b983'}") {{ g.id }} - {{ g.t }}({{g.stars}}顆星)
-          i.right.arrow.icon
+    .ui.divider
+    .ui.grid
+      .ui.two.column.row
+        .column
+          h3.ui.header 快速前往
+          span(v-for = "g in gobans", :key='g.id')
+            .inner(v-if = "stars[g.id] > 0")
+              router-link(:to="'see/' + g.id + '/0/0'", :style="{color: g.hex || '#42b983'}") {{ g.id }} - {{ g.t }}
+                i.right.arrow.icon
+        .colmun
+          h3.ui.header 人氣黑板
+          span(v-for = "g in gobans", :key='g.id')
+            .inner(v-if = "g.stars > 5")
+              router-link(:to="'see/' + g.id + '/0/0'", :style="{color: g.hex || '#42b983'}") {{ g.id }} - {{ g.t }}({{g.stars}}顆星)
+                i.right.arrow.icon
 </template>
 
 <script>

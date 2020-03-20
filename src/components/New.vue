@@ -12,16 +12,21 @@
       router-link.ui.inverted.huge.button(to = "/intro")
         i.question.icon
         | 介紹
-    h3.ui.header 快速前往
-    span(v-for = "g in gobans", :key='g.id')
-      .inner(v-if = "stars[g.id] > 0")
-        router-link(:to="'see/' + g.id + '/0/0'", :style="{color: g.hex || '#42b983'}") {{ g.id }} - {{ g.t }}({{g.stars}}顆星)
-          i.right.arrow.icon
-    h3.ui.header 人氣黑板
-    span(v-for = "g in gobans", :key='g.id')
-      .inner(v-if = "g.stars > 5")
-        router-link(:to="'see/' + g.id + '/0/0'", :style="{color: g.hex || '#42b983'}") {{ g.id }} - {{ g.t }}({{g.stars}}顆星)
-          i.right.arrow.icon
+    .ui.divider
+    .ui.grid
+      .ui.two.column.row
+        .column
+          h3.ui.header 快速前往
+          span(v-for = "g in gobans", :key='g.id')
+            .inner(v-if = "stars[g.id] > 0")
+              router-link(:to="'see/' + g.id + '/0/0'", :style="{color: g.hex || '#42b983'}") {{ g.id }} - {{ g.t }}
+                i.right.arrow.icon
+        .colmun
+          h3.ui.header 人氣黑板
+          span(v-for = "g in gobans", :key='g.id')
+            .inner(v-if = "g.stars > 5")
+              router-link(:to="'see/' + g.id + '/0/0'", :style="{color: g.hex || '#42b983'}") {{ g.id }} - {{ g.t }}({{g.stars}}顆星)
+                i.right.arrow.icon
 </template>
 
 <script>

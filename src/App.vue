@@ -7,9 +7,9 @@
       a.item(@click="$router.go(-1)" v-if = "$router.currentRoute.path != '/'")
         i.left.arrow.icon
         | 回上一頁
-      router-link.item(to='/star')
-        i.star.icon
-        | 珍藏
+      router-link.item(to='/list')
+        i.search.icon
+        | 搜尋
       router-link.item(to='/intro')
         i.question.icon
         | 介紹
