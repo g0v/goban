@@ -3,6 +3,14 @@ import { db, gobansRef } from '../firebase/db'
 
 export default {
   methods: {
+     srt: function (gobans) {
+       if (!gobans) {return []} else {
+         console.log(gobans)
+         return gobans
+       }
+       console.log(gobans)
+       return gobans
+     },
      checkJSON: function (text) {
       if (!text) { return false}
       if (/^[\],:{}\s]*$/.test(text.replace(/\\["\\\/bfnrtu]/g, '@').replace(/"[^"\\\n\r]*"|true|false|null|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?/g, ']').replace(/(?:^|:|,)(?:\s*\[)+/g, ''))) {
