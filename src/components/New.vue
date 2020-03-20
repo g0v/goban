@@ -5,7 +5,7 @@
     .ui.vertical.buttons
       router-link.ui.inverted.huge.button(to = "/list")
         i.search.icon
-        | 搜詢
+        | 搜尋
       router-link.ui.inverted.huge.button(to = "/create")
         i.user.add.icon
         | 創建
