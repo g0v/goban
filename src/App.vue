@@ -106,6 +106,7 @@ export default {
       obj.related = obj.related || [k]
       obj.use_lev = obj.use_lev || true
       db.ref('gobans/' + k).set(obj)
+      this.$router.push('/see/' + k + '/0/new')
     }
   },
   firebase: {
@@ -188,6 +189,7 @@ a.r {
 .yellow {
   color: yellow !important;
 }
+
 .gray {
   color: #ccc !important;
 }

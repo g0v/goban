@@ -1,10 +1,20 @@
 <template lang="pug">
   .hello
-    h1.ui.header {{ $t('hello') }}
-    h3.sub.header {{ $t('hello2') }}
-    .ui.form.container
+    h1.ui.header 網址集錦共同筆記
+    h3.sub.header 創建黑板，與他人分享
+    .ui.warning.message.container
+      | 創建後請至少輸入一筆資料，謝謝
+      br
+      | 如不知如何輸入，請參考
+      router-link(to="/intro").black 介紹頁
+      .ui.form
+        .field
+          .ui.checkbox
+            input(type="checkbox" v-model="iagree" tabindex="0")
+            label 我同意
+    .ui.form.container(v-show="iagree")
       .field
-        input(v-autofocus="", type='search', name='', v-model='myKey', placeholder='創建新黑板', autofocus='true', @keydown.enter = "($router.push('/see/' + myKey + '/0/new'))")
+        input(type='search', name='', v-model='myKey', placeholder='輸入新黑板的id', @keydown.enter = "($router.push('/see/' + myKey + '/0/new'))")
     .ui.container
       a.ui.green.huge.button(@click='create(myKey)', v-if='myKey && !gobans[myKey]') {{$t('create')}}{{myKey}}
       .ui.negative.message(v-else v-show="myKey") 對不起， {{myKey}}已存在
@@ -17,7 +27,7 @@ import mixin from '../mixins/stars.js'
 export default {
   data () {
     return {
-      navigator: navigator,
+      iagree: false,
       myKey: '',
       stars: {'goban_intro': 5}
     }
@@ -26,28 +36,8 @@ export default {
   mixins: [mixin],
   localStorage: ['stars'],
   methods: {
-    iOS: function () {
-      var ans = false
-      var iDevices = [
-        'iPad Simulator',
-        'iPhone Simulator',
-        'iPod Simulator',
-        'iPad',
-        'iPhone',
-        'iPod'
-      ]
-      // console.log(navigator.platform)
-      if (navigator.platform) {
-        while (iDevices.length) {
-          if (navigator.platform === iDevices.pop()) { ans = true }
-        }
-      }
-      // console.log(ans)
-      return ans
-    },
     create: function (k) {
       this.$emit('create', k)
-      this.$router.push('/see/' + k + '/0/new')
     },
     has: function (g, k) {
       var r = new RegExp(k)
@@ -92,8 +82,8 @@ li {
   display: inline-block;
   margin: 0 10px;
 }
-a {
-  color: #42b983;
+a.black {
+  color: #000 !important;
 }
 
 .column .inner {
