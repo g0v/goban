@@ -135,7 +135,10 @@ export default {
     },
     loadData: function () {
       console.log('loading data from firebase...')
-      var gs = this.gobans && (this.gobans[this.$route.params.id].data) || {}
+      var gs = {}
+      if (this.gobans) {
+        gs = this.gobans[this.$route.params.id].data
+      }
       var array = []
 
       Object.keys(gs).forEach((key) => {
@@ -144,7 +147,7 @@ export default {
 
       this.data = array
 
-      console.log(data)
+      console.log(this.data)
       console.log('data loaded from firebase...')
     },
     reload: function () {
@@ -154,7 +157,7 @@ export default {
         // get body data
         this.data = this.parse(response.body)
         this.setData(this.$route.params.id, this.$route.params.lev, this.data)
-          this.$forceUpdate()
+        this.$forceUpdate()
       }, response => {
         console.log(response)
         this.data = []
@@ -191,7 +194,7 @@ export default {
       }).filter(function (o) {
         return o.name
       }).map(function (obj, index) {
-        if (!obj.url || obj.url == 'folder') {
+        if (!obj.url || obj.url === 'folder') {
           obj.type = 'folder'
           obj.open = true
           if ((obj.note + '').match(/close/)) {
