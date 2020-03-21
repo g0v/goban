@@ -32,8 +32,8 @@
               | {{name || $route.params.id + $route.params.lev}}
               i#e-icon.inline.edit.large.icon
           hr
-          .item(v-for='(d, index) in data', :key='d.name + index')
-            div(v-if="d.type == 'link'", v-show='!d.parentIndex || data[d.parentIndex].open')
+          .item(v-for='(d, index) in data', :key='index')
+            div(v-if="d.type == 'link'", v-show='!d.parentIndex || data[d.parentIndex].open || d.parentIndex < 0')
               span(v-if='d.parentIndex')
               a.link(:href='decodeURIComponent(d.url)', target='_blank', v-if="tar(d) == '_blank'")
                 | {{ decodeURIComponent(d.name) }}
@@ -48,6 +48,7 @@
                 img.ui.mini.image(src='/static/images/isClosed.png', v-show='!d.open')
                 img.ui.mini.image(src='/static/images/isOpen.png', v-show='d.open')
       .twelve.wide.column(@mouseout='reload()')
+        | 為「{{name || $route.params.id}}」打星等:
         a(v-for = "j in [1,2,3,4,5]" @click='handleRate($route.params.id, j)')
           sui-icon(name='star', :class="stars[$route.params.id] >= j ? 'yellow' : 'gray'")
         iframe#iframe(v-if = "getSrc()" name='iframe', :src='getSrc()', alt="Loading...")
@@ -87,7 +88,7 @@ export default {
     },
     srcURL: function () {
       var ans
-      if (this.gobans[this.$route.params.id].use_lev) {
+      if (this.gobans && this.gobans[this.$route.params.id].use_lev) {
         ans = 'https://ethercalc.org/' + this.$route.params.id + (this.$route.params.lev === '_' ? '' : this.$route.params.lev) + '.csv.json'
       } else {
         ans = 'https://ethercalc.org/' + this.$route.params.id + '.csv.json'
@@ -114,7 +115,7 @@ export default {
     },
     getSrc: function () {
       if (this.$route.params.index === 'new') {
-        return 'https://ethercalc.org/' + this.$route.params.id + (this.$route.params.lev === '_' ? '' : this.$route.params.lev)
+        return 'https://ethercalc.org/' + this.$route.params.index + (this.$route.params.lev === '_' ? '' : this.$route.params.lev)
       } else {
         if (this.data[this.$route.params.index]) {
           return decodeURIComponent(this.data[this.$route.params.index].url)
@@ -129,17 +130,35 @@ export default {
         return 'iframe'
       }
     },
+    setData: function (id, lev, d) {
+      this.$emit('setData', id, lev, d)
+    },
+    loadData: function () {
+      console.log('loading data from firebase...')
+      var gs = this.gobans && (this.gobans[this.$route.params.id].data) || {}
+      var array = []
+
+      Object.keys(gs).forEach((key) => {
+        array.push({[key]: gs[key]})
+      })
+
+      this.data = array
+
+      console.log(data)
+      console.log('data loaded from firebase...')
+    },
     reload: function () {
       console.log('reload...')
       // GET /someUrl
       this.$http.get(this.srcURL()).then(response => {
         // get body data
         this.data = this.parse(response.body)
-        this.$forceUpdate()
+        this.setData(this.$route.params.id, this.$route.params.lev, this.data)
+          this.$forceUpdate()
       }, response => {
         console.log(response)
         this.data = []
-        this.$router.push('/see/' + this.$route.params.id + '/' + (this.$route.params.lev === '_' ? '' : this.$route.params.lev) + '/new')
+        // this.$router.push('/see/' + this.$route.params.id + '/' + (this.$route.params.lev === '_' ? '' : this.$route.params.lev) + '/new')
       })
     },
     handleRate: function (id, r) {
@@ -172,7 +191,7 @@ export default {
       }).filter(function (o) {
         return o.name
       }).map(function (obj, index) {
-        if (!obj.url) {
+        if (!obj.url || obj.url == 'folder') {
           obj.type = 'folder'
           obj.open = true
           if ((obj.note + '').match(/close/)) {
@@ -190,6 +209,7 @@ export default {
     }
   },
   mounted () {
+    setTimeout(this.loadData, 4000)
     this.reload()
     if (this.checkJSON(localStorage.getItem('stars'))) {
       this.loadStars()
@@ -211,6 +231,7 @@ export default {
   }
   .ui.fixed.top.menu {
     height: 48px;
+    font-size: 18px;
   }
   iframe {
     width: 100%;

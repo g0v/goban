@@ -28,7 +28,7 @@
           i.github.icon
           | 原始碼
         .item
-          iframe(src="https://www.facebook.com/plugins/share_button.php?href=http%3A%2F%2Fgoban.tw&layout=button_count&size=small&appId=485195848253155&width=71&height=20" width="71" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media")
+          iframe(src="https://www.facebook.com/plugins/share_button.php?href=http%3A%2F%2Fgoban.tw&layout=button_count&size=small&appId=485195848253155&width=71&height=20" width="80" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media")
     .ui.fixed.top.menu.thin-only
       router-link.item(to='/')
         sui-icon(name='home', data-content="首頁", title="首頁")
@@ -49,7 +49,7 @@
           i.chat.icon
         a.item(href="https://github.com/g0v/goban", target="_blank")
           i.github.icon
-    router-view(:gobans='gobans', @create='create', :chats = "chats", @submit = "submit")
+    router-view(:gobans='gobans', @create='create', :chats = "chats", @submit = "submit", @setData="setData")
 </template>
 
 <script>
@@ -105,8 +105,46 @@ export default {
       obj.tags = obj.tags || [k]
       obj.related = obj.related || [k]
       obj.use_lev = obj.use_lev || true
+      obj.data = obj.data || [0, 1, 2, 3]
       db.ref('gobans/' + k).set(obj)
       this.$router.push('/see/' + k + '/0/new')
+    },
+
+    setData: function (id, lev, d) {
+      console.log('set data to firebase...')
+
+      var obj = d || []
+      if (!obj) {
+        obj = {name: d, t: d}
+      }
+      var goban = {
+        id: id,
+        t: this.gobans[id].t || id,
+        hex: this.gobans[id].hex || 'black',
+        tags: this.gobans[id].tags || [id],
+        related: this.gobans[id].related || [id],
+        use_lev: this.gobans[id].use_lev || true,
+        data: [0, 1, 2, 3]
+      }
+
+      console.log(goban)
+      db.ref('gobans/' + id).set(goban)
+
+      console.log(d)
+      d.forEach(function (l, idx) {
+        var list = {
+          name: l.name || 'happy',
+          url: l.url || 'folder',
+          note: l.note || 'happy',
+          type: l.type,
+          parentIndex: l.parentIndex || -1
+        }
+        console.log(l)
+        console.log(idx)
+        var url = 'gobans/' + id + '/data/' + idx
+        console.log(url)
+        db.ref(url).set(list)
+      })
     }
   },
   firebase: {

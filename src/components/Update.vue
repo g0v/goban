@@ -63,7 +63,8 @@ export default {
           related: this.myRelated,
           tags: this.myTags,
           hex: this.hex,
-          use_lev: this.use_lev
+          use_lev: this.use_lev,
+          data: [0, 1, 2, 3]
         })
       window.alert('更新成功')
     },
