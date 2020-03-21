@@ -1,6 +1,6 @@
 <template lang="pug">
   .hello
-    vue-headful(:title="$route.params.id + ' > ' + $route.params.lev + '@零時黑板'", description="gobans[$route.params.id].t")
+    vue-headful(v-if = "gobans" :title="$route.params.id + ' > ' + $route.params.lev + '@零時黑板'", description="gobans && gobans[$route.params.id].t")
     .ui.fixed.top.menu#navbar
       router-link.item(to='/', data-content="首頁", title="首頁")
         sui-icon(size='small', name='home')
@@ -8,32 +8,32 @@
         sui-icon(size='small', name='star', :style="{color: stars[$route.params.id] ? '#F4D03F' : 'gray'}")
       router-link.item(:to = "'/update/' + $route.params.id", data-content="設定", title="設定")
         i.cogs.icon
-      sui-dropdown.item(text = "相關", v-if='gobans[$route.params.id] && gobans[$route.params.id].id')
+      sui-dropdown.item(text = "相關", v-if='gobans && gobans[$route.params.id] && gobans[$route.params.id].id')
         sui-dropdown-menu
           sui-dropdown-item(v-for='r in gobans[$route.params.id].related', :key='r', @click="$router.push('/see/' + r + '/0/0')")
             | {{ r }}
-      sui-dropdown.item(text = "等級", v-if='gobans[$route.params.id] && gobans[$route.params.id].use_lev')
+      sui-dropdown.item(text = "等級", v-if='gobans && gobans[$route.params.id] && gobans[$route.params.id].use_lev')
         sui-dropdown-menu
           sui-dropdown-item(v-for='j in [0,1,2,3]', :key='j', @click="$router.push('/see/' + $route.params.id + '/' + j + '/0')")
             | 等級{{ j }}
       .right.menu
         a.item.fat-only(@click="backup($route.params.id, $route.params.lev)", data-content="備份", title="備份")
           i.cloud.download.icon
-        a.item(v-if='data[$route.params.index]', :href='data[$route.params.index].url', target='_blank', data-content="開新分頁", title="開新分頁")
+        a.item(v-if='mydata && mydata[$route.params.index]', :href='mydata[$route.params.index].url', target='_blank', data-content="開新分頁", title="開新分頁")
           sui-icon(size='small', name='right arrow')
         a.item(v-if="$route.params.index == 'new'", :href="editURL()", target='_blank', data-content="編輯", title="編輯")
           | 編輯
           sui-icon(size='small', name='right arrow')
     .ui.grid
       .four.wide.left.aligned.column
-        .ui.list
+        .ui.list(v-if="gobans")
           router-link.item#e(:to="'/see/' + $route.params.id + '/' + $route.params.lev + '/new'", data-content="編輯", title="編輯")
             h3.ui.header#e-text(:style="{color: gobans[$route.params.id].hex || 'blue'}")
-              | {{name || $route.params.id + $route.params.lev}}
+              | {{myName || $route.params.id + $route.params.lev}}
               i#e-icon.inline.edit.large.icon
           hr
-          .item(v-for='(d, index) in data', :key='index')
-            div(v-if="d.type == 'link'", v-show='!d.parentIndex || data[d.parentIndex].open || d.parentIndex < 0')
+          .item(v-for='(d, index) in mydata', :key='index')
+            div(v-if="d.type == 'link'", v-show='!d.parentIndex || mydata[d.parentIndex].open || d.parentIndex < 0')
               span(v-if='d.parentIndex')
               a.link(:href='decodeURIComponent(d.url)', target='_blank', v-if="tar(d) == '_blank'")
                 | {{ decodeURIComponent(d.name) }}
@@ -48,7 +48,7 @@
                 img.ui.mini.image(src='/static/images/isClosed.png', v-show='!d.open')
                 img.ui.mini.image(src='/static/images/isOpen.png', v-show='d.open')
       .twelve.wide.column(@mouseout='reload()')
-        | 為「{{name || $route.params.id}}」打星等:
+        | 為「{{myName || $route.params.id}}」打星等:
         a(v-for = "j in [1,2,3,4,5]" @click='handleRate($route.params.id, j)')
           sui-icon(name='star', :class="stars[$route.params.id] >= j ? 'yellow' : 'gray'")
         iframe#iframe(v-if = "getSrc()" name='iframe', :src='getSrc()', alt="Loading...")
@@ -64,12 +64,11 @@ export default {
   name: 'See',
   data () {
     return {
-      data: [],
-      name: '',
+      name: 'See',
       stars: {'goban_intro': 5}
     }
   },
-  props: ['gobans'],
+  props: ['gobans', 'mydata', 'myName'],
   mixins: [mixin],
   watch: {
     $route (to, from) {
@@ -86,15 +85,6 @@ export default {
       }
       return ans
     },
-    srcURL: function () {
-      var ans
-      if (this.gobans && this.gobans[this.$route.params.id].use_lev) {
-        ans = 'https://ethercalc.org/' + this.$route.params.id + (this.$route.params.lev === '_' ? '' : this.$route.params.lev) + '.csv.json'
-      } else {
-        ans = 'https://ethercalc.org/' + this.$route.params.id + '.csv.json'
-      }
-      return ans
-    },
     downloadObjectAsJson: function (exportObj, exportName) {
       var dataStr = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(exportObj))
       var downloadAnchorNode = document.createElement('a')
@@ -108,17 +98,17 @@ export default {
       if (lev === '_') {
         lev = ''
       }
-      this.downloadObjectAsJson(this.data, this.name + lev)
+      this.downloadObjectAsJson(this.mydata, this.myName + lev)
     },
     useLev: function (g) {
       return g.use_lev
     },
     getSrc: function () {
       if (this.$route.params.index === 'new') {
-        return 'https://ethercalc.org/' + this.$route.params.index + (this.$route.params.lev === '_' ? '' : this.$route.params.lev)
+        return 'https://ethercalc.org/' + this.$route.params.id + (this.$route.params.lev === '_' ? '' : this.$route.params.lev)
       } else {
-        if (this.data[this.$route.params.index]) {
-          return decodeURIComponent(this.data[this.$route.params.index].url)
+        if (this.mydata[this.$route.params.index]) {
+          return decodeURIComponent(this.mydata[this.$route.params.index].url)
         }
       }
       return undefined
@@ -133,36 +123,11 @@ export default {
     setData: function (id, lev, d) {
       this.$emit('setData', id, lev, d)
     },
-    loadData: function () {
-      console.log('loading data from firebase...')
-      var gs = {}
-      if (this.gobans) {
-        gs = this.gobans[this.$route.params.id].data
-      }
-      var array = []
-
-      Object.keys(gs).forEach((key) => {
-        array.push({[key]: gs[key]})
-      })
-
-      this.data = array
-
-      console.log(this.data)
-      console.log('data loaded from firebase...')
+    loadData: function (id) {
+      this.$emit('loadData')
     },
     reload: function () {
-      console.log('reload...')
-      // GET /someUrl
-      this.$http.get(this.srcURL()).then(response => {
-        // get body data
-        this.data = this.parse(response.body)
-        this.setData(this.$route.params.id, this.$route.params.lev, this.data)
-        this.$forceUpdate()
-      }, response => {
-        console.log(response)
-        this.data = []
-        // this.$router.push('/see/' + this.$route.params.id + '/' + (this.$route.params.lev === '_' ? '' : this.$route.params.lev) + '/new')
-      })
+      this.$emit('reload')
     },
     handleRate: function (id, r) {
       var or = this.stars[id]
@@ -173,46 +138,16 @@ export default {
         this.stars[id] = r
       }
       localStorage.setItem('stars', JSON.stringify(this.stars))
-      this.setStars(id, this.gobans[id], this.stars[id], or)
+      this.setStars(id, (this.gobans && this.gobans[id]) || 'goban_intro', this.stars[id], or)
       this.$forceUpdate()
     },
     loadStars: function () {
       try {
         this.stars = JSON.parse(localStorage.getItem('stars'))
       } catch (e) {}
-    },
-    parse: function (d) {
-      if (d[1]) { this.name = d[1][1] }
-      var ans = d.slice(2)
-      var idx
-      ans = ans.map(function (l) {
-        var obj = {}
-        obj.name = l[1]
-        obj.url = l[0].replace('%20', '').replace(' ', '')
-        obj.note = l[2]
-        return obj
-      }).filter(function (o) {
-        return o.name
-      }).map(function (obj, index) {
-        if (!obj.url || obj.url === 'folder') {
-          obj.type = 'folder'
-          obj.open = true
-          if ((obj.note + '').match(/close/)) {
-            obj.open = false
-          }
-          idx = index
-        } else {
-          obj.type = 'link'
-          obj.parentIndex = idx
-        }
-        return obj
-      })
-      console.log(ans)
-      return ans
     }
   },
-  mounted () {
-    setTimeout(this.loadData, 4000)
+  mounted: function () {
     this.reload()
     if (this.checkJSON(localStorage.getItem('stars'))) {
       this.loadStars()

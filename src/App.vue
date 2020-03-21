@@ -16,7 +16,7 @@
       sui-dropdown.item(icon="save outline")
         | 工具
         sui-dropdown-menu
-          sui-dropdown-item(v-show="!iOS()", @click="$router.push('/myapp')")
+          sui-dropdown-item(@click="$router.push('/myapp')")
             | 手機App
           sui-dropdown-item(@click="$router.push('/extension')")
             | 瀏覽器插件
@@ -40,7 +40,7 @@
         sui-icon(name='question', data-content="介紹", title="介紹")
       sui-dropdown.item(icon="save outline", data-content="工具", title="工具")
         sui-dropdown-menu
-          sui-dropdown-item(v-show="!iOS()", @click="$router.push('/myapp')")
+          sui-dropdown-item(@click="$router.push('/myapp')")
             | 手機App
           sui-dropdown-item(@click="$router.push('/extension')")
             | 瀏覽器插件
@@ -49,22 +49,59 @@
           i.chat.icon
         a.item(href="https://github.com/g0v/goban", target="_blank")
           i.github.icon
-    router-view(:gobans='gobans', @create='create', :chats = "chats", @submit = "submit", @setData="setData")
+    router-view(:gobans='gobans', :mydata="mydata" @create='create', :chats = "chats", :myName="myName" @submit = "submit", @setData="setData", @loadData="loadData", @reload = "reload")
 </template>
 
 <script>
 
+/* eslint-disable */
+
+import mixin from './mixins/stars.js'
 import { db, gobansRef, chatsRef } from './firebase/db'
 
 export default {
   name: 'App',
   data () {
     return {
+      myName: '',
+      stars: {'goban_intro': 5},
       gobans: undefined,
-      chats: undefined
+      chats: undefined,
+      mydata: [{"name":"零時黑板共筆頁","url":"https://hackmd.io/3pvyN_W9TjSsuBok4w2XYA","note":"","type":"link"},{"name":"簡介短片","url":"https://www.youtube.com/embed/uZo8eCfoS_Q","note":"","type":"link"},{"name":"臉書專頁","url":"https://www.facebook.com/%E9%9B%B6%E6%99%82%E9%BB%91%E6%9D%BF-110565913890537/","note":"blank","type":"link"},{"name":"原始碼","url":"https://github.com/g0v/goban/","note":"blank","type":"link"},{"name":"錯誤回報","url":"https://github.com/g0v/goban/issues","note":"{\"target\":\"blank\"}","type":"link"},{"name":"資料後台","url":"","note":"closed","type":"folder","open":false},{"name":"Ethercalc","url":"https://ethercalc.org","note":"","type":"link","parentIndex":5},{"name":"Ethercalc@github","url":"https://github.com/audreyt/ethercalc","note":"{\"target\":\"_blank\"}","type":"link","parentIndex":5},{"name":"隱私政策","url":"https://github.com/audreyt/ethercalc/blob/master/privacy.png","note":"{\"target\":\"_blank\"}","type":"link","parentIndex":5},{"name":"行動App","url":"","note":"","type":"folder","open":true},{"name":"Google Play","url":"https://play.google.com/store/apps/details?id=tw.goban.app","note":"","type":"link","parentIndex":9},{"name":"App Store","url":"https://apps.apple.com/us/app/%E9%9B%B6%E6%99%82%E9%BB%91%E6%9D%BF/id1500095725?l=zh&ls=1","note":"blank","type":"link","parentIndex":9},{"name":"瀏覽器插件","url":"","note":"","type":"folder","open":true},{"name":"Firefox","url":"https://addons.mozilla.org/zh-TW/firefox/addon/%E9%9B%B6%E6%99%82%E9%BB%91%E6%9D%BF/","note":"blank","type":"link","parentIndex":12}]
     }
   },
+  mixins: [mixin],
   methods: {
+    parse: function (d) {
+      console.log( d )
+      if (d[1]) { this.myName = d[1][1] || 'User' }
+      var ans = d.slice(2)
+      var idx
+      ans = ans.map(function (l) {
+        var obj = {}
+        obj.name = l[1]
+        obj.url = l[0].replace('%20', '').replace(' ', '')
+        obj.note = l[2]
+        return obj
+      }).filter(function (o) {
+        return o.name
+      }).map(function (obj, index) {
+        if (!obj.url || obj.url === 'folder') {
+          obj.type = 'folder'
+          obj.open = true
+          if ((obj.note + '').match(/close/)) {
+            obj.open = false
+          }
+          idx = index
+        } else {
+          obj.type = 'link'
+          obj.parentIndex = idx
+        }
+        return obj
+      })
+      console.log(ans)
+      return ans
+    },
     submit: function (n, email, t) {
       var o = {
         n: n,
@@ -79,22 +116,13 @@ export default {
         window.alert('請輸入留言')
       }
     },
-    iOS: function () {
-      var ans = false
-      var iDevices = [
-        'iPad Simulator',
-        'iPhone Simulator',
-        'iPod Simulator',
-        'iPad',
-        'iPhone',
-        'iPod'
-      ]
-      if (navigator.platform) {
-        while (iDevices.length) {
-          if (navigator.platform === iDevices.pop()) { ans = true }
-        }
+    srcURL: function () {
+      var ans
+      if (this.gobans && this.gobans[this.$route.params.id].use_lev) {
+        ans = 'https://ethercalc.org/' + this.$route.params.id + (this.$route.params.lev === '_' ? '' : this.$route.params.lev) + '.csv.json'
+      } else {
+        ans = 'https://ethercalc.org/' + this.$route.params.id + '.csv.json'
       }
-      // console.log(ans)
       return ans
     },
     create: function (k, o) {
@@ -105,13 +133,32 @@ export default {
       obj.tags = obj.tags || [k]
       obj.related = obj.related || [k]
       obj.use_lev = obj.use_lev || true
-      obj.data = obj.data || [0, 1, 2, 3]
+      obj.mydata = obj.mydata || [0, 1, 2, 3]
       db.ref('gobans/' + k).set(obj)
       this.$router.push('/see/' + k + '/0/new')
     },
-
+    loadData: function () {
+      console.log('loading mydata from firebase...')
+      var gs = this.gobans.child(this.$route.params.id)
+      this.mydata = array
+      console.log(this.mydata)
+      console.log('mydata loaded from firebase...')
+    },
+    reload: function () {
+      console.log('reload...')
+      // GET /someUrl
+      this.$http.get(this.srcURL()).then(response => {
+        // get body mydata
+        this.mydata = this.parse(response.body)
+        this.setData(this.$route.params.id, this.$route.params.lev, this.mydata)
+        this.$forceUpdate()
+      }, response => {
+        this.mydata = [{"name":"零時黑板共筆頁","url":"https://hackmd.io/3pvyN_W9TjSsuBok4w2XYA","note":"","type":"link"},{"name":"簡介短片","url":"https://www.youtube.com/embed/uZo8eCfoS_Q","note":"","type":"link"},{"name":"臉書專頁","url":"https://www.facebook.com/%E9%9B%B6%E6%99%82%E9%BB%91%E6%9D%BF-110565913890537/","note":"blank","type":"link"},{"name":"原始碼","url":"https://github.com/g0v/goban/","note":"blank","type":"link"},{"name":"錯誤回報","url":"https://github.com/g0v/goban/issues","note":"{\"target\":\"blank\"}","type":"link"},{"name":"資料後台","url":"","note":"closed","type":"folder","open":false},{"name":"Ethercalc","url":"https://ethercalc.org","note":"","type":"link","parentIndex":5},{"name":"Ethercalc@github","url":"https://github.com/audreyt/ethercalc","note":"{\"target\":\"_blank\"}","type":"link","parentIndex":5},{"name":"隱私政策","url":"https://github.com/audreyt/ethercalc/blob/master/privacy.png","note":"{\"target\":\"_blank\"}","type":"link","parentIndex":5},{"name":"行動App","url":"","note":"","type":"folder","open":true},{"name":"Google Play","url":"https://play.google.com/store/apps/details?id=tw.goban.app","note":"","type":"link","parentIndex":9},{"name":"App Store","url":"https://apps.apple.com/us/app/%E9%9B%B6%E6%99%82%E9%BB%91%E6%9D%BF/id1500095725?l=zh&ls=1","note":"blank","type":"link","parentIndex":9},{"name":"瀏覽器插件","url":"","note":"","type":"folder","open":true},{"name":"Firefox","url":"https://addons.mozilla.org/zh-TW/firefox/addon/%E9%9B%B6%E6%99%82%E9%BB%91%E6%9D%BF/","note":"blank","type":"link","parentIndex":12}]
+        // this.$router.push('/see/' + this.$route.params.id + '/' + (this.$route.params.lev === '_' ? '' : this.$route.params.lev) + '/new')
+      })
+    },
     setData: function (id, lev, d) {
-      console.log('set data to firebase...')
+      console.log('set mydata to firebase...')
 
       var obj = d || []
       if (!obj) {
@@ -124,32 +171,39 @@ export default {
         tags: this.gobans[id].tags || [id],
         related: this.gobans[id].related || [id],
         use_lev: this.gobans[id].use_lev || true,
-        data: [0, 1, 2, 3]
+        stars: this.gobans[id].stars || true,
+        mydata: this.gobans[id].mydata || [0, 1, 2, 3]
       }
-
-      console.log(goban)
       db.ref('gobans/' + id).set(goban)
-
-      console.log(d)
       d.forEach(function (l, idx) {
         var list = {
           name: l.name || 'happy',
           url: l.url || 'folder',
           note: l.note || 'happy',
-          type: l.type,
+          type: l.type || 'folder',
           parentIndex: l.parentIndex || -1
         }
-        console.log(l)
-        console.log(idx)
-        var url = 'gobans/' + id + '/data/' + idx
-        console.log(url)
+        var url = 'gobans/' + id + '/mydata/' + idx
         db.ref(url).set(list)
       })
+    },
+    loadStars: function () {
+      try {
+        this.stars = JSON.parse(localStorage.getItem('stars'))
+      } catch (e) {}
     }
   },
   firebase: {
     gobans: gobansRef,
     chats: chatsRef
+  },
+  mounted: function () {
+    this.reload()
+    if (this.checkJSON(localStorage.getItem('stars'))) {
+      this.loadStars()
+    } else {
+      localStorage.setItem('stars', JSON.stringify(this.stars))
+    }
   },
   created: function () {
     var vm = this
@@ -165,6 +219,11 @@ export default {
         event_label: 'from:' + from.path + ' to:' + to.path,
         value: 'from:' + from.path + ' to:' + to.path
       })
+    },
+    gobans (n, o) {
+      if (o) {
+        this.loadData()
+      }
     }
   }
 }
