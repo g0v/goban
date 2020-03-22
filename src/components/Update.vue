@@ -27,7 +27,7 @@
             | {{ g.id }} -- {{ g.t }}
       .ui.row
         .ui.button.group
-          a.ui.blue.huge.button(@click="crt()", v-if='$route.params.id') {{ '更新' + $route.params.id }}
+          a.ui.blue.huge.button( @click="crt()", v-if='$route.params.id && uid') {{ '更新' + $route.params.id }}
           router-link.ui.green.huge.button(:to="'/see/'+ $route.params.id + '/0/0'") {{ '前往' + $route.params.id }}
 </template>
 
@@ -35,7 +35,7 @@
 
 export default {
   name: 'PageIndex',
-  props: ['gobans'],
+  props: ['gobans', 'uid'],
   data () {
     return {
       myRelated: [],

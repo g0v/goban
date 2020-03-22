@@ -21,6 +21,9 @@
           sui-dropdown-item(@click="$router.push('/extension')")
             | 瀏覽器插件
       .right.menu
+        a.item#sign-out(v-if = "user" @click="signOut")
+          img(:src="user.photoURL")
+          span 登出
         router-link.item(to = "/chat")
           i.chat.icon
           | 留言板
@@ -45,11 +48,14 @@
           sui-dropdown-item(@click="$router.push('/extension')")
             | 瀏覽器插件
       .right.menu
+        a.item#sign-out-thin(v-if = "user" @click="signOut")
+          img(:src="user.photoURL")
+          span 登出
         router-link.item(to = "/chat", target="_blank")
           i.chat.icon
         a.item(href="https://github.com/g0v/goban", target="_blank")
           i.github.icon
-    router-view(:gobans='gobans', :mydata="mydata" @create='create', :chats = "chats", :myName="myName" @submit = "submit", @setData="setData", @loadData="loadData", @reload = "reload")
+    router-view(:uid="uid", :user ="user", :myUser="myUser", :users="users", :gobans='gobans', :mydata="mydata" @create='create', :chats = "chats", :myName="myName" @submit = "submit", @setData="setData", @loadData="loadData", @reload = "reload", @loginGoogle = "loginGoogle", @tryIt="tryIt()")
 </template>
 
 <script>
@@ -57,6 +63,8 @@
 /* eslint-disable */
 
 import mixin from './mixins/stars.js'
+import firebase from 'firebase/app'
+import 'firebase/auth'
 import { db, gobansRef, chatsRef } from './firebase/db'
 
 export default {
@@ -64,6 +72,10 @@ export default {
   data () {
     return {
       myName: '',
+      uid: undefined,   // main id
+      user: undefined, // user object
+      users: [],
+      myUser: undefined, // user on firebase
       stars: {'goban_intro': 5},
       gobans: undefined,
       chats: undefined,
@@ -72,6 +84,56 @@ export default {
   },
   mixins: [mixin],
   methods: {
+    setUser: function (id, obj) {
+      console.log(obj)
+      if (!this.users[id]) {
+        db.ref('users/' + id).set(obj)
+      } else {
+        this.users.child(id).update(obj)
+      }
+    },
+    tryIt: function () {
+      this.user = {
+        uid: undefined,
+        photoURL: '/static/favicon.png'
+      }
+    },
+    loginGoogle: function () {
+      var vm = this
+      var provider = new firebase.auth.GoogleAuthProvider()
+      firebase.auth().signInWithPopup(provider).then(function (result) {
+        // This gives you a Google Access Token. You can use it to access the Google API.
+        vm.provider = 'google'
+        vm.token = result.credential.accessToken
+        // The signed-in user info.
+        vm.uid = result.user.uid
+        vm.user = result.user
+        vm.photoURL = vm.user.photoURL
+
+        var obj = {
+          id: vm.uid,
+          name: vm.user.displayName,
+          photoURL: vm.photoURL,
+          email: vm.user.email
+        }
+        vm.setUser(vm.uid, obj)
+        // ...
+      }).catch(function (error) {
+        // Handle Errors here.
+        var errorCode = error.code
+        var errorMessage = error.message
+        // The email of the user's account used.
+        var email = error.email
+        // The firebase.auth.AuthCredential type that was used.
+        var credential = error.credential
+        console.log(errorCode + errorMessage + email + credential)
+      })
+    },
+    signOut: function() {
+      firebase.auth().signOut().then(() => {
+        this.user = null
+      }).catch(err => console.log(error))
+    },
     parse: function (d) {
       console.log( d )
       if (d[1]) { this.myName = d[1][1] || 'User' }
@@ -102,12 +164,13 @@ export default {
       console.log(ans)
       return ans
     },
-    submit: function (n, email, t) {
+    submit: function (n, email, t, photoURL) {
       var o = {
         n: n,
         email: email,
         t: t,
-        time: (new Date()).getTime()
+        time: (new Date()).getTime(),
+        photoURL: photoURL || 'null'
       }
       if (t) {
         this.$firebaseRefs.chats.push(o)
@@ -150,7 +213,9 @@ export default {
       this.$http.get(this.srcURL()).then(response => {
         // get body mydata
         this.mydata = this.parse(response.body)
-        this.setData(this.$route.params.id, this.$route.params.lev, this.mydata)
+        if (this.$route.params.id) {
+          this.setData(this.$route.params.id, this.$route.params.lev, this.mydata)
+        }
         this.$forceUpdate()
       }, response => {
         this.mydata = [{"name":"零時黑板共筆頁","url":"https://hackmd.io/3pvyN_W9TjSsuBok4w2XYA","note":"","type":"link"},{"name":"簡介短片","url":"https://www.youtube.com/embed/uZo8eCfoS_Q","note":"","type":"link"},{"name":"臉書專頁","url":"https://www.facebook.com/%E9%9B%B6%E6%99%82%E9%BB%91%E6%9D%BF-110565913890537/","note":"blank","type":"link"},{"name":"原始碼","url":"https://github.com/g0v/goban/","note":"blank","type":"link"},{"name":"錯誤回報","url":"https://github.com/g0v/goban/issues","note":"{\"target\":\"blank\"}","type":"link"},{"name":"資料後台","url":"","note":"closed","type":"folder","open":false},{"name":"Ethercalc","url":"https://ethercalc.org","note":"","type":"link","parentIndex":5},{"name":"Ethercalc@github","url":"https://github.com/audreyt/ethercalc","note":"{\"target\":\"_blank\"}","type":"link","parentIndex":5},{"name":"隱私政策","url":"https://github.com/audreyt/ethercalc/blob/master/privacy.png","note":"{\"target\":\"_blank\"}","type":"link","parentIndex":5},{"name":"行動App","url":"","note":"","type":"folder","open":true},{"name":"Google Play","url":"https://play.google.com/store/apps/details?id=tw.goban.app","note":"","type":"link","parentIndex":9},{"name":"App Store","url":"https://apps.apple.com/us/app/%E9%9B%B6%E6%99%82%E9%BB%91%E6%9D%BF/id1500095725?l=zh&ls=1","note":"blank","type":"link","parentIndex":9},{"name":"瀏覽器插件","url":"","note":"","type":"folder","open":true},{"name":"Firefox","url":"https://addons.mozilla.org/zh-TW/firefox/addon/%E9%9B%B6%E6%99%82%E9%BB%91%E6%9D%BF/","note":"blank","type":"link","parentIndex":12}]
@@ -166,7 +231,7 @@ export default {
       }
       var goban = {
         id: id,
-        t: this.gobans[id].t || id,
+        t: this.gobans[id].t || id || '',
         hex: this.gobans[id].hex || 'black',
         tags: this.gobans[id].tags || [id],
         related: this.gobans[id].related || [id],
@@ -188,9 +253,7 @@ export default {
       })
     },
     loadStars: function () {
-      try {
-        this.stars = JSON.parse(localStorage.getItem('stars'))
-      } catch (e) {}
+      this.stars = JSON.parse(localStorage.getItem('stars'))
     }
   },
   firebase: {
@@ -318,7 +381,23 @@ a, button {
 }
 
 .markdown-body img {
-  max-width: 80vw;
+  max-width: 80vw !important;
+}
+
+.markdown-body a {
+  text-decoration: underline !important;
+}
+
+#sign-out span {
+  margin-top: .5em !important;
+}
+
+#sign-out-thin span {
+  position: absolute !important;
+  top: 20px !important;
+  left: 20px !important;
+  color: black !important;
+  text-shadow: 2px 2px white;
 }
 
 </style>

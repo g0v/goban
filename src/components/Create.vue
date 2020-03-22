@@ -12,7 +12,12 @@
           .ui.checkbox
             input(type="checkbox" v-model="iagree" tabindex="0")
             label 我同意
-    .ui.form.container(v-show="iagree")
+    .ui.button.group(v-show="iagree")
+      a.ui.orange.huge.button(v-if="!user", @click="loginGoogle()")
+        i.google.icon
+        | 以Google登入
+      img.ui.small.image(v-else :src="user.photoURL")
+    .ui.form.container(v-show="iagree && user")
       .field
         input(type='search', name='', v-model='myKey', placeholder='輸入新黑板的id', @keydown.enter = "($router.push('/see/' + myKey + '/0/new'))")
     .ui.container
@@ -32,10 +37,13 @@ export default {
       stars: {'goban_intro': 5}
     }
   },
-  props: ['gobans'],
+  props: ['gobans', 'uid', 'user', 'myUser'],
   mixins: [mixin],
   localStorage: ['stars'],
   methods: {
+    loginGoogle: function () {
+      this.$emit('loginGoogle')
+    },
     create: function (k) {
       this.$emit('create', k)
     },

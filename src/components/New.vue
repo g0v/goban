@@ -1,8 +1,16 @@
 <template lang="pug">
   .hello
-    h1.ui.header {{ $t('hello') }}
-    h3.sub.header {{ $t('hello2') }}
-    .ui.vertical.buttons
+    h1.ui.header 網址集錦共同筆記
+    h3.sub.header 搜尋或創建黑板，與他人分享
+    .ui.vertical.buttons(v-if="!user")
+      a.ui.orange.huge.button(@click="loginGoogle()")
+        i.google.icon
+        | 以Google登入
+      a.ui.blue.huge.button(@click="tryIt()")
+        i.lab.icon
+        | 試用
+
+    .ui.vertical.buttons(v-if="user")
       router-link.ui.inverted.huge.button(to = "/list")
         i.search.icon
         | 搜尋
@@ -41,28 +49,15 @@ export default {
       stars: {'goban_intro': 5}
     }
   },
-  props: ['gobans'],
+  props: ['gobans', 'user'],
   mixins: [mixin],
   localStorage: ['stars'],
   methods: {
-    iOS: function () {
-      var ans = false
-      var iDevices = [
-        'iPad Simulator',
-        'iPhone Simulator',
-        'iPod Simulator',
-        'iPad',
-        'iPhone',
-        'iPod'
-      ]
-      // console.log(navigator.platform)
-      if (navigator.platform) {
-        while (iDevices.length) {
-          if (navigator.platform === iDevices.pop()) { ans = true }
-        }
-      }
-      // console.log(ans)
-      return ans
+    tryIt: function () {
+      this.$emit('tryIt')
+    },
+    loginGoogle: function () {
+      this.$emit('loginGoogle')
     },
     create: function (k) {
       this.$emit('create', k)

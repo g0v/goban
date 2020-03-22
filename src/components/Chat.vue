@@ -8,7 +8,9 @@
         .comment(v-for="c in chats" :key="c.time")
           .content
             a.author(:href="'mailto:' + c.email", target="_blank")
-              i.large.user.icon
+              .ui.avatar
+                img(v-if = "c.photoURL && c.photoURL !== 'null' ", :src="c.photoURL")
+                i.large.user.icon(v-else)
               | {{ c.n }} 說：
             vue-simple-markdown.text(:source="c.t")
             .metadata
@@ -24,16 +26,17 @@
           .required.field
             label 請留言:
             input(type='text' v-model="myText" placeholder="您想說什麼？")
-        .ui.submit.button(@click="submit(myName, myEmail, myText)") 留言
-      br
-      br
+        button.ui.huge.green.button(v-if ="user" @click="submit(myName, myEmail, myText, user.photoURL)") 送出留言
+        button.ui.huge.orange.button(v-else, @click="loginGoogle()")
+          i.google.icon
+          | 以Google登入以留言
 
 </template>
 <script>
 
 export default {
   name: 'Chat',
-  props: ['likes', 'chats'],
+  props: ['likes', 'chats', 'user'],
   data () {
     return {
       msg: '留言版',
@@ -43,7 +46,10 @@ export default {
     }
   },
   methods: {
-    submit: function (n, email, t) {
+    loginGoogle: function () {
+      this.$emit('loginGoogle')
+    },
+    submit: function (n, email, t, photoURL) {
       function validateEmail (email) {
         // eslint-disable-next-line
         var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
@@ -56,7 +62,7 @@ export default {
       this.myName = '訪客'
       this.myEmail = ''
       this.myText = ''
-      this.$emit('submit', n, email, t)
+      this.$emit('submit', n, email, t, photoURL || 'null')
     },
     parseTime: function (t) {
       return (new Date(t)).toLocaleDateString()
