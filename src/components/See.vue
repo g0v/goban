@@ -28,7 +28,7 @@
       .four.wide.left.aligned.column
         .ui.list(v-if="gobans")
           router-link.item#e(:to="'/see/' + $route.params.id + '/' + $route.params.lev + '/new'", data-content="編輯", title="編輯")
-            h3.ui.header#e-text(:style="{color: gobans[$route.params.id].hex || 'blue'}")
+            h3.ui.header#e-text()
               | {{myName || $route.params.id + $route.params.lev}}
               i#e-icon.inline.edit.large.icon
           hr
@@ -78,7 +78,7 @@ export default {
   methods: {
     editURL: function () {
       var ans
-      if (this.gobans[this.$route.params.id].use_lev) {
+      if (this.gobans && this.gobans[this.$route.params.id] && this.gobans[this.$route.params.id].use_lev) {
         ans = 'https://ethercalc.org/' + this.$route.params.id + this.$route.params.lev
       } else {
         ans = 'https://ethercalc.org/' + this.$route.params.id
@@ -101,6 +101,7 @@ export default {
       this.downloadObjectAsJson(this.mydata, this.myName + lev)
     },
     useLev: function (g) {
+      if (!g) { return true }
       return g.use_lev
     },
     getSrc: function () {

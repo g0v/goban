@@ -23,6 +23,7 @@
     .ui.container
       a.ui.green.huge.button(@click='create(myKey)', v-if='myKey && !gobans[myKey]') {{$t('create')}}{{myKey}}
       .ui.negative.message(v-else v-show="myKey") 對不起， {{myKey}}已存在
+        router-link(:to="'/see/' + myKey + '/0/0'") 前往 {{ myKey }}
 </template>
 
 <script>

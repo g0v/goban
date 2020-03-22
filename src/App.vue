@@ -181,7 +181,7 @@ export default {
     },
     srcURL: function () {
       var ans
-      if (this.gobans && this.gobans[this.$route.params.id].use_lev) {
+      if (this.gobans && this.gobans[this.$route.params.id] && this.gobans[this.$route.params.id].use_lev) {
         ans = 'https://ethercalc.org/' + this.$route.params.id + (this.$route.params.lev === '_' ? '' : this.$route.params.lev) + '.csv.json'
       } else {
         ans = 'https://ethercalc.org/' + this.$route.params.id + '.csv.json'
@@ -194,6 +194,7 @@ export default {
       obj.t = obj.t || k
       obj.hex = obj.hex || 'black'
       obj.tags = obj.tags || [k]
+      obj.photoURL = obj.photoURL || ''
       obj.related = obj.related || [k]
       obj.use_lev = obj.use_lev || true
       obj.mydata = obj.mydata || [0, 1, 2, 3]
@@ -202,8 +203,8 @@ export default {
     },
     loadData: function () {
       console.log('loading mydata from firebase...')
-      var gs = this.gobans.child(this.$route.params.id)
-      this.mydata = array
+     // var gs = this.gobans.child(this.$route.params.id)
+     // this.mydata = array
       console.log(this.mydata)
       console.log('mydata loaded from firebase...')
     },
