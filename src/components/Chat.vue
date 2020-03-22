@@ -16,17 +16,14 @@
             .metadata
               span.date -{{ parseTime(c.time) }}
       .ui.form
-        .two.fields
+        .two.fields(v-if = "user")
           .required.field
             label 您的大名:
             input(type='text' v-model="myName")
           .required.field
-            label Email:
-            input(type='email' v-model="myEmail")
-          .required.field
             label 請留言:
             input(type='text' v-model="myText" placeholder="您想說什麼？")
-        button.ui.huge.green.button(v-if ="user" @click="submit(myName, myEmail, myText, user.photoURL)") 送出留言
+        button.ui.huge.green.button(v-if ="user" @click="submit(myName, user.email, myText, user.photoURL)") 送出留言
         button.ui.huge.orange.button(v-else, @click="loginGoogle()")
           i.google.icon
           | 以Google登入以留言
@@ -41,7 +38,6 @@ export default {
     return {
       msg: '留言版',
       'myName': '訪客',
-      'myEmail': '',
       'myText': ''
     }
   },
@@ -50,19 +46,10 @@ export default {
       this.$emit('loginGoogle')
     },
     submit: function (n, email, t, photoURL) {
-      function validateEmail (email) {
-        // eslint-disable-next-line
-        var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-        return re.test(String(email).toLowerCase())
-      }
-      if (!validateEmail(email)) {
-        window.alert('請輸入E-mail')
-        return
-      }
       this.myName = '訪客'
       this.myEmail = ''
       this.myText = ''
-      this.$emit('submit', n, email, t, photoURL || 'null')
+      this.$emit('submit', n, email || 'null', t, photoURL || 'null')
     },
     parseTime: function (t) {
       return (new Date(t)).toLocaleDateString()
