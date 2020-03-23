@@ -95,6 +95,11 @@ export default {
     tryIt: function () {
       this.user = {
         uid: undefined,
+        user: {
+          id: 'guest',
+          name: 'guest',
+          photoURL: '/static/favicon.png'
+        },
         photoURL: '/static/favicon.png'
       }
     },
@@ -192,6 +197,7 @@ export default {
       var obj = o || {id: k}
       obj.id = k
       obj.t = obj.t || k
+      obj.uid = this.uid
       obj.hex = obj.hex || 'black'
       obj.tags = obj.tags || [k]
       obj.photoURL = obj.photoURL || ''
