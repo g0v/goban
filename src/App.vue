@@ -12,7 +12,7 @@
         | 搜尋
       router-link.item(to='/intro')
         i.question.icon
-        | 介紹
+        | 導覽
       sui-dropdown.item(icon="save outline")
         | 工具
         sui-dropdown-menu
@@ -40,7 +40,7 @@
       router-link.item(to='/star', data-content="珍藏", title="珍藏")
         sui-icon(name='star')
       router-link.item(to='/intro')
-        sui-icon(name='question', data-content="介紹", title="介紹")
+        sui-icon(name='question', data-content="導覽", title="導覽")
       sui-dropdown.item(icon="save outline", data-content="工具", title="工具")
         sui-dropdown-menu
           sui-dropdown-item(@click="$router.push('/myapp')")
@@ -79,7 +79,7 @@ export default {
       stars: {'goban_intro': 5},
       gobans: undefined,
       chats: undefined,
-      mydata: [{"name":"零時黑板共筆頁","url":"https://hackmd.io/3pvyN_W9TjSsuBok4w2XYA","note":"","type":"link"}]
+      mydata: [{"name":"知識棋盤共筆頁","url":"https://hackmd.io/3pvyN_W9TjSsuBok4w2XYA","note":"","type":"link"}]
     }
   },
   mixins: [mixin],
@@ -219,7 +219,7 @@ export default {
         }
         this.$forceUpdate()
       }, response => {
-        this.mydata = [{"name":"零時黑板共筆頁","url":"https://hackmd.io/3pvyN_W9TjSsuBok4w2XYA","note":"","type":"link"}]
+        this.mydata = [{"name":"知識棋盤共筆頁","url":"https://hackmd.io/3pvyN_W9TjSsuBok4w2XYA","note":"","type":"link"}]
         // this.$router.push('/see/' + this.$route.params.id + '/' + (this.$route.params.lev === '_' ? '' : this.$route.params.lev) + '/new')
       })
     },

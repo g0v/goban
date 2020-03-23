@@ -1,10 +1,10 @@
 <template lang="pug">
   .hello
-    vue-headful(title="珍藏@零時黑板", description="個人珍藏的零時黑板")
+    vue-headful(title="珍藏@知識棋盤", description="個人珍藏的知識棋盤")
     h1.ui.header 我的珍藏
     .ui.form.container#myForm
       .field
-        input(v-autofocus="", type='search', name='', v-model='myKey', placeholder='搜尋黑板', autofocus='true', @keydown.enter = "($router.push('/see/' + myKey + '/0/0'))")
+        input(v-autofocus="", type='search', name='', v-model='myKey', placeholder='搜尋棋盤', autofocus='true', @keydown.enter = "($router.push('/see/' + myKey + '/0/0'))")
     .ui.segment.left.aligned.container
       .ui.active.dimmer(v-if = "!gobans")
         .ui.text.loader Loading...
@@ -18,7 +18,7 @@
                 i.cogs.icon
               router-link(:to="'see/' + g.id + '/0/0'" )
                 h2.ui.header(:style="{color: g.hex || '#42b983'}") {{ g.id }} - {{ g.t }}
-              p 相關黑板:
+              p 相關棋盤:
                 br
                 router-link.r(v-for = "r in g.related", :key="r", :to="'see/' + r + '/0/0'" ) {{ r }}
 </template>

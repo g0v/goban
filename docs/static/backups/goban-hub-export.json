@@ -1,40 +1,11 @@
 {
   "chats" : {
-    "-M2BvV0YbGJS_kpnGRa-" : {
-      "email" : "bestian@gmail.com",
-      "n" : "訪客",
-      "t" : "好複雜的感覺~",
-      "time" : 1583986114751
-    },
-    "-M2C-uc8j7esqznlUSVF" : {
-      "email" : "bestian@gmail.com",
-      "n" : "訪客",
-      "t" : "我喜歡vue黑板",
-      "time" : 1583987534660
-    },
-    "-M2C1lu4o5k812Cdn_sa" : {
-      "email" : "bestian@gmail.com",
-      "n" : "Bestian",
-      "t" : "希望大家一起讓這專案更好~",
-      "time" : 1583988023012
-    },
-    "-M2DEkfrQ91lpqwzQ9DJ" : {
+    "-M2zud6RfkgJPjzIUdRN" : {
       "email" : "bestian@gmail.com",
       "n" : "Be",
-      "t" : "測試看看",
-      "time" : 1584008203086
-    },
-    "-M2DGQy91_K3HzKt4Lpc" : {
-      "email" : "bestian@gmail.com",
-      "n" : "訪客",
-      "t" : "手機的可以看得不錯",
-      "time" : 1584008642635
-    },
-    "-M2_2brSK-cDPaxFbKPk" : {
-      "email" : "bestian@gmail.com",
-      "n" : "訪客",
-      "t" : "測試一下[連結](http://goban.tw)",
-      "time" : 1584390897207
+      "photoURL" : "https://lh3.googleusercontent.com/a-/AOh14GiuP71ysEizIPrDx8wZoO9SWtcudkEj7nAV4UKmAA",
+      "t" : "歡迎使用零時黑板。請看[簡介](http://goban.tw/#/intro)",
+      "time" : 1584841527849
     }
   },
   "gobans" : {
@@ -701,7 +672,13 @@
       "name" : "國中數學",
       "related" : [ "autolearn_main" ],
       "t" : "國中數學開放教材",
-      "text" : "國中數學開放教材",
+      "use_lev" : true
+    },
+    "折紙" : {
+      "id" : "折紙",
+      "name" : "折紙",
+      "related" : [ "折紙" ],
+      "t" : "折紙",
       "use_lev" : true
     },
     "孫悟空" : {
@@ -767,6 +744,13 @@
       "related" : [ "高中數學", "國中數學" ],
       "t" : "高中數學",
       "use_lev" : true
+    }
+  },
+  "users" : {
+    "QiFoUxtRRpOdyDD8vF9EYAEqqr42" : {
+      "id" : "QiFoUxtRRpOdyDD8vF9EYAEqqr42",
+      "name" : "Bestian",
+      "photoURL" : "https://lh3.googleusercontent.com/a-/AOh14GiuP71ysEizIPrDx8wZoO9SWtcudkEj7nAV4UKmAA"
     }
   }
 }

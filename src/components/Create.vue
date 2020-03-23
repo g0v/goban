@@ -1,7 +1,7 @@
 <template lang="pug">
   .hello
-    h1.ui.header 網址集錦共同筆記
-    h3.sub.header 創建黑板，與他人分享
+    h1.ui.header 搜尋棋盤
+    h3.sub.header 創建棋盤，讓星棋羅列
     .ui.warning.message.container
       | 創建後請至少輸入一筆資料，謝謝
       br
@@ -19,7 +19,7 @@
       img.ui.small.image(v-else :src="user.photoURL")
     .ui.form.container(v-show="iagree && user")
       .field
-        input(type='search', name='', v-model='myKey', placeholder='輸入新黑板的id', @keydown.enter = "($router.push('/see/' + myKey + '/0/new'))")
+        input(type='search', name='', v-model='myKey', placeholder='輸入新棋盤的id', @keydown.enter = "($router.push('/see/' + myKey + '/0/new'))")
     .ui.container
       a.ui.green.huge.button(@click='create(myKey)', v-if='myKey && !gobans[myKey]') {{$t('create')}}{{myKey}}
       .ui.negative.message(v-else v-show="myKey") 對不起， {{myKey}}已存在

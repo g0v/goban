@@ -1,6 +1,6 @@
 <template lang="pug">
   .hello
-    h1.ui.header 零時黑板-瀏覽器插件
+    h1.ui.header 知識棋盤-瀏覽器插件
     .ui.button.group
       a.ui.orange.huge.button(href="https://addons.mozilla.org/zh-TW/firefox/addon/%E9%9B%B6%E6%99%82%E9%BB%91%E6%9D%BF/", target="_blank")
         i.firefox.icon

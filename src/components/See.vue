@@ -1,6 +1,6 @@
 <template lang="pug">
   .hello
-    vue-headful(v-if = "gobans" :title="$route.params.id + ' > ' + $route.params.lev + '@零時黑板'", description="gobans && gobans[$route.params.id].t")
+    vue-headful(v-if = "gobans" :title="$route.params.id + ' > ' + $route.params.lev + '@知識棋盤'", description="gobans && gobans[$route.params.id].t")
     .ui.fixed.top.menu#navbar
       router-link.item(to='/', data-content="首頁", title="首頁")
         sui-icon(size='small', name='home')

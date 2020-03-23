@@ -1,10 +1,10 @@
 <template lang="pug">
   .hello
-    h1.ui.header {{ $t('hello') }}
-    h3.sub.header {{ $t('hello2') }}
+    h1.ui.header 讓知識星棋羅列
+    h3.sub.header 搜尋棋盤，共同筆記
     .ui.form.container#myForm
       .field
-        input(v-autofocus="", type='search', name='', v-model='myKey', placeholder='搜尋黑板', autofocus='true', list="gs" @keydown.enter = "($router.push('/see/' + myKey + '/0/0'))")
+        input(v-autofocus="", type='search', name='', v-model='myKey', placeholder='搜尋棋盤', autofocus='true', list="gs" @keydown.enter = "($router.push('/see/' + myKey + '/0/0'))")
         datalist#gs
           option(v-for = "g in gobans", v-bind:key = "g.id" :value="g.id") {{ g.id }}
     .ui.segment.left.aligned.container(v-if="myKey")
@@ -20,7 +20,7 @@
                 i.cogs.icon
               router-link(:to="'see/' + g.id + '/0/0'" )
                 h2.ui.header(:style="{color: g.hex || '#42b983'}") {{ g.id }} - {{ g.t }}({{g.stars || 0}}顆星)
-              p 相關黑板:
+              p 相關棋盤:
                 br
                 router-link.r(v-for = "r in g.related", :key="r", :to="'see/' + r + '/0/0'" ) {{ r }}
       i.right.arrow.icon
@@ -34,7 +34,7 @@
               router-link(:to="'see/' + g.id + '/0/0'", :style="{color: g.hex || '#42b983'}") {{ g.id }} - {{ g.t }}
                 i.right.arrow.icon
         .colmun
-          h3.ui.header 人氣黑板
+          h3.ui.header 人氣棋盤
           span(v-for = "g in gobans", :key='g.id')
             .inner(v-if = "g.stars > 5")
               router-link(:to="'see/' + g.id + '/0/0'", :style="{color: g.hex || '#42b983'}") {{ g.id }} - {{ g.t }}({{g.stars}}顆星)
