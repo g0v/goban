@@ -208,16 +208,20 @@ export default {
       this.$router.push('/see/' + k + '/0/new')
     },
     loadData: function () {
-      console.log('loading mydata from firebase...')
+     // console.log('loading mydata from firebase...')
      // var gs = this.gobans.child(this.$route.params.id)
      // this.mydata = array
-      console.log(this.mydata)
-      console.log('mydata loaded from firebase...')
+     // console.log(this.mydata)
+     // console.log('mydata loaded from firebase...')
     },
     reload: function () {
       console.log('reload...')
       // GET /someUrl
       this.$http.get(this.srcURL()).then(response => {
+
+        //this.$http.get(csv_api_source).pipe(CSV.parse).done(compile_json);   <--先抓CSV, 再compile成JSON
+
+
         // get body mydata
         this.mydata = this.parse(response.body)
         if (this.$route.params.id) {
@@ -230,8 +234,8 @@ export default {
       })
     },
     setData: function (id, lev, d) {
-      console.log('set mydata to firebase...')
-
+      //console.log('set mydata to firebase...')
+      /*
       var obj = d || []
       if (!obj) {
         obj = {name: d, t: d}
@@ -257,8 +261,8 @@ export default {
         }
         var url = 'gobans/' + id + '/mydata/' + idx
         db.ref(url).set(list)
-      })
-    },
+      }) */
+    }, 
     loadStars: function () {
       this.stars = JSON.parse(localStorage.getItem('stars'))
     }
