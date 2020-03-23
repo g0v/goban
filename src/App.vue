@@ -225,7 +225,7 @@ export default {
         }
         this.$forceUpdate()
       }, response => {
-        this.mydata = [{"name":"知識棋盤共筆頁","url":"https://hackmd.io/3pvyN_W9TjSsuBok4w2XYA","note":"","type":"link"}]
+        this.mydata = []
         // this.$router.push('/see/' + this.$route.params.id + '/' + (this.$route.params.lev === '_' ? '' : this.$route.params.lev) + '/new')
       })
     },

@@ -108,6 +108,7 @@ export default {
       if (this.$route.params.index === 'new') {
         return 'https://ethercalc.org/' + this.$route.params.id + (this.$route.params.lev === '_' ? '' : this.$route.params.lev)
       } else {
+        if (!this.mydata[0]) { return undefined}
         if (this.mydata[this.$route.params.index]) {
           return decodeURIComponent(this.mydata[this.$route.params.index].url)
         }
@@ -149,7 +150,6 @@ export default {
     }
   },
   mounted: function () {
-    this.reload()
     if (this.checkJSON(localStorage.getItem('stars'))) {
       this.loadStars()
     } else {
