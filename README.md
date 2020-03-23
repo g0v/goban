@@ -30,13 +30,21 @@
 5. 右上方還有一個備份按鈕
 6. 最重要的是評星等
 7. 你打了星號之後，系統會統計，較高星等的黑板就會成為人氣黑板
+8. 珍藏的項目會出現在首頁的「快速前往」區，就不必一直重新查尋了
 
-![範列圖1](https://i.imgur.com/96FvvJs.png)
+![範列圖1](https://i.imgur.com/96FvvJs.png =400x)
 
 ## 分享
 
 1. 每個連結都有一個獨立的網址
 2. 從瀏覽器的網址列複製下來，就可以分享給別人了
+
+## 網址範例
+
+1. http://goban.tw/#/see/goban_intro/0/0
+2. http://goban.tw/#/see/css/0/1
+3. http://goban.tw/#/see/vue/0/4
+
 
 ## 創建與編輯
 
@@ -50,7 +58,7 @@
 8. 這樣就創建了一個連結
 9. 你可以創建多個連結
 
-![範列圖2](https://i.imgur.com/svOzmET.png)
+![範列圖2](https://i.imgur.com/svOzmET.png =400x)
 
 ### 小技巧:
 1. 如果A欄留白，它就會成為一個資料夾
@@ -62,21 +70,6 @@
 * 按齒輪圖樣
 * 進入即可設定關聯
 
-## 設定珍藏
-
-* 先查詢到一個黑板
-* 按星號圖示
-
-## 下載備份
-
-* 點入一個黑板
-* 按下載
-
-## 網址範例
-
-1. http://goban.tw/#/see/goban_intro/0/0
-2. http://goban.tw/#/see/css/0/0
-3. http://goban.tw/#/see/vue/0/0
 
 # 相關專案(Todo)
 
