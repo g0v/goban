@@ -21,14 +21,15 @@
       .field
         input(type='search', name='', v-model='myKey', placeholder='輸入新棋盤的id', @keydown.enter = "($router.push('/see/' + myKey + '/0/new'))")
     .ui.container
-      a.ui.green.huge.button(@click='create(myKey)', v-if='myKey && !gobans[myKey]') {{$t('create')}}{{myKey}}
+      a.ui.green.huge.button(@click='create(myKey, {}, uid)', v-if='myKey && !gobans[myKey]') 創建{{myKey}}
       .ui.negative.message(v-else v-show="myKey") 對不起， {{myKey}}已存在
         router-link(:to="'/see/' + myKey + '/0/0'") 前往 {{ myKey }}
 </template>
 
 <script>
 
-import mixin from '../mixins/stars.js'
+import mixin from '../mixins/mixin.js'
+import stars from '../mixins/stars.js'
 
 export default {
   data () {
@@ -39,18 +40,11 @@ export default {
     }
   },
   props: ['gobans', 'uid', 'user', 'myUser'],
-  mixins: [mixin],
+  mixins: [stars, mixin],
   localStorage: ['stars'],
   methods: {
     loginGoogle: function () {
       this.$emit('loginGoogle')
-    },
-    create: function (k) {
-      this.$emit('create', k)
-    },
-    has: function (g, k) {
-      var r = new RegExp(k)
-      return r.test(g.id + g.t)
     },
     handleRate: function (id, r) {
       if (!this.stars[id]) { this.stars[id] = 0 }

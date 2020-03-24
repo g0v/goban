@@ -58,7 +58,7 @@
 
 <script>
 
-import mixin from '../mixins/stars.js'
+import stars from '../mixins/stars.js'
 
 export default {
   name: 'See',
@@ -69,12 +69,7 @@ export default {
     }
   },
   props: ['gobans', 'mydata', 'myName'],
-  mixins: [mixin],
-  watch: {
-    $route (to, from) {
-      this.reload()
-    }
-  },
+  mixins: [stars],
   methods: {
     editURL: function () {
       var ans

@@ -55,14 +55,15 @@
           i.chat.icon
         a.item(href="https://github.com/g0v/goban", target="_blank")
           i.github.icon
-    router-view(:uid="uid", :user ="user", :myUser="myUser", :users="users", :gobans='gobans', :mydata="mydata" @create='create', :chats = "chats", :myName="myName" @submit = "submit", @setData="setData", @loadData="loadData", @reload = "reload", @loginGoogle = "loginGoogle", @tryIt="tryIt()")
+    router-view(:uid="uid", :user ="user", :myUser="myUser", :users="users", :gobans='gobans', :mydata="mydata" @create='create', :chats = "chats", :myName="myName" @submit = "submit", @setData="setData", @loadData="loadData", @reload = "reload", @loginGoogle = "loginGoogle", @tryIt="user = tryIt()")
 </template>
 
 <script>
 
 /* eslint-disable */
 
-import mixin from './mixins/stars.js'
+import mixin from './mixins/mixin.js'
+import stars from './mixins/stars.js'
 import firebase from 'firebase/app'
 import 'firebase/auth'
 import { db, gobansRef, chatsRef } from './firebase/db'
@@ -82,28 +83,13 @@ export default {
       mydata: [{"name":"知識棋盤共筆頁","url":"https://hackmd.io/3pvyN_W9TjSsuBok4w2XYA","note":"","type":"link"}]
     }
   },
-  mixins: [mixin],
+  mixins: [stars, mixin],
+  firebase: {
+    gobans: gobansRef,
+    chats: chatsRef
+  },
   methods: {
-    setUser: function (id, obj) {
-      console.log(obj)
-      if (!this.users[id]) {
-        db.ref('users/' + id).set(obj)
-      } else {
-        this.users.child(id).update(obj)
-      }
-    },
-    tryIt: function () {
-      this.user = {
-        uid: undefined,
-        user: {
-          id: 'guest',
-          name: 'guest',
-          photoURL: '/static/favicon.png'
-        },
-        photoURL: '/static/favicon.png'
-      }
-    },
-    loginGoogle: function () {
+    loginGoogle: function (vm) {
       var vm = this
       var provider = new firebase.auth.GoogleAuthProvider()
       firebase.auth().signInWithPopup(provider).then(function (result) {
@@ -121,7 +107,7 @@ export default {
           photoURL: vm.photoURL,
           email: vm.user.email
         }
-        vm.setUser(vm.uid, obj)
+        vm.setUserToFireBase(vm.uid, obj , this)
         // ...
       }).catch(function (error) {
         // Handle Errors here.
@@ -133,41 +119,6 @@ export default {
         var credential = error.credential
         console.log(errorCode + errorMessage + email + credential)
       })
-    },
-    signOut: function() {
-      firebase.auth().signOut().then(() => {
-        this.user = null
-      }).catch(err => console.log(error))
-    },
-    parse: function (d) {
-      console.log( d )
-      if (d[1]) { this.myName = d[1][1] || 'User' }
-      var ans = d.slice(2)
-      var idx
-      ans = ans.map(function (l) {
-        var obj = {}
-        obj.name = l[1]
-        obj.url = l[0].replace('%20', '').replace(' ', '')
-        obj.note = l[2]
-        return obj
-      }).filter(function (o) {
-        return o.name
-      }).map(function (obj, index) {
-        if (!obj.url || obj.url === 'folder') {
-          obj.type = 'folder'
-          obj.open = true
-          if ((obj.note + '').match(/close/)) {
-            obj.open = false
-          }
-          idx = index
-        } else {
-          obj.type = 'link'
-          obj.parentIndex = idx
-        }
-        return obj
-      })
-      console.log(ans)
-      return ans
     },
     submit: function (n, email, t, photoURL) {
       var o = {
@@ -193,20 +144,6 @@ export default {
       }
       return ans
     },
-    create: function (k, o) {
-      var obj = o || {id: k}
-      obj.id = k
-      obj.t = obj.t || k
-      obj.uid = this.uid
-      obj.hex = obj.hex || 'black'
-      obj.tags = obj.tags || [k]
-      obj.photoURL = obj.photoURL || ''
-      obj.related = obj.related || [k]
-      obj.use_lev = obj.use_lev || true
-      obj.mydata = obj.mydata || [0, 1, 2, 3]
-      db.ref('gobans/' + k).set(obj)
-      this.$router.push('/see/' + k + '/0/new')
-    },
     loadData: function () {
      // console.log('loading mydata from firebase...')
      // var gs = this.gobans.child(this.$route.params.id)
@@ -218,10 +155,7 @@ export default {
       console.log('reload...')
       // GET /someUrl
       this.$http.get(this.srcURL()).then(response => {
-
         //this.$http.get(csv_api_source).pipe(CSV.parse).done(compile_json);   <--先抓CSV, 再compile成JSON
-
-
         // get body mydata
         this.mydata = this.parse(response.body)
         if (this.$route.params.id) {
@@ -230,46 +164,11 @@ export default {
         this.$forceUpdate()
       }, response => {
         this.mydata = []
-        // this.$router.push('/see/' + this.$route.params.id + '/' + (this.$route.params.lev === '_' ? '' : this.$route.params.lev) + '/new')
       })
     },
-    setData: function (id, lev, d) {
-      //console.log('set mydata to firebase...')
-      /*
-      var obj = d || []
-      if (!obj) {
-        obj = {name: d, t: d}
-      }
-      var goban = {
-        id: id,
-        t: this.gobans[id].t || id || '',
-        hex: this.gobans[id].hex || 'black',
-        tags: this.gobans[id].tags || [id],
-        related: this.gobans[id].related || [id],
-        use_lev: this.gobans[id].use_lev || true,
-        stars: this.gobans[id].stars || true,
-        mydata: this.gobans[id].mydata || [0, 1, 2, 3]
-      }
-      db.ref('gobans/' + id).set(goban)
-      d.forEach(function (l, idx) {
-        var list = {
-          name: l.name || 'happy',
-          url: l.url || 'folder',
-          note: l.note || 'happy',
-          type: l.type || 'folder',
-          parentIndex: l.parentIndex || -1
-        }
-        var url = 'gobans/' + id + '/mydata/' + idx
-        db.ref(url).set(list)
-      }) */
-    }, 
     loadStars: function () {
       this.stars = JSON.parse(localStorage.getItem('stars'))
     }
-  },
-  firebase: {
-    gobans: gobansRef,
-    chats: chatsRef
   },
   mounted: function () {
     this.reload()
@@ -278,10 +177,6 @@ export default {
     } else {
       localStorage.setItem('stars', JSON.stringify(this.stars))
     }
-  },
-  created: function () {
-    var vm = this
-    vm.$i18n.locale = 'zh-TW'
   },
   watch: {
     $route (to, from) {
@@ -293,6 +188,7 @@ export default {
         event_label: 'from:' + from.path + ' to:' + to.path,
         value: 'from:' + from.path + ' to:' + to.path
       })
+      this.reload()
     },
     gobans (n, o) {
       if (o) {
@@ -410,5 +306,4 @@ a, button {
   color: black !important;
   text-shadow: 2px 2px white;
 }
-
 </style>

@@ -13,7 +13,6 @@ import '@babel/polyfill'
 import PortalVue from 'portal-vue'
 import ErrorPage from 'vue-error-page'
 import vueHeadful from 'vue-headful'
-import i18n from './i18n'
 import VueSimpleMarkdown from 'vue-simple-markdown'
 import VueGtag from 'vue-gtag'
 
@@ -52,6 +51,5 @@ new Vue({
   el: '#app',
   router,
   components: { App },
-  i18n,
   template: '<App/>'
 })
