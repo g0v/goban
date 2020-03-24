@@ -144,7 +144,7 @@ export default {
     srcURL: function () {
       var ans
       if (this.gobans && this.gobans[this.$route.params.id] && this.gobans[this.$route.params.id].use_lev) {
-        ans = 'https://ethercalc.org/' + this.$route.params.id + (this.$route.params.lev === '_' ? '' : this.$route.params.lev) + '.csv.json'
+        ans = 'https://ethercalc.org/' + this.$route.params.id + (this.$route.params.lev || '') + '.csv.json'
       } else {
         ans = 'https://ethercalc.org/' + this.$route.params.id + '.csv.json'
       }

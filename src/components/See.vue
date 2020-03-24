@@ -1,6 +1,6 @@
 <template lang="pug">
   .hello
-    vue-headful(v-if = "gobans" :title="$route.params.id + ' > ' + $route.params.lev + '@知識棋盤'", description="gobans && gobans[$route.params.id].t")
+    vue-headful(v-if = "gobans" :title="$route.params.id + ' > ' + ($route.params.lev || '') + '@知識棋盤'", description="gobans && gobans[$route.params.id].t")
     .ui.fixed.top.menu#navbar
       router-link.item(to='/', data-content="首頁", title="首頁")
         sui-icon(size='small', name='home')
@@ -29,7 +29,7 @@
         .ui.list(v-if="gobans")
           router-link.item#e(:to="getRoute(gobans[$route.params.id].use_lev)", data-content="編輯", title="編輯")
             h3.ui.header#e-text()
-              | {{myName || $route.params.id + $route.params.lev}}
+              | {{myName || $route.params.id + ($route.params.lev || '')}}
               i#e-icon.inline.edit.large.icon
           hr
           .item(v-for='(d, index) in mydata', :key='index')
