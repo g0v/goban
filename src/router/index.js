@@ -36,6 +36,11 @@ export default new Router({
       component: Star
     },
     {
+      path: '/s/:id/:index',
+      name: 'S',
+      component: See
+    },
+    {
       path: '/see/:id/:lev/:index',
       name: 'See',
       component: See

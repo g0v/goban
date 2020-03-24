@@ -27,15 +27,17 @@
             | {{ g.id }} -- {{ g.t }}
       .ui.row
         .ui.button.group
-          a.ui.blue.huge.button( @click="crt()", v-if='$route.params.id && uid') {{ '更新' + $route.params.id }}
+          a.ui.blue.huge.button( @click="updateGoban(uid)", v-if='$route.params.id && uid') {{ '更新' + $route.params.id }}
           router-link.ui.green.huge.button(:to="'/see/'+ $route.params.id + '/0/0'") {{ '前往' + $route.params.id }}
 </template>
 
 <script>
+import mixin from '../mixins/mixin.js'
 
 export default {
   name: 'PageIndex',
   props: ['gobans', 'uid'],
+  mixins: [mixin],
   data () {
     return {
       myRelated: [],
@@ -53,10 +55,11 @@ export default {
         })
       } else { this.myRelated.push(id) }
     },
-    create: function (k, obj) {
-      this.$emit('create', k, obj)
-    },
-    crt: function () {
+    updateGoban: function (uid) {
+      if (!uid) {
+        window.alert('請先登入')
+        return
+      }
       this.create(
         this.$route.params.id,
         { t: this.gobans[this.$route.params.id].t,

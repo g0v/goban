@@ -6,6 +6,13 @@ export default {
   methods: {
     setDataToFireBase: function (id, lev, d) {
     },
+    loadDataFromFireBase: function () {
+      /* console.log('loading mydata from firebase...')
+      var gs = this.gobans.child(this.$route.params.id)
+      this.mydata = array
+      console.log(this.mydata)
+      console.log('mydata loaded from firebase...') */
+    },
     signOut: function () {
       firebase.auth().signOut().then(() => {
         this.user = null

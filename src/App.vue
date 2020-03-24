@@ -55,7 +55,13 @@
           i.chat.icon
         a.item(href="https://github.com/g0v/goban", target="_blank")
           i.github.icon
-    router-view(:uid="uid", :user ="user", :myUser="myUser", :users="users", :gobans='gobans', :mydata="mydata" @create='create', :chats = "chats", :myName="myName" @submit = "submit", @setData="setData", @loadData="loadData", @reload = "reload", @loginGoogle = "loginGoogle", @tryIt="user = tryIt()")
+    router-view(:uid="uid", :user ="user", :myUser="myUser", :users="users", :gobans='gobans', :mydata="mydata" @create='create', :chats = "chats", :myName="myName",
+     @submit = "submit",
+     @setDataToFireBase = "setDataToFireBase",
+     @loadDataFromFireBase = "loadDataFromFireBase",
+     @reload = "reload",
+     @loginGoogle = "loginGoogle",
+     @tryIt="user = tryIt()")
 </template>
 
 <script>
@@ -144,13 +150,6 @@ export default {
       }
       return ans
     },
-    loadData: function () {
-     // console.log('loading mydata from firebase...')
-     // var gs = this.gobans.child(this.$route.params.id)
-     // this.mydata = array
-     // console.log(this.mydata)
-     // console.log('mydata loaded from firebase...')
-    },
     reload: function () {
       console.log('reload...')
       // GET /someUrl
@@ -159,7 +158,7 @@ export default {
         // get body mydata
         this.mydata = this.parse(response.body)
         if (this.$route.params.id) {
-          this.setData(this.$route.params.id, this.$route.params.lev, this.mydata)
+          this.setDataToFireBase(this.$route.params.id, this.$route.params.lev, this.mydata)
         }
         this.$forceUpdate()
       }, response => {
@@ -192,16 +191,13 @@ export default {
     },
     gobans (n, o) {
       if (o) {
-        this.loadData()
+        this.loadDataFromFireBase()
       }
     }
   }
 }
-
 </script>
-
 <style>
-
 body {
   background-color: hsla(120, 30%, 30%, 1) !important;
 }

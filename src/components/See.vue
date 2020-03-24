@@ -58,6 +58,7 @@
 
 <script>
 
+import mixin from '../mixins/mixin.js'
 import stars from '../mixins/stars.js'
 
 export default {
@@ -69,7 +70,7 @@ export default {
     }
   },
   props: ['gobans', 'mydata', 'myName'],
-  mixins: [stars],
+  mixins: [stars, mixin],
   methods: {
     editURL: function () {
       var ans
@@ -101,7 +102,7 @@ export default {
     },
     getSrc: function () {
       if (this.$route.params.index === 'new') {
-        return 'https://ethercalc.org/' + this.$route.params.id + (this.$route.params.lev === '_' ? '' : this.$route.params.lev)
+        return 'https://ethercalc.org/' + this.$route.params.id + (this.$route.params.lev || '')
       } else {
         if (!this.mydata[0]) { return undefined }
         if (this.mydata[this.$route.params.index]) {
@@ -116,12 +117,6 @@ export default {
       } else {
         return 'iframe'
       }
-    },
-    setData: function (id, lev, d) {
-      this.$emit('setData', id, lev, d)
-    },
-    loadData: function (id) {
-      this.$emit('loadData')
     },
     reload: function () {
       this.$emit('reload')
@@ -185,23 +180,18 @@ export default {
   .ui.dropdown {
     position: relative;
   }
-
   .inline {
     display: inline !important;
   }
-
   .ui.active.dimmer {
     height: 100vh;
   }
-
   a.link {
     margin-left: 1em;
   }
-
   i.inline.edit.icon {
     margin-left: 0.5em;
   }
-
   @media screen and (max-width: 420px) {
     a.link {
       margin-left: 0;
@@ -211,7 +201,6 @@ export default {
       margin-left: 0;
     }
   }
-
   #iframe {
     background-color: white !important;
   }
