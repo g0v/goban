@@ -10,6 +10,7 @@ export default {
       firebase.auth().signOut().then(() => {
         this.user = null
       }).catch(err => console.log(err))
+    },
     setUserToFireBase: function (id, obj, vm) {
       console.log(obj)
       if (!this.users[id]) {
