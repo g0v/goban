@@ -4,6 +4,15 @@ import 'firebase/auth'
 
 export default {
   methods: {
+    getRoute: function (useLev) {
+      var ans
+      if (useLev) {
+        ans = '/see/' + $route.params.id + '/' + $route.params.lev + '/new'
+      } else {
+        ans = '/s/' + $route.params.id + '/new'
+      }
+      return ans
+    },
     setDataToFireBase: function (id, lev, d) {
     },
     loadDataFromFireBase: function () {
@@ -51,7 +60,7 @@ export default {
       obj.tags = obj.tags || [k]
       obj.photoURL = obj.photoURL || ''
       obj.related = obj.related || [k]
-      obj.use_lev = obj.use_lev || true
+      obj.use_lev = obj.use_lev || false
       obj.mydata = obj.mydata || [0, 1, 2, 3]
       db.ref('gobans/' + k).set(obj)
       this.$router.push('/see/' + k + '/0/new')

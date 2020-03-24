@@ -27,7 +27,7 @@
     .ui.grid
       .four.wide.left.aligned.column
         .ui.list(v-if="gobans")
-          router-link.item#e(:to="'/see/' + $route.params.id + '/' + $route.params.lev + '/new'", data-content="編輯", title="編輯")
+          router-link.item#e(:to="getRoute(gobans[$route.params.id].use_lev)", data-content="編輯", title="編輯")
             h3.ui.header#e-text()
               | {{myName || $route.params.id + $route.params.lev}}
               i#e-icon.inline.edit.large.icon
