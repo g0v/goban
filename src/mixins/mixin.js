@@ -7,9 +7,9 @@ export default {
     getRoute: function (useLev) {
       var ans
       if (useLev) {
-        ans = '/see/' + $route.params.id + '/' + $route.params.lev + '/new'
+        ans = '/see/' + this.$route.params.id + '/' + this.$route.params.lev + '/new'
       } else {
-        ans = '/s/' + $route.params.id + '/new'
+        ans = '/s/' + this.$route.params.id + '/new'
       }
       return ans
     },
