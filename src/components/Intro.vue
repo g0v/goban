@@ -1,8 +1,7 @@
 <template>
   <div class="hello">
-    <h1>何謂知識棋盤</h1>
-    <h3>傳說，昔帝堯之子丹朱頑兇好訟，不受教誨，帝堯乃法天地陰陽之像，造棋以教丹朱</h3>
-    <vue-simple-markdown :source="someData"></vue-simple-markdown>
+    <iframe src="https://hackmd.io/3pvyN_W9TjSsuBok4w2XYA?view"></iframe>
+<!--    <vue-simple-markdown :source="someData"></vue-simple-markdown> -->
   </div>
 
 </template>
@@ -40,6 +39,11 @@ export default {
   font-size: 16px;
   text-align: left;
   padding: 1em 3em;
+}
+
+iframe {
+  width: 80vw;
+  height: 80vh;
 }
 
 </style>
