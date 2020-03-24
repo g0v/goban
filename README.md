@@ -52,9 +52,9 @@ note: 但是還有些hackfoldr的內容沒做，比方說
 
 ## 網址範例
 
-1. http://goban.tw/#/see/goban_intro/0/0
-2. http://goban.tw/#/see/css/0/1
-3. http://goban.tw/#/see/vue/0/4
+1. http://goban.tw/#/s/goban_intro/0
+2. http://goban.tw/#/s/css//1
+3. http://goban.tw/#/s/vue/4
 
 
 ## 創建與編輯
@@ -69,7 +69,7 @@ note: 但是還有些hackfoldr的內容沒做，比方說
 8. 這樣就創建了一個連結
 9. 你可以創建多個連結
 
-![範列圖2](https://i.imgur.com/svOzmET.png =400x)
+![範列圖2](https://i.imgur.com/svOzmET.png 400x)
 
 ### 小技巧:
 1. 如果A欄留白，它就會成為一個資料夾
