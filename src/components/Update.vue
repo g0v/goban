@@ -58,18 +58,18 @@ export default {
     updateGoban: function (uid) {
       if (!uid) {
         window.alert('請先登入')
-        return
+      } else {
+        this.create(this.$route.params.id,
+          { t: this.gobans[this.$route.params.id].t,
+            related: this.myRelated,
+            tags: this.myTags,
+            hex: this.hex,
+            use_lev: this.use_lev,
+            data: [0, 1, 2, 3]
+          },
+          uid)
+        window.alert('更新成功')
       }
-      this.create(
-        this.$route.params.id,
-        { t: this.gobans[this.$route.params.id].t,
-          related: this.myRelated,
-          tags: this.myTags,
-          hex: this.hex,
-          use_lev: this.use_lev,
-          data: [0, 1, 2, 3]
-        })
-      window.alert('更新成功')
     },
     reload: function () {
       this.$emit('reload')

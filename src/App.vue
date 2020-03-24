@@ -79,7 +79,7 @@ export default {
   data () {
     return {
       myName: '',
-      uid: undefined,   // main id
+      uid: '',   // main id
       user: undefined, // user object
       users: [],
       myUser: undefined, // user on firebase
@@ -95,7 +95,7 @@ export default {
     chats: chatsRef
   },
   methods: {
-    loginGoogle: function (vm) {
+    loginGoogle: function () {
       var vm = this
       var provider = new firebase.auth.GoogleAuthProvider()
       firebase.auth().signInWithPopup(provider).then(function (result) {
@@ -104,6 +104,7 @@ export default {
         vm.token = result.credential.accessToken
         // The signed-in user info.
         vm.uid = result.user.uid
+        console.log(vm.uid)
         vm.user = result.user
         vm.photoURL = vm.user.photoURL
 
@@ -113,7 +114,8 @@ export default {
           photoURL: vm.photoURL,
           email: vm.user.email
         }
-        vm.setUserToFireBase(vm.uid, obj , this)
+        //vm.setUserToFireBase(vm.uid, obj , this)
+        //this.$forceUpdate()
         // ...
       }).catch(function (error) {
         // Handle Errors here.

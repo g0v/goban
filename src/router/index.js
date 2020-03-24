@@ -4,6 +4,7 @@ import New from '@/components/New'
 import Create from '@/components/Create'
 import List from '@/components/List'
 import See from '@/components/See'
+import See2 from '@/components/See2'
 import Star from '@/components/Star'
 import Intro from '@/components/Intro'
 import Update from '@/components/Update'
@@ -42,8 +43,8 @@ export default new Router({
     },
     {
       path: '/see/:id/:lev/:index',
-      name: 'See',
-      component: See
+      name: 'See2',
+      component: See2
     },
     {
       path: '/intro',

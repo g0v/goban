@@ -13,6 +13,15 @@ export default {
       }
       return ans
     },
+    getFastRoute: function (g) {
+      var ans
+      if (g.use_lev) {
+        ans = '/see/' + g.id + '/0/0'
+      } else {
+        ans = '/s/' + g.id + '/0'
+      }
+      return ans
+    },
     setDataToFireBase: function (id, lev, d) {
     },
     loadDataFromFireBase: function () {
@@ -63,7 +72,6 @@ export default {
       obj.use_lev = obj.use_lev || false
       obj.mydata = obj.mydata || [0, 1, 2, 3]
       db.ref('gobans/' + k).set(obj)
-      this.$router.push('/see/' + k + '/0/new')
     },
     parse: function (d) {
       console.log(d)
