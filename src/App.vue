@@ -13,7 +13,7 @@
       router-link.item(to='/intro')
         i.question.icon
         | 導覽
-      sui-dropdown.item(icon="save outline")
+      //sui-dropdown.item(icon="save outline")
         | 工具
         sui-dropdown-menu
           sui-dropdown-item(@click="$router.push('/myapp')")
@@ -41,7 +41,7 @@
         sui-icon(name='star')
       router-link.item(to='/intro')
         sui-icon(name='question', data-content="導覽", title="導覽")
-      sui-dropdown.item(icon="save outline", data-content="工具", title="工具")
+      //sui-dropdown.item(icon="save outline", data-content="工具", title="工具")
         sui-dropdown-menu
           sui-dropdown-item(@click="$router.push('/myapp')")
             | 手機App

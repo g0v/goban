@@ -4,7 +4,7 @@
     h1.ui.header 我的珍藏
     .ui.form.container#myForm
       .field
-        input(v-autofocus="", type='search', name='', v-model='myKey', placeholder='搜尋棋盤', autofocus='true', @keydown.enter = "($router.push('/see/' + myKey + '/0/0'))")
+        input(v-autofocus="", type='search', name='', v-model='myKey', placeholder='搜尋棋盤', autofocus='true', @keydown.enter = "$router.push(getFastRoute(g))")
     .ui.segment.left.aligned.container
       .ui.active.dimmer(v-if = "!gobans")
         .ui.text.loader Loading...
@@ -16,7 +16,7 @@
                 sui-icon(name='star', :class="stars[g.id] >= j ? 'yellow' : 'gray'")
               router-link(:to="'update/' + g.id" , data-content="設定", title="設定")
                 i.cogs.icon
-              router-link(:to="'see/' + g.id + '/0/0'" )
+              router-link(:to="getFastRoute(g)" )
                 h2.ui.header(:style="{color: g.hex || '#42b983'}") {{ g.id }} - {{ g.t }}
               p 相關棋盤:
                 br
@@ -25,7 +25,8 @@
 
 <script>
 
-import mixin from '../mixins/stars.js'
+import mixin from '../mixins/mixin.js'
+import star from '../mixins/stars.js'
 
 export default {
   data () {
@@ -35,7 +36,7 @@ export default {
     }
   },
   props: ['gobans'],
-  mixins: [mixin],
+  mixins: [mixin, star],
   localStorage: ['stars'],
   methods: {
     has: function (g, k) {

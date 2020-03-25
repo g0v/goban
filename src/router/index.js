@@ -38,7 +38,7 @@ export default new Router({
     },
     {
       path: '/s/:id/:index',
-      name: 'S',
+      name: 'See',
       component: See
     },
     {

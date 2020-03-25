@@ -17,8 +17,12 @@
           sui-dropdown-item(v-for='j in [0,1,2,3]', :key='j', @click="$router.push('/see/' + $route.params.id + '/' + j + '/0')")
             | 等級{{ j }}
       .right.menu
-        a.item.fat-only(@click="backup($route.params.id, $route.params.lev)", data-content="備份", title="備份")
-          i.cloud.download.icon
+        sui-dropdown.item(icon="cloud download", data-content="備份", title="備份")
+          sui-dropdown-menu
+            sui-dropdown-item(@click="backupJSON($route.params.id, $route.params.lev)")
+              | JSON
+            sui-dropdown-item(@click="backupCSV($route.params.id, $route.params.lev)")
+              | CSV
         a.item(v-if='mydata && mydata[$route.params.index]', :href='mydata[$route.params.index].url', target='_blank', data-content="開新分頁", title="開新分頁")
           sui-icon(size='small', name='right arrow')
         a.item(v-if="$route.params.index == 'new'", :href="editURL()", target='_blank', data-content="編輯", title="編輯")
@@ -90,11 +94,17 @@ export default {
       downloadAnchorNode.click()
       downloadAnchorNode.remove()
     },
-    backup: function (id, lev) {
-      if (lev === '_') {
+    backupJSON: function (id, lev) {
+      if (lev === '_' || !lev) {
         lev = ''
       }
       this.downloadObjectAsJson(this.mydata, this.myName + lev)
+    },
+    backupCSV: function (id, lev) {
+      if (lev === '_' || !lev) {
+        lev = ''
+      }
+      window.open('https://ethercalc.org/' + id + lev + '.csv', '_blank')
     },
     useLev: function (g) {
       if (!g) { return true }

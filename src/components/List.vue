@@ -18,7 +18,7 @@
                 sui-icon(name='star', :class="stars[g.id] >= j ? 'yellow' : 'gray'")
               router-link(:to="'update/' + g.id" , data-content="設定", title="設定")
                 i.cogs.icon
-              router-link(:to="'see/' + g.id + '/0/0'" )
+              router-link(:to="getFastRoute(g)" )
                 h2.ui.header(:style="{color: g.hex || '#42b983'}") {{ g.id }} - {{ g.t }}({{g.stars || 0}}顆星)
               p 相關棋盤:
                 br
