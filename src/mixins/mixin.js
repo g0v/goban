@@ -4,15 +4,6 @@ import 'firebase/auth'
 
 export default {
   methods: {
-    getRoute: function (useLev) {
-      var ans
-      if (useLev) {
-        ans = '/see/' + this.$route.params.id + '/' + this.$route.params.lev + '/new'
-      } else {
-        ans = '/s/' + this.$route.params.id + '/new'
-      }
-      return ans
-    },
     getFastRoute: function (g) {
       var ans
       if (g.use_lev) {

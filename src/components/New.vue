@@ -35,7 +35,7 @@
           h3.ui.header 人氣棋盤
           span(v-for = "g in gobans", :key='g.id')
             .inner(v-if = "g.stars > 5")
-              router-link(:to="getRoute(g)", :style="{color: g.hex || '#42b983'}") {{ g.id }} - {{ g.t }}({{g.stars}}顆星)
+              router-link(:to="getFastRoute(g)", :style="{color: g.hex || '#42b983'}") {{ g.id }} - {{ g.t }}({{g.stars}}顆星)
                 i.right.arrow.icon
 </template>
 
