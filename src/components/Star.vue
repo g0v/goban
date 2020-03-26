@@ -56,7 +56,7 @@ export default {
         this.stars[id] = r
       }
       localStorage.setItem('stars', JSON.stringify(this.stars))
-      this.setStars(id, this.gobans[id], this.stars[id], or)
+      this.setStars(id, this.gobans[id], this.stars[id], or, this.starsFire[this.gobans[id]])
       this.$forceUpdate()
     },
     loadStars: function () {

@@ -51,9 +51,9 @@
                 | {{decodeURIComponent(d.name)}}
                 img.ui.mini.image(src='/static/images/isClosed.png', v-show='!d.open')
                 img.ui.mini.image(src='/static/images/isOpen.png', v-show='d.open')
-      .twelve.wide.column(@mouseout='reload()')
-        | 為「{{myName || $route.params.id}}」打星等:
-        a(v-for = "j in [1,2,3,4,5]" @click='handleRate($route.params.id, j)')
+      .twelve.wide.column(@mouseout='reload()' v-if ="starsFire")
+        | 為「{{myName || $route.params.id}}」打星等(目前{{starsFire[$route.params.id]}}顆星):
+        a(v-for = "j in [1,2,3,4,5]" @click='handleRate($route.params.id, j)' v-if = "stars")
           sui-icon(name='star', :class="stars[$route.params.id] >= j ? 'yellow' : 'gray'")
         iframe#iframe(v-if = "getSrc()" name='iframe', :src='getSrc()', alt="Loading...")
         .ui.active.dimmer(v-else)
@@ -63,7 +63,7 @@
 <script>
 
 import mixin from '../mixins/mixin.js'
-import stars from '../mixins/stars.js'
+import ss from '../mixins/stars.js'
 
 export default {
   name: 'See',
@@ -73,8 +73,8 @@ export default {
       stars: {'goban_intro': 5}
     }
   },
-  props: ['gobans', 'mydata', 'myName'],
-  mixins: [stars, mixin],
+  props: ['gobans', 'mydata', 'myName', 'starsFire'],
+  mixins: [ss, mixin],
   methods: {
     getRoute: function (useLev) {
       var ans
@@ -149,7 +149,7 @@ export default {
         this.stars[id] = r
       }
       localStorage.setItem('stars', JSON.stringify(this.stars))
-      this.setStars(id, (this.gobans && this.gobans[id]) || 'goban_intro', this.stars[id], or)
+      this.setStars(id, (this.gobans && this.gobans[id]) || 'goban_intro', this.stars[id], or, this.starsFire[id])
       this.$forceUpdate()
     },
     loadStars: function () {
