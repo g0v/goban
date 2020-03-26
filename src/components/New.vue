@@ -34,15 +34,15 @@
         .colmun
           h3.ui.header 人氣棋盤
           span(v-for = "g in gobans", :key='g.id')
-            .inner(v-if = "g.stars > 5")
-              router-link(:to="getFastRoute(g)", :style="{color: g.hex || '#42b983'}") {{ g.id }} - {{ g.t }}({{g.stars}}顆星)
+            .inner(v-if = "starsFire[g.id] > 5")
+              router-link(:to="getFastRoute(g)", :style="{color: g.hex || '#42b983'}") {{ g.id }} - {{ g.t }}({{starsFire[g.id]}}顆星)
                 i.right.arrow.icon
 </template>
 
 <script>
 
 import mixin from '../mixins/mixin.js'
-import star from '../mixins/stars.js'
+import ss from '../mixins/stars.js'
 
 export default {
   data () {
@@ -52,9 +52,8 @@ export default {
       stars: {'goban_intro': 5}
     }
   },
-  props: ['gobans', 'user'],
-  mixins: [mixin, star],
-  localStorage: ['stars'],
+  props: ['gobans', 'user', 'starsFire'],
+  mixins: [mixin, ss],
   methods: {
     tryIt: function () {
       this.$emit('tryIt')

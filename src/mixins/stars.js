@@ -29,6 +29,7 @@ export default {
       obj.use_lev = obj.use_lev || false
       obj.stars = (obj.stars || 0) + s - (or || 0)
       db.ref('gobans/' + k).set(obj)
+      db.ref('stars/' + k).set(s - (or || 0))
     }
   }
 }

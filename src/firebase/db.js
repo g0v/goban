@@ -18,3 +18,4 @@ export const db = firebase
 
 export const gobansRef = db.ref('gobans')
 export const chatsRef = db.ref('chats')
+export const starsRef = db.ref('stars')

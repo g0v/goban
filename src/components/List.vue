@@ -19,7 +19,7 @@
               router-link(:to="'update/' + g.id" , data-content="設定", title="設定")
                 i.cogs.icon
               router-link(:to="getFastRoute(g)" )
-                h2.ui.header(:style="{color: g.hex || '#42b983'}") {{ g.id }} - {{ g.t }}({{g.stars || 0}}顆星)
+                h2.ui.header(:style="{color: g.hex || '#42b983'}") {{ g.id }} - {{ g.t }}({{starsFire[g.id] || 0}}顆星)
               p 相關棋盤:
                 br
                 router-link.r(v-for = "r in g.related", :key="r", :to="getFastRoute(g)" ) {{ r }}
@@ -36,15 +36,15 @@
         .colmun
           h3.ui.header 人氣棋盤
           span(v-for = "g in gobans", :key='g.id')
-            .inner(v-if = "g.stars > 5")
-              router-link(:to="getFastRoute(g)", :style="{color: g.hex || '#42b983'}") {{ g.id }} - {{ g.t }}({{g.stars}}顆星)
+            .inner(v-if = "starsFire[g.id] > 5")
+              router-link(:to="getFastRoute(g)", :style="{color: g.hex || '#42b983'}") {{ g.id }} - {{ g.t }}({{starsFire[g.id]}}顆星)
                 i.right.arrow.icon
 </template>
 
 <script>
 
 import mixin from '../mixins/mixin.js'
-import star from '../mixins/stars.js'
+import ss from '../mixins/stars.js'
 
 export default {
   data () {
@@ -54,9 +54,8 @@ export default {
       stars: {'goban_intro': 5}
     }
   },
-  props: ['gobans'],
-  mixins: [mixin, star],
-  localStorage: ['stars'],
+  props: ['gobans', 'starsFire'],
+  mixins: [mixin, ss],
   methods: {
     create: function (k) {
       this.$emit('create', k)

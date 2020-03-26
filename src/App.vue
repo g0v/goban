@@ -55,7 +55,7 @@
           i.chat.icon
         a.item(href="https://github.com/g0v/goban", target="_blank")
           i.github.icon
-    router-view(:uid="uid", :user ="user", :myUser="myUser", :users="users", :gobans='gobans', :mydata="mydata" @create='create', :chats = "chats", :myName="myName",
+    router-view(:uid="uid", :user ="user", :myUser="myUser", :users="users", :gobans='gobans', :starsFire="starsFire", :mydata="mydata" @create='create', :chats = "chats", :myName="myName",
      @submit = "submit",
      @setDataToFireBase = "setDataToFireBase",
      @loadDataFromFireBase = "loadDataFromFireBase",
@@ -69,10 +69,10 @@
 /* eslint-disable */
 
 import mixin from './mixins/mixin.js'
-import stars from './mixins/stars.js'
+import ss from './mixins/stars.js'
 import firebase from 'firebase/app'
 import 'firebase/auth'
-import { db, gobansRef, chatsRef } from './firebase/db'
+import { db, gobansRef, chatsRef, starsRef } from './firebase/db'
 
 export default {
   name: 'App',
@@ -86,13 +86,15 @@ export default {
       stars: {'goban_intro': 5},
       gobans: undefined,
       chats: undefined,
+      starsFire: undefined,
       mydata: [{"name":"知識棋盤共筆頁","url":"https://hackmd.io/3pvyN_W9TjSsuBok4w2XYA","note":"","type":"link"}]
     }
   },
-  mixins: [stars, mixin],
+  mixins: [ss, mixin],
   firebase: {
     gobans: gobansRef,
-    chats: chatsRef
+    chats: chatsRef,
+    starsFire: starsRef
   },
   methods: {
     loginGoogle: function () {
