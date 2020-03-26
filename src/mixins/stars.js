@@ -21,6 +21,7 @@ export default {
     },
     setStars: function (k, o, s, or, starsFire) {
       console.log(starsFire)
+      if (!starsFire) { starsFire = 0 }
       var obj = o || {id: k}
       obj.id = k
       obj.t = obj.t || k
@@ -30,7 +31,7 @@ export default {
       obj.use_lev = obj.use_lev || false
       obj.stars = (obj.stars || 0) + s - (or || 0)
       db.ref('gobans/' + k).set(obj)
-      db.ref('stars/' + k).set((starsFire || 0) + (s - (or || 0)))
+      db.ref('stars/' + k).set(starsFire + (s - (or || 0)))
     }
   }
 }
