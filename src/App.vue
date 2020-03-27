@@ -27,7 +27,7 @@
         router-link.item(to = "/chat")
           i.chat.icon
           | 留言板
-        a.item(href="https://github.com/g0v/goban", target="_blank")
+        a.item(href="https://github.com/g0v/goban")
           i.github.icon
           | 原始碼
         .item
@@ -55,7 +55,8 @@
           i.chat.icon
         a.item(href="https://github.com/g0v/goban", target="_blank")
           i.github.icon
-    router-view(:uid="uid", :user ="user", :myUser="myUser", :users="users", :gobans='gobans', :starsFire="starsFire", :mydata="mydata" @create='create', :chats = "chats", :myName="myName",
+    router-view(:uid="uid", :user ="user", :myUser="myUser", :users="users", :gobans='gobans', :starsFire="starsFire", :mydata="mydata" @create='create', :chats = "chats", :myName="myName", :myWindowWidth = "myWindowWidth",
+     @onResize = "onResize",
      @submit = "submit",
      @setDataToFireBase = "setDataToFireBase",
      @loadDataFromFireBase = "loadDataFromFireBase",
@@ -78,6 +79,8 @@ export default {
   name: 'App',
   data () {
     return {
+      txt: '',
+      myWindowWidth: 420,
       myName: '',
       uid: '',   // main id
       user: undefined, // user object
@@ -97,6 +100,9 @@ export default {
     starsFire: starsRef
   },
   methods: {
+    onResize (w) {
+      this.myWindowWidth = w || window.innerWidth
+    },
     loginGoogle: function () {
       var vm = this
       var provider = new firebase.auth.GoogleAuthProvider()
@@ -154,7 +160,7 @@ export default {
       }
       return ans
     },
-    reload: function () {
+    reload: function (newTab, to, from) {
       console.log('reload...')
       // GET /someUrl
       this.$http.get(this.srcURL()).then(response => {
@@ -163,6 +169,16 @@ export default {
         this.mydata = this.parse(response.body)
         if (this.$route.params.id) {
           this.setDataToFireBase(this.$route.params.id, this.$route.params.lev, this.mydata)
+        }
+        if (newTab) {
+          console.log('opening...')
+          var t;
+          if (to.params.index === 'new') {
+            t = 'https://ethercalc.org/' + to.params.id + (to.params.lev || '')
+          } else {
+            t = this.mydata[to.params.index].url
+          }
+          window.open(t, '_blank')
         }
         this.$forceUpdate()
       }, response => {
@@ -183,15 +199,17 @@ export default {
   },
   watch: {
     $route (to, from) {
-      console.log(from.path)
-      console.log(to.path)
+      //console.log(from.path)
+      //console.log(to.path)
+      console.log(from)
+      console.log(to)
       this.$gtag.event('action', {
         event_category: 'navigate',
         event_action: 'from:' + from.path + ' to:' + to.path,
         event_label: 'from:' + from.path + ' to:' + to.path,
         value: 'from:' + from.path + ' to:' + to.path
       })
-      this.reload()
+      this.reload(true, to, from)
     },
     gobans (n, o) {
       if (o) {

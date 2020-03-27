@@ -1,6 +1,6 @@
 <template lang="pug">
   .hello
-    vue-headful(v-if = "gobans" :title="$route.params.id + ' > ' + ($route.params.lev || '') + '@知識棋盤'", description="gobans && gobans[$route.params.id].t")
+    vue-headful(v-if = "gobans" :title="$route.params.id + ' > ' + getLev($route.params.lev) + '@知識棋盤'", description="gobans && gobans[$route.params.id].t")
     .ui.fixed.top.menu#navbar
       router-link.item(to='/', data-content="首頁", title="首頁")
         sui-icon(size='small', name='home')
@@ -29,10 +29,19 @@
           | 編輯
           sui-icon(size='small', name='right arrow')
     .ui.grid
-      .left.aligned.column(:class = " windowWidth > 600 ? 'four wide column' : 'eight wide column' ")
+      .ui.row
+        span(style = "margin-left: 1em;")
+          strong 打星等
+          br
+          | (目前
+          | {{starsFire[$route.params.id]}}顆星)
+        br.thin-only
+        a(v-for = "j in [1,2,3,4,5]" @click='handleRate($route.params.id, j)' v-if = "stars")
+          sui-icon(name='star', :class="stars[$route.params.id] >= j ? 'yellow' : 'gray'")
+      .left.aligned.column(:class = " windowwidth > 600 ? 'four wide column' : 'fourteen wide column' ")
         .ui.link.relaxed.list(v-if="gobans")
           router-link.item#e(:to="getRoute(gobans[$route.params.id].use_lev)", data-content="編輯", title="編輯")
-            h3.ui.header#e-text()
+            h3.ui.header#e-text(v-show = "$route.params.id")
               | {{myName || $route.params.id + ($route.params.lev || '')}}
               i#e-icon.inline.edit.icon
           hr
@@ -51,14 +60,7 @@
                 | {{decodeURIComponent(d.name)}}
                 img.ui.mini.image(src='/static/images/isClosed.png', v-show='!d.open')
                 img.ui.mini.image(src='/static/images/isOpen.png', v-show='d.open')
-      div(@mouseout='reload()' v-if ="starsFire" :class = " windowWidth > 600 ? 'twelve wide column' : 'eight wide column' ")
-        | 為「{{myName || $route.params.id}}」打星等
-        br
-        | 目前
-        | {{starsFire[$route.params.id]}}顆星:
-        br.thin-only
-        a(v-for = "j in [1,2,3,4,5]" @click='handleRate($route.params.id, j)' v-if = "stars")
-          sui-icon(name='star', :class="stars[$route.params.id] >= j ? 'yellow' : 'gray'")
+      div(v-if ="starsFire" v-show = "windowwidth > 600", :class = " windowwidth > 600 ? 'twelve wide column' : 'zero wide column' ")
         iframe#iframe(v-if = "getSrc()" name='iframe', :src='getSrc()', alt="Loading...")
         .ui.active.dimmer(v-else)
           .ui.text.loader Loading...
@@ -73,8 +75,7 @@ export default {
   name: 'See',
   data () {
     return {
-      txt: '',
-      windowWidth: window.width,
+      windowwidth: window.width,
       name: 'See',
       stars: {'goban_intro': 5}
     }
@@ -82,6 +83,15 @@ export default {
   props: ['gobans', 'mydata', 'myName', 'starsFire'],
   mixins: [ss, mixin],
   methods: {
+    getLev (lev) {
+      if (lev === undefined || lev === 'undefined') {
+        return ''
+      } else { return lev }
+    },
+    onResize () {
+      this.windowwidth = window.innerWidth
+      this.$emit('onResize', window.innerWidth)
+    },
     getRoute: function (useLev) {
       var ans
       if (useLev) {
@@ -143,9 +153,6 @@ export default {
         return 'iframe'
       }
     },
-    reload: function () {
-      this.$emit('reload')
-    },
     handleRate: function (id, r) {
       var or = this.stars[id]
       if (!this.stars[id]) { this.stars[id] = 0 }
@@ -162,13 +169,9 @@ export default {
       try {
         this.stars = JSON.parse(localStorage.getItem('stars'))
       } catch (e) {}
-    },
-    onResize () {
-      this.windowWidth = window.innerWidth
     }
   },
   mounted: function () {
-    this.reload()
     if (this.checkJSON(localStorage.getItem('stars'))) {
       this.loadStars()
     } else {
@@ -179,7 +182,7 @@ export default {
     })
   },
   watch: {
-    windowWidth (newWidth, oldWidth) {
+    windowwidth (newWidth, oldWidth) {
       this.txt = `it changed to ${newWidth} from ${oldWidth}`
     }
   },
