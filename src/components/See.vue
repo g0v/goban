@@ -38,7 +38,7 @@
         br.thin-only
         a(v-for = "j in [1,2,3,4,5]" @click='handleRate($route.params.id, j)' v-if = "stars")
           sui-icon(name='star', :class="stars[$route.params.id] >= j ? 'yellow' : 'gray'")
-      .left.aligned.column(:class = " windowwidth > 600 ? 'four wide column' : 'fourteen wide column' ")
+      .left.aligned.column(:class = " windowwidth > 500 ? 'four wide column' : 'fourteen wide column' ")
         .ui.link.relaxed.list(v-if="gobans")
           router-link.item#e(:to="getRoute(gobans[$route.params.id].use_lev)", data-content="編輯", title="編輯")
             h3.ui.header#e-text(v-show = "$route.params.id")
@@ -50,17 +50,20 @@
               span(v-if='d.parentIndex')
               a.link(:href='decodeURIComponent(d.url)', target='_blank', v-if="tar(d) == '_blank'")
                 | {{ decodeURIComponent(d.name) }}
+                span.note(v-if="d.note2") {{ d.note2 }}
                 img.floating.right(:src="'https://www.google.com/s2/favicons?domain=' + d.url")
                 sui-icon.floating.right(name='right arrow')
               router-link.link(v-else='', :to="'/see/' + $route.params.id + '/' + $route.params.lev + '/' + index")
                 | {{ decodeURIComponent(d.name) }}
+                span.note(v-if="d.note2") {{ d.note2 }}
                 img.floating.right(:src="'https://www.google.com/s2/favicons?domain=' + decodeURIComponent(d.url)")
             div(v-if="d.type == 'folder'")
               a(@click='d.open = !d.open')
                 | {{decodeURIComponent(d.name)}}
+                span.note(v-if="d.note2") {{ d.note2 }}
                 img.ui.mini.image(src='/static/images/isClosed.png', v-show='!d.open')
                 img.ui.mini.image(src='/static/images/isOpen.png', v-show='d.open')
-      div(v-if ="starsFire" v-show = "windowwidth > 600", :class = " windowwidth > 600 ? 'twelve wide column' : 'zero wide column' ")
+      div(v-if ="starsFire" v-show = "windowwidth > 500", :class = " windowwidth > 500 ? 'twelve wide column' : 'zero wide column' ")
         iframe#iframe(v-if = "getSrc()" name='iframe', :src='getSrc()', alt="Loading...")
         .ui.active.dimmer(v-else)
           .ui.text.loader Loading...
@@ -75,7 +78,7 @@ export default {
   name: 'See',
   data () {
     return {
-      windowwidth: window.width,
+      windowwidth: window.innerWidth,
       name: 'See',
       stars: {'goban_intro': 5}
     }
@@ -241,5 +244,13 @@ export default {
   }
   #iframe {
     background-color: white !important;
+  }
+
+  span.note {
+    background-color: gray;
+    border-radius: 5px;
+    display: inline-block;
+    padding: .2em .5em;
+    margin-left: .5em;
   }
 </style>

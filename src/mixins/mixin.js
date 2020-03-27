@@ -74,6 +74,7 @@ export default {
         obj.name = l[1]
         obj.url = l[0].replace('%20', '').replace(' ', '')
         obj.note = l[2]
+        obj.note2 = l[3]
         return obj
       }).filter(function (o) {
         return o.name

@@ -160,7 +160,7 @@ export default {
       }
       return ans
     },
-    reload: function (newTab, to, from) {
+    reload: function (newTab, to, from, myWindowWidth) {
       console.log('reload...')
       // GET /someUrl
       this.$http.get(this.srcURL()).then(response => {
@@ -170,7 +170,7 @@ export default {
         if (this.$route.params.id) {
           this.setDataToFireBase(this.$route.params.id, this.$route.params.lev, this.mydata)
         }
-        if (newTab) {
+        if (newTab && myWindowWidth <= 500) {
           console.log('opening...')
           var t;
           if (to.params.index === 'new') {
@@ -220,6 +220,7 @@ export default {
 }
 </script>
 <style>
+
 body {
   background-color: hsla(120, 30%, 30%, 1) !important;
 }
