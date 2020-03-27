@@ -4,7 +4,7 @@
     .ui.fixed.top.menu#navbar
       router-link.item(to='/', data-content="首頁", title="首頁")
         sui-icon(size='small', name='home')
-      router-link.item(to='/star', data-content="珍藏", title="珍藏")
+      //router-link.item(to='/star', data-content="珍藏", title="珍藏")
         sui-icon(size='small', name='star', :style="{color: stars[$route.params.id] ? '#F4D03F' : 'gray'}")
       router-link.item(:to = "'/update/' + $route.params.id", data-content="設定", title="設定")
         i.cogs.icon
@@ -29,20 +29,20 @@
           | 編輯
           sui-icon(size='small', name='right arrow')
     .ui.grid
-      .four.wide.left.aligned.column
-        .ui.list(v-if="gobans")
+      .left.aligned.column(:class = " windowWidth > 600 ? 'four wide column' : 'eight wide column' ")
+        .ui.link.relaxed.list(v-if="gobans")
           router-link.item#e(:to="getRoute(gobans[$route.params.id].use_lev)", data-content="編輯", title="編輯")
             h3.ui.header#e-text()
               | {{myName || $route.params.id + ($route.params.lev || '')}}
-              i#e-icon.inline.edit.large.icon
+              i#e-icon.inline.edit.icon
           hr
-          .item(v-for='(d, index) in mydata', :key='index')
-            div(v-if="d.type == 'link'", v-show='!d.parentIndex || mydata[d.parentIndex].open || d.parentIndex < 0')
+          .item(v-for='(d, index, order) in mydata', :key='index')
+            div(v-if="d.type == 'link'", v-show='!d.parentIndex || mydata[d.parentIndex].open || d.parentIndex < 0' :class = "order = $route.params.index ? 'active' : ''")
               span(v-if='d.parentIndex')
               a.link(:href='decodeURIComponent(d.url)', target='_blank', v-if="tar(d) == '_blank'")
                 | {{ decodeURIComponent(d.name) }}
                 img.floating.right(:src="'https://www.google.com/s2/favicons?domain=' + d.url")
-                sui-icon(name='right arrow')
+                sui-icon.floating.right(name='right arrow')
               router-link.link(v-else='', :to="'/see/' + $route.params.id + '/' + $route.params.lev + '/' + index")
                 | {{ decodeURIComponent(d.name) }}
                 img.floating.right(:src="'https://www.google.com/s2/favicons?domain=' + decodeURIComponent(d.url)")
@@ -51,8 +51,12 @@
                 | {{decodeURIComponent(d.name)}}
                 img.ui.mini.image(src='/static/images/isClosed.png', v-show='!d.open')
                 img.ui.mini.image(src='/static/images/isOpen.png', v-show='d.open')
-      .twelve.wide.column(@mouseout='reload()' v-if ="starsFire")
-        | 為「{{myName || $route.params.id}}」打星等(目前{{starsFire[$route.params.id]}}顆星):
+      div(@mouseout='reload()' v-if ="starsFire" :class = " windowWidth > 600 ? 'twelve wide column' : 'eight wide column' ")
+        | 為「{{myName || $route.params.id}}」打星等
+        br
+        | 目前
+        | {{starsFire[$route.params.id]}}顆星:
+        br.thin-only
         a(v-for = "j in [1,2,3,4,5]" @click='handleRate($route.params.id, j)' v-if = "stars")
           sui-icon(name='star', :class="stars[$route.params.id] >= j ? 'yellow' : 'gray'")
         iframe#iframe(v-if = "getSrc()" name='iframe', :src='getSrc()', alt="Loading...")
@@ -69,6 +73,8 @@ export default {
   name: 'See',
   data () {
     return {
+      txt: '',
+      windowWidth: window.width,
       name: 'See',
       stars: {'goban_intro': 5}
     }
@@ -156,6 +162,9 @@ export default {
       try {
         this.stars = JSON.parse(localStorage.getItem('stars'))
       } catch (e) {}
+    },
+    onResize() {
+      this.windowWidth = window.innerWidth
     }
   },
   mounted: function () {
@@ -165,6 +174,17 @@ export default {
     } else {
       localStorage.setItem('stars', JSON.stringify(this.stars))
     }
+    this.$nextTick(() => {
+      window.addEventListener('resize', this.onResize)
+    })
+  },
+  watch: {
+    windowWidth(newWidth, oldWidth) {
+     this.txt = `it changed to ${newWidth} from ${oldWidth}`
+    }
+  },
+  beforeDestroy() { 
+    window.removeEventListener('resize', this.onResize) 
   }
 }
 </script>
@@ -172,7 +192,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
   #e {
-    margin: 0 1em;
+    margin: 0;
   }
   #e-icon {
     margin-left: .2em;

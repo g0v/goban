@@ -275,7 +275,7 @@ a, button {
   }
 }
 
-@media screen and (min-width: 420px) {
+@media screen and (min-width: 600px) {
   .thin-only {
     display: none !important;
   }
