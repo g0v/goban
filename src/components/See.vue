@@ -51,12 +51,12 @@
               a.link(:href='decodeURIComponent(d.url)', target='_blank', v-if="tar(d) == '_blank'")
                 | {{ decodeURIComponent(d.name) }}
                 span.note(v-if="d.note2") {{ d.note2 }}
-                img.floating.right(:src="'https://www.google.com/s2/favicons?domain=' + d.url")
+                img.favicon.floating.right(:src="'https://www.google.com/s2/favicons?domain=' + d.url")
                 sui-icon.floating.right(name='right arrow')
               router-link.link(v-else='', :to="'/see/' + $route.params.id + '/' + $route.params.lev + '/' + index")
                 | {{ decodeURIComponent(d.name) }}
                 span.note(v-if="d.note2") {{ d.note2 }}
-                img.floating.right(:src="'https://www.google.com/s2/favicons?domain=' + decodeURIComponent(d.url)")
+                img.favicon.floating.right(:src="'https://www.google.com/s2/favicons?domain=' + decodeURIComponent(d.url)")
             div(v-if="d.type == 'folder'")
               a(@click='d.open = !d.open')
                 | {{decodeURIComponent(d.name)}}
@@ -217,6 +217,11 @@ export default {
   }
   .floating.right {
     float: right;
+  }
+  .favicon {
+    filter: grayscale(100%) brightness(150%);
+    background-color: white;
+    border-radius: 50%;
   }
   .ui.dropdown {
     position: relative;
