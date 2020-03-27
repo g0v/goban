@@ -163,7 +163,7 @@ export default {
         this.stars = JSON.parse(localStorage.getItem('stars'))
       } catch (e) {}
     },
-    onResize() {
+    onResize () {
       this.windowWidth = window.innerWidth
     }
   },
@@ -179,12 +179,12 @@ export default {
     })
   },
   watch: {
-    windowWidth(newWidth, oldWidth) {
-     this.txt = `it changed to ${newWidth} from ${oldWidth}`
+    windowWidth (newWidth, oldWidth) {
+      this.txt = `it changed to ${newWidth} from ${oldWidth}`
     }
   },
-  beforeDestroy() { 
-    window.removeEventListener('resize', this.onResize) 
+  beforeDestroy () {
+    window.removeEventListener('resize', this.onResize)
   }
 }
 </script>
