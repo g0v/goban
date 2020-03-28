@@ -24,7 +24,7 @@
         | 介紹
     .ui.divider
     .ui.grid
-      .ui.two.column.doubling.row
+      .ui.one.column.row
         .column
           h3.ui.header 快速前往
           span(v-for = "g in gobans", :key='g.id')
