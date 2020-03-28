@@ -38,7 +38,7 @@
           sui-icon(name='star', :class="stars[$route.params.id] >= j ? 'yellow' : 'gray'")
       .left.aligned.column(:class = " windowwidth > 500 ? 'four wide column' : 'fourteen wide column' ")
         .ui.link.relaxed.list(v-if="gobans")
-          a.item#e(:href="getRoute(gobans[$route.params.id].use_lev)", :target="getTarget()")
+          a.item#e(:href="editURL()", :target="getTarget()")
             h3.ui.header#e-text(v-show = "$route.params.id")
               | {{myName || $route.params.id + ($route.params.lev || '')}}
               i#e-icon.inline.edit.icon
