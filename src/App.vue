@@ -178,7 +178,7 @@ export default {
           } else {
             t = this.mydata[to.params.index].url
           }
-          window.open(t, '_blank')
+          // window.open(t, '_blank')
         }
         this.$forceUpdate()
       }, response => {

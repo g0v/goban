@@ -1,11 +1,9 @@
 <template lang="pug">
-  .hello
-    vue-headful(v-if = "gobans" :title="$route.params.id + ' > ' + ($route.params.lev || '') + '@知識棋盤'", description="gobans && gobans[$route.params.id].t")
+  .hello()
+    vue-headful(v-if = "gobans" :title="$route.params.id + ' > ' + '@知識棋盤'", description="gobans && gobans[$route.params.id].t")
     .ui.fixed.top.menu#navbar
       router-link.item(to='/', data-content="首頁", title="首頁")
         sui-icon(size='small', name='home')
-      //router-link.item(to='/star', data-content="珍藏", title="珍藏")
-        sui-icon(size='small', name='star', :style="{color: stars[$route.params.id] ? '#F4D03F' : 'gray'}")
       router-link.item(:to = "'/update/' + $route.params.id", data-content="設定", title="設定")
         i.cogs.icon
       sui-dropdown.item(text = "相關", v-if='gobans && gobans[$route.params.id] && gobans[$route.params.id].id')
@@ -40,7 +38,7 @@
           sui-icon(name='star', :class="stars[$route.params.id] >= j ? 'yellow' : 'gray'")
       .left.aligned.column(:class = " windowwidth > 500 ? 'four wide column' : 'fourteen wide column' ")
         .ui.link.relaxed.list(v-if="gobans")
-          router-link.item#e(:to="getRoute(gobans[$route.params.id].use_lev)", data-content="編輯", title="編輯")
+          a.item#e(:href="getRoute(gobans[$route.params.id].use_lev)", :target="getTarget()")
             h3.ui.header#e-text(v-show = "$route.params.id")
               | {{myName || $route.params.id + ($route.params.lev || '')}}
               i#e-icon.inline.edit.icon
@@ -48,15 +46,16 @@
           .item(v-for='(d, index, order) in mydata', :key='index')
             div(v-if="d.type == 'link'", v-show='!d.parentIndex || mydata[d.parentIndex].open || d.parentIndex < 0' :class = "order = $route.params.index ? 'active' : ''")
               span(v-if='d.parentIndex')
-              a.link(:href='decodeURIComponent(d.url)', target='_blank', v-if="tar(d) == '_blank'")
+              a.link(:href='decodeURIComponent(d.url)', target='_blank', v-if="tar(d) == '_blank'" @click="pushRoute(gobans[$route.params.id].use_lev, index)")
                 | {{ decodeURIComponent(d.name) }}
                 span.note(v-if="d.note2") {{ d.note2 }}
                 img.favicon.floating.right(:src="'https://www.google.com/s2/favicons?domain=' + d.url")
                 sui-icon.floating.right(name='right arrow')
-              router-link.link(v-else='', :to="'/see/' + $route.params.id + '/' + $route.params.lev + '/' + index")
+              a.link(v-else='', :href='decodeURIComponent(d.url)', :target='getTarget()' @click="pushRoute(gobans[$route.params.id].use_lev, index)")
                 | {{ decodeURIComponent(d.name) }}
                 span.note(v-if="d.note2") {{ d.note2 }}
-                img.favicon.floating.right(:src="'https://www.google.com/s2/favicons?domain=' + decodeURIComponent(d.url)")
+                img.favicon.floating.right(:src="'https://www.google.com/s2/favicons?domain=' + d.url")
+                sui-icon.floating.right(v-if = "windowwidth < 500" , name='right arrow')
             div(v-if="d.type == 'folder'")
               a(@click='d.open = !d.open')
                 | {{decodeURIComponent(d.name)}}
@@ -75,7 +74,7 @@ import mixin from '../mixins/mixin.js'
 import ss from '../mixins/stars.js'
 
 export default {
-  name: 'See',
+  name: 'See2',
   data () {
     return {
       windowwidth: window.innerWidth,
@@ -86,9 +85,30 @@ export default {
   props: ['gobans', 'mydata', 'myName', 'starsFire'],
   mixins: [ss, mixin],
   methods: {
+    getTarget (windowwidth) {
+      if (this.windowwidth < 500) {
+        return '_blank'
+      } else {
+        return 'iframe'
+      }
+    },
+    pushRoute (useLev, idx) {
+      console.log('pushRoute')
+      console.log(idx)
+      this.$router.push(this.getNewRoute(useLev, idx))
+    },
     onResize () {
       this.windowwidth = window.innerWidth
       this.$emit('onResize', window.innerWidth)
+    },
+    getNewRoute: function (useLev, idx) {
+      var ans
+      if (useLev) {
+        ans = '/see/' + this.$route.params.id + '/' + this.$route.params.lev + '/' + idx
+      } else {
+        ans = '/s/' + this.$route.params.id + '/' + idx
+      }
+      return ans
     },
     getRoute: function (useLev) {
       var ans
@@ -167,6 +187,9 @@ export default {
       try {
         this.stars = JSON.parse(localStorage.getItem('stars'))
       } catch (e) {}
+    },
+    reload: function () {
+      this.$emit('reload', true, this.$route, null)
     }
   },
   mounted: function () {
@@ -178,10 +201,14 @@ export default {
     this.$nextTick(() => {
       window.addEventListener('resize', this.onResize)
     })
+    this.reload()
   },
   watch: {
     windowwidth (newWidth, oldWidth) {
       this.txt = `it changed to ${newWidth} from ${oldWidth}`
+    },
+    gobans (n, o) {
+      this.reload()
     }
   },
   beforeDestroy () {
