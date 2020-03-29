@@ -6,7 +6,7 @@
       | 創建後請至少輸入一筆資料，謝謝
       br
       | 如不知如何輸入，請參考
-      router-link(to="/intro").black 介紹頁
+      router-link(to="/intro").black#intro 介紹頁
       .ui.form
         .field
           .ui.checkbox
@@ -21,7 +21,10 @@
       .field
         input(type='search', name='', v-model='myKey', placeholder='輸入新棋盤的id', @keydown.enter = "($router.push('/see/' + myKey + '/0/new'))")
     .ui.container
-      a.ui.green.huge.button(@click='create(myKey, {}, uid)', v-if='myKey && !gobans[myKey]') 創建{{myKey}}
+      .ui.buttons(v-if='myKey && !gobans[myKey]')
+        button.ui.blue.button(@click="create(myKey, {'use_lev' : false}, uid)") 創建簡單的{{myKey}}
+        .or
+        button.ui.green.button(@click="create(myKey, {'use_lev' : true}, uid)") 創建有層級的{{myKey}}
       .ui.negative.message(v-else v-show="myKey") 對不起， {{myKey}}已存在
         router-link(:to="'/see/' + myKey + '/0/0'") 前往 {{ myKey }}
 </template>
@@ -87,6 +90,10 @@ li {
 }
 a.black {
   color: #000 !important;
+}
+
+a#intro {
+  text-decoration: underline;
 }
 
 .column .inner {

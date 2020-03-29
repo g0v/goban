@@ -2,11 +2,12 @@
   .hello
     h1.ui.header 讓知識星棋羅列
     h3.sub.header 網址集錦共同筆記
-    .ui.vertical.buttons(v-if="!user")
-      a.ui.orange.huge.button(@click="loginGoogle()")
+    .ui.buttons(v-if="!user")
+      a.ui.orange.button(@click="loginGoogle()")
         i.google.icon
         | 以Google登入
-      a.ui.blue.huge.button(@click="tryIt()")
+      .or
+      a.ui.blue.button(@click="tryIt()")
         i.lab.icon
         | 試用
     .ui.vertical.buttons(v-if="user")
@@ -27,13 +28,13 @@
       .ui.one.column.row
         .column
           h3.ui.header 快速前往
-          span(v-for = "g in gobans", :key='g.id')
+          span(v-for = "(g, idx, order) in gobans", :key='order')
             .inner(v-if = "stars[g.id] > 0")
               router-link(:to="getFastRoute(g)", :style="{color: g.hex || '#42b983'}") {{ g.id }} - {{ g.t }}
                 i.right.arrow.icon
           h3.ui.header 人氣棋盤
-          span(v-for = "g in gobans", :key='g.id')
-            .inner(v-if = "starsFire[g.id] > 5")
+          span(v-for = "(g, idx) in gobans", :key='idx')
+            .inner(v-if = "starsFire && starsFire[g.id] > 5")
               router-link(:to="getFastRoute(g)", :style="{color: g.hex || '#42b983'}") {{ g.id }} - {{ g.t }}({{starsFire[g.id]}}顆星)
                 i.right.arrow.icon
 </template>
