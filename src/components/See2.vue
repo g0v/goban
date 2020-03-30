@@ -1,7 +1,7 @@
 <template lang="pug">
   .hello()
-    vue-headful(v-if = "gobans" :title="$route.params.id + ' > ' + ($route.params.lev || '') + '@知識棋盤'", description="gobans && gobans[$route.params.id].t")
-    .ui.fixed.top.menu#navbar
+    vue-headful(v-if = "gobans" :title="$route.params.id + ' > ' + $route.params.lev + '@知識棋盤'", description="gobans && gobans[$route.params.id].t")
+    .ui.fixed.top.menu#navbar.no-print
       router-link.item(to='/', data-content="首頁", title="首頁")
         sui-icon(size='small', name='home')
       router-link.item(:to = "'/update/' + $route.params.id", data-content="設定", title="設定")
@@ -26,7 +26,7 @@
         a.item(v-if="$route.params.index == 'new'", :href="editURL()", target='_blank', data-content="編輯", title="編輯")
           | 編輯
           sui-icon(size='small', name='right arrow')
-    .ui.grid
+    .ui.grid.no-print
       .ui.row
         span(style = "margin-left: 1em;")
           strong 打星等
@@ -62,10 +62,13 @@
                 span.note(v-if="d.note2") {{ d.note2 }}
                 img.ui.mini.image(src='/static/images/isClosed.png', v-show='!d.open')
                 img.ui.mini.image(src='/static/images/isOpen.png', v-show='d.open')
-      div(v-if ="starsFire" v-show = "windowwidth > 500", :class = " windowwidth > 500 ? 'twelve wide column' : 'zero wide column' ")
-        iframe#iframe(v-if = "getSrc()" name='iframe', :src='getSrc()', alt="Loading...")
+      div.no-print(v-if ="starsFire" v-show = "windowwidth > 500", :class = " windowwidth > 500 ? 'twelve wide column' : 'zero wide column' ")
+        iframe#iframe.no-print(v-if = "getSrc()" name='iframe', :src='getSrc()', alt="Loading...")
         .ui.active.dimmer(v-else)
           .ui.text.loader Loading...
+    .print-only {
+      h1.ui.header {{ $route.params.id }} @ 知識棋盤
+      img#qr(:src = "getQR()" , :alt="$route.params.id + ' @ 知識棋盤'")
 </template>
 
 <script>
@@ -100,6 +103,15 @@ export default {
     onResize () {
       this.windowwidth = window.innerWidth
       this.$emit('onResize', window.innerWidth)
+    },
+    getURL: function () {
+      return encodeURIComponent('http://goban.tw/#/see/' + this.$route.params.id + '/0/0')
+    },
+    getQR: function () {
+      var url = this.getURL()
+      var ans = 'https://chart.googleapis.com/chart?chs=300x300&cht=qr&choe=UTF-8&chl=' + url
+      console.log(ans)
+      return ans
     },
     getNewRoute: function (useLev, idx) {
       var ans

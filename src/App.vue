@@ -1,6 +1,6 @@
 <template lang="pug">
   portal-target#app(name="semantic-ui-vue")
-    .ui.fixed.top.labeled.icon.menu.fat-only
+    .ui.fixed.top.labeled.icon.menu.fat-only.no-print#nav1
       router-link.item(to='/')
         i.home.icon
         | 首頁
@@ -32,7 +32,7 @@
           | 原始碼
         .item
           iframe(src="https://www.facebook.com/plugins/share_button.php?href=http%3A%2F%2Fgoban.tw&layout=button_count&size=small&appId=485195848253155&width=71&height=20" width="80" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media")
-    .ui.fixed.top.menu.thin-only
+    .ui.fixed.top.menu.thin-only.no-print#nav1
       router-link.item(to='/')
         sui-icon(name='home', data-content="首頁", title="首頁")
       a.item(@click="$router.go(-1)" v-if = "$router.currentRoute.path != '/'", data-content="回上一頁", title="回上一頁")
@@ -225,6 +225,19 @@ body {
   background-color: hsla(120, 30%, 30%, 1) !important;
 }
 
+#app {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif,
+               'Microsoft JhengHei',
+                'Microsoft YaHei',
+                'STHeiti',
+                'Apple LiGothic Medium';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: white !important;
+  margin-top: 60px;
+}
+
 .ui.menu {
   background-color: hsla(30, 55%, 33%, 1) !important;
   border: none !important;
@@ -244,19 +257,6 @@ body {
 
 h3.sub.header {
   color: yellow !important;
-}
-
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif,
-               'Microsoft JhengHei',
-                'Microsoft YaHei',
-                'STHeiti',
-                'Apple LiGothic Medium';
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: white !important;
-  margin-top: 60px;
 }
 
 a {
@@ -324,5 +324,25 @@ a, button {
   left: 20px !important;
   color: black !important;
   text-shadow: 2px 2px white;
+}
+
+.print-only {
+  visibility: hidden !important;
+  display: none;
+}
+
+@media print {
+  .no-print, .no-print * {
+    height: 0 !important;
+    visibility: hidden !important;
+  }
+  .print-only {
+    visibility: visible !important;
+    display: block;
+  }
+  #navbar, #nav1, #navbar *, #nav1 * {
+    height: 0 !important;
+    visibility: hidden !important;
+  }
 }
 </style>
