@@ -54,7 +54,7 @@
                   span.note(v-if="d.note2") {{ d.note2 }}
                   img.ui.mini.image(src='/static/images/isClosed.png', v-show='!d.open')
                   img.ui.mini.image(src='/static/images/isOpen.png', v-show='d.open')
-            .item   
+            .item
               span(style = "margin-left: 1em;")
                 strong.white 請打星等
                 span.white
