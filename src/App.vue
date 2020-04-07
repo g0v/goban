@@ -280,6 +280,10 @@ a.r {
   color: #ccc !important;
 }
 
+.white {
+  color: white !important;
+}
+
 a, button {
   cursor:pointer;
 }

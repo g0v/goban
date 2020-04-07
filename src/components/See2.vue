@@ -28,47 +28,47 @@
           sui-icon(size='small', name='right arrow')
     .ui.grid.no-print
       .ui.row
-        span(style = "margin-left: 1em;")
-          strong 打星等
-          br
-          | (目前
-          | {{starsFire[$route.params.id]}}顆星)
-        br.thin-only
-        a(v-for = "j in [1,2,3,4,5]" @click='handleRate($route.params.id, j)' v-if = "stars")
-          sui-icon(name='star', :class="stars[$route.params.id] >= j ? 'yellow' : 'gray'")
-      .left.aligned.column(:class = " windowwidth > 500 ? 'four wide column' : 'fourteen wide column' ")
-        .ui.link.relaxed.list(v-if="gobans")
-          a.item#e(:href="editURL()", :target="getTarget()")
-            h3.ui.header#e-text(v-show = "$route.params.id")
-              | {{myName || $route.params.id + ($route.params.lev || '')}}
-              i#e-icon.inline.edit.icon
-          hr
-          .item(v-for='(d, index, order) in mydata', :key='index')
-            div(v-if="d.type == 'link'", v-show='!d.parentIndex || mydata[d.parentIndex].open || d.parentIndex < 0' :class = "order = $route.params.index ? 'active' : ''")
-              span(v-if='d.parentIndex')
-              a.link(:href='decodeURIComponent(d.url)', target='_blank', v-if="tar(d) == '_blank'" @click="pushRoute(gobans[$route.params.id].use_lev, index)")
-                | {{ decodeURIComponent(d.name) }}
-                span.note(v-if="d.note2") {{ d.note2 }}
-                img.favicon.floating.right(:src="'https://www.google.com/s2/favicons?domain=' + d.url")
-                sui-icon.floating.right(name='right arrow')
-              a.link(v-else='', :href='decodeURIComponent(d.url)', :target='getTarget()' @click="pushRoute(gobans[$route.params.id].use_lev, index)")
-                | {{ decodeURIComponent(d.name) }}
-                span.note(v-if="d.note2") {{ d.note2 }}
-                img.favicon.floating.right(:src="'https://www.google.com/s2/favicons?domain=' + d.url")
-                sui-icon.floating.right(v-if = "windowwidth < 500" , name='right arrow')
-            div(v-if="d.type == 'folder'")
-              a(@click='d.open = !d.open')
-                | {{decodeURIComponent(d.name)}}
-                span.note(v-if="d.note2") {{ d.note2 }}
-                img.ui.mini.image(src='/static/images/isClosed.png', v-show='!d.open')
-                img.ui.mini.image(src='/static/images/isOpen.png', v-show='d.open')
-      div.no-print(v-if ="starsFire" v-show = "windowwidth > 500", :class = " windowwidth > 500 ? 'twelve wide column' : 'zero wide column' ")
-        iframe#iframe.no-print(v-if = "getSrc()" name='iframe', :src='getSrc()', alt="Loading...")
-        .ui.active.dimmer(v-else)
-          .ui.text.loader Loading...
-    .print-only {
+        .left.aligned.column(:class = " windowwidth > 500 ? 'four wide column' : 'fourteen wide column' ")
+          .ui.link.relaxed.list(v-if="gobans")
+            a.item#e(:href="editURL()", :target="getTarget()")
+              h3.ui.header#e-text(v-show = "$route.params.id")
+                | {{myName || $route.params.id + ($route.params.lev || '')}}
+                i#e-icon.inline.edit.icon
+            hr
+            .item(v-for='(d, index, order) in mydata', :key='index')
+              div(v-if="d.type == 'link'", v-show='!d.parentIndex || mydata[d.parentIndex].open || d.parentIndex < 0' :class = "order = $route.params.index ? 'active' : ''")
+                span(v-if='d.parentIndex')
+                a.link(:href='decodeURIComponent(d.url)', target='_blank', v-if="tar(d) == '_blank'" @click="pushRoute(gobans[$route.params.id].use_lev, index)")
+                  | {{ decodeURIComponent(d.name) }}
+                  span.note(v-if="d.note2") {{ d.note2 }}
+                  img.favicon.floating.right(:src="'https://www.google.com/s2/favicons?domain=' + d.url")
+                  sui-icon.floating.right(name='right arrow')
+                a.link(v-else='', :href='decodeURIComponent(d.url)', :target='getTarget()' @click="pushRoute(gobans[$route.params.id].use_lev, index)")
+                  | {{ decodeURIComponent(d.name) }}
+                  span.note(v-if="d.note2") {{ d.note2 }}
+                  img.favicon.floating.right(:src="'https://www.google.com/s2/favicons?domain=' + d.url")
+                  sui-icon.floating.right(v-if = "windowwidth < 500" , name='right arrow')
+              div(v-if="d.type == 'folder'")
+                a(@click='d.open = !d.open')
+                  | {{decodeURIComponent(d.name)}}
+                  span.note(v-if="d.note2") {{ d.note2 }}
+                  img.ui.mini.image(src='/static/images/isClosed.png', v-show='!d.open')
+                  img.ui.mini.image(src='/static/images/isOpen.png', v-show='d.open')
+            .item   
+              span(style = "margin-left: 1em;")
+                strong.white 請打星等
+                span.white
+                  | (目前
+                  | {{starsFire[$route.params.id]}}顆星)
+              br
+              a(v-for = "j in [1,2,3,4,5]" @click='handleRate($route.params.id, j)' v-if = "stars")
+                sui-icon(name='star', :class="stars[$route.params.id] >= j ? 'yellow' : 'gray'")
+        div.no-print(v-if ="starsFire" v-show = "windowwidth > 500", :class = " windowwidth > 500 ? 'twelve wide column' : 'zero wide column' ")
+          see-frame(:mydata="mydata")
+    .print-only
       h1.ui.header {{ $route.params.id }} @ 知識棋盤
-      img#qr(:src = "getQR()" , :alt="$route.params.id + ' @ 知識棋盤'")
+      img#qr(:src = "getQR()", alt = "$route.params.id + ' @ 知識棋盤'")
+      h1.ui.header {{ getURL() }}
 </template>
 
 <script>
