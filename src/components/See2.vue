@@ -81,6 +81,7 @@ export default {
   name: 'See2',
   props: ['gobans', 'mydata', 'myName', 'starsFire'],
   components: { seeFrame },
+  mixins: [ss, mixin],
   data () {
     return {
       windowwidth: window.innerWidth,

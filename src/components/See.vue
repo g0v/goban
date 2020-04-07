@@ -81,6 +81,7 @@ export default {
   name: 'See',
   props: ['gobans', 'mydata', 'myName', 'starsFire'],
   components: { seeFrame },
+  mixins: [ss, mixin],
   data () {
     return {
       windowwidth: window.innerWidth,
@@ -88,7 +89,6 @@ export default {
       stars: {'goban_intro': 5}
     }
   },
-  mixins: [ss, mixin],
   methods: {
     getTarget (windowwidth) {
       if (this.windowwidth < 500) {
