@@ -75,9 +75,12 @@
 
 import mixin from '../mixins/mixin.js'
 import ss from '../mixins/stars.js'
+import seeFrame from './seeFrame'
 
 export default {
   name: 'See2',
+  props: ['gobans', 'mydata', 'myName', 'starsFire'],
+  components: { seeFrame },
   data () {
     return {
       windowwidth: window.innerWidth,
@@ -85,8 +88,6 @@ export default {
       stars: {'goban_intro': 5}
     }
   },
-  props: ['gobans', 'mydata', 'myName', 'starsFire'],
-  mixins: [ss, mixin],
   methods: {
     getTarget (windowwidth) {
       if (this.windowwidth < 500) {
