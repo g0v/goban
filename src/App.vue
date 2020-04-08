@@ -53,7 +53,7 @@
           span 登出
         router-link.item(to = "/chat", target="_blank")
           i.chat.icon
-        a.item(href="https://github.com/g0v/goban", target="_blank")
+        //a.item(href="https://github.com/g0v/goban", target="_blank")
           i.github.icon
     router-view(:uid="uid", :user ="user", :myUser="myUser", :users="users", :gobans='gobans', :starsFire="starsFire", :mydata="mydata" @create='create', :chats = "chats", :myName="myName", :myWindowWidth = "myWindowWidth",
      @onResize = "onResize",
