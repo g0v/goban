@@ -284,8 +284,8 @@ a.r {
   color: white !important;
 }
 
-a, button {
-  cursor:pointer;
+a, button, a * {
+  cursor: pointer !important;
 }
 
 @media screen and (max-width: 420px) {

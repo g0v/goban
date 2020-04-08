@@ -275,6 +275,12 @@ export default {
   }
   a.link {
     margin-left: 1em;
+    display: inline-block;
+    width: 100%;
+  }
+  .folder a {
+    padding: 2px;
+    background-color: black !important
   }
   i.inline.edit.icon {
     margin-left: 0.5em;
@@ -298,9 +304,5 @@ export default {
     display: inline-block;
     padding: .2em .5em;
     margin-left: .5em;
-  }
-  .folder {
-    padding: 2px;
-    background-color: black !important
   }
 </style>
