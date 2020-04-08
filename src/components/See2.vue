@@ -48,7 +48,7 @@
                   span.note(v-if="d.note2") {{ d.note2 }}
                   img.favicon.floating.right(:src="'https://www.google.com/s2/favicons?domain=' + d.url")
                   sui-icon.floating.right(v-if = "windowwidth < 500" , name='right arrow')
-              div(v-if="d.type == 'folder'")
+              div.folder(v-if="d.type == 'folder'")
                 a(@click='d.open = !d.open')
                   | {{decodeURIComponent(d.name)}}
                   span.note(v-if="d.note2") {{ d.note2 }}
@@ -298,5 +298,9 @@ export default {
     display: inline-block;
     padding: .2em .5em;
     margin-left: .5em;
+  }
+  .folder {
+    padding: 2px;
+    background-color: black !important
   }
 </style>
