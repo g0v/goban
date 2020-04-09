@@ -349,4 +349,8 @@ a, button, a * {
     visibility: hidden !important;
   }
 }
+
+.ui.fixed.menu+.ui.grid {
+  padding-top: 0;
+}
 </style>

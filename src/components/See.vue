@@ -1,31 +1,7 @@
 <template lang="pug">
   .hello()
     vue-headful(v-if = "gobans" :title="$route.params.id + ' > ' + '@知識棋盤'", description="gobans && gobans[$route.params.id].t")
-    .ui.fixed.top.menu#navbar.no-print
-      router-link.item(to='/', data-content="首頁", title="首頁")
-        sui-icon(size='small', name='home')
-      router-link.item(:to = "'/update/' + $route.params.id", data-content="設定", title="設定")
-        i.cogs.icon
-      sui-dropdown.item(text = "相關", v-if='gobans && gobans[$route.params.id] && gobans[$route.params.id].id')
-        sui-dropdown-menu
-          sui-dropdown-item(v-for='r in gobans[$route.params.id].related', :key='r', @click="$router.push('/see/' + r + '/0/0')")
-            | {{ r }}
-      sui-dropdown.item(text = "等級", v-if='gobans && gobans[$route.params.id] && gobans[$route.params.id].use_lev')
-        sui-dropdown-menu
-          sui-dropdown-item(v-for='j in [0,1,2,3]', :key='j', @click="$router.push('/see/' + $route.params.id + '/' + j + '/0')")
-            | 等級{{ j }}
-      .right.menu
-        sui-dropdown.item(icon="cloud download", data-content="備份", title="備份")
-          sui-dropdown-menu
-            sui-dropdown-item(@click="backupJSON($route.params.id, $route.params.lev)")
-              | JSON
-            sui-dropdown-item(@click="backupCSV($route.params.id, $route.params.lev)")
-              | CSV
-        a.item(v-if='mydata && mydata[$route.params.index]', :href='mydata[$route.params.index].url', target='_blank', data-content="開新分頁", title="開新分頁")
-          sui-icon(size='small', name='right arrow')
-        a.item(v-if="$route.params.index == 'new'", :href="editURL()", target='_blank', data-content="編輯", title="編輯")
-          | 編輯
-          sui-icon(size='small', name='right arrow')
+    see-nav(:gobans="gobans", :mydata = "mydata", :myName="myName")
     .ui.grid.no-print
       .ui.row
         .left.aligned.column(:class = " windowwidth > 500 ? 'four wide column' : 'fourteen wide column' ")
@@ -76,11 +52,12 @@
 import mixin from '../mixins/mixin.js'
 import ss from '../mixins/stars.js'
 import seeFrame from './seeFrame'
+import seeNav from './seeNav'
 
 export default {
   name: 'See',
   props: ['gobans', 'mydata', 'myName', 'starsFire'],
-  components: { seeFrame },
+  components: { seeNav, seeFrame },
   mixins: [ss, mixin],
   data () {
     return {
@@ -141,27 +118,6 @@ export default {
         ans = 'https://ethercalc.org/' + this.$route.params.id
       }
       return ans
-    },
-    downloadObjectAsJson: function (exportObj, exportName) {
-      var dataStr = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(exportObj))
-      var downloadAnchorNode = document.createElement('a')
-      downloadAnchorNode.setAttribute('href', dataStr)
-      downloadAnchorNode.setAttribute('download', exportName + '.json')
-      document.body.appendChild(downloadAnchorNode) // required for firefox
-      downloadAnchorNode.click()
-      downloadAnchorNode.remove()
-    },
-    backupJSON: function (id, lev) {
-      if (lev === '_' || !lev) {
-        lev = ''
-      }
-      this.downloadObjectAsJson(this.mydata, this.myName + lev)
-    },
-    backupCSV: function (id, lev) {
-      if (lev === '_' || !lev) {
-        lev = ''
-      }
-      window.open('https://ethercalc.org/' + id + lev + '.csv', '_blank')
     },
     useLev: function (g) {
       if (!g) { return true }
