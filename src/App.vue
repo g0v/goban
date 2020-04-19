@@ -166,7 +166,8 @@ export default {
       this.$http.get(this.srcURL()).then(response => {
         //this.$http.get(csv_api_source).pipe(CSV.parse).done(compile_json);   <--先抓CSV, 再compile成JSON
         // get body mydata
-        this.mydata = this.parse(response.body)
+        console.log(response.data)
+        this.mydata = this.parse(response.data)
         if (this.$route.params.id) {
           this.setDataToFireBase(this.$route.params.id, this.$route.params.lev, this.mydata)
         }

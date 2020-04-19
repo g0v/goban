@@ -4,7 +4,8 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import { rtdbPlugin } from 'vuefire'
-import VueResource from 'vue-resource'
+import axios from 'axios';
+import VueAxios from 'vue-axios';
 import SuiVue from 'semantic-ui-vue'
 import 'semantic-ui-css/semantic.min.css'
 import VueLocalStorage from 'vue-localstorage'
@@ -15,6 +16,8 @@ import ErrorPage from 'vue-error-page'
 import vueHeadful from 'vue-headful'
 import VueSimpleMarkdown from 'vue-simple-markdown'
 import VueGtag from 'vue-gtag'
+
+Vue.use(VueAxios, axios);
 
 Vue.use(VueGtag, {
   config: { id: 'UA-26178243-14' }
@@ -41,7 +44,6 @@ Vue.directive('autofocus', autofocus)
 Vue.use(VueLocalStorage)
 
 Vue.use(SuiVue)
-Vue.use(VueResource)
 Vue.use(rtdbPlugin)
 
 Vue.config.productionTip = false

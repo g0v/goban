@@ -27,12 +27,12 @@
     "vue": "^2.5.2",
     "vue-analytics": "^5.22.1",
     "vue-autofocus-directive": "^1.0.4",
+    "vue-axios": "^2.1.5",
     "vue-error-page": "^1.1.7",
     "vue-gtag": "^1.6.2",
     "vue-headful": "^2.1.0",
     "vue-localstorage": "^0.6.2",
     "vue-markdown": "^2.2.4",
-    "vue-resource": "^1.5.1",
     "vue-router": "^3.0.1",
     "vue-simple-markdown": "^1.1.1",
     "vuefire": "^2.2.0"
