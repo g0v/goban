@@ -17,7 +17,7 @@ import vueHeadful from 'vue-headful'
 import VueSimpleMarkdown from 'vue-simple-markdown'
 import VueGtag from 'vue-gtag'
 
-Vue.use(VueAxios, axios);
+Vue.use(VueAxios, axios)
 
 Vue.use(VueGtag, {
   config: { id: 'UA-26178243-14' }
