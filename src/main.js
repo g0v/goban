@@ -4,8 +4,8 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import { rtdbPlugin } from 'vuefire'
-import axios from 'axios';
-import VueAxios from 'vue-axios';
+import axios from 'axios'
+import VueAxios from 'vue-axios'
 import SuiVue from 'semantic-ui-vue'
 import 'semantic-ui-css/semantic.min.css'
 import VueLocalStorage from 'vue-localstorage'
