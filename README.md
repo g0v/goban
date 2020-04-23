@@ -52,9 +52,15 @@ note: 但是還有些hackfoldr的內容沒做，比方說
 
 ## 網址範例
 
+### 簡單的棋盤
+
 1. http://goban.tw/#/s/goban_intro/0
-2. http://goban.tw/#/s/css//1
-3. http://goban.tw/#/s/vue/4
+2. http://goban.tw/#/s/autoalearn_main/0
+
+### 有等級的棋盤
+
+1. http://goban.tw/#/see/css/0/1
+2. http://goban.tw/#/see/vue/0/5
 
 
 ## 創建與編輯
