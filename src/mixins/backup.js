@@ -19,7 +19,7 @@ export default {
       if (lev === '_' || !lev) {
         lev = ''
       }
-      window.open('https://ethercalc.org/' + id + lev + '.csv', '_blank')
+      window.open('https://ethercalc.net/' + id + lev + '.csv', '_blank')
     }
   }
 }
