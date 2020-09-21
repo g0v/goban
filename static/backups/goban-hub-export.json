@@ -1,0 +1,756 @@
+{
+  "chats" : {
+    "-M2zud6RfkgJPjzIUdRN" : {
+      "email" : "bestian@gmail.com",
+      "n" : "Be",
+      "photoURL" : "https://lh3.googleusercontent.com/a-/AOh14GiuP71ysEizIPrDx8wZoO9SWtcudkEj7nAV4UKmAA",
+      "t" : "歡迎使用零時黑板。請看[簡介](http://goban.tw/#/intro)",
+      "time" : 1584841527849
+    }
+  },
+  "gobans" : {
+    "Logo" : {
+      "hex" : "black",
+      "id" : "Logo",
+      "related" : [ "Logo", "code" ],
+      "t" : "海龜繪圖",
+      "use_lev" : true
+    },
+    "Physics on Line" : {
+      "hex" : "orange",
+      "id" : "Physics on Line",
+      "related" : [ "Physics on Line", "chemistry", "國中數學" ],
+      "t" : "Physics on Line",
+      "use_lev" : true
+    },
+    "autolearn_main" : {
+      "hex" : "green",
+      "id" : "autolearn_main",
+      "related" : [ "g0v", "test", "goban_intro", "bestian_apps", "autolearn_main" ],
+      "stars" : 4,
+      "t" : "自主學習",
+      "tags" : [ "autolearn_main" ],
+      "use_lev" : true
+    },
+    "baby" : {
+      "hex" : "purple",
+      "id" : "baby",
+      "name" : "baby",
+      "related" : [ "food", "bt_farm", "baby", "elder" ],
+      "stars" : 4,
+      "t" : "溫柔生產",
+      "tags" : [ "baby" ],
+      "text" : "溫柔生產",
+      "use_lev" : true
+    },
+    "bestian_apps" : {
+      "hex" : "rgb(0,117,153)",
+      "id" : "bestian_apps",
+      "name" : "bestian_apps",
+      "related" : [ "vue", "test" ],
+      "stars" : 3,
+      "t" : "小巴作品",
+      "tags" : [ "bestian_apps" ],
+      "text" : "小巴作品",
+      "use_lev" : true
+    },
+    "bipolar" : {
+      "hex" : "black",
+      "id" : "bipolar",
+      "related" : [ "bipolar", "無障礙" ],
+      "t" : "bipolar",
+      "use_lev" : true
+    },
+    "bt_farm" : {
+      "id" : "bt_farm",
+      "name" : "bt_farm",
+      "related" : [ "bt_farm", "baby", "food" ],
+      "t" : "自然農法",
+      "text" : "自然農法",
+      "use_lev" : true
+    },
+    "bt_frontend" : {
+      "hex" : "green",
+      "id" : "bt_frontend",
+      "related" : [ "code", "html", "css", "javascript", "frontend", "bestian_apps" ],
+      "stars" : 4,
+      "t" : "小巴的前端工程教材",
+      "tags" : [ "bt_frontend" ],
+      "use_lev" : true
+    },
+    "chemistry" : {
+      "hex" : "#c9c9c9",
+      "id" : "chemistry",
+      "related" : [ "chemistry" ],
+      "t" : "chemistry",
+      "tags" : [ "chemistry" ],
+      "use_lev" : true
+    },
+    "code" : {
+      "hex" : "green",
+      "id" : "code",
+      "mydata" : [ {
+        "name" : "程式",
+        "note" : "happy",
+        "parentIndex" : -1,
+        "type" : "link",
+        "url" : "https://zh.wikipedia.org/wiki/%E7%A8%8B%E5%BA%8F"
+      }, {
+        "name" : "拼圖學程式",
+        "note" : "blank",
+        "parentIndex" : -1,
+        "type" : "link",
+        "url" : "http://scratch.mit.edu/"
+      }, {
+        "name" : "W3School",
+        "note" : "blank",
+        "parentIndex" : -1,
+        "type" : "link",
+        "url" : "http://www.w3schools.com/"
+      }, {
+        "name" : "臉書社團",
+        "note" : "close",
+        "parentIndex" : -1,
+        "type" : "folder",
+        "url" : "folder"
+      }, {
+        "name" : "HTML5與Css3",
+        "note" : "blank",
+        "parentIndex" : 3,
+        "type" : "link",
+        "url" : "https://www.facebook.com/groups/htmlfive/?fref=ts"
+      }, {
+        "name" : "台灣javacript",
+        "note" : "blank",
+        "parentIndex" : 3,
+        "type" : "link",
+        "url" : "https://www.facebook.com/groups/javascript.tw/?fref=ts"
+      }, {
+        "name" : "台灣angular",
+        "note" : "blank",
+        "parentIndex" : 3,
+        "type" : "link",
+        "url" : "https://www.facebook.com/groups/augularjs.tw/?fref=ts"
+      }, {
+        "name" : "台灣git",
+        "note" : "blank",
+        "parentIndex" : 3,
+        "type" : "link",
+        "url" : "https://www.facebook.com/groups/788112491237421/?fref=ts"
+      }, {
+        "name" : "台灣開放資料",
+        "note" : "blank",
+        "parentIndex" : 3,
+        "type" : "link",
+        "url" : "https://www.facebook.com/groups/odtwn/?fref=ts"
+      }, {
+        "name" : "遊戲",
+        "note" : "happy",
+        "parentIndex" : -1,
+        "type" : "folder",
+        "url" : "folder"
+      }, {
+        "name" : "五個寫程式的遊戲",
+        "note" : "happy",
+        "parentIndex" : 9,
+        "type" : "link",
+        "url" : "http://www.inside.com.tw/2015/10/13/5-games-to-learn-programming"
+      } ],
+      "related" : [ "code", "bt_frontend", "html", "css", "javascript" ],
+      "stars" : 11,
+      "t" : "程式入門程教材",
+      "tags" : [ "code" ],
+      "use_lev" : true
+    },
+    "css" : {
+      "hex" : "white",
+      "id" : "css",
+      "mydata" : [ {
+        "name" : "層疊樣式表",
+        "note" : "happy",
+        "parentIndex" : -1,
+        "type" : "link",
+        "url" : "http://zh.wikipedia.org/wiki/%E5%B1%82%E5%8F%A0%E6%A0%B7%E5%BC%8F%E8%A1%A8"
+      }, {
+        "name" : "入門教學",
+        "note" : "blank",
+        "parentIndex" : -1,
+        "type" : "link",
+        "url" : "http://www.w3schools.com/css/default.asp"
+      }, {
+        "name" : "用css變把戲",
+        "note" : "happy",
+        "parentIndex" : -1,
+        "type" : "link",
+        "url" : "http://css-tricks.com/"
+      }, {
+        "name" : "工具",
+        "note" : "happy",
+        "parentIndex" : -1,
+        "type" : "folder",
+        "url" : "folder"
+      }, {
+        "name" : "漸層工具",
+        "note" : "happy",
+        "parentIndex" : 3,
+        "type" : "link",
+        "url" : "http://www.colorzilla.com/gradient-editor/"
+      }, {
+        "name" : "字體工具",
+        "note" : "{\"target\":\"_blank\"}",
+        "parentIndex" : 3,
+        "type" : "link",
+        "url" : "http://www.typetester.org/"
+      }, {
+        "name" : "圖片修改大小",
+        "note" : "happy",
+        "parentIndex" : 3,
+        "type" : "link",
+        "url" : "https://resizeimage.net"
+      }, {
+        "name" : "動畫",
+        "note" : "happy",
+        "parentIndex" : 3,
+        "type" : "link",
+        "url" : "http://cubic-bezier.com/#.17,.67,.83,.67"
+      }, {
+        "name" : "工具集",
+        "note" : "happy",
+        "parentIndex" : 3,
+        "type" : "link",
+        "url" : "https://www1.nyc.gov/assets/servicedesign/"
+      }, {
+        "name" : "配色參考",
+        "note" : "happy",
+        "parentIndex" : -1,
+        "type" : "folder",
+        "url" : "folder"
+      }, {
+        "name" : "hsla picker",
+        "note" : "happy",
+        "parentIndex" : 9,
+        "type" : "link",
+        "url" : "http://hslpicker.com/"
+      }, {
+        "name" : "顏色對情緒",
+        "note" : "happy",
+        "parentIndex" : 9,
+        "type" : "link",
+        "url" : "http://thumbnails-visually.netdna-ssl.com/color-emotion-guide_512d42458efc1_w1500.png"
+      }, {
+        "name" : "視覺感知",
+        "note" : "happy",
+        "parentIndex" : 9,
+        "type" : "link",
+        "url" : "https://docs.google.com/presentation/d/105BbZY5-KnKXVBzUMrqMX4WZRmR34t4Lacsj4SQwGuc/edit#slide=id.p4"
+      }, {
+        "name" : "Color Tool",
+        "note" : "happy",
+        "parentIndex" : 9,
+        "type" : "link",
+        "url" : "https://material.io/resources/color/#!/?view.left=0&view.right=0"
+      }, {
+        "name" : "書",
+        "note" : "happy",
+        "parentIndex" : -1,
+        "type" : "folder",
+        "url" : "folder"
+      }, {
+        "name" : "Thinking in css",
+        "note" : "blank",
+        "parentIndex" : 14,
+        "type" : "link",
+        "url" : "https://play.google.com/books/reader?id=rkZiCAAAQBAJ&hl=zh_TW&pg=GBS.PP1"
+      }, {
+        "name" : "這個設計好在哪?",
+        "note" : "blank",
+        "parentIndex" : 14,
+        "type" : "link",
+        "url" : "https://www.kingstone.com.tw/basic/2013120296633/"
+      }, {
+        "name" : "設計概念",
+        "note" : "happy",
+        "parentIndex" : -1,
+        "type" : "folder",
+        "url" : "folder"
+      }, {
+        "name" : "兒童App設計",
+        "note" : "happy",
+        "parentIndex" : 17,
+        "type" : "link",
+        "url" : "https://www.pinterest.com/search/pins/?q=childrenapp%20design"
+      }, {
+        "name" : "小圖示與字",
+        "note" : "happy",
+        "parentIndex" : -1,
+        "type" : "folder",
+        "url" : "folder"
+      }, {
+        "name" : "小圖示",
+        "note" : "happy",
+        "parentIndex" : 19,
+        "type" : "link",
+        "url" : "https://material.io/resources/icons/?icon=build&style=baseline"
+      }, {
+        "name" : "中文常用字型",
+        "note" : "happy",
+        "parentIndex" : 19,
+        "type" : "link",
+        "url" : "http://blog.ja-anything.com/2016/11/25/css-%E5%B8%B8%E7%94%A8%E4%B8%AD%E6%96%87%E5%AD%97%E5%9E%8B-traditional-chinese-font-family/"
+      }, {
+        "name" : "空心字",
+        "note" : "happy",
+        "parentIndex" : 19,
+        "type" : "link",
+        "url" : "https://bestian.jsbin.com/xeripic/3/edit?html,css,output"
+      } ],
+      "related" : [ "code", "css", "vue", "javascript", "sui", "frontend", "bt_frontend", "html" ],
+      "stars" : 17,
+      "t" : "網站設計語法",
+      "tags" : [ "css" ],
+      "use_lev" : true
+    },
+    "deslyxia" : {
+      "id" : "deslyxia",
+      "related" : [ "css" ],
+      "t" : "失讀症",
+      "tags" : [ "education" ],
+      "use_lev" : true
+    },
+    "e-class" : {
+      "hex" : "black",
+      "id" : "e-class",
+      "related" : [ "e-class", "零時小學校" ],
+      "stars" : 0,
+      "t" : "e-class",
+      "tags" : [ "e-class" ],
+      "use_lev" : true
+    },
+    "elder" : {
+      "hex" : "orange",
+      "id" : "elder",
+      "related" : [ "elder", "baby", "sepnine" ],
+      "t" : "長者照顧",
+      "use_lev" : true
+    },
+    "ethercalc" : {
+      "id" : "ethercalc",
+      "related" : [ "ethercalc" ],
+      "t" : "開放的後端平台",
+      "tags" : [ "ethercalc" ],
+      "use_lev" : true
+    },
+    "food" : {
+      "id" : "food",
+      "name" : "food",
+      "related" : [ "食氣", "bt_farm", "baby", "bestian_apps" ],
+      "t" : "食物",
+      "text" : "食物",
+      "use_lev" : true
+    },
+    "frontend" : {
+      "hex" : "#c9c9c9",
+      "id" : "frontend",
+      "related" : [ "frontend", "bt_frontend", "vue", "css", "html", "javascript" ],
+      "t" : "前端工程",
+      "use_lev" : true
+    },
+    "g0v" : {
+      "hex" : "red",
+      "id" : "g0v",
+      "related" : [ "g0v", "goban_intro", "零時小學校" ],
+      "t" : "零時政府",
+      "use_lev" : true
+    },
+    "goban_intro" : {
+      "hex" : "yellow",
+      "id" : "goban_intro",
+      "mydata" : [ {
+        "name" : "零時黑板共筆頁",
+        "note" : "happy",
+        "parentIndex" : -1,
+        "type" : "link",
+        "url" : "https://hackmd.io/3pvyN_W9TjSsuBok4w2XYA"
+      }, {
+        "name" : "簡介短片",
+        "note" : "happy",
+        "parentIndex" : -1,
+        "type" : "link",
+        "url" : "https://www.youtube.com/embed/uZo8eCfoS_Q"
+      }, {
+        "name" : "臉書專頁",
+        "note" : "blank",
+        "parentIndex" : -1,
+        "type" : "link",
+        "url" : "https://www.facebook.com/%E9%9B%B6%E6%99%82%E9%BB%91%E6%9D%BF-110565913890537/"
+      }, {
+        "name" : "原始碼",
+        "note" : "blank",
+        "parentIndex" : -1,
+        "type" : "link",
+        "url" : "https://github.com/g0v/goban/"
+      }, {
+        "name" : "錯誤回報",
+        "note" : "{\"target\":\"blank\"}",
+        "parentIndex" : -1,
+        "type" : "link",
+        "url" : "https://github.com/g0v/goban/issues"
+      }, {
+        "name" : "資料後台",
+        "note" : "closed",
+        "parentIndex" : -1,
+        "type" : "folder",
+        "url" : "folder"
+      }, {
+        "name" : "Ethercalc",
+        "note" : "happy",
+        "parentIndex" : 5,
+        "type" : "link",
+        "url" : "https://ethercalc.org"
+      }, {
+        "name" : "Ethercalc@github",
+        "note" : "{\"target\":\"_blank\"}",
+        "parentIndex" : 5,
+        "type" : "link",
+        "url" : "https://github.com/audreyt/ethercalc"
+      }, {
+        "name" : "隱私政策",
+        "note" : "{\"target\":\"_blank\"}",
+        "parentIndex" : 5,
+        "type" : "link",
+        "url" : "https://github.com/audreyt/ethercalc/blob/master/privacy.png"
+      }, {
+        "name" : "行動App",
+        "note" : "happy",
+        "parentIndex" : -1,
+        "type" : "folder",
+        "url" : "folder"
+      }, {
+        "name" : "Google Play",
+        "note" : "blank",
+        "parentIndex" : 9,
+        "type" : "link",
+        "url" : "https://play.google.com/store/apps/details?id=tw.goban.app"
+      }, {
+        "name" : "App Store",
+        "note" : "blank",
+        "parentIndex" : 9,
+        "type" : "link",
+        "url" : "https://apps.apple.com/us/app/%E9%9B%B6%E6%99%82%E9%BB%91%E6%9D%BF/id1500095725?l=zh&ls=1"
+      }, {
+        "name" : "瀏覽器插件",
+        "note" : "happy",
+        "parentIndex" : -1,
+        "type" : "folder",
+        "url" : "folder"
+      }, {
+        "name" : "Firefox",
+        "note" : "blank",
+        "parentIndex" : 12,
+        "type" : "link",
+        "url" : "https://addons.mozilla.org/zh-TW/firefox/addon/%E9%9B%B6%E6%99%82%E9%BB%91%E6%9D%BF/"
+      } ],
+      "related" : [ "code", "g0v", "vue", "test", "零時小學校" ],
+      "stars" : 18,
+      "t" : "零時黑板說明",
+      "tags" : [ "goban_intro" ],
+      "use_lev" : true
+    },
+    "haskell" : {
+      "hex" : "black",
+      "id" : "haskell",
+      "related" : [ "haskell", "code", "國中數學", "高中數學" ],
+      "t" : "haskell語言",
+      "use_lev" : true
+    },
+    "html" : {
+      "hex" : "blue",
+      "id" : "html",
+      "related" : [ "html", "css", "bt_frontend", "sui", "vue", "javascript", "frontend" ],
+      "t" : "html",
+      "use_lev" : true
+    },
+    "javascript" : {
+      "hex" : "blue",
+      "id" : "javascript",
+      "related" : [ "javascript", "html", "css", "bt_frontend", "vue", "frontend" ],
+      "t" : "javascript",
+      "use_lev" : true
+    },
+    "kinder" : {
+      "hex" : "green",
+      "id" : "kinder",
+      "related" : [ "kinder", "baby", "code", "autolearn_main" ],
+      "t" : "幼兒區",
+      "use_lev" : true
+    },
+    "music" : {
+      "hex" : "black",
+      "id" : "music",
+      "related" : [ "music" ],
+      "stars" : 5,
+      "t" : "music",
+      "tags" : [ "music" ],
+      "use_lev" : true
+    },
+    "sepnine" : {
+      "hex" : "green",
+      "id" : "sepnine",
+      "related" : [ "baby" ],
+      "t" : "佛法",
+      "use_lev" : true
+    },
+    "sql" : {
+      "hex" : "#c9c9c9",
+      "id" : "sql",
+      "related" : [ "sql" ],
+      "t" : "sql",
+      "tags" : [ "sql" ],
+      "use_lev" : true
+    },
+    "sui" : {
+      "hex" : "#5c61f2",
+      "id" : "sui",
+      "name" : "sui",
+      "related" : [ "frontend", "code", "bt_frontend", "vue" ],
+      "t" : "語意式UI",
+      "text" : "語意式UI",
+      "use_lev" : true
+    },
+    "test" : {
+      "hex" : "#a31010",
+      "id" : "test",
+      "name" : "test",
+      "related" : [ "goban_intro" ],
+      "t" : "試作品",
+      "text" : "試作品",
+      "use_lev" : true
+    },
+    "text" : {
+      "hex" : "#c9c9c9",
+      "id" : "text",
+      "name" : "text",
+      "related" : [ "html", "Physics on Line", "bestian_apps", "deslyxia", "javascript", "高中數學", "零時小學校", "食氣", "code", "sql", "frontend", "food", "vue", "sepnine", "京劇" ],
+      "t" : "text",
+      "text" : "text"
+    },
+    "vTaiwan" : {
+      "id" : "vTaiwan",
+      "related" : [ "vTaiwan" ],
+      "t" : "vTaiwan",
+      "tags" : [ "vTaiwan" ],
+      "use_lev" : true
+    },
+    "vue" : {
+      "hex" : "#00ed18",
+      "id" : "vue",
+      "mydata" : [ {
+        "name" : "Vue.js",
+        "note" : "happy",
+        "parentIndex" : -1,
+        "type" : "link",
+        "url" : "https://vuejs.org/"
+      }, {
+        "name" : "介紹",
+        "note" : "happy",
+        "parentIndex" : -1,
+        "type" : "link",
+        "url" : "https://docs.google.com/document/d/1Z_xD3pKS1YIF072kUHULd9vuRWNIcUOSwVa3_5CenGA/edit?usp=sharing"
+      }, {
+        "name" : "教學短片",
+        "note" : "happy",
+        "parentIndex" : -1,
+        "type" : "folder",
+        "url" : "folder"
+      }, {
+        "name" : "1.安裝",
+        "note" : "happy",
+        "parentIndex" : 2,
+        "type" : "link",
+        "url" : "https://www.youtube.com/embed/qutWTrLTGTY"
+      }, {
+        "name" : "2.創建",
+        "note" : "happy",
+        "parentIndex" : 2,
+        "type" : "link",
+        "url" : "https://www.youtube.com/embed/q8Bxyzmvj50"
+      }, {
+        "name" : "3.編輯",
+        "note" : "happy",
+        "parentIndex" : 2,
+        "type" : "link",
+        "url" : "https://www.youtube.com/embed/ojuk5u6afCc"
+      }, {
+        "name" : "4.UI環境",
+        "note" : "happy",
+        "parentIndex" : 2,
+        "type" : "link",
+        "url" : "https://www.youtube.com/embed/OvfgoKJm3E4"
+      }, {
+        "name" : "5. 假文",
+        "note" : "happy",
+        "parentIndex" : 2,
+        "type" : "link",
+        "url" : "https://www.youtube.com/embed/_gjPltS7_uk"
+      }, {
+        "name" : "6. 假文排版",
+        "note" : "happy",
+        "parentIndex" : 2,
+        "type" : "link",
+        "url" : "https://www.youtube.com/embed/1vAQS5etblw"
+      }, {
+        "name" : "7. 抓取資料",
+        "note" : "happy",
+        "parentIndex" : 2,
+        "type" : "link",
+        "url" : "https://www.youtube.com/embed/zxsuEYy_Uv8"
+      }, {
+        "name" : "8. 協作及發佈",
+        "note" : "happy",
+        "parentIndex" : 2,
+        "type" : "link",
+        "url" : "https://www.youtube.com/embed/awuSdSv5fHA"
+      }, {
+        "name" : "官網說明文件",
+        "note" : "happy",
+        "parentIndex" : -1,
+        "type" : "folder",
+        "url" : "folder"
+      }, {
+        "name" : "Introduction",
+        "note" : "happy",
+        "parentIndex" : 11,
+        "type" : "link",
+        "url" : "https://vuejs.org/v2/guide/index.html"
+      }, {
+        "name" : "Template-Syntax",
+        "note" : "happy",
+        "parentIndex" : 11,
+        "type" : "link",
+        "url" : "https://vuejs.org/v2/guide/syntax.html"
+      }, {
+        "name" : "範例",
+        "note" : "happy",
+        "parentIndex" : -1,
+        "type" : "folder",
+        "url" : "folder"
+      }, {
+        "name" : "九九乘法",
+        "note" : "happy",
+        "parentIndex" : 14,
+        "type" : "link",
+        "url" : "https://bestian.jsbin.com/rahuhoj/edit?html,css,js,output"
+      }, {
+        "name" : "Vue List",
+        "note" : "happy",
+        "parentIndex" : 14,
+        "type" : "link",
+        "url" : "https://bestian.jsbin.com/hodilec/edit?html,js,output"
+      }, {
+        "name" : "bestian/test",
+        "note" : "blank",
+        "parentIndex" : 14,
+        "type" : "link",
+        "url" : "https://github.com/bestian/test"
+      } ],
+      "related" : [ "frontend", "javascript", "test", "css", "bt_frontend", "html", "vue" ],
+      "stars" : 10,
+      "t" : "vue教學",
+      "tags" : [ "vue" ],
+      "use_lev" : true
+    },
+    "京劇" : {
+      "id" : "京劇",
+      "name" : "京劇",
+      "related" : [ "孫悟空" ],
+      "t" : "京劇集錦",
+      "text" : "京劇集錦",
+      "use_lev" : true
+    },
+    "國中數學" : {
+      "id" : "國中數學",
+      "name" : "國中數學",
+      "related" : [ "autolearn_main" ],
+      "t" : "國中數學開放教材",
+      "use_lev" : true
+    },
+    "折紙" : {
+      "id" : "折紙",
+      "name" : "折紙",
+      "related" : [ "折紙" ],
+      "t" : "折紙",
+      "use_lev" : true
+    },
+    "孫悟空" : {
+      "hex" : "#0043fc",
+      "id" : "孫悟空",
+      "name" : "孫悟空",
+      "related" : [ "京劇", "孫悟空", "bestian_apps" ],
+      "stars" : 4,
+      "t" : "孫悟空影集",
+      "tags" : [ "孫悟空" ],
+      "text" : "孫悟空影集",
+      "use_lev" : true
+    },
+    "文學" : {
+      "hex" : "black",
+      "id" : "文學",
+      "related" : [ "文學" ],
+      "stars" : 4,
+      "t" : "文學",
+      "tags" : [ "文學" ],
+      "use_lev" : true
+    },
+    "沙盒" : {
+      "id" : "沙盒",
+      "related" : [ "沙盒" ],
+      "t" : "沙盒",
+      "tags" : [ "沙盒" ],
+      "use_lev" : true
+    },
+    "無障礙" : {
+      "hex" : "#ed0000",
+      "id" : "無障礙",
+      "name" : "無障礙",
+      "related" : [ "css", "html" ],
+      "t" : "無障礙相關",
+      "text" : "無障礙相關"
+    },
+    "零時小學校" : {
+      "hex" : "orange",
+      "id" : "零時小學校",
+      "related" : [ "零時小學校", "g0v", "code", "國中數學" ],
+      "t" : "零時小學校",
+      "use_lev" : true
+    },
+    "電影" : {
+      "id" : "電影",
+      "related" : [ "電影" ],
+      "t" : "電影",
+      "tags" : [ "電影" ],
+      "use_lev" : true
+    },
+    "食氣" : {
+      "id" : "食氣",
+      "name" : "食氣",
+      "related" : [ "food", "baby", "bt_farm" ],
+      "t" : "漸漸不食",
+      "text" : "漸漸不食",
+      "use_lev" : true
+    },
+    "高中數學" : {
+      "hex" : "black",
+      "id" : "高中數學",
+      "related" : [ "高中數學", "國中數學" ],
+      "t" : "高中數學",
+      "use_lev" : true
+    }
+  },
+  "users" : {
+    "QiFoUxtRRpOdyDD8vF9EYAEqqr42" : {
+      "id" : "QiFoUxtRRpOdyDD8vF9EYAEqqr42",
+      "name" : "Bestian",
+      "photoURL" : "https://lh3.googleusercontent.com/a-/AOh14GiuP71ysEizIPrDx8wZoO9SWtcudkEj7nAV4UKmAA"
+    }
+  }
+}
