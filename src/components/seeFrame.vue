@@ -17,7 +17,7 @@ export default {
   methods: {
     getSrc: function (mydata) {
       if (this.$route.params.index === 'new') {
-        return 'https://cors-anywhere.herokuapp.com/https://ethercalc.net/' + this.$route.params.id + (this.$route.params.lev || '')
+        return 'https://ethercalc.net/' + this.$route.params.id + (this.$route.params.lev || '')
       } else {
         if (!mydata[0]) { return undefined }
         if (mydata[this.$route.params.index]) {
