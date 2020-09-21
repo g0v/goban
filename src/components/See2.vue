@@ -114,9 +114,9 @@ export default {
     editURL: function () {
       var ans
       if (this.gobans && this.gobans[this.$route.params.id] && this.gobans[this.$route.params.id].use_lev) {
-        ans = 'https://ethercalc.net/' + this.$route.params.id + this.$route.params.lev
+        ans = 'https://cors-anywhere.herokuapp.com/https://ethercalc.net/' + this.$route.params.id + this.$route.params.lev
       } else {
-        ans = 'https://ethercalc.net/' + this.$route.params.id
+        ans = 'https://cors-anywhere.herokuapp.com/https://ethercalc.net/' + this.$route.params.id
       }
       return ans
     },
@@ -126,7 +126,7 @@ export default {
     },
     getSrc: function () {
       if (this.$route.params.index === 'new') {
-        return 'https://ethercalc.net/' + this.$route.params.id + (this.$route.params.lev || '')
+        return 'https://cors-anywhere.herokuapp.com/https://ethercalc.net/' + this.$route.params.id + (this.$route.params.lev || '')
       } else {
         if (!this.mydata[0]) { return undefined }
         if (this.mydata[this.$route.params.index]) {

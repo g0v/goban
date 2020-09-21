@@ -42,9 +42,9 @@ export default {
     editURL: function () {
       var ans
       if (this.gobans && this.gobans[this.$route.params.id] && this.gobans[this.$route.params.id].use_lev) {
-        ans = 'https://ethercalc.net/' + this.$route.params.id + this.$route.params.lev
+        ans = 'https://cors-anywhere.herokuapp.com/https://ethercalc.net/' + this.$route.params.id + this.$route.params.lev
       } else {
-        ans = 'https://ethercalc.net/' + this.$route.params.id
+        ans = 'https://cors-anywhere.herokuapp.com/https://ethercalc.net/' + this.$route.params.id
       }
       return ans
     }
