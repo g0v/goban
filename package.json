@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.8.7",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "firebase": "^7.4.0",
     "html-loader": "^0.5.5",
     "portal-vue": "^2.1.7",
