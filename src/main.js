@@ -16,9 +16,8 @@ import ErrorPage from 'vue-error-page'
 import vueHeadful from 'vue-headful'
 import VueSimpleMarkdown from 'vue-simple-markdown'
 import VueGtag from 'vue-gtag'
-import VueFire from 'vuefire'
 
-Vue.use(VueFire)
+Vue.use(rtdbPlugin)
 
 Vue.use(VueAxios, axios)
 
@@ -47,7 +46,6 @@ Vue.directive('autofocus', autofocus)
 Vue.use(VueLocalStorage)
 
 Vue.use(SuiVue)
-Vue.use(rtdbPlugin)
 
 Vue.config.productionTip = false
 
