@@ -154,16 +154,19 @@ export default {
     srcURL: function () {
       var ans
       if (this.gobans && this.gobans[this.$route.params.id] && this.gobans[this.$route.params.id].use_lev) {
-        ans = 'https://cors-anywhere.herokuapp.com/https://ethercalc.net/' + this.$route.params.id + (this.$route.params.lev || '') + '.csv.json'
+        ans = 'https://ethercalc.net/' + this.$route.params.id + (this.$route.params.lev || '') + '.csv.json'
       } else {
-        ans = 'https://cors-anywhere.herokuapp.com/https://ethercalc.net/' + this.$route.params.id + '.csv.json'
+        ans = 'https://ethercalc.net/' + this.$route.params.id + '.csv.json'
       }
       return ans
     },
     reload: function (newTab, to, from, myWindowWidth) {
       console.log('reload...')
       // GET /someUrl
-      this.$http.get(this.srcURL()).then(response => {
+      this.$http.get(this.srcURL(), { headers: {
+          'X-Requested-With': 'XMLHttpRequest'
+        } 
+      }).then(response => {
         //this.$http.get(csv_api_source).pipe(CSV.parse).done(compile_json);   <--先抓CSV, 再compile成JSON
         // get body mydata
         console.log(response.data)
