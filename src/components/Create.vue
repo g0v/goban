@@ -1,7 +1,7 @@
 <template lang="pug">
   .hello
-    h1.ui.header 搜尋棋盤
-    h3.sub.header 創建棋盤，讓星棋羅列
+    h1.ui.header 搜尋黑板
+    h3.sub.header 創建黑板，讓星棋羅列
     .ui.warning.message.container
       | 創建後請至少輸入一筆資料，謝謝
       br

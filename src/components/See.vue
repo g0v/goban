@@ -1,6 +1,6 @@
 <template lang="pug">
   .hello()
-    vue-headful(v-if = "gobans" :title="$route.params.id + ' > ' + '@知識棋盤'", description="gobans && gobans[$route.params.id].t")
+    vue-headful(v-if = "gobans" :title="$route.params.id + ' > ' + '@零時黑板'", description="gobans && gobans[$route.params.id].t")
     see-nav(:gobans="gobans", :mydata = "mydata", :myName="myName")
     .ui.grid.no-print
       .ui.row

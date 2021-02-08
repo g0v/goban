@@ -13,10 +13,10 @@
       router-link.item(to='/intro')
         i.question.icon
         | 導覽
-      //sui-dropdown.item(icon="save outline")
+      sui-dropdown.item(icon="save outline")
         | 工具
         sui-dropdown-menu
-          sui-dropdown-item(@click="$router.push('/myapp')")
+          //sui-dropdown-item(@click="$router.push('/myapp')")
             | 手機App
           sui-dropdown-item(@click="$router.push('/extension')")
             | 瀏覽器插件
@@ -90,7 +90,7 @@ export default {
       gobans: undefined,
       chats: undefined,
       starsFire: undefined,
-      mydata: [{"name":"知識棋盤共筆頁","url":"https://hackmd.io/3pvyN_W9TjSsuBok4w2XYA","note":"","type":"link"}]
+      mydata: [{"name":"零時黑板共筆頁","url":"https://hackmd.io/3pvyN_W9TjSsuBok4w2XYA","note":"","type":"link"}]
     }
   },
   mixins: [ss, mixin],

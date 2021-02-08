@@ -1,7 +1,7 @@
 <template lang="pug">
   .hello
-    vue-headful(title="手機App@知識棋盤", description="手機App@知識棋盤")
-    h1.ui.header 知識棋盤-手機App
+    vue-headful(title="手機App@零時黑板", description="手機App@零時黑板")
+    h1.ui.header 零時黑板-手機App
     .ui.button.group
       a.ui.orange.huge.button(href="https://play.google.com/store/apps/details?id=tw.goban.app", target="_blank")
         i.google.play.icon
