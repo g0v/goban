@@ -5,7 +5,7 @@
       a.ui.orange.huge.button(href="https://addons.mozilla.org/zh-TW/firefox/addon/%E9%9B%B6%E6%99%82%E9%BB%91%E6%9D%BF/", target="_blank", rel="noopner noreferrer")
         i.firefox.icon
         | Firefox Add-on
-      a.ui.green.button(href="https://chrome.google.com/webstore/detail/goban/homdancdjkjilkkfafaojpllnfheekno?hl=zh-TW", target="_blank", rel="noopner noreferrer")
+      a.ui.green.huge.button(href="https://chrome.google.com/webstore/detail/goban/homdancdjkjilkkfafaojpllnfheekno?hl=zh-TW", target="_blank", rel="noopner noreferrer")
         i.app.store.icon
         | Chrome Extention
 
