@@ -27,11 +27,12 @@
         router-link.item(to = "/chat")
           i.chat.icon
           | 留言板
-        a.item(href="https://github.com/g0v/goban")
+        a.item(href="https://github.com/g0v/goban", target="_blank", rel="noopener noreferrer")
           i.github.icon
           | 原始碼
-        .item
-          iframe(src="https://www.facebook.com/plugins/share_button.php?href=http%3A%2F%2Fgoban.tw&layout=button_count&size=small&appId=485195848253155&width=71&height=20" width="80" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media")
+        a.item(href="https://www.facebook.com/sharer/sharer.php?u=https://goban.tw",target="_blank", rel="noopener noreferrer")
+          i.facebook.icon
+          | 分享
     .ui.fixed.top.menu.thin-only.no-print#nav1
       router-link.item(to='/')
         sui-icon(name='home', data-content="首頁", title="首頁")
