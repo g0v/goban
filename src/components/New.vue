@@ -32,7 +32,7 @@
             .inner(v-if = "stars[g.id] > 0")
               router-link(:to="getFastRoute(g)", :style="{color: g.hex || '#42b983'}") {{ g.id }} - {{ g.t }}
                 i.right.arrow.icon
-          h3.ui.header 人氣棋盤
+          h3.ui.header 人氣黑板
           span(v-for = "(g, idx) in gobans", :key='idx')
             .inner(v-if = "starsFire && starsFire[g.id] > 5")
               router-link(:to="getFastRoute(g)", :style="{color: g.hex || '#42b983'}") {{ g.id }} - {{ g.t }}({{starsFire[g.id]}}顆星)
