@@ -42,8 +42,8 @@
         div.no-print(v-if ="starsFire" v-show = "windowwidth > 500", :class = " windowwidth > 500 ? 'twelve wide column' : 'zero wide column' ")
           see-frame(:mydata="mydata")
     .print-only
-      h1.ui.header {{ $route.params.id }} @ 知識棋盤
-      img#qr(:src = "getQR()", alt = "$route.params.id + ' @ 知識棋盤'")
+      h1.ui.header {{ $route.params.id }} @ 零時黑板
+      img#qr(:src = "getQR()", alt = "$route.params.id + ' @ 零時黑板'")
       h1.ui.header {{ getURL() }}
 </template>
 

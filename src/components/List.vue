@@ -20,7 +20,7 @@
                 i.cogs.icon
               router-link(:to="getFastRoute(g)" )
                 h2.ui.header(:style="{color: g.hex || '#42b983'}") {{ g.id }} - {{ g.t }}({{starsFire[g.id] || 0}}顆星)
-              p 相關棋盤:
+              p 相關黑板:
                 br
                 router-link.r(v-for = "r in g.related", :key="r", :to="getFastRoute(g)" ) {{ r }}
       i.right.arrow.icon
@@ -34,7 +34,7 @@
               router-link(:to="getFastRoute(g)", :style="{color: g.hex || '#42b983'}") {{ g.id }} - {{ g.t }}
                 i.right.arrow.icon
         .colmun
-          h3.ui.header 人氣棋盤
+          h3.ui.header 人氣黑板
           span(v-for = "g in gobans", :key='g.id')
             .inner(v-if = "starsFire[g.id] > 5")
               router-link(:to="getFastRoute(g)", :style="{color: g.hex || '#42b983'}") {{ g.id }} - {{ g.t }}({{starsFire[g.id]}}顆星)
