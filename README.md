@@ -1,4 +1,4 @@
-# [知識棋盤](http://goban.tw)
+# [零時黑板](http://goban.tw)
 
 ## hackfoldr分支版-有脈絡的大量網址分享器
 
@@ -10,7 +10,7 @@
 
 ## 簡介
 
-知識棋盤(Goban)是g0v社群的開源專案之一。[原始碼repo在此](http://www.github.com/g0v/goban/)。
+零時黑板(Goban)是g0v社群的開源專案之一。[原始碼repo在此](http://www.github.com/g0v/goban/)。
 
 跟Hackfoldr類似，還附有以下功能性：
    
