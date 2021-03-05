@@ -40,7 +40,7 @@ note: 但是還有些hackfoldr的內容沒做，比方說
 8. 較高星等的黑板就會成為人氣黑板
 9. 你珍藏的項目會出現在首頁的「快速前往」區，就不必一直重新查尋了
 
-![範列圖1](https://i.imgur.com/96FvvJs.png =600x)
+![image](https://i.imgur.com/96FvvJs.png)
 
 ## 分享
 
@@ -72,7 +72,7 @@ note: 但是還有些hackfoldr的內容沒做，比方說
 8. 這樣就創建了一個連結
 9. 你可以創建多個連結
 
-![範列圖2](https://i.imgur.com/svOzmET.png =600x)
+![image](https://i.imgur.com/svOzmET.png)
 
 ### 小技巧:
 1. 如果A欄留白，它就會成為一個資料夾
