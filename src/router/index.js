@@ -1,29 +1,72 @@
 import Vue from 'vue'
-import VueRouter from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import Router from 'vue-router'
+import New from '@/components/New'
+import Create from '@/components/Create'
+import List from '@/components/List'
+import See from '@/components/See'
+import See2 from '@/components/See2'
+import Star from '@/components/Star'
+import Intro from '@/components/Intro'
+import Update from '@/components/Update'
+import MyApp from '@/components/MyApp'
+import Extension from '@/components/Extension'
+import Chat from '@/components/Chat'
 
-Vue.use(VueRouter)
+Vue.use(Router)
 
-const routes = [
-  {
-    path: '/',
-    name: 'home',
-    component: HomeView
-  },
-  {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  }
-]
-
-const router = new VueRouter({
-  mode: 'history',
-  base: process.env.BASE_URL,
-  routes
+export default new Router({
+  routes: [
+    {
+      path: '/',
+      name: 'New',
+      component: New
+    },
+    {
+      path: '/list',
+      name: 'List',
+      component: List
+    },
+    {
+      path: '/create',
+      name: 'Create',
+      component: Create
+    },
+    {
+      path: '/star',
+      name: 'Star',
+      component: Star
+    },
+    {
+      path: '/s/:id/:index',
+      name: 'See',
+      component: See
+    },
+    {
+      path: '/see/:id/:lev/:index',
+      name: 'See2',
+      component: See2
+    },
+    {
+      path: '/intro',
+      name: 'Intro',
+      component: Intro
+    },
+    { path: '/update/:id',
+      name: 'Update',
+      component: Update
+    },
+    {
+      path: '/myapp',
+      name: 'MyApp',
+      component: MyApp
+    },
+    { path: '/extension',
+      name: 'Extension',
+      component: Extension
+    },
+    { path: '/chat',
+      name: 'Chat',
+      component: Chat
+    }
+  ]
 })
-
-export default router

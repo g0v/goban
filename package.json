@@ -8,10 +8,25 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@babel/polyfill": "^7.12.1",
+    "axios": "^1.1.3",
     "core-js": "^3.8.3",
+    "firebase": "^9.13.0",
+    "portal-vue": "^2.1.7",
+    "pug-plain-loader": "^1.1.0",
     "register-service-worker": "^1.7.2",
+    "semantic-ui-css": "^2.5.0",
+    "semantic-ui-vue": "^0.11.0",
     "vue": "^2.6.14",
-    "vue-router": "^3.5.1"
+    "vue-autofocus-directive": "^1.0.4",
+    "vue-axios": "^3.5.2",
+    "vue-error-page": "^1.1.7",
+    "vue-gtag": "^1.16.1",
+    "vue-headful": "^2.1.0",
+    "vue-localstorage": "^0.6.2",
+    "vue-router": "^3.5.1",
+    "vue-simple-markdown": "^1.1.5",
+    "vuefire": "^2.2.5"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",
