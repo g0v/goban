@@ -1,4 +1,9 @@
-# [零時黑板](http://goban.tw)
+# Note
+
+This repo in no longer maintained
+to report bugs or make contributions, please visit [Here](https://github.com/bestian/goban)
+
+# 零時黑板
 
 ## hackfoldr分支版-有脈絡的大量網址分享器
 
